@@ -1,0 +1,16 @@
+# Python (scraper/, worker)
+__pycache__/
+*.pyc
+.venv/
+venv/
+.pytest_cache/
+scraper/output/
+
+# Env files — ne jamais committer de vraies clés/mots de passe
+.env
+.env.local
+scraper/.env
+
+# OS / éditeur
+.DS_Store
+Thumbs.db
