@@ -22,14 +22,19 @@ toujours effectué par `scraper/send_worker.py`, via le SMTP de l'utilisateur
 
 ## Documentation
 
-- **[NOTICE_UTILISATION.md](NOTICE_UTILISATION.md)** — guide écran par écran de l'application.
-- **[DEPLOIEMENT.md](DEPLOIEMENT.md)** — mise en production (Supabase, env, build, planification du worker), checklist de mise en ligne.
+- **[INSTALLATION.md](INSTALLATION.md)** — installation complète en local (Supabase, Resend, Stripe, frontend, worker Python).
+- **[NOTICE_UTILISATION.md](NOTICE_UTILISATION.md)** — guide écran par écran de l'application (aussi disponible dans l'app sur `/aide`).
+- **[ARCHITECTURE.md](ARCHITECTURE.md)** — schéma système, modèle de données, policies RLS, flux clés (signup → onboarding, envoi, webhook Stripe, verrouillage worker).
+- **[DEPLOIEMENT.md](DEPLOIEMENT.md)** — mise en production, checklist de mise en ligne.
 - **[CONFORMITE.md](CONFORMITE.md)** — RGPD et prospection B2B : ce que fait déjà l'outil, ce qui reste de votre responsabilité. **Pas un avis juridique.**
 
 > ⚠️ Scrapman envoie de vrais emails de prospection à de vraies entreprises.
 > Vous restez responsable du contenu de vos campagnes et du respect de la
 > réglementation applicable. Lisez [CONFORMITE.md](CONFORMITE.md) avant votre
-> premier envoi en production.
+> premier envoi en production — l'application bloque d'ailleurs l'activation
+> d'une campagne tant que vous n'avez pas confirmé cette lecture sur
+> `/conformite` et complété votre profil expéditeur. Voir la
+> [checklist avant premier envoi](CONFORMITE.md#checklist-avant-premier-envoi).
 
 ## Zéro coût API
 
@@ -43,75 +48,24 @@ Dropcontact, Apollo, Clearbit, SerpAPI...). Sources utilisées :
 - DNS (MX) pour valider les emails générés
 - SMTP/IMAP de l'utilisateur pour l'envoi (phase 2 pour IMAP, voir plus bas)
 
-## Authentification
+## Authentification et équipes
 
-Application mono-utilisateur (un compte = un freelance/une petite équipe),
-construite sur une base de données multi-tenant dès le départ (chaque table a
-un `user_id` + RLS Postgres). Il n'y a pas d'inscription publique : le compte
-se crée depuis le tableau de bord Supabase (Authentication → Add user), puis
-se connecte sur `/login`. Cette décision évite la complexité d'un flux
-d'inscription pour un outil qui n'a, pour l'instant, qu'un seul utilisateur
-réel — tout en gardant la structure prête pour devenir un vrai SaaS plus tard.
+SaaS multi-tenant : inscription publique self-service (`/signup`, email de
+confirmation via Resend), onboarding guidé en 5 étapes, puis gestion d'équipe
+(rôles owner/admin/membre, invitations par email). Le tenant réel est
+l'**équipe** (`teams`), pas l'utilisateur — plusieurs membres partagent les
+mêmes prospects, campagnes et configuration SMTP. La base de données est
+multi-tenant dès le départ (RLS Postgres sur `team_id` pour chaque table).
+
+Facturation Stripe (Checkout + Customer Portal hébergés) avec 3 plans
+(Starter/Pro/Agency) définissant les limites réelles (prospects, campagnes
+actives, utilisateurs, emails/jour) — appliquées à la fois en base (triggers
+SQL) et dans le worker Python.
 
 ## Installation
 
-### Prérequis
-
-- Node.js 20.9+ et npm
-- Python 3.11+
-- Un projet Supabase (gratuit) avec le schéma `supabase/schema.sql` appliqué
-
-### Base de données
-
-Dans l'éditeur SQL Supabase (ou via `supabase db push`), exécuter
-`supabase/schema.sql`. Le fichier est idempotent : il peut être ré-exécuté
-sans risque après une mise à jour.
-
-### Frontend
-
-```bash
-cd frontend
-npm install
-cp .env.local.example .env.local
-# Renseigner NEXT_PUBLIC_SUPABASE_URL, NEXT_PUBLIC_SUPABASE_ANON_KEY,
-# et générer SMTP_ENCRYPTION_KEY : openssl rand -hex 32
-npm run dev
-```
-
-Variables d'environnement (`frontend/.env.local`) :
-
-| Variable | Description |
-| --- | --- |
-| `NEXT_PUBLIC_SUPABASE_URL` | URL du projet Supabase |
-| `NEXT_PUBLIC_SUPABASE_ANON_KEY` | Clé anonyme Supabase |
-| `NEXT_PUBLIC_VILLE_PROSPECTEUR` | Ville affichée dans les templates (signature) |
-| `NEXT_PUBLIC_CALENDLY_URL` | Lien de prise de rendez-vous utilisé dans les templates |
-| `SMTP_ENCRYPTION_KEY` | Clé AES-256-GCM (32 octets hex) pour chiffrer le mot de passe SMTP. **Doit être identique** à celle de `scraper/.env`. |
-
-### Scraper / worker Python
-
-```bash
-cd scraper
-python -m venv .venv
-.venv/Scripts/activate        # Windows
-# source .venv/bin/activate   # macOS/Linux
-pip install -r requirements.txt
-playwright install chromium   # nécessaire pour l'enrichissement de sites web
-cp .env.example .env
-# Renseigner NEXT_PUBLIC_SUPABASE_URL, SUPABASE_SERVICE_KEY,
-# SCRAPMAN_DEFAULT_USER_ID, et la MÊME SMTP_ENCRYPTION_KEY que le frontend
-```
-
-Variables d'environnement (`scraper/.env`) :
-
-| Variable | Description |
-| --- | --- |
-| `NEXT_PUBLIC_SUPABASE_URL` | URL du projet Supabase (identique au frontend) |
-| `SUPABASE_SERVICE_KEY` | Clé **service** Supabase (bypass RLS — backend uniquement, jamais exposée) |
-| `INSEE_API_KEY` | Optionnel — active l'enrichissement SIRENE |
-| `SCRAPMAN_DEFAULT_USER_ID` | UUID de l'utilisateur par défaut pour les commandes CLI |
-| `VILLE_PROSPECTEUR`, `CALENDLY_URL` | Identiques au frontend, utilisés dans les templates |
-| `SMTP_ENCRYPTION_KEY` | **Doit être strictement identique** à celle du frontend — sinon le worker ne peut pas déchiffrer le mot de passe SMTP |
+Voir **[INSTALLATION.md](INSTALLATION.md)** pour le guide complet
+(Supabase, Resend, Stripe, frontend, worker Python).
 
 ## Utilisation
 
@@ -188,8 +142,10 @@ annuler les relances).
 
 ## Anti-spam (non contournable)
 
-- Plafond strict de 200 emails/jour, vérifié par comptage réel de
-  `send_logs` (pas un compteur en mémoire).
+- Plafond quotidien réel par équipe (selon le plan payant — 50/150/200
+  emails/jour pour Starter/Pro/Agency, 200/jour par défaut pour les comptes
+  sans abonnement), vérifié par comptage réel de `send_logs` (pas un
+  compteur en mémoire).
 - Délai humain aléatoire entre deux envois, jamais inférieur à 30 secondes
   (configurable par campagne entre 30 et la valeur souhaitée — le plancher
   de 30s est appliqué côté code et côté contrainte SQL).
@@ -227,9 +183,4 @@ mocké.
   détection (bounce, réponse) sans changer le modèle de données — les colonnes
   `reply_detected_at` et `bounce_detected_at` existent déjà sur `messages`
   pour ça.
-- **Quotas de prospects** (`accounts.prospect_quota`) : la colonne et son
-  affichage existent (`/settings` → Quotas), mais rien n'incrémente encore
-  `prospect_quota_used` lors d'un scraping. À faire si le volume de scraping
-  devient un sujet de coût/limite.
-#   S c r a p m a n  
- 
+

@@ -52,6 +52,11 @@ responsabilité**.
 | Fenêtre d'envoi (jours/heures ouvrées par défaut) | `campaign_settings` | Respect des horaires professionnels |
 | Pas de scraping agressif : retry+backoff sur 429, délai entre zones | `scrapers/recherche_entreprises.py` | Usage raisonnable des API publiques |
 | Maximum de relances configurable (0 à 5) | `campaign_settings.max_followups` | Pas de harcèlement par relances illimitées |
+| Lecture de ce document confirmée avant toute activation de campagne | `/conformite`, `accounts.conformite_lue_at` | S'assurer que l'utilisateur a vu ces règles avant le premier envoi |
+| Profil expéditeur validé (pas de valeur de démo, champs requis non vides) | `lib/profile-validation.ts`, bloque l'activation dans l'onglet Réglages de la campagne | Éviter d'envoyer des emails non identifiables ou avec des données factices |
+| Avertissement sur les limites du fournisseur SMTP | Réglages → SMTP, Réglages de campagne (non bloquant) | Le plafond de 200/jour est interne ; Gmail et d'autres fournisseurs imposent souvent moins |
+| Politique de rétention configurable (recommandé : 36 mois) + suppression manuelle des prospects expirés | Réglages → Rétention | Minimisation des données / conservation limitée, sans suppression automatique surprise |
+| Journal d'audit immuable (conformité, SMTP, rétention, lancement de campagne, suppressions) | table `audit_log` (RLS : lecture/écriture propriétaire uniquement, pas de modification) | Traçabilité des actions sensibles |
 
 ## Vos obligations en tant qu'utilisateur
 
@@ -65,11 +70,11 @@ responsabilité**.
    utiles à la prospection (nom, contact professionnel, données
    publiques d'entreprise) — n'ajoutez pas de champs supplémentaires
    sensibles dans vos notes.
-4. **Conservation limitée** : définissez une durée de conservation pour
-   les prospects non convertis (par exemple 3 ans sans contact, durée
-   généralement admise pour la prospection B2B) et supprimez-les
-   périodiquement — ce nettoyage n'est pas automatisé par Scrapman
-   aujourd'hui, c'est une action manuelle de votre part.
+4. **Conservation limitée** : définissez votre durée de conservation dans
+   Réglages → Rétention (36 mois sans contact recommandé pour la
+   prospection B2B). Scrapman liste les prospects expirés mais ne les
+   supprime **jamais automatiquement** — la suppression (individuelle ou en
+   masse) reste une action manuelle et délibérée de votre part.
 5. **Sécurité** : le mot de passe SMTP est chiffré (AES-256-GCM) en base ;
    gardez `SMTP_ENCRYPTION_KEY` et vos accès Supabase strictement privés.
 6. **Pas de scraping agressif** : respectez les limites déjà en place
@@ -100,10 +105,28 @@ d'un usage personnel), prévoyez au minimum :
 l'emploi.** Faites relire vos CGU/Politique de confidentialité par un
 professionnel avant publication.
 
+## Checklist avant premier envoi
+
+- [ ] Lecture de ce document confirmée sur `/conformite` (sinon l'activation
+  d'une campagne est bloquée par l'application).
+- [ ] Profil expéditeur complété dans Réglages → Profil/SMTP : nom de
+  l'entreprise, prénom de l'expéditeur, adresse email professionnelle et
+  signature — aucune valeur de démonstration restante (l'application vérifie
+  ceci automatiquement avant d'autoriser l'activation).
+- [ ] Configuration SMTP testée avec succès (« Tester la connexion »).
+- [ ] Plafond réel de votre fournisseur SMTP vérifié (peut être inférieur
+  aux 200/jour internes à Scrapman).
+- [ ] Politique de rétention définie dans Réglages → Rétention (durée et
+  activation).
+- [ ] CGU / Politique de confidentialité relues par un professionnel si
+  Scrapman est utilisé au-delà d'un usage strictement personnel.
+- [ ] Premier envoi testé en `--dry-run` avant tout envoi réel.
+
 ## Phase 2 — non couvert aujourd'hui
 
 - Détection automatique des bounces/réponses (IMAP) : aujourd'hui
   manuelle via `/messages`. Les colonnes `bounce_detected_at` et
   `reply_detected_at` existent déjà en base pour une future automatisation.
-- Purge automatique des prospects anciens non convertis : à faire
-  manuellement pour l'instant (voir point "Conservation limitée" ci-dessus).
+- Visualisation du journal d'audit dans l'interface : aujourd'hui
+  consultable via l'éditeur de tables Supabase (`audit_log`) ; un écran
+  dédié pourra être ajouté plus tard si le besoin se confirme.

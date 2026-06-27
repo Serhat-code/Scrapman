@@ -89,6 +89,16 @@ def test_plafond_quotidien_sans_campagne_settings():
     assert plafond == 80
 
 
+def test_plafond_quotidien_limite_plan_remplace_le_cap_global():
+    plafond = worker.calculer_plafond_quotidien({"daily_limit": 9999}, None, limite_plan=50)
+    assert plafond == 50
+
+
+def test_plafond_quotidien_sans_abonnement_actif_garde_le_cap_global():
+    plafond = worker.calculer_plafond_quotidien({"daily_limit": 9999}, None, limite_plan=None)
+    assert plafond == 200
+
+
 # --------------------------------------------------------------------------
 # Conditions de skip relance
 # --------------------------------------------------------------------------
@@ -142,6 +152,9 @@ class _FakeQuery:
     def lte(self, *a, **k):
         return self
 
+    def in_(self, *a, **k):
+        return self
+
     def or_(self, *a, **k):
         return self
 
@@ -169,12 +182,22 @@ class _FakeQuery:
 class _FakeClient:
     """Supabase factice : retourne une réponse canée par table, journalise les écritures."""
 
-    def __init__(self, responses: dict[str, _FakeResponse]):
+    def __init__(
+        self,
+        responses: dict[str, _FakeResponse],
+        rpc_responses: dict[str, _FakeResponse] | None = None,
+    ):
         self._responses = responses
+        self._rpc_responses = rpc_responses or {}
         self.writes: list[tuple[str, str, dict]] = []
+        self.rpc_calls: list[tuple[str, dict]] = []
 
     def table(self, name: str):
         return _FakeQuery(name, self, self._responses.get(name, _FakeResponse(data=[])))
+
+    def rpc(self, name: str, params: dict):
+        self.rpc_calls.append((name, params))
+        return _FakeQuery(name, self, self._rpc_responses.get(name, _FakeResponse(data=[])))
 
 
 _FENETRE_OUVERTE = {
@@ -194,6 +217,7 @@ def test_traiter_messages_dry_run_ne_modifie_rien(monkeypatch):
     message = {
         "id": "msg-1",
         "user_id": "user-1",
+        "team_id": "team-1",
         "statut": "en_file",
         "objet": "Sujet",
         "corps": "Corps",
@@ -213,7 +237,7 @@ def test_traiter_messages_dry_run_ne_modifie_rien(monkeypatch):
     nb_traites = worker.traiter_messages(
         client,
         limit=10,
-        user_id=None,
+        team_id=None,
         dry_run=True,
         profils_cache={},
         mots_de_passe_cache={},
@@ -227,6 +251,7 @@ def test_traiter_messages_ignore_campagne_non_active():
     message = {
         "id": "msg-1",
         "user_id": "user-1",
+        "team_id": "team-1",
         "statut": "en_file",
         "campaign_id": "camp-1",
         "campaign": {"id": "camp-1", "statut": "brouillon"},
@@ -235,7 +260,7 @@ def test_traiter_messages_ignore_campagne_non_active():
     client = _FakeClient({"messages": _FakeResponse(data=[message])})
 
     nb_traites = worker.traiter_messages(
-        client, limit=10, user_id=None, dry_run=True, profils_cache={}, mots_de_passe_cache={}
+        client, limit=10, team_id=None, dry_run=True, profils_cache={}, mots_de_passe_cache={}
     )
     assert nb_traites == 0
 
@@ -250,6 +275,7 @@ def test_traiter_messages_sans_campagne_est_traite(monkeypatch):
     message = {
         "id": "msg-1",
         "user_id": "user-1",
+        "team_id": "team-1",
         "statut": "en_file",
         "objet": "Sujet",
         "corps": "Corps",
@@ -266,7 +292,7 @@ def test_traiter_messages_sans_campagne_est_traite(monkeypatch):
     )
 
     nb_traites = worker.traiter_messages(
-        client, limit=10, user_id=None, dry_run=True, profils_cache={}, mots_de_passe_cache={}
+        client, limit=10, team_id=None, dry_run=True, profils_cache={}, mots_de_passe_cache={}
     )
     assert nb_traites == 1
 
@@ -275,6 +301,7 @@ def test_traiter_messages_ignore_prospect_sans_email():
     message = {
         "id": "msg-1",
         "user_id": "user-1",
+        "team_id": "team-1",
         "statut": "en_file",
         "campaign_id": "camp-1",
         "campaign": {"id": "camp-1", "statut": "actif"},
@@ -283,7 +310,7 @@ def test_traiter_messages_ignore_prospect_sans_email():
     client = _FakeClient({"messages": _FakeResponse(data=[message])})
 
     nb_traites = worker.traiter_messages(
-        client, limit=10, user_id=None, dry_run=True, profils_cache={}, mots_de_passe_cache={}
+        client, limit=10, team_id=None, dry_run=True, profils_cache={}, mots_de_passe_cache={}
     )
     assert nb_traites == 0
 
@@ -292,6 +319,7 @@ def test_traiter_messages_respecte_le_quota_journalier():
     message = {
         "id": "msg-1",
         "user_id": "user-1",
+        "team_id": "team-1",
         "statut": "en_file",
         "campaign_id": "camp-1",
         "campaign": {"id": "camp-1", "statut": "actif"},
@@ -307,7 +335,7 @@ def test_traiter_messages_respecte_le_quota_journalier():
     )
 
     nb_traites = worker.traiter_messages(
-        client, limit=10, user_id=None, dry_run=True, profils_cache={}, mots_de_passe_cache={}
+        client, limit=10, team_id=None, dry_run=True, profils_cache={}, mots_de_passe_cache={}
     )
     assert nb_traites == 0
 
@@ -316,6 +344,7 @@ def test_traiter_relances_annule_si_prospect_a_repondu():
     relance = {
         "id": "seq-1",
         "user_id": "user-1",
+        "team_id": "team-1",
         "etape": 1,
         "campaign": {"id": "camp-1", "statut": "actif"},
         "prospect": {"id": "prospect-1", "email": "p@x.fr", "statut": "contacte"},
@@ -324,7 +353,7 @@ def test_traiter_relances_annule_si_prospect_a_repondu():
     client = _FakeClient({"sequences": _FakeResponse(data=[relance])})
 
     nb_traites = worker.traiter_relances(
-        client, limit=10, user_id=None, dry_run=True, profils_cache={}, mots_de_passe_cache={}
+        client, limit=10, team_id=None, dry_run=True, profils_cache={}, mots_de_passe_cache={}
     )
 
     assert nb_traites == 0
@@ -336,6 +365,7 @@ def test_traiter_relances_dry_run_ne_modifie_rien():
     relance = {
         "id": "seq-1",
         "user_id": "user-1",
+        "team_id": "team-1",
         "etape": 1,
         "objet": "Re: x",
         "corps": "...",
@@ -353,8 +383,87 @@ def test_traiter_relances_dry_run_ne_modifie_rien():
     )
 
     nb_traites = worker.traiter_relances(
-        client, limit=10, user_id=None, dry_run=True, profils_cache={}, mots_de_passe_cache={}
+        client, limit=10, team_id=None, dry_run=True, profils_cache={}, mots_de_passe_cache={}
     )
 
     assert nb_traites == 1
     assert client.writes == []
+
+
+# --------------------------------------------------------------------------
+# Mode réel : verrouillage par ligne (claim_messages/claim_followups)
+# --------------------------------------------------------------------------
+def test_traiter_messages_reel_appelle_claim_messages_avec_le_worker_id():
+    client = _FakeClient(
+        {"messages": _FakeResponse(data=[])},
+        rpc_responses={"claim_messages": _FakeResponse(data=[])},
+    )
+
+    nb_traites = worker.traiter_messages(
+        client,
+        limit=10,
+        team_id="team-1",
+        dry_run=False,
+        profils_cache={},
+        mots_de_passe_cache={},
+        worker_id="worker-abc",
+    )
+
+    assert nb_traites == 0
+    assert client.rpc_calls == [
+        ("claim_messages", {"p_worker_id": "worker-abc", "p_limit": 10, "p_team_id": "team-1"})
+    ]
+
+
+def test_traiter_messages_reel_libere_le_verrou_meme_si_le_message_est_ignore(monkeypatch):
+    # Une campagne non active doit faire passer le message — mais le verrou
+    # posé par claim_messages doit malgré tout être libéré immédiatement
+    # (sinon il faudrait attendre 5 min avant de pouvoir le retraiter).
+    message = {
+        "id": "msg-1",
+        "user_id": "user-1",
+        "team_id": "team-1",
+        "statut": "en_file",
+        "campaign_id": "camp-1",
+        "campaign": {"id": "camp-1", "statut": "brouillon"},
+        "prospect": {"id": "prospect-1", "email": "p@x.fr"},
+    }
+    client = _FakeClient(
+        {"messages": _FakeResponse(data=[message])},
+        rpc_responses={"claim_messages": _FakeResponse(data=["msg-1"])},
+    )
+
+    nb_traites = worker.traiter_messages(
+        client,
+        limit=10,
+        team_id=None,
+        dry_run=False,
+        profils_cache={},
+        mots_de_passe_cache={},
+        worker_id="worker-abc",
+    )
+
+    assert nb_traites == 0
+    assert ("update", "messages", {"locked_at": None, "locked_by": None}) in client.writes
+
+
+def test_traiter_relances_reel_appelle_claim_followups_avec_le_worker_id():
+    client = _FakeClient(
+        {"sequences": _FakeResponse(data=[])},
+        rpc_responses={"claim_followups": _FakeResponse(data=[])},
+    )
+
+    nb_traites = worker.traiter_relances(
+        client,
+        limit=5,
+        team_id="team-1",
+        dry_run=False,
+        profils_cache={},
+        mots_de_passe_cache={},
+        worker_id="worker-xyz",
+    )
+
+    assert nb_traites == 0
+    assert client.rpc_calls == [
+        ("claim_followups", {"p_worker_id": "worker-xyz", "p_limit": 5, "p_team_id": "team-1"})
+    ]

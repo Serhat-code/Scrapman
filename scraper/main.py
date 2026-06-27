@@ -24,6 +24,7 @@ from rich.table import Table
 from config import MAX_SCRAPE_LIMIT, SCRAPMAN_DEFAULT_USER_ID
 from db.sender_profile import recuperer_sender_profile
 from db.supabase_client import get_supabase_client
+from db.team import resoudre_team_id
 from db.upsert import (
     compter_prospects,
     mettre_a_jour_prospect,
@@ -132,6 +133,16 @@ async def scrape(
         console.print("[yellow]Aucun prospect trouvé avec ces critères.[/yellow]")
         return
 
+    # team_id est la frontière RLS réelle (cf. Partie 4 du schéma) : sans lui,
+    # les prospects scrapés seraient invisibles depuis le frontend même si
+    # l'insertion (clé service, RLS bypassée) réussit.
+    client = get_supabase_client()
+    team_id = resoudre_team_id(client, user_id)
+    if not team_id:
+        raise click.UsageError(f"Aucune équipe trouvée pour l'utilisateur {user_id}.")
+    for prospect in prospects:
+        prospect["team_id"] = team_id
+
     nb = upsert_prospects(prospects)
     console.print(f"[bold green]{nb} prospect(s) enregistré(s) (sur {len(prospects)} collectés).[/bold green]")
 
@@ -233,6 +244,9 @@ def generate_scripts(bucket: str, user_id: str | None) -> None:
     fichier_scripts = output_dir / f"scripts_appel_bucket_{bucket}.txt"
 
     client = get_supabase_client()
+    team_id = resoudre_team_id(client, user_id)
+    if not team_id:
+        raise click.UsageError(f"Aucune équipe trouvée pour l'utilisateur {user_id}.")
     nb_emails = 0
 
     with fichier_scripts.open("w", encoding="utf-8") as f:
@@ -247,6 +261,7 @@ def generate_scripts(bucket: str, user_id: str | None) -> None:
             client.table("messages").insert(
                 {
                     "user_id": user_id,
+                    "team_id": team_id,
                     "prospect_id": prospect["id"],
                     "canal": "email",
                     "angle": prospect.get("angle"),

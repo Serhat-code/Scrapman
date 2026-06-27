@@ -36,11 +36,15 @@ async def delai_anti_spam(
 
 
 def verifier_quota_journalier(
-    user_id: str, supabase_client: Any, cap: int = DAILY_EMAIL_CAP
+    team_id: str, supabase_client: Any, cap: int = DAILY_EMAIL_CAP
 ) -> tuple[bool, int]:
-    """Vérifie le quota journalier d'envoi d'emails pour un utilisateur.
+    """Vérifie le quota journalier d'envoi d'emails pour une équipe.
 
-    Compte les `send_logs` d'aujourd'hui (UTC) pour `user_id`.
+    Le quota est partagé par toute l'équipe (`team_id`), pas par utilisateur
+    individuel — sinon deux membres d'une même équipe pourraient chacun
+    envoyer jusqu'au plafond, doublant le volume réel autorisé.
+
+    Compte les `send_logs` d'aujourd'hui (UTC) pour `team_id`.
     Retourne (peut_envoyer, nb_envoyes_aujourd_hui). `cap` ne peut jamais
     dépasser DAILY_EMAIL_CAP (200/jour) même si une valeur plus haute est
     passée par erreur — protection anti-spam non contournable.
@@ -51,7 +55,7 @@ def verifier_quota_journalier(
     resp = (
         supabase_client.table("send_logs")
         .select("id", count="exact")
-        .eq("user_id", user_id)
+        .eq("team_id", team_id)
         .gte("created_at", debut_jour)
         .execute()
     )
