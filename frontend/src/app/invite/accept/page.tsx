@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
 import { Suspense, useEffect, useState } from "react";
 
+import { Backlink } from "@/components/shared/Backlink";
 import { Button } from "@/components/shared/Button";
 import { createClient } from "@/lib/supabase/client";
 
@@ -59,7 +60,7 @@ function InviteAcceptContent() {
 
   if (!token) {
     return (
-      <div className="flex h-full w-full items-center justify-center bg-[var(--bg-app)] p-4">
+      <div className="flex h-full w-full flex-col items-center justify-center gap-4 bg-[var(--bg-app)] p-4">
         <div className="flex w-full max-w-sm flex-col items-center gap-2 rounded-md border border-[var(--border)] bg-[var(--bg-surface)] p-6 text-center">
           <XCircle size={24} className="text-red-400" />
           <p className="text-sm text-[var(--text-primary)]">Invitation introuvable.</p>
@@ -67,6 +68,7 @@ function InviteAcceptContent() {
             Retour à la connexion
           </Link>
         </div>
+        <Backlink />
       </div>
     );
   }
@@ -121,7 +123,7 @@ function InviteAcceptContent() {
   };
 
   return (
-    <div className="flex h-full w-full items-center justify-center bg-[var(--bg-app)] p-4">
+    <div className="flex h-full w-full flex-col items-center justify-center gap-4 bg-[var(--bg-app)] p-4">
       <div className="flex w-full max-w-sm flex-col gap-6 rounded-md border border-[var(--border)] bg-[var(--bg-surface)] p-6">
         <div className="flex items-center gap-2">
           <div className="flex h-9 w-9 items-center justify-center rounded-md bg-[var(--emerald-dim)] text-[var(--emerald-light)]">
@@ -245,6 +247,7 @@ function InviteAcceptContent() {
           </form>
         )}
       </div>
+      <Backlink />
     </div>
   );
 }

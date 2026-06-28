@@ -81,6 +81,9 @@ interface ScrapmanStore {
   feedbackModalOpen: boolean;
   openFeedbackModal: () => void;
   closeFeedbackModal: () => void;
+
+  scrapingEnCours: boolean;
+  setScrapingEnCours: (value: boolean) => void;
 }
 
 export const useScrapmanStore = create<ScrapmanStore>()((set) => ({
@@ -144,4 +147,7 @@ export const useScrapmanStore = create<ScrapmanStore>()((set) => ({
   feedbackModalOpen: false,
   openFeedbackModal: () => set({ feedbackModalOpen: true }),
   closeFeedbackModal: () => set({ feedbackModalOpen: false }),
+
+  scrapingEnCours: false,
+  setScrapingEnCours: (value) => set({ scrapingEnCours: value }),
 }));

@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
 import { Suspense, useState } from "react";
 
+import { Backlink } from "@/components/shared/Backlink";
 import { Button } from "@/components/shared/Button";
 import { MESSAGE_RATE_LIMIT, verifierRateLimit } from "@/lib/rate-limit";
 import { createClient } from "@/lib/supabase/client";
@@ -66,7 +67,7 @@ function LoginForm() {
   };
 
   return (
-    <div className="flex h-full w-full items-center justify-center bg-[var(--bg-app)] p-4">
+    <div className="flex h-full w-full flex-col items-center justify-center gap-4 bg-[var(--bg-app)] p-4">
       <div className="flex w-full max-w-sm flex-col gap-6 rounded-md border border-[var(--border)] bg-[var(--bg-surface)] p-6">
         <div className="flex items-center gap-2">
           <div className="flex h-9 w-9 items-center justify-center rounded-md bg-[var(--emerald-dim)] text-[var(--emerald-light)]">
@@ -128,6 +129,7 @@ function LoginForm() {
           </Link>
         </p>
       </div>
+      <Backlink />
     </div>
   );
 }

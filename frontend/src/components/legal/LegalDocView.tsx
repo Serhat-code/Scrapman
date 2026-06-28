@@ -1,6 +1,8 @@
 import Link from "next/link";
 import { Sparkles } from "lucide-react";
 
+import { Backlink } from "@/components/shared/Backlink";
+
 import { SimpleMarkdown } from "./SimpleMarkdown";
 
 export function LegalDocView({ titre, contenu }: { titre: string; contenu: string }) {
@@ -19,6 +21,8 @@ export function LegalDocView({ titre, contenu }: { titre: string; contenu: strin
         <div className="rounded-md border border-[var(--border)] bg-[var(--bg-surface)] p-4">
           <SimpleMarkdown contenu={contenu} />
         </div>
+
+        <Backlink />
       </div>
     </div>
   );

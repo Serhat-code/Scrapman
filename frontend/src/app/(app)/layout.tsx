@@ -3,6 +3,7 @@ import { redirect } from "next/navigation";
 import { AbonnementRequisScreen } from "@/components/billing/AbonnementRequisScreen";
 import { FeedbackWidget } from "@/components/feedback/FeedbackWidget";
 import { Sidebar } from "@/components/layout/Sidebar";
+import { ScrapingBanner } from "@/components/prospects/ScrapingBanner";
 import { createClient } from "@/lib/supabase/server";
 
 export default async function AppLayout({ children }: { children: React.ReactNode }) {
@@ -55,6 +56,7 @@ export default async function AppLayout({ children }: { children: React.ReactNod
       <Sidebar />
       <main className="flex min-w-0 flex-1 overflow-hidden">{children}</main>
       <FeedbackWidget />
+      <ScrapingBanner />
     </div>
   );
 }

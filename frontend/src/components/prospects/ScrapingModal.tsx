@@ -12,11 +12,15 @@ import { useScrapmanStore } from "@/lib/store";
 import { CityTagInput } from "./CityTagInput";
 
 export function ScrapingModal() {
-  const { scrapingModal, closeScrapingModal, setScrapingModalStep, updateScrapingModal } =
-    useScrapmanStore();
+  const {
+    scrapingModal,
+    closeScrapingModal,
+    setScrapingModalStep,
+    updateScrapingModal,
+    setScrapingEnCours,
+  } = useScrapmanStore();
   const triggerScraping = useTriggerScraping();
   const [erreur, setErreur] = useState<string | null>(null);
-  const [lance, setLance] = useState(false);
 
   const { isOpen, step, naf, villes, franceEntiere, halalMode, excludeGrandesEnseignes, limit } =
     scrapingModal;
@@ -26,7 +30,6 @@ export function ScrapingModal() {
   const handleClose = () => {
     closeScrapingModal();
     setErreur(null);
-    setLance(false);
   };
 
   const handleLancer = async () => {
@@ -40,7 +43,11 @@ export function ScrapingModal() {
         excludeGrandesEnseignes,
         limit,
       });
-      setLance(true);
+      // L'écran de chargement vit en dehors de la modale (bannière globale,
+      // visible même après fermeture/navigation) — la collecte continue à
+      // distance sur GitHub Actions pendant plusieurs minutes.
+      setScrapingEnCours(true);
+      handleClose();
     } catch (error) {
       setErreur(error instanceof Error ? error.message : "Une erreur est survenue.");
     }
@@ -66,10 +73,6 @@ export function ScrapingModal() {
               Continuer
             </Button>
           </>
-        ) : lance ? (
-          <Button variant="primary" onClick={handleClose}>
-            Terminer
-          </Button>
         ) : (
           <>
             <Button variant="ghost" onClick={() => setScrapingModalStep(1)} disabled={triggerScraping.isPending}>
@@ -197,20 +200,6 @@ export function ScrapingModal() {
               <span>1</span>
               <span>{MAX_SCRAPE_LIMIT}</span>
             </div>
-          </div>
-        </div>
-      ) : lance ? (
-        <div className="flex flex-col items-center gap-3 py-4 text-center">
-          <Rocket size={28} className="text-[var(--emerald-light)]" />
-          <p className="text-sm text-[var(--text-primary)]">Scraping lancé</p>
-          <p className="max-w-sm text-xs text-[var(--text-muted)]">
-            La collecte tourne en arrière-plan (quelques minutes selon le volume). Les prospects
-            apparaîtront automatiquement dans cette liste au fur et à mesure de leur
-            enregistrement — pas besoin de garder cette fenêtre ouverte.
-          </p>
-          <div className="flex items-center gap-2 text-xs font-medium text-[var(--emerald-light)]">
-            <Loader2 size={14} className="animate-spin" />
-            Collecte en cours…
           </div>
         </div>
       ) : (
