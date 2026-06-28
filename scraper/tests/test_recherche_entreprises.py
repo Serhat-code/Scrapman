@@ -24,3 +24,17 @@ def test_retombe_sur_le_siege_si_dans_la_liste_de_codes():
     etab = _selectionner_etablissement(result, "69381,69382,69383")
     assert etab is not None
     assert etab["siret"] == "siege_lyon"
+
+
+def test_ignore_le_resultat_si_aucun_etablissement_dans_la_zone_demandee():
+    # Bug réel observé : une chaîne avec siège à Neuilly-sur-Seine et des
+    # succursales hors de la zone demandée se voyait attribuer son siège
+    # (mauvaise ville) au lieu d'être ignorée.
+    result = {
+        "siege": {"commune": "92051", "siret": "siege_neuilly"},
+        "matching_etablissements": [
+            {"commune": "82000", "etat_administratif": "A", "siret": "succursale_montauban"},
+        ],
+    }
+    etab = _selectionner_etablissement(result, "13201,13202,13203")
+    assert etab is None

@@ -106,7 +106,10 @@ def _selectionner_etablissement(result: dict, code_commune: str | None) -> dict 
     """Choisit l'établissement (siège ou matching) le plus pertinent pour la zone ciblée.
 
     `code_commune` peut contenir plusieurs codes séparés par des virgules
-    (arrondissements de Paris/Lyon/Marseille, voir `filters.geo`).
+    (arrondissements de Paris/Lyon/Marseille, voir `filters.geo`). Si une
+    zone est demandée mais qu'aucun établissement de ce SIREN ne s'y trouve
+    réellement (ex. siège à Neuilly-sur-Seine, succursales hors zone), on
+    ignore ce résultat plutôt que de lui attribuer la mauvaise ville.
     """
     siege = result.get("siege") or {}
     candidats = result.get("matching_etablissements") or []
@@ -118,6 +121,7 @@ def _selectionner_etablissement(result: dict, code_commune: str | None) -> dict 
                 return etab
         if siege.get("commune") in codes_cibles:
             return siege
+        return None
 
     for etab in candidats:
         if etab.get("etat_administratif", "A") == "A":
