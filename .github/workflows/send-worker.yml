@@ -1,0 +1,44 @@
+name: Worker d'envoi (send_worker)
+
+# Remplace l'exécution manuelle/cron locale du worker : GitHub Actions fait
+# tourner send_worker.py gratuitement (minutes Actions incluses), sans
+# nécessiter de serveur permanent. Le frontend (Vercel, serverless) ne peut
+# pas exécuter de Python lui-même — c'est ce qui rend ce workflow
+# indispensable maintenant que l'app est déployée.
+on:
+  schedule:
+    - cron: "*/15 * * * *"
+  workflow_dispatch:
+    inputs:
+      limit:
+        description: "Nombre maximum d'envois pour ce passage"
+        required: false
+        default: "15"
+
+jobs:
+  send:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    defaults:
+      run:
+        working-directory: scraper
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: "pip"
+          cache-dependency-path: scraper/requirements.txt
+
+      - name: Installer les dépendances (sans les navigateurs Playwright — inutiles pour l'envoi)
+        run: pip install -r requirements.txt
+
+      - name: Lancer le worker d'envoi
+        env:
+          NEXT_PUBLIC_SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_SERVICE_KEY: ${{ secrets.SUPABASE_SERVICE_KEY }}
+          SMTP_ENCRYPTION_KEY: ${{ secrets.SMTP_ENCRYPTION_KEY }}
+          VILLE_PROSPECTEUR: "Saint-Étienne"
+          CALENDLY_URL: "calendly.com/atlamazstudio/30min"
+        run: python send_worker.py --limit "${{ github.event.inputs.limit || '15' }}"
