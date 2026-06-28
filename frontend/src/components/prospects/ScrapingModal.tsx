@@ -208,6 +208,10 @@ export function ScrapingModal() {
             apparaîtront automatiquement dans cette liste au fur et à mesure de leur
             enregistrement — pas besoin de garder cette fenêtre ouverte.
           </p>
+          <div className="flex items-center gap-2 text-xs font-medium text-[var(--emerald-light)]">
+            <Loader2 size={14} className="animate-spin" />
+            Collecte en cours…
+          </div>
         </div>
       ) : (
         <div className="flex flex-col gap-4">
