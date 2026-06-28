@@ -1,0 +1,94 @@
+@import "tailwindcss";
+
+:root {
+  --bg-app: #0a0f0a;
+  --bg-sidebar: #0a0f0a;
+  --bg-surface: #111a11;
+  --bg-hover: #162016;
+  --border: #1e2e1e;
+
+  --emerald: #059669;
+  --emerald-light: #10b981;
+  --emerald-dim: #064e3b;
+
+  --text-primary: #f0fdf4;
+  --text-secondary: #86efac;
+  --text-muted: #4ade8066;
+  --text-dim: #374151;
+
+  --bucket-a: #059669;
+  --bucket-b: #60a5fa;
+  --bucket-c: #6b7280;
+
+  --halal-accent: #d97706;
+}
+
+@theme inline {
+  --color-bg-app: var(--bg-app);
+  --color-bg-sidebar: var(--bg-sidebar);
+  --color-bg-surface: var(--bg-surface);
+  --color-bg-hover: var(--bg-hover);
+  --color-border: var(--border);
+
+  --color-emerald: var(--emerald);
+  --color-emerald-light: var(--emerald-light);
+  --color-emerald-dim: var(--emerald-dim);
+
+  --color-text-primary: var(--text-primary);
+  --color-text-secondary: var(--text-secondary);
+  --color-text-muted: var(--text-muted);
+  --color-text-dim: var(--text-dim);
+
+  --color-bucket-a: var(--bucket-a);
+  --color-bucket-b: var(--bucket-b);
+  --color-bucket-c: var(--bucket-c);
+
+  --color-halal-accent: var(--halal-accent);
+
+  --font-sans: var(--font-inter);
+}
+
+* {
+  border-color: var(--border);
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  background: var(--bg-app);
+  color: var(--text-primary);
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 6px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--bg-hover);
+}
+
+/* Inputs numériques : on retire les flèches natives (rendu disgracieux,
+   incohérent avec le thème sombre) — les flèches haut/bas du clavier
+   continuent de fonctionner. */
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
