@@ -103,15 +103,20 @@ async def rechercher_page(
 
 
 def _selectionner_etablissement(result: dict, code_commune: str | None) -> dict | None:
-    """Choisit l'établissement (siège ou matching) le plus pertinent pour la zone ciblée."""
+    """Choisit l'établissement (siège ou matching) le plus pertinent pour la zone ciblée.
+
+    `code_commune` peut contenir plusieurs codes séparés par des virgules
+    (arrondissements de Paris/Lyon/Marseille, voir `filters.geo`).
+    """
     siege = result.get("siege") or {}
     candidats = result.get("matching_etablissements") or []
 
     if code_commune:
+        codes_cibles = set(code_commune.split(","))
         for etab in candidats:
-            if etab.get("commune") == code_commune and etab.get("etat_administratif", "A") == "A":
+            if etab.get("commune") in codes_cibles and etab.get("etat_administratif", "A") == "A":
                 return etab
-        if siege.get("commune") == code_commune:
+        if siege.get("commune") in codes_cibles:
             return siege
 
     for etab in candidats:

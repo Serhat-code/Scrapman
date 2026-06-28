@@ -88,6 +88,20 @@ DEPARTEMENTS_FRANCE = _build_departements()
 
 
 # --------------------------------------------------------------------------
+# Communes à arrondissements (Paris, Lyon, Marseille)
+# --------------------------------------------------------------------------
+# Ces 3 villes n'ont pas d'établissements enregistrés sous leur code INSEE
+# "ville entière" (ex. 13055 pour Marseille) — chaque établissement est
+# rattaché au code de son arrondissement (13201-13216). Une recherche par
+# code_commune=13055 renvoie donc toujours 0 résultat.
+COMMUNES_A_ARRONDISSEMENTS: dict[str, list[str]] = {
+    "75056": [f"751{i:02d}" for i in range(1, 21)],  # Paris
+    "69123": [f"6938{i}" for i in range(1, 10)],  # Lyon
+    "13055": [f"132{i:02d}" for i in range(1, 17)],  # Marseille
+}
+
+
+# --------------------------------------------------------------------------
 # Libellés NAF utilisés pour les templates (scripts / emails)
 # --------------------------------------------------------------------------
 NAF_LIBELLES: dict[str, str] = {

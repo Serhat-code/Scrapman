@@ -12,7 +12,7 @@ import unicodedata
 
 import httpx
 
-from config import DEPARTEMENTS_FRANCE, GEO_API_URL, MAX_VILLES
+from config import COMMUNES_A_ARRONDISSEMENTS, DEPARTEMENTS_FRANCE, GEO_API_URL, MAX_VILLES
 
 
 def valider_villes(villes: list[str]) -> list[str]:
@@ -32,7 +32,7 @@ def _normaliser(texte: str) -> str:
 
 
 async def resoudre_code_insee(client: httpx.AsyncClient, ville: str) -> str | None:
-    """Résout le code INSEE d'une commune via l'API Geo (data.gouv).
+    """Résout le(s) code(s) INSEE d'une commune via l'API Geo (data.gouv).
 
     Le tri par score de pertinence de l'API n'est pas fiable : pour la
     requête "Marseille", elle classe "Marseillette" (697 habitants) avant
@@ -40,6 +40,12 @@ async def resoudre_code_insee(client: httpx.AsyncClient, ville: str) -> str | No
     candidats et on préfère toujours une correspondance exacte du nom
     (accents/casse ignorés) quand elle existe, plutôt que le premier
     résultat renvoyé.
+
+    Paris, Lyon et Marseille n'ont aucun établissement enregistré sous leur
+    code "ville entière" (chaque établissement est rattaché à son
+    arrondissement) — on renvoie alors la liste de leurs codes
+    d'arrondissement séparés par des virgules, acceptée telle quelle par
+    l'API Recherche d'Entreprises (`code_commune=13201,13202,...`).
     """
     try:
         resp = await client.get(
@@ -56,10 +62,16 @@ async def resoudre_code_insee(client: httpx.AsyncClient, ville: str) -> str | No
         return None
 
     cible = _normaliser(ville)
+    code = data[0].get("code")
     for commune in data:
         if _normaliser(commune.get("nom", "")) == cible:
-            return commune.get("code")
-    return data[0].get("code")
+            code = commune.get("code")
+            break
+
+    arrondissements = COMMUNES_A_ARRONDISSEMENTS.get(code)
+    if arrondissements:
+        return ",".join(arrondissements)
+    return code
 
 
 async def resoudre_codes_insee(client: httpx.AsyncClient, villes: list[str]) -> dict[str, str | None]:
