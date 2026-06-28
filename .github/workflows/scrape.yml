@@ -1,0 +1,86 @@
+name: Scraping (à la demande)
+
+# Déclenché depuis le bouton "Lancer le scraping" du frontend (au lieu de
+# copier-coller une commande CLI) via l'API GitHub Actions
+# (workflow_dispatch). Toutes les entrées utilisateur passent par `env:`,
+# jamais directement interpolées dans un script shell — évite l'injection
+# de commande via des valeurs saisies dans l'app (naf, villes, etc.).
+on:
+  workflow_dispatch:
+    inputs:
+      naf:
+        description: "Code NAF cible"
+        required: true
+      villes:
+        description: "Villes séparées par des virgules (ignoré si france_entiere=true)"
+        required: false
+        default: ""
+      france_entiere:
+        description: "true pour scraper toute la France"
+        required: false
+        default: "false"
+      halal_mode:
+        description: "halal | exclure_halal | (vide)"
+        required: false
+        default: ""
+      exclure_grandes_enseignes:
+        description: "true pour exclure les grandes enseignes/groupes"
+        required: false
+        default: "false"
+      limit:
+        description: "Nombre de prospects"
+        required: false
+        default: "100"
+      user_id:
+        description: "UUID de l'utilisateur déclencheur (résout l'équipe cible)"
+        required: true
+
+jobs:
+  scrape:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    defaults:
+      run:
+        working-directory: scraper
+    env:
+      NEXT_PUBLIC_SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+      SUPABASE_SERVICE_KEY: ${{ secrets.SUPABASE_SERVICE_KEY }}
+      SMTP_ENCRYPTION_KEY: ${{ secrets.SMTP_ENCRYPTION_KEY }}
+      VILLE_PROSPECTEUR: "Saint-Étienne"
+      CALENDLY_URL: "calendly.com/atlamazstudio/30min"
+      NAF: ${{ github.event.inputs.naf }}
+      VILLES: ${{ github.event.inputs.villes }}
+      FRANCE_ENTIERE: ${{ github.event.inputs.france_entiere }}
+      HALAL_MODE: ${{ github.event.inputs.halal_mode }}
+      EXCLURE_GE: ${{ github.event.inputs.exclure_grandes_enseignes }}
+      SCRAPE_LIMIT: ${{ github.event.inputs.limit }}
+      USER_ID: ${{ github.event.inputs.user_id }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: "pip"
+          cache-dependency-path: scraper/requirements.txt
+
+      - name: Installer les dépendances (sans le navigateur Playwright — pas nécessaire pour `scrape`, seulement `enrich`)
+        run: pip install -r requirements.txt
+
+      - name: Lancer le scraping
+        run: |
+          ARGS=(--naf "$NAF" --limit "$SCRAPE_LIMIT" --user-id "$USER_ID")
+          if [ "$FRANCE_ENTIERE" = "true" ]; then
+            ARGS+=(--france-entiere)
+          else
+            ARGS+=(--villes "$VILLES")
+          fi
+          if [ "$HALAL_MODE" = "halal" ]; then
+            ARGS+=(--halal)
+          elif [ "$HALAL_MODE" = "exclure_halal" ]; then
+            ARGS+=(--exclure-halal)
+          fi
+          if [ "$EXCLURE_GE" = "true" ]; then
+            ARGS+=(--no-grandes-enseignes)
+          fi
+          python main.py scrape "${ARGS[@]}"

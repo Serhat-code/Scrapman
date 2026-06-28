@@ -1,17 +1,14 @@
-import { spawn } from "node:child_process";
-import path from "node:path";
-
 import { NextResponse } from "next/server";
 
+import { declencherWorkflow } from "@/lib/server/github-actions";
 import { resoudreTeamId } from "@/lib/server/team";
 import { createAdminClient } from "@/lib/supabase/admin";
 import { createClient } from "@/lib/supabase/server";
 
-// Pas de verrouillage fin par ligne encore en place (sujet Phase E) : ce
-// verrou applicatif au niveau équipe évite seulement qu'un double-clic (ou
-// deux onglets) ne lance deux passages du worker en parallèle, ce qui
-// pourrait causer un envoi en double. Auto-expiré après 10 min pour
-// récupérer d'un crash qui n'aurait pas levé le verrou correctement.
+// Le verrou applicatif (`teams.worker_lock_at`) évite seulement qu'un
+// double-clic (ou deux onglets) ne déclenche deux exécutions en parallèle
+// pour la même équipe. La garantie réelle anti double-envoi reste le
+// verrouillage par ligne (`claim_messages`, FOR UPDATE SKIP LOCKED).
 const VERROU_EXPIRATION_MS = 10 * 60 * 1000;
 
 export async function POST() {
@@ -55,29 +52,16 @@ export async function POST() {
     metadata: { nb_en_attente: count },
   });
 
-  // turbopackIgnore : ce chemin pointe hors du projet Next.js (vers le
-  // scraper Python, colocalisé sur le même hôte) — pas une dépendance de
-  // bundle à tracer.
-  const scraperDir = path.join(/* turbopackIgnore: true */ process.cwd(), "..", "scraper");
-  const pythonExecutable =
-    process.env.SCRAPER_PYTHON_PATH ||
-    (process.platform === "win32"
-      ? path.join(scraperDir, ".venv", "Scripts", "python.exe")
-      : path.join(scraperDir, ".venv", "bin", "python"));
-
-  const liberer = () => admin.from("teams").update({ worker_lock_at: null }).eq("id", teamId);
-
   try {
-    const child = spawn(pythonExecutable, ["send_worker.py", "--user-id", user.id, "--limit", "100"], {
-      cwd: scraperDir,
-      env: process.env,
-      stdio: "ignore",
+    await declencherWorkflow("send-worker.yml", {
+      limit: "100",
+      user_id: user.id,
+      team_id: teamId,
     });
-    child.on("exit", liberer);
-    child.on("error", liberer);
-  } catch {
-    await liberer();
-    return NextResponse.json({ error: "Impossible de démarrer l'envoi." }, { status: 500 });
+  } catch (error) {
+    await admin.from("teams").update({ worker_lock_at: null }).eq("id", teamId);
+    const message = error instanceof Error ? error.message : "Impossible de démarrer l'envoi.";
+    return NextResponse.json({ error: message }, { status: 502 });
   }
 
   return NextResponse.json({ ok: true, nbEnAttente: count });

@@ -4,7 +4,9 @@ name: Worker d'envoi (send_worker)
 # tourner send_worker.py gratuitement (minutes Actions incluses), sans
 # nécessiter de serveur permanent. Le frontend (Vercel, serverless) ne peut
 # pas exécuter de Python lui-même — c'est ce qui rend ce workflow
-# indispensable maintenant que l'app est déployée.
+# indispensable maintenant que l'app est déployée. Déclenché soit par le
+# planning (toutes les 15 min), soit à la demande par le bouton « Envoyer
+# maintenant » du frontend (workflow_dispatch).
 on:
   schedule:
     - cron: "*/15 * * * *"
@@ -14,6 +16,14 @@ on:
         description: "Nombre maximum d'envois pour ce passage"
         required: false
         default: "15"
+      user_id:
+        description: "UUID utilisateur déclencheur (optionnel — sinon toutes les équipes)"
+        required: false
+        default: ""
+      team_id:
+        description: "UUID de l'équipe dont le verrou doit être libéré en fin de run (déclenchement manuel uniquement)"
+        required: false
+        default: ""
 
 jobs:
   send:
@@ -22,6 +32,14 @@ jobs:
     defaults:
       run:
         working-directory: scraper
+    env:
+      NEXT_PUBLIC_SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+      SUPABASE_SERVICE_KEY: ${{ secrets.SUPABASE_SERVICE_KEY }}
+      SMTP_ENCRYPTION_KEY: ${{ secrets.SMTP_ENCRYPTION_KEY }}
+      VILLE_PROSPECTEUR: "Saint-Étienne"
+      CALENDLY_URL: "calendly.com/atlamazstudio/30min"
+      SEND_LIMIT: ${{ github.event.inputs.limit || '15' }}
+      WORKER_USER_ID: ${{ github.event.inputs.user_id }}
     steps:
       - uses: actions/checkout@v4
 
@@ -35,10 +53,22 @@ jobs:
         run: pip install -r requirements.txt
 
       - name: Lancer le worker d'envoi
+        run: |
+          if [ -n "$WORKER_USER_ID" ]; then
+            python send_worker.py --limit "$SEND_LIMIT" --user-id "$WORKER_USER_ID"
+          else
+            python send_worker.py --limit "$SEND_LIMIT"
+          fi
+
+      - name: Libérer le verrou de l'équipe (déclenchement manuel)
+        if: always() && github.event.inputs.team_id != ''
         env:
-          NEXT_PUBLIC_SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          TEAM_ID: ${{ github.event.inputs.team_id }}
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
           SUPABASE_SERVICE_KEY: ${{ secrets.SUPABASE_SERVICE_KEY }}
-          SMTP_ENCRYPTION_KEY: ${{ secrets.SMTP_ENCRYPTION_KEY }}
-          VILLE_PROSPECTEUR: "Saint-Étienne"
-          CALENDLY_URL: "calendly.com/atlamazstudio/30min"
-        run: python send_worker.py --limit "${{ github.event.inputs.limit || '15' }}"
+        run: |
+          curl -s -X PATCH "$SUPABASE_URL/rest/v1/teams?id=eq.$TEAM_ID" \
+            -H "apikey: $SUPABASE_SERVICE_KEY" \
+            -H "Authorization: Bearer $SUPABASE_SERVICE_KEY" \
+            -H "Content-Type: application/json" \
+            -d '{"worker_lock_at": null}'
