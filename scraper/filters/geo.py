@@ -8,6 +8,7 @@ France entière).
 from __future__ import annotations
 
 import math
+import unicodedata
 
 import httpx
 
@@ -24,12 +25,26 @@ def valider_villes(villes: list[str]) -> list[str]:
     return villes
 
 
+def _normaliser(texte: str) -> str:
+    """Minuscules sans accents, pour comparer deux noms de commune."""
+    texte = unicodedata.normalize("NFKD", texte)
+    return "".join(c for c in texte if not unicodedata.combining(c)).lower().strip()
+
+
 async def resoudre_code_insee(client: httpx.AsyncClient, ville: str) -> str | None:
-    """Résout le code INSEE d'une commune via l'API Geo (data.gouv)."""
+    """Résout le code INSEE d'une commune via l'API Geo (data.gouv).
+
+    Le tri par score de pertinence de l'API n'est pas fiable : pour la
+    requête "Marseille", elle classe "Marseillette" (697 habitants) avant
+    "Marseille" elle-même (886 040 habitants). On demande donc plusieurs
+    candidats et on préfère toujours une correspondance exacte du nom
+    (accents/casse ignorés) quand elle existe, plutôt que le premier
+    résultat renvoyé.
+    """
     try:
         resp = await client.get(
             GEO_API_URL,
-            params={"nom": ville, "fields": "code", "limit": 1},
+            params={"nom": ville, "fields": "code,nom", "limit": 5},
             timeout=10.0,
         )
         resp.raise_for_status()
@@ -39,6 +54,11 @@ async def resoudre_code_insee(client: httpx.AsyncClient, ville: str) -> str | No
 
     if not data:
         return None
+
+    cible = _normaliser(ville)
+    for commune in data:
+        if _normaliser(commune.get("nom", "")) == cible:
+            return commune.get("code")
     return data[0].get("code")
 
 
