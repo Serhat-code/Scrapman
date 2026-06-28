@@ -1892,6 +1892,40 @@ alter table public.accounts
   drop column if exists plan;
 
 
+-- =============================================================================
+-- Partie 12 — Fix : trigger fantôme cassé par la Partie 11
+-- =============================================================================
+-- `DROP COLUMN` ne vérifie pas les références internes au corps des
+-- fonctions PL/pgSQL (texte opaque pour Postgres) : un vieux trigger
+-- d'incrémentation de quota (antérieur au passage aux limites par plan,
+-- jamais documenté dans ce fichier — créé directement en base à l'époque
+-- mono-tenant) référençait encore `accounts.prospect_quota_used` après son
+-- suppression en Partie 11, cassant tout insert dans `prospects` avec
+-- `column "prospect_quota" does not exist`. On retrouve et supprime
+-- automatiquement tout trigger/fonction du schéma public dont le corps
+-- mentionne encore une de ces colonnes mortes.
+do $$
+declare
+  r record;
+begin
+  for r in
+    select distinct p.oid, p.proname, t.tgname, t.tgrelid::regclass as tabela
+    from pg_proc p
+    join pg_trigger t on t.tgfoid = p.oid
+    where p.pronamespace = 'public'::regnamespace
+      and (
+        pg_get_functiondef(p.oid) ilike '%prospect_quota%'
+        or pg_get_functiondef(p.oid) ilike '%daily_email_cap%'
+        or pg_get_functiondef(p.oid) ilike '%quota_reset_at%'
+      )
+  loop
+    execute format('drop trigger if exists %I on %s', r.tgname, r.tabela);
+    execute format('drop function if exists public.%I() cascade', r.proname);
+    raise notice 'Trigger fantôme supprimé : % (fonction %) sur %', r.tgname, r.proname, r.tabela;
+  end loop;
+end $$;
+
+
 -- -----------------------------------------------------------------------------
 -- Reload PostgREST schema cache
 -- -----------------------------------------------------------------------------
