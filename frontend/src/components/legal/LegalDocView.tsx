@@ -1,6 +1,8 @@
 import Link from "next/link";
 import { Sparkles } from "lucide-react";
 
+import { SimpleMarkdown } from "./SimpleMarkdown";
+
 export function LegalDocView({ titre, contenu }: { titre: string; contenu: string }) {
   return (
     <div className="flex h-full w-full flex-col overflow-y-auto bg-[var(--bg-app)]">
@@ -14,9 +16,9 @@ export function LegalDocView({ titre, contenu }: { titre: string; contenu: strin
 
         <h1 className="text-base font-semibold text-[var(--text-primary)]">{titre}</h1>
 
-        <pre className="whitespace-pre-wrap rounded-md border border-[var(--border)] bg-[var(--bg-surface)] p-4 text-xs leading-relaxed text-[var(--text-secondary)]">
-          {contenu}
-        </pre>
+        <div className="rounded-md border border-[var(--border)] bg-[var(--bg-surface)] p-4">
+          <SimpleMarkdown contenu={contenu} />
+        </div>
       </div>
     </div>
   );
