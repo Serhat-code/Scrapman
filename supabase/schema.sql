@@ -1885,6 +1885,12 @@ alter table public.accounts
   drop column if exists daily_email_cap,
   drop column if exists quota_reset_at;
 
+-- `accounts.plan` : colonne de dérive (jamais déclarée dans ce fichier,
+-- ajoutée directement sur la base à un moment donné), toujours "free",
+-- jamais lue par le code — remplacée par `subscriptions`/`plans`.
+alter table public.accounts
+  drop column if exists plan;
+
 
 -- -----------------------------------------------------------------------------
 -- Reload PostgREST schema cache
