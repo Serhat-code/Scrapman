@@ -338,11 +338,6 @@ export interface Account {
   user_id: string;
   team_id: string;
 
-  prospect_quota: number;
-  prospect_quota_used: number;
-  daily_email_cap: number;
-  quota_reset_at: string;
-
   conformite_lue_at: string | null;
   retention_mois: number;
   retention_active: boolean;

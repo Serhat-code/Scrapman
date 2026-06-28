@@ -1,4 +1,4 @@
-"""Modèle Prospect (Pydantic) et scoring 100% algorithmique.
+"""Scoring 100% algorithmique des prospects (bucket, angle).
 
 Aucun appel IA n'est effectué : le score, le bucket (A/B/C) et l'angle
 d'approche commerciale sont déterminés uniquement à partir des données
@@ -7,50 +7,7 @@ collectées (contact, présence web, données entreprise, signal halal).
 
 from __future__ import annotations
 
-from typing import Any, Literal
-
-from pydantic import BaseModel
-
-
-class Prospect(BaseModel):
-    user_id: str
-
-    siren: str | None = None
-    siret: str | None = None
-    denomination: str | None = None
-    naf: str | None = None
-    naf_libelle: str | None = None
-
-    adresse: str | None = None
-    ville: str | None = None
-    code_postal: str | None = None
-
-    site_url: str | None = None
-    site_non_mobile: bool | None = None
-    site_lent: bool | None = None
-
-    email: str | None = None
-    email_is_generic: bool | None = None
-    telephone: str | None = None
-
-    score: int | None = None
-    bucket: Literal["A", "B", "C"] | None = None
-    angle: Literal["A", "B", "C"] | None = None
-    raison_principale: str | None = None
-
-    statut: str = "a_contacter"
-    source: str | None = None
-    diffusable: bool = True
-
-    enrichment_status: Literal["pending", "done", "failed"] = "pending"
-    enrichment_error: str | None = None
-
-    dirigeant: str | None = None
-    forme_juridique: str | None = None
-    tranche_effectif: str | None = None
-
-    reseaux_sociaux: dict[str, str] | None = None
-    scoring_details: dict[str, Any] | None = None
+from typing import Any
 
 
 def calculer_score(prospect: dict) -> tuple[int, str, dict]:

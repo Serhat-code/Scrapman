@@ -1869,6 +1869,23 @@ end;
 $$;
 
 
+-- =============================================================================
+-- Partie 11 — Nettoyage : colonnes mortes jamais branchées
+-- =============================================================================
+-- `accounts.prospect_quota`/`prospect_quota_used`/`daily_email_cap`/
+-- `quota_reset_at` dataient des tout premiers jours du projet (mono-tenant) :
+-- jamais incrémentées ni appliquées (documenté comme tel dans README à
+-- l'époque), entièrement remplacées depuis par les vraies limites par plan
+-- (`plans`, `team_plan_limits()`, déclenchées par les abonnements Stripe).
+-- Aucune fonctionnalité actuelle n'en dépend.
+-- =============================================================================
+alter table public.accounts
+  drop column if exists prospect_quota,
+  drop column if exists prospect_quota_used,
+  drop column if exists daily_email_cap,
+  drop column if exists quota_reset_at;
+
+
 -- -----------------------------------------------------------------------------
 -- Reload PostgREST schema cache
 -- -----------------------------------------------------------------------------

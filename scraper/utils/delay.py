@@ -7,7 +7,6 @@ pas une option.
 
 from __future__ import annotations
 
-import asyncio
 import random
 from datetime import datetime, timezone
 from typing import Any
@@ -20,19 +19,11 @@ def delai_anti_spam_secondes(
 ) -> float:
     """Calcule un délai anti-spam aléatoire, jamais inférieur à 30s (non contournable).
 
-    Ne dort pas : retourne juste la durée, pour que l'appelant choisisse
-    `time.sleep` (sync) ou `asyncio.sleep` (async).
+    Ne dort pas : retourne juste la durée, à l'appelant de faire `time.sleep`.
     """
     min_seconds = max(min_seconds, DELAY_MIN_SECONDS)
     max_seconds = max(max_seconds, min_seconds)
     return random.uniform(min_seconds, max_seconds)
-
-
-async def delai_anti_spam(
-    min_seconds: float = DELAY_MIN_SECONDS, max_seconds: float = DELAY_MAX_SECONDS
-) -> None:
-    """Délai aléatoire entre envois (défaut 30-60 secondes). Non contournable sous 30s."""
-    await asyncio.sleep(delai_anti_spam_secondes(min_seconds, max_seconds))
 
 
 def verifier_quota_journalier(
