@@ -50,3 +50,12 @@ def test_recuperer_limite_emails_plan_sans_abonnement():
 def test_recuperer_limite_emails_plan_donnee_vide():
     client = _FakeClient(_FakeResponse(data=[]))
     assert recuperer_limite_emails_plan(client, "team-1") is None
+
+
+def test_recuperer_limite_emails_plan_aucune_ligne_trouvee():
+    # Comportement réel de postgrest-py : `.maybe_single().execute()` renvoie
+    # `None` directement (pas un objet avec `.data = None`) quand aucun
+    # abonnement actif/trialing n'existe pour l'équipe — le cas le plus
+    # fréquent (équipe pas encore payante).
+    client = _FakeClient(None)
+    assert recuperer_limite_emails_plan(client, "team-1") is None

@@ -22,7 +22,11 @@ def recuperer_limite_emails_plan(client: Any, team_id: str) -> int | None:
         .maybe_single()
         .execute()
     )
-    if not resultat.data:
+    # `.maybe_single().execute()` renvoie `None` directement (pas un objet
+    # avec `.data = None`) quand aucune ligne ne correspond — c'est le cas
+    # normal d'une équipe sans abonnement actif, pas une erreur réseau.
+    data = resultat.data if resultat else None
+    if not data:
         return None
-    plan = resultat.data.get("plans")
+    plan = data.get("plans")
     return plan.get("max_emails_jour") if plan else None
