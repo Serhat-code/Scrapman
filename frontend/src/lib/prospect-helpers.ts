@@ -2,7 +2,7 @@ import type { ProspectFilters } from "@/lib/store";
 import type { CampagneFiltres, Prospect } from "@/types/database";
 
 export function isHalalSignal(prospect: Pick<Prospect, "scoring_details">): boolean {
-  return (prospect.scoring_details?.halal_bonus ?? 0) > 0;
+  return Boolean(prospect.scoring_details?.halal_bonus);
 }
 
 export function matchesProspectFilters(prospect: Prospect, filters: ProspectFilters): boolean {

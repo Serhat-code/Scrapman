@@ -125,11 +125,12 @@ export interface ReseauxSociaux {
 }
 
 export interface ScoringDetails {
-  contact: number;
-  presence_web: number;
-  donnees_completes: number;
-  halal_bonus: number;
-  [key: string]: number;
+  points_contact: number;
+  points_presence_web: number;
+  points_donnees_completes: number;
+  points_halal: number;
+  points_audit?: number;
+  [key: string]: number | boolean | undefined;
 }
 
 export type AuditVerdict = "critique" | "faible" | "moyen" | "bon";

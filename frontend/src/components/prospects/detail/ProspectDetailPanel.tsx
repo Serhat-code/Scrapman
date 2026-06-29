@@ -28,17 +28,19 @@ import { EmailFroidSection } from "./EmailFroidSection";
 import { ScriptAppelSection } from "./ScriptAppelSection";
 
 const SCORE_MAX: Record<string, number> = {
-  contact: 40,
-  presence_web: 30,
-  donnees_completes: 20,
-  halal_bonus: 10,
+  points_contact: 40,
+  points_presence_web: 30,
+  points_donnees_completes: 20,
+  points_halal: 10,
+  points_audit: 25,
 };
 
 const SCORE_LABELS: Record<string, string> = {
-  contact: "Contact",
-  presence_web: "Présence web",
-  donnees_completes: "Données complètes",
-  halal_bonus: "Bonus halal",
+  points_contact: "Contact",
+  points_presence_web: "Présence web",
+  points_donnees_completes: "Données complètes",
+  points_halal: "Bonus halal",
+  points_audit: "Audit PageSpeed",
 };
 
 const VERDICT_COLORS: Record<AuditVerdict, string> = {
@@ -221,7 +223,12 @@ export function ProspectDetailPanel() {
             {prospect.scoring_details && (
               <div className="flex flex-col gap-1.5">
                 {Object.entries(SCORE_LABELS).map(([key, label]) => {
-                  const value = prospect.scoring_details?.[key] ?? 0;
+                  const valeurBrute = prospect.scoring_details?.[key];
+                  // "points_audit" n'existe que si un audit PageSpeed a
+                  // réellement été tenté pour ce prospect — absent (plutôt
+                  // que 0) sinon, pour ne pas afficher une ligne trompeuse.
+                  if (valeurBrute === undefined) return null;
+                  const value = Number(valeurBrute);
                   const max = SCORE_MAX[key];
                   const pct = max > 0 ? Math.min(100, (value / max) * 100) : 0;
                   return (

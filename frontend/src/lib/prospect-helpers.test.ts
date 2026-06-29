@@ -2,7 +2,17 @@ import { describe, expect, it } from "vitest";
 
 import { isHalalSignal, matchesCampagneFiltres, matchesProspectFilters } from "./prospect-helpers";
 import { DEFAULT_FILTERS } from "./store";
-import type { Prospect } from "@/types/database";
+import type { Prospect, ScoringDetails } from "@/types/database";
+
+function makeScoringDetails(overrides: Partial<ScoringDetails> = {}): ScoringDetails {
+  return {
+    points_contact: 0,
+    points_presence_web: 0,
+    points_donnees_completes: 0,
+    points_halal: 0,
+    ...overrides,
+  };
+}
 
 function makeProspect(overrides: Partial<Prospect> = {}): Prospect {
   return {
@@ -46,16 +56,16 @@ function makeProspect(overrides: Partial<Prospect> = {}): Prospect {
 }
 
 describe("isHalalSignal", () => {
-  it("vrai si halal_bonus > 0", () => {
-    expect(isHalalSignal({ scoring_details: { contact: 0, presence_web: 0, donnees_completes: 0, halal_bonus: 10 } })).toBe(true);
+  it("vrai si halal_bonus présent", () => {
+    expect(isHalalSignal({ scoring_details: makeScoringDetails({ halal_bonus: true }) })).toBe(true);
   });
 
   it("faux si scoring_details absent", () => {
     expect(isHalalSignal({ scoring_details: null })).toBe(false);
   });
 
-  it("faux si halal_bonus = 0", () => {
-    expect(isHalalSignal({ scoring_details: { contact: 0, presence_web: 0, donnees_completes: 0, halal_bonus: 0 } })).toBe(false);
+  it("faux si halal_bonus absent", () => {
+    expect(isHalalSignal({ scoring_details: makeScoringDetails() })).toBe(false);
   });
 });
 
@@ -79,7 +89,7 @@ describe("matchesCampagneFiltres", () => {
   it("filtre halal=true exige le signal", () => {
     const sansHalal = makeProspect({ scoring_details: null });
     const avecHalal = makeProspect({
-      scoring_details: { contact: 0, presence_web: 0, donnees_completes: 0, halal_bonus: 10 },
+      scoring_details: makeScoringDetails({ halal_bonus: true }),
     });
     expect(matchesCampagneFiltres(sansHalal, { halal: true })).toBe(false);
     expect(matchesCampagneFiltres(avecHalal, { halal: true })).toBe(true);
@@ -87,7 +97,7 @@ describe("matchesCampagneFiltres", () => {
 
   it("filtre halal=false exclut le signal", () => {
     const avecHalal = makeProspect({
-      scoring_details: { contact: 0, presence_web: 0, donnees_completes: 0, halal_bonus: 10 },
+      scoring_details: makeScoringDetails({ halal_bonus: true }),
     });
     expect(matchesCampagneFiltres(avecHalal, { halal: false })).toBe(false);
   });
@@ -124,7 +134,7 @@ describe("matchesProspectFilters", () => {
 
   it("filtre halal non_halal exclut les signaux halal", () => {
     const prospect = makeProspect({
-      scoring_details: { contact: 0, presence_web: 0, donnees_completes: 0, halal_bonus: 10 },
+      scoring_details: makeScoringDetails({ halal_bonus: true }),
     });
     expect(matchesProspectFilters(prospect, { ...DEFAULT_FILTERS, halal: "non_halal" })).toBe(false);
     expect(matchesProspectFilters(prospect, { ...DEFAULT_FILTERS, halal: "halal" })).toBe(true);

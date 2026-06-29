@@ -92,3 +92,38 @@ def test_score_reste_plafonne_a_cent_avec_bonus_audit():
     }
     score, _, _ = calculer_score(prospect)
     assert score == 100
+
+
+def test_points_par_categorie_correspondent_au_detail_affiche():
+    # Bug réel corrigé : le frontend lisait des clés ("contact",
+    # "presence_web"...) qui n'avaient jamais existé dans `details` —
+    # toujours affiché à 0 quel que soit le score réel.
+    prospect = {
+        "email": "jean@x.fr", "email_is_generic": False, "telephone": "0600000000",
+        "site_url": "https://x.fr", "site_non_mobile": True,
+        "dirigeant": "Jean Dupont", "adresse": "1 rue x", "ville": "Paris",
+        "tranche_effectif": "1 ou 2", "halal_signal": True,
+    }
+    score, _, details = calculer_score(prospect)
+
+    assert details["points_contact"] == 40  # 25 (email nominatif) + 15 (téléphone)
+    assert details["points_presence_web"] == 15  # site_non_mobile
+    assert details["points_donnees_completes"] == 20  # 10 + 5 + 5
+    assert details["points_halal"] == 10
+    assert "points_audit" not in details  # pas d'audit fourni
+    assert score == details["points_contact"] + details["points_presence_web"] + (
+        details["points_donnees_completes"] + details["points_halal"]
+    )
+
+
+def test_points_audit_absent_de_details_sans_audit():
+    _, _, details = calculer_score({})
+    assert "points_audit" not in details
+
+
+def test_points_audit_present_meme_a_zero_quand_verdict_bon():
+    # Présent (à 0) dès qu'un audit a été réalisé, contrairement à
+    # "points_audit absent" quand aucun audit n'a été tenté — permet au
+    # frontend de distinguer "pas d'audit" de "audit ok, aucun bonus".
+    _, _, details = calculer_score({"audit_site": {"verdict": "bon"}})
+    assert details["points_audit"] == 0
