@@ -57,13 +57,21 @@ def upsert_prospects(prospects: list[dict[str, Any]], batch_size: int = BATCH_SI
     return total
 
 def recuperer_prospects_pending(user_id: str, limit: int = 50) -> list[dict[str, Any]]:
-    """Récupère les prospects en attente d'enrichissement."""
+    """Récupère les prospects en attente d'enrichissement (les plus anciens d'abord).
+
+    Sans tri explicite, l'ordre renvoyé par PostgREST n'est pas garanti : un
+    enrichissement déclenché juste après un scraping pouvait traiter un
+    backlog plus ancien plutôt que les prospects qui viennent d'être
+    collectés. Le tri par `created_at` garantit un épuisement déterministe
+    du backlog au fil des déclenchements successifs.
+    """
     client = get_supabase_client()
     resp = (
         client.table("prospects")
         .select("*")
         .eq("user_id", user_id)
         .eq("enrichment_status", "pending")
+        .order("created_at")
         .limit(limit)
         .execute()
     )
