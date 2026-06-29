@@ -1,10 +1,13 @@
 """Audit technique d'un site via Google PageSpeed Insights API (gratuit, quota quotidien).
 
-Vient compléter l'heuristique locale Playwright (`site_lent`/`site_non_mobile`,
-voir `scrapers/website.py`) par de vrais chiffres Lighthouse (performance, SEO,
-accessibilité mobile, FCP, LCP) — utilisés pour préciser le pitch commercial et
-affiner le scoring. Entièrement optionnel : sans clé API ou en cas d'échec,
-l'appelant continue normalement sans audit (voir `auditer_site`).
+Seule source des champs `site_lent`/`site_non_mobile` (voir
+`scrapers/website.py`) : ces deux champs valent `None` quand l'audit n'a pas
+pu être réalisé (pas de clé API, timeout, quota dépassé...), plutôt que de
+retomber sur une heuristique locale approximative. Fournit aussi des chiffres
+Lighthouse précis (performance, SEO, accessibilité mobile, FCP, LCP) utilisés
+pour préciser le pitch commercial et affiner le scoring. Entièrement
+optionnel : sans clé API ou en cas d'échec, l'appelant continue normalement
+sans audit (voir `auditer_site`).
 """
 
 from __future__ import annotations
@@ -12,6 +15,11 @@ from __future__ import annotations
 import httpx
 
 PAGESPEED_URL = "https://www.googleapis.com/pagespeedonline/v5/runPagespeed"
+
+# Score (0-100) en-dessous duquel un critère Lighthouse est jugé médiocre —
+# utilisé à la fois pour la liste `problemes` et pour dériver les booléens
+# `site_lent`/`site_non_mobile` côté appelant (cf. scrapers/website.py).
+SEUIL_MEDIOCRE = 50
 
 # Au-delà de ce délai d'affichage du contenu principal (ms), même un score
 # Lighthouse correct ne reflète pas un ressenti utilisateur acceptable.
@@ -34,11 +42,11 @@ def _problemes(
 ) -> list[str]:
     """Liste (max 3) des problèmes concrets détectés, prêts à citer dans un email."""
     problemes: list[str] = []
-    if perf < 50:
+    if perf < SEUIL_MEDIOCRE:
         problemes.append(f"Site lent : {fcp_ms}ms de chargement sur mobile")
-    if seo < 50:
+    if seo < SEUIL_MEDIOCRE:
         problemes.append(f"Mauvais référencement technique (score {seo}/100)")
-    if accessibilite < 50:
+    if accessibilite < SEUIL_MEDIOCRE:
         problemes.append(f"Non optimisé mobile (score {accessibilite}/100)")
     if lcp_ms is not None and lcp_ms > SEUIL_LCP_MS:
         problemes.append(f"Temps d'affichage principal trop long ({lcp_ms}ms)")

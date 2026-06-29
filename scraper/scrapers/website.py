@@ -1,4 +1,4 @@
-"""Analyse du site web d'un prospect (Playwright).
+"""Analyse du site web d'un prospect (Playwright + audit PageSpeed Insights).
 
 Si `site_url` est inconnu, on tente de deviner le nom de domaine à partir
 de la dénomination (`{slug}.fr` / `{slug}.com`, avec ou sans `www.`) et on
@@ -6,16 +6,17 @@ vérifie son existence via une simple requête HTTP.
 
 Une fois l'URL connue, Playwright charge la page (en viewport mobile) et
 détecte :
-- `site_non_mobile` : absence de balise `<meta name="viewport">`
-- `site_lent` : temps de chargement > 3 secondes
 - `email` / `email_is_generic` : première adresse trouvée sur la page
   (ou la page de contact)
 - `telephone` : premier numéro français détecté
 - `reseaux_sociaux` : liens Facebook / Instagram / LinkedIn détectés
 
-Si `GOOGLE_PAGESPEED_API_KEY` est configurée, un audit PageSpeed Insights
-(`audit_site`) vient compléter cette heuristique locale par de vrais chiffres
-Lighthouse — entièrement optionnel, voir `audit/pagespeed.py`.
+`site_lent` et `site_non_mobile` proviennent exclusivement de l'audit
+PageSpeed Insights (`audit_site`, voir `audit/pagespeed.py`) — `None` si
+`GOOGLE_PAGESPEED_API_KEY` n'est pas configurée ou si l'audit a échoué pour
+ce site (l'ancienne heuristique locale, basée sur le temps de chargement
+Playwright et la présence d'une balise viewport, a été retirée : trop
+approximative comparée aux vrais chiffres Lighthouse).
 """
 
 from __future__ import annotations
@@ -23,14 +24,13 @@ from __future__ import annotations
 import asyncio
 import os
 import re
-import time
 import unicodedata
 from typing import Any
 
 import httpx
 from playwright.async_api import Browser
 
-from audit.pagespeed import auditer_site
+from audit.pagespeed import SEUIL_MEDIOCRE, auditer_site
 
 # Délai après chaque appel PageSpeed pour rester sous le quota gratuit
 # quotidien sur les gros runs (un audit par site, en plus du throttling
@@ -85,8 +85,6 @@ async def deviner_site_web(client: httpx.AsyncClient, denomination: str) -> str 
 # --------------------------------------------------------------------------
 # Analyse de la page (Playwright)
 # --------------------------------------------------------------------------
-
-SEUIL_LENTEUR_MS = 3000
 
 EMAIL_REGEX = re.compile(r"[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}")
 TELEPHONE_REGEX = re.compile(r"(?:\+33[\s.\-]?[1-9]|0[1-9])(?:[\s.\-]?\d{2}){4}")
@@ -155,10 +153,13 @@ def _extraire_donnees(html: str) -> dict[str, Any]:
 
 
 async def analyser_site(browser: Browser, url: str) -> dict[str, Any]:
-    """Charge `url` et retourne les champs détectés (mobile, vitesse, contact, réseaux)."""
+    """Charge `url` et retourne les champs détectés (contact, réseaux).
+
+    `site_lent`/`site_non_mobile` ne sont plus déduits ici (voir le
+    docstring du module) — ils sont ajoutés par `enrichir_site_prospect`
+    à partir de l'audit PageSpeed Insights.
+    """
     resultat: dict[str, Any] = {
-        "site_non_mobile": None,
-        "site_lent": None,
         "email": None,
         "email_is_generic": None,
         "telephone": None,
@@ -167,13 +168,7 @@ async def analyser_site(browser: Browser, url: str) -> dict[str, Any]:
 
     page = await browser.new_page(viewport={"width": 390, "height": 844})
     try:
-        debut = time.monotonic()
         await page.goto(url, wait_until="domcontentloaded", timeout=15000)
-        duree_ms = (time.monotonic() - debut) * 1000
-        resultat["site_lent"] = duree_ms > SEUIL_LENTEUR_MS
-
-        viewport_meta = await page.locator('meta[name="viewport"]').count()
-        resultat["site_non_mobile"] = viewport_meta == 0
 
         html = await page.content()
         resultat.update(_extraire_donnees(html))
@@ -209,7 +204,9 @@ async def enrichir_site_prospect(
 
     Retourne un dict de champs à fusionner dans le prospect (`site_url`,
     `site_non_mobile`, `site_lent`, `email`, `email_is_generic`,
-    `telephone`, `reseaux_sociaux`, `audit_site`).
+    `telephone`, `reseaux_sociaux`, `audit_site`). `site_lent`/
+    `site_non_mobile` valent `None` si l'audit PageSpeed n'a pas pu être
+    réalisé (voir le docstring du module).
     """
     site_url = prospect.get("site_url")
 
@@ -220,7 +217,12 @@ async def enrichir_site_prospect(
 
     analyse = await analyser_site(browser, site_url)
     analyse["site_url"] = site_url
-    analyse["audit_site"] = await _auditer_site_pagespeed(site_url)
+
+    audit = await _auditer_site_pagespeed(site_url)
+    analyse["audit_site"] = audit
+    analyse["site_lent"] = audit["perf"] < SEUIL_MEDIOCRE if audit else None
+    analyse["site_non_mobile"] = audit["accessibilite"] < SEUIL_MEDIOCRE if audit else None
+
     return analyse
 
 

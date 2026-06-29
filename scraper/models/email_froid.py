@@ -51,9 +51,11 @@ def _probleme_detecte(prospect: dict, angle: str) -> str:
 def _probleme_audit(prospect: dict) -> str | None:
     """Clause précise basée sur l'audit PageSpeed (chiffres réels), si disponible.
 
-    None si pas d'audit ou si le site est globalement correct ("moyen"/"bon")
-    — dans ce cas `_probleme_detecte` retombe sur l'heuristique locale
-    (`site_non_mobile`/`site_lent`), volontairement plus générique.
+    None si pas d'audit ou si le verdict global est "moyen"/"bon" — dans ce
+    cas `_probleme_detecte` retombe sur la formulation générique basée sur
+    `site_non_mobile`/`site_lent` (eux-mêmes dérivés de l'audit, voir
+    `scrapers/website.py` ; un site au verdict "moyen" peut très bien avoir
+    `site_lent=True` si seul le critère performance est médiocre).
     """
     audit = prospect.get("audit_site")
     if not audit or audit.get("verdict") not in ("critique", "faible"):
