@@ -73,3 +73,36 @@ def test_utilise_le_profil_expediteur_configure():
 def test_mention_desinscription_presente():
     email = generer_email_froid(_prospect())
     assert "stop" in email["corps"].lower()
+
+
+def test_angle_a_avec_audit_critique_cite_les_vrais_chiffres():
+    email = generer_email_froid(
+        _prospect(
+            angle="A",
+            site_url="https://x.fr",
+            site_lent=True,
+            audit_site={"verdict": "critique", "perf": 12, "fcp_ms": 5200},
+        )
+    )
+    assert "5200ms" in email["corps"]
+    assert "12/100" in email["corps"]
+    assert "PageSpeed" in email["corps"]
+
+
+def test_angle_a_avec_audit_bon_retombe_sur_lheuristique_locale():
+    email = generer_email_froid(
+        _prospect(
+            angle="A",
+            site_url="https://x.fr",
+            site_lent=True,
+            audit_site={"verdict": "bon", "perf": 95, "fcp_ms": 800},
+        )
+    )
+    assert "PageSpeed" not in email["corps"]
+    assert "met du temps à s'afficher" in email["corps"]
+
+
+def test_angle_a_sans_audit_retombe_sur_lheuristique_locale():
+    email = generer_email_froid(_prospect(angle="A", site_url="https://x.fr", site_non_mobile=True))
+    assert "PageSpeed" not in email["corps"]
+    assert "mobile" in email["corps"]

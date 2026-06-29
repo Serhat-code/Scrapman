@@ -12,10 +12,16 @@ détecte :
   (ou la page de contact)
 - `telephone` : premier numéro français détecté
 - `reseaux_sociaux` : liens Facebook / Instagram / LinkedIn détectés
+
+Si `GOOGLE_PAGESPEED_API_KEY` est configurée, un audit PageSpeed Insights
+(`audit_site`) vient compléter cette heuristique locale par de vrais chiffres
+Lighthouse — entièrement optionnel, voir `audit/pagespeed.py`.
 """
 
 from __future__ import annotations
 
+import asyncio
+import os
 import re
 import time
 import unicodedata
@@ -23,6 +29,13 @@ from typing import Any
 
 import httpx
 from playwright.async_api import Browser
+
+from audit.pagespeed import auditer_site
+
+# Délai après chaque appel PageSpeed pour rester sous le quota gratuit
+# quotidien sur les gros runs (un audit par site, en plus du throttling
+# 1/s déjà appliqué par le worker d'enrichissement).
+DELAI_APRES_AUDIT_SECONDES = 0.5
 
 # --------------------------------------------------------------------------
 # Devinette de nom de domaine
@@ -196,7 +209,7 @@ async def enrichir_site_prospect(
 
     Retourne un dict de champs à fusionner dans le prospect (`site_url`,
     `site_non_mobile`, `site_lent`, `email`, `email_is_generic`,
-    `telephone`, `reseaux_sociaux`).
+    `telephone`, `reseaux_sociaux`, `audit_site`).
     """
     site_url = prospect.get("site_url")
 
@@ -207,4 +220,20 @@ async def enrichir_site_prospect(
 
     analyse = await analyser_site(browser, site_url)
     analyse["site_url"] = site_url
+    analyse["audit_site"] = await _auditer_site_pagespeed(site_url)
     return analyse
+
+
+async def _auditer_site_pagespeed(site_url: str) -> dict[str, Any] | None:
+    """Lance l'audit PageSpeed (bloquant) dans un thread, sans bloquer la boucle asyncio.
+
+    Sans `GOOGLE_PAGESPEED_API_KEY`, ne fait aucun appel réseau et retourne
+    None immédiatement — l'audit reste un enrichissement strictement optionnel.
+    """
+    api_key = os.getenv("GOOGLE_PAGESPEED_API_KEY", "")
+    if not api_key:
+        return None
+
+    audit = await asyncio.to_thread(auditer_site, site_url, api_key)
+    await asyncio.sleep(DELAI_APRES_AUDIT_SECONDES)
+    return audit

@@ -4,6 +4,7 @@ import {
   AlertTriangle,
   Building2,
   ExternalLink,
+  Gauge,
   Globe,
   Loader2,
   Mail,
@@ -20,6 +21,7 @@ import { ANGLE_LABELS } from "@/lib/config";
 import { isHalalSignal } from "@/lib/prospect-helpers";
 import { useProspect } from "@/lib/queries/prospects";
 import { useScrapmanStore } from "@/lib/store";
+import type { AuditVerdict } from "@/types/database";
 
 import { ActionsSection } from "./ActionsSection";
 import { EmailFroidSection } from "./EmailFroidSection";
@@ -37,6 +39,13 @@ const SCORE_LABELS: Record<string, string> = {
   presence_web: "Présence web",
   donnees_completes: "Données complètes",
   halal_bonus: "Bonus halal",
+};
+
+const VERDICT_COLORS: Record<AuditVerdict, string> = {
+  critique: "#ef4444",
+  faible: "#f97316",
+  moyen: "#eab308",
+  bon: "var(--emerald)",
 };
 
 export function ProspectDetailPanel() {
@@ -248,6 +257,37 @@ export function ProspectDetailPanel() {
               <p className="text-xs text-[var(--text-muted)]">{prospect.raison_principale}</p>
             )}
           </section>
+
+          {/* 4bis. Audit technique (PageSpeed Insights) */}
+          {prospect.audit_site && (
+            <section className="flex flex-col gap-2 rounded-md border border-[var(--border)] p-3">
+              <div className="flex items-center justify-between">
+                <h3 className="flex items-center gap-1.5 text-[11px] font-semibold uppercase tracking-wide text-[var(--text-muted)]">
+                  <Gauge size={12} /> Audit technique
+                </h3>
+                <span
+                  className="rounded-md px-1.5 py-0.5 text-[10px] font-semibold uppercase text-white"
+                  style={{ backgroundColor: VERDICT_COLORS[prospect.audit_site.verdict] }}
+                >
+                  {prospect.audit_site.verdict}
+                </span>
+              </div>
+              <div className="flex flex-wrap gap-3 text-xs text-[var(--text-secondary)]">
+                <span>Perf {prospect.audit_site.perf}/100</span>
+                <span>SEO {prospect.audit_site.seo}/100</span>
+                <span>Mobile {prospect.audit_site.accessibilite}/100</span>
+              </div>
+              {prospect.audit_site.problemes.length > 0 && (
+                <ul className="flex flex-col gap-1">
+                  {prospect.audit_site.problemes.map((probleme) => (
+                    <li key={probleme} className="text-xs text-[var(--text-muted)]">
+                      {probleme}
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </section>
+          )}
 
           {/* 5. Script d'appel */}
           <ScriptAppelSection prospect={prospect} />

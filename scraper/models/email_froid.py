@@ -37,12 +37,37 @@ def _probleme_detecte(prospect: dict, angle: str) -> str:
     if angle == "C":
         return f"{prospect.get('denomination') or 'votre établissement'} n'a pas encore de site internet"
     if angle == "A":
+        audit_clause = _probleme_audit(prospect)
+        if audit_clause:
+            return audit_clause
         if prospect.get("site_non_mobile"):
             return "votre site ne s'affiche pas correctement sur mobile, ce qui peut faire fuir une partie de vos visiteurs"
         if prospect.get("site_lent"):
             return "votre site met du temps à s'afficher, ce qui peut décourager certains visiteurs"
         return "votre site mériterait quelques améliorations"
     return f"vous n'apparaissez pas dans les premiers résultats Google pour votre activité à {prospect.get('ville') or 'votre ville'}"
+
+
+def _probleme_audit(prospect: dict) -> str | None:
+    """Clause précise basée sur l'audit PageSpeed (chiffres réels), si disponible.
+
+    None si pas d'audit ou si le site est globalement correct ("moyen"/"bon")
+    — dans ce cas `_probleme_detecte` retombe sur l'heuristique locale
+    (`site_non_mobile`/`site_lent`), volontairement plus générique.
+    """
+    audit = prospect.get("audit_site")
+    if not audit or audit.get("verdict") not in ("critique", "faible"):
+        return None
+
+    perf = audit.get("perf")
+    fcp_ms = audit.get("fcp_ms")
+    if fcp_ms is not None and perf is not None:
+        return (
+            f"votre site met {fcp_ms}ms à s'afficher sur mobile et obtient "
+            f"seulement {perf}/100 en performance (mesuré par Google PageSpeed), "
+            "ce qui peut décourager une bonne partie de vos visiteurs"
+        )
+    return "votre site obtient un mauvais score de performance sur mobile (mesuré par Google PageSpeed)"
 
 
 def _generer_angle_a(prospect: dict, vars: dict) -> tuple[str, str]:

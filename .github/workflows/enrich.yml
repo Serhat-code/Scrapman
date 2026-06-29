@@ -30,6 +30,9 @@ jobs:
       SMTP_ENCRYPTION_KEY: ${{ secrets.SMTP_ENCRYPTION_KEY }}
       VILLE_PROSPECTEUR: "Saint-Étienne"
       CALENDLY_URL: "calendly.com/atlamazstudio/30min"
+      # Optionnelle : audit_site reste null et l'enrichissement continue
+      # normalement si ce secret n'est pas configuré (voir audit/pagespeed.py).
+      GOOGLE_PAGESPEED_API_KEY: ${{ secrets.GOOGLE_PAGESPEED_API_KEY }}
       ENRICH_LIMIT: ${{ github.event.inputs.limit || '50' }}
       USER_ID: ${{ github.event.inputs.user_id }}
     steps:

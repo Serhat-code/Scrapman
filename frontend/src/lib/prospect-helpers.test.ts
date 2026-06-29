@@ -20,6 +20,7 @@ function makeProspect(overrides: Partial<Prospect> = {}): Prospect {
     site_url: null,
     site_non_mobile: null,
     site_lent: null,
+    audit_site: null,
     email: "contact@lebonkebab.fr",
     email_is_generic: true,
     telephone: null,

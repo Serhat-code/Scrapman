@@ -57,6 +57,22 @@ def calculer_score(prospect: dict) -> tuple[int, str, dict]:
         score += 10
         details["halal_bonus"] = True
 
+    # Audit PageSpeed (optionnel) - un site en mauvais état mesuré par de
+    # vrais chiffres Lighthouse est une opportunité commerciale plus forte
+    # qu'un site juste "lent" détecté par l'heuristique locale.
+    audit = prospect.get("audit_site")
+    if audit:
+        verdict = audit.get("verdict")
+        if verdict == "critique":
+            score += 25
+            details["audit_critique"] = True
+        elif verdict == "faible":
+            score += 15
+            details["audit_faible"] = True
+        elif verdict == "moyen":
+            score += 5
+            details["audit_moyen"] = True
+
     bucket = "A" if score >= 80 else ("B" if score >= 50 else "C")
     return min(score, 100), bucket, details
 

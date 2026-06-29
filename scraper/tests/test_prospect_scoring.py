@@ -51,3 +51,44 @@ def test_appliquer_scoring_renseigne_tous_les_champs():
     assert prospect["bucket"] in ("A", "B", "C")
     assert prospect["angle"] in ("A", "B", "C")
     assert prospect["raison_principale"]
+
+
+def test_audit_critique_ajoute_vingt_cinq_points():
+    sans_audit, _, _ = calculer_score({})
+    avec_audit, _, details = calculer_score({"audit_site": {"verdict": "critique"}})
+    assert avec_audit == min(sans_audit + 25, 100)
+    assert details["audit_critique"] is True
+
+
+def test_audit_faible_ajoute_quinze_points():
+    sans_audit, _, _ = calculer_score({})
+    avec_audit, _, details = calculer_score({"audit_site": {"verdict": "faible"}})
+    assert avec_audit == min(sans_audit + 15, 100)
+    assert details["audit_faible"] is True
+
+
+def test_audit_moyen_ajoute_cinq_points():
+    sans_audit, _, _ = calculer_score({})
+    avec_audit, _, details = calculer_score({"audit_site": {"verdict": "moyen"}})
+    assert avec_audit == min(sans_audit + 5, 100)
+    assert details["audit_moyen"] is True
+
+
+def test_audit_bon_najoute_aucun_bonus():
+    sans_audit, _, _ = calculer_score({})
+    avec_audit, _, details = calculer_score({"audit_site": {"verdict": "bon"}})
+    assert avec_audit == sans_audit
+    assert "audit_critique" not in details
+    assert "audit_faible" not in details
+    assert "audit_moyen" not in details
+
+
+def test_score_reste_plafonne_a_cent_avec_bonus_audit():
+    prospect = {
+        "email": "jean@x.fr", "email_is_generic": False, "telephone": "0600000000",
+        "site_url": None, "dirigeant": "Jean Dupont", "adresse": "1 rue x", "ville": "Paris",
+        "tranche_effectif": "1 ou 2", "halal_signal": True,
+        "audit_site": {"verdict": "critique"},
+    }
+    score, _, _ = calculer_score(prospect)
+    assert score == 100

@@ -183,6 +183,7 @@ def construire_prospect(result: dict, code_commune: str | None, user_id: str) ->
         "site_url": None,
         "site_non_mobile": None,
         "site_lent": None,
+        "audit_site": None,
         "email": None,
         "email_is_generic": None,
         "telephone": None,

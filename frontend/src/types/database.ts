@@ -132,6 +132,19 @@ export interface ScoringDetails {
   [key: string]: number;
 }
 
+export type AuditVerdict = "critique" | "faible" | "moyen" | "bon";
+
+export interface AuditSite {
+  perf: number;
+  seo: number;
+  accessibilite: number;
+  fcp_ms: number | null;
+  lcp_ms: number | null;
+  score_global: number;
+  verdict: AuditVerdict;
+  problemes: string[];
+}
+
 export interface Prospect {
   id: string;
   user_id: string;
@@ -150,6 +163,7 @@ export interface Prospect {
   site_url: string | null;
   site_non_mobile: boolean | null;
   site_lent: boolean | null;
+  audit_site: AuditSite | null;
 
   email: string | null;
   email_is_generic: boolean | null;

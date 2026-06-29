@@ -45,6 +45,8 @@ Dropcontact, Apollo, Clearbit, SerpAPI...). Sources utilisées :
 - API Geo (data.gouv.fr) pour la résolution ville → code INSEE
 - API SIRENE (INSEE) en complément optionnel (clé gratuite)
 - Scraping du site web public de l'entreprise (Playwright)
+- Google PageSpeed Insights pour l'audit technique du site (gratuit avec clé
+  API, quota quotidien) — optionnel, voir `GOOGLE_PAGESPEED_API_KEY` ci-dessous
 - DNS (MX) pour valider les emails générés
 - SMTP/IMAP de l'utilisateur pour l'envoi (phase 2 pour IMAP, voir plus bas)
 

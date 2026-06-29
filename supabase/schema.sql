@@ -1926,6 +1926,27 @@ begin
 end $$;
 
 
+-- =============================================================================
+-- Partie 13 — Audit technique du site (PageSpeed Insights)
+-- =============================================================================
+-- Résultat de l'audit PageSpeed Insights (perf/seo/accessibilité/FCP/LCP),
+-- enrichissement optionnel calculé côté scraper (audit/pagespeed.py) en
+-- complément de l'heuristique locale Playwright (site_lent/site_non_mobile).
+-- NULL si GOOGLE_PAGESPEED_API_KEY n'est pas configurée ou si l'audit a
+-- échoué pour ce prospect — jamais bloquant.
+-- =============================================================================
+alter table public.prospects
+  add column if not exists audit_site jsonb default null;
+
+comment on column public.prospects.audit_site is
+  'Résultat audit PageSpeed Insights : {perf, seo, accessibilite, fcp_ms, lcp_ms, score_global, verdict, problemes}';
+
+-- Filtrer/prioriser les sites en mauvais état (verdict "critique" en tête).
+create index if not exists idx_prospects_audit_verdict
+  on public.prospects ((audit_site->>'verdict'))
+  where audit_site is not null;
+
+
 -- -----------------------------------------------------------------------------
 -- Reload PostgREST schema cache
 -- -----------------------------------------------------------------------------

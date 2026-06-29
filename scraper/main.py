@@ -151,7 +151,7 @@ async def scrape(
 # enrich
 # --------------------------------------------------------------------------
 _CHAMPS_ENRICHISSEMENT = (
-    "site_url", "site_non_mobile", "site_lent",
+    "site_url", "site_non_mobile", "site_lent", "audit_site",
     "email", "email_is_generic", "telephone", "reseaux_sociaux",
     "forme_juridique", "tranche_effectif",
     "score", "bucket", "angle", "raison_principale", "scoring_details",
