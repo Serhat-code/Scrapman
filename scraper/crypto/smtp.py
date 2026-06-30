@@ -11,6 +11,8 @@ Format stocké en base (`sender_profiles.smtp_password_enc`) :
 
 from __future__ import annotations
 
+import json
+
 from cryptography.hazmat.primitives.ciphers.aead import AESGCM
 
 from config import SMTP_ENCRYPTION_KEY
@@ -38,10 +40,18 @@ def _get_key() -> bytes:
     return key
 
 
-def decrypt_smtp_password(enc: dict[str, str] | None) -> str:
+def decrypt_smtp_password(enc: dict[str, str] | str | None) -> str:
     """Déchiffre `smtp_password_enc` ({iv, ciphertext, tag}) et retourne le mot de passe en clair."""
     if not enc:
         raise SmtpDecryptionError("Aucun mot de passe SMTP enregistré pour ce profil.")
+
+    # La colonne est jsonb en schéma, mais peut arriver comme string JSON si la
+    # colonne est encore de type text en prod (ADD COLUMN IF NOT EXISTS ne recast pas).
+    if isinstance(enc, str):
+        try:
+            enc = json.loads(enc)
+        except json.JSONDecodeError as exc:
+            raise SmtpDecryptionError("Format de smtp_password_enc invalide (string non-JSON).") from exc
 
     try:
         iv = bytes.fromhex(enc["iv"])

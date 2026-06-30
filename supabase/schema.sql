@@ -1947,6 +1947,31 @@ create index if not exists idx_prospects_audit_verdict
   where audit_site is not null;
 
 
+-- =============================================================================
+-- Partie 14 — Fix : smtp_password_enc converti en jsonb si encore text
+-- =============================================================================
+-- ADD COLUMN IF NOT EXISTS ne change jamais le type d'une colonne existante.
+-- Si la colonne a été créée comme text avant que le schéma l'impose en jsonb,
+-- elle reste text et Supabase retourne une string JSON brute au lieu d'un dict,
+-- ce qui provoque un TypeError dans decrypt_smtp_password du worker Python.
+-- Cette migration idempotente la convertit ; toutes les valeurs existantes
+-- sont des strings JSON valides donc le USING ::jsonb ne perdra aucune donnée.
+-- =============================================================================
+do $$
+begin
+  if (
+    select data_type
+    from information_schema.columns
+    where table_schema = 'public'
+      and table_name   = 'sender_profiles'
+      and column_name  = 'smtp_password_enc'
+  ) = 'text' then
+    alter table public.sender_profiles
+      alter column smtp_password_enc type jsonb using smtp_password_enc::jsonb;
+  end if;
+end;
+$$;
+
 -- -----------------------------------------------------------------------------
 -- Reload PostgREST schema cache
 -- -----------------------------------------------------------------------------
