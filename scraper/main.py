@@ -188,6 +188,13 @@ async def enrich(limit: int, user_id: str | None) -> None:
                     await limiter.attendre()
                     try:
                         prospect.update(await enrichir_site_prospect(prospect, client, browser))
+
+                        if prospect.get("_site_mort"):
+                            prospect["enrichment_status"] = "exclu_site_mort"
+                            prospect["enrichment_error"] = None
+                            mettre_a_jour_prospect(prospect["id"], _champs_enrichissement(prospect))
+                            continue
+
                         prospect.update(await enrichir_via_sirene(prospect, client))
                         prospect.update(enrichir_email_dirigeant(prospect))
 

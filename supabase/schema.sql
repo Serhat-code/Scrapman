@@ -1972,6 +1972,21 @@ begin
 end;
 $$;
 
+-- =============================================================================
+-- Partie 15 — Exclusion automatique des sites morts / domaines à vendre
+-- =============================================================================
+-- Le scraper détecte maintenant les pages de parking et les NXDOMAIN et pose
+-- enrichment_status = 'exclu_site_mort'. Ces prospects restent en base
+-- (historique) mais sont masqués du frontend et exclus des campagnes.
+-- La contrainte doit accepter la nouvelle valeur.
+-- =============================================================================
+alter table public.prospects drop constraint if exists prospects_enrichment_status_check;
+alter table public.prospects add constraint prospects_enrichment_status_check
+  check (enrichment_status in ('pending', 'done', 'failed', 'exclu_site_mort'));
+
+-- Index déjà existant (idx_prospects_enrichment_status) couvre la nouvelle
+-- valeur sans modification — pas besoin de le recréer.
+
 -- -----------------------------------------------------------------------------
 -- Reload PostgREST schema cache
 -- -----------------------------------------------------------------------------

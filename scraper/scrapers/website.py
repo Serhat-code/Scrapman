@@ -38,6 +38,39 @@ from audit.pagespeed import SEUIL_MEDIOCRE, auditer_site
 DELAI_APRES_AUDIT_SECONDES = 0.5
 
 # --------------------------------------------------------------------------
+# Détection de sites morts / domaines à vendre
+# --------------------------------------------------------------------------
+
+# Codes d'erreur réseau indiquant que le domaine n'existe plus (NXDOMAIN).
+# On n'inclut pas ERR_CONNECTION_REFUSED (serveur existant mais inaccessible)
+# pour éviter les faux positifs sur des sites temporairement en maintenance.
+_ERREURS_DNS = ("ERR_NAME_NOT_RESOLVED", "ERR_NAME_RESOLUTION_FAILED", "NS_ERROR_UNKNOWN_HOST")
+
+# Indicateurs présents dans le titre ou les premiers 3 Ko de HTML des pages
+# de parking / domaines à vendre. Volontairement spécifiques pour éviter les
+# faux positifs (ex. "coming soon" n'est PAS un domaine mort).
+_MOTS_CLES_PARKING = frozenset([
+    # Français
+    "domaine à vendre", "ce domaine est à vendre", "acheter ce domaine",
+    "nom de domaine à vendre",
+    # Anglais
+    "domain for sale", "buy this domain", "this domain is for sale",
+    "parked domain", "domain parking", "this web page is parked",
+    "domain is available for purchase", "make an offer on this domain",
+    # Fournisseurs de parking (présents dans les pages qu'ils hébergent)
+    "sedo.com", "dan.com", "hugedomains.com", "afternic.com",
+    "sedoparking.com", "parkingcrew.net", "godaddy parking",
+])
+
+
+def _est_page_parking(titre: str, html: str) -> bool:
+    """Retourne True si le titre ou le début du HTML trahit une page de parking."""
+    titre_lower = titre.lower()
+    html_debut = html[:3000].lower()
+    return any(mot in titre_lower or mot in html_debut for mot in _MOTS_CLES_PARKING)
+
+
+# --------------------------------------------------------------------------
 # Devinette de nom de domaine
 # --------------------------------------------------------------------------
 
@@ -158,6 +191,10 @@ async def analyser_site(browser: Browser, url: str) -> dict[str, Any]:
     `site_lent`/`site_non_mobile` ne sont plus déduits ici (voir le
     docstring du module) — ils sont ajoutés par `enrichir_site_prospect`
     à partir de l'audit PageSpeed Insights.
+
+    Ajoute `_site_mort: True` si le domaine est inexistant (NXDOMAIN) ou si
+    la page correspond à un parking / domaine à vendre — signal interne
+    jamais persisté en base, traité par `enrichir_site_prospect`.
     """
     resultat: dict[str, Any] = {
         "email": None,
@@ -170,7 +207,13 @@ async def analyser_site(browser: Browser, url: str) -> dict[str, Any]:
     try:
         await page.goto(url, wait_until="domcontentloaded", timeout=15000)
 
+        titre = await page.title()
         html = await page.content()
+
+        if _est_page_parking(titre, html):
+            resultat["_site_mort"] = True
+            return resultat
+
         resultat.update(_extraire_donnees(html))
 
         if not resultat.get("email") or not resultat.get("telephone"):
@@ -185,10 +228,12 @@ async def analyser_site(browser: Browser, url: str) -> dict[str, Any]:
                             resultat[cle] = donnees_contact[cle]
                 except Exception:
                     pass
-    except Exception:
-        # Site inaccessible : on ne bloque pas le pipeline, le prospect garde
-        # ses valeurs par défaut (None) et reste éligible au bucket "pas de site".
-        pass
+    except Exception as exc:
+        # NXDOMAIN / domaine inexistant → signaler comme mort.
+        # Les autres erreurs réseau (timeout, connexion refusée) laissent le
+        # prospect avec des valeurs None — il reste éligible au bucket C.
+        if any(code in str(exc) for code in _ERREURS_DNS):
+            resultat["_site_mort"] = True
     finally:
         await page.close()
 
@@ -217,6 +262,12 @@ async def enrichir_site_prospect(
 
     analyse = await analyser_site(browser, site_url)
     analyse["site_url"] = site_url
+
+    # Domaine mort ou page de parking : on court-circuite le reste de l'analyse
+    # (pas d'audit PageSpeed inutile, pas de score faussé). Le prospect sera
+    # marqué "exclu_site_mort" par main.py qui traite ce signal.
+    if analyse.get("_site_mort"):
+        return analyse
 
     audit = await _auditer_site_pagespeed(site_url)
     analyse["audit_site"] = audit

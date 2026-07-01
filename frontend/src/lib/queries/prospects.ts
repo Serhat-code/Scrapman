@@ -17,6 +17,7 @@ export function useProspects() {
       const { data, error } = await supabase
         .from("prospects")
         .select("*")
+        .neq("enrichment_status", "exclu_site_mort")
         .order("score", { ascending: false, nullsFirst: false })
         .limit(500);
 

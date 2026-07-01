@@ -116,7 +116,7 @@ export interface Feedback {
 export type ProspectStatut = "a_contacter" | "contacte" | "qualifie" | "refuse";
 export type ProspectBucket = "A" | "B" | "C";
 export type ProspectAngle = "A" | "B" | "C";
-export type EnrichmentStatus = "pending" | "done" | "failed";
+export type EnrichmentStatus = "pending" | "done" | "failed" | "exclu_site_mort";
 
 export interface ReseauxSociaux {
   facebook?: string | null;
