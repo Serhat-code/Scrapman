@@ -1,7 +1,7 @@
 "use client";
 
 import { Loader2 } from "lucide-react";
-import { useMemo } from "react";
+import { useEffect, useMemo, useRef } from "react";
 
 import { useProspects } from "@/lib/queries/prospects";
 import { matchesProspectFilters } from "@/lib/prospect-helpers";
@@ -11,12 +11,21 @@ import { ProspectListItem } from "./ProspectListItem";
 
 export function ProspectList() {
   const { data: prospects, isLoading, error } = useProspects();
-  const { filters, selectedProspectId, setSelectedProspectId } = useScrapmanStore();
+  const { filters, selectedProspectId, setSelectedProspectId, selectedIds, selectAll, clearSelection } =
+    useScrapmanStore();
+  const checkboxRef = useRef<HTMLInputElement>(null);
 
   const filtered = useMemo(() => {
     if (!prospects) return [];
     return prospects.filter((prospect) => matchesProspectFilters(prospect, filters));
   }, [prospects, filters]);
+
+  const allSelected = filtered.length > 0 && selectedIds.size === filtered.length;
+  const someSelected = selectedIds.size > 0 && selectedIds.size < filtered.length;
+
+  useEffect(() => {
+    if (checkboxRef.current) checkboxRef.current.indeterminate = someSelected;
+  }, [someSelected]);
 
   if (isLoading) {
     return (
@@ -44,17 +53,35 @@ export function ProspectList() {
   }
 
   return (
-    <div className="flex-1 overflow-y-auto">
-      {filtered.map((prospect) => (
-        <ProspectListItem
-          key={prospect.id}
-          prospect={prospect}
-          selected={prospect.id === selectedProspectId}
-          onSelect={() =>
-            setSelectedProspectId(selectedProspectId === prospect.id ? null : prospect.id)
-          }
+    <div className="flex flex-1 flex-col overflow-hidden">
+      {/* Header sélection */}
+      <div className="flex items-center gap-2 border-b border-[var(--border)] px-4 py-2">
+        <input
+          ref={checkboxRef}
+          type="checkbox"
+          checked={allSelected}
+          onChange={() => (allSelected ? clearSelection() : selectAll(filtered.map((p) => p.id)))}
+          className="cursor-pointer accent-[var(--emerald)]"
         />
-      ))}
+        <span className="text-xs text-[var(--text-muted)]">
+          {selectedIds.size > 0
+            ? `${selectedIds.size} sélectionné(s)`
+            : `${filtered.length} prospect(s)`}
+        </span>
+      </div>
+
+      <div className="flex-1 overflow-y-auto">
+        {filtered.map((prospect) => (
+          <ProspectListItem
+            key={prospect.id}
+            prospect={prospect}
+            selected={prospect.id === selectedProspectId}
+            onSelect={() =>
+              setSelectedProspectId(selectedProspectId === prospect.id ? null : prospect.id)
+            }
+          />
+        ))}
+      </div>
     </div>
   );
 }

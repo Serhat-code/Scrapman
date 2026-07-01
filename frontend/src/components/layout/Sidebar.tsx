@@ -1,6 +1,7 @@
 "use client";
 
 import {
+  BarChart2,
   CreditCard,
   HelpCircle,
   LayoutGrid,
@@ -28,6 +29,7 @@ const NAV_ITEMS: NavItem[] = [
   { href: "/prospects", label: "Prospects", icon: LayoutGrid },
   { href: "/campaigns", label: "Campagnes", icon: Megaphone },
   { href: "/messages", label: "Messages", icon: Mail },
+  { href: "/analytics", label: "Analytics", icon: BarChart2 },
   { href: "/facturation", label: "Facturation", icon: CreditCard },
   { href: "/aide", label: "Aide", icon: HelpCircle },
   { href: "/settings", label: "Réglages", icon: Settings },

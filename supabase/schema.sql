@@ -1973,7 +1973,21 @@ end;
 $$;
 
 -- =============================================================================
--- Partie 15 — Exclusion automatique des sites morts / domaines à vendre
+-- Partie 15 — Tracking ouverture email (pixel transparent)
+-- =============================================================================
+alter table public.send_logs
+  add column if not exists opened_at timestamptz,
+  add column if not exists statut text not null default 'envoye';
+
+alter table public.send_logs drop constraint if exists send_logs_statut_check;
+alter table public.send_logs add constraint send_logs_statut_check
+  check (statut in ('envoye', 'ouvert', 'repondu', 'erreur'));
+
+create index if not exists idx_send_logs_opened_at on public.send_logs (team_id, opened_at)
+  where opened_at is not null;
+
+-- =============================================================================
+-- Partie 16 — Exclusion automatique des sites morts / domaines à vendre
 -- =============================================================================
 -- Le scraper détecte maintenant les pages de parking et les NXDOMAIN et pose
 -- enrichment_status = 'exclu_site_mort'. Ces prospects restent en base
@@ -1981,6 +1995,7 @@ $$;
 -- La contrainte doit accepter la nouvelle valeur.
 -- =============================================================================
 alter table public.prospects drop constraint if exists prospects_enrichment_status_check;
+-- (remplacé juste en-dessous)
 alter table public.prospects add constraint prospects_enrichment_status_check
   check (enrichment_status in ('pending', 'done', 'failed', 'exclu_site_mort'));
 

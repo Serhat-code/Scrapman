@@ -10,10 +10,12 @@ import {
   Mail,
   MapPin,
   Phone,
+  RefreshCw,
   Smartphone,
   User,
   X,
 } from "lucide-react";
+import { useMutation } from "@tanstack/react-query";
 
 import { BucketBadge, HalalBadge, StatutBadge } from "@/components/shared/Badge";
 import { HelpTooltip } from "@/components/shared/HelpTooltip";
@@ -50,9 +52,23 @@ const VERDICT_COLORS: Record<AuditVerdict, string> = {
   bon: "var(--emerald)",
 };
 
+function useReEnrich(prospectId: string) {
+  return useMutation({
+    mutationFn: () =>
+      fetch("/api/prospects/re-enrich", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ prospectIds: [prospectId] }),
+      }).then((r) => {
+        if (!r.ok) throw new Error();
+      }),
+  });
+}
+
 export function ProspectDetailPanel() {
   const { selectedProspectId, setSelectedProspectId } = useScrapmanStore();
   const { data: prospect, isLoading } = useProspect(selectedProspectId);
+  const reEnrich = useReEnrich(selectedProspectId ?? "");
 
   if (!selectedProspectId) return null;
 
@@ -263,6 +279,16 @@ export function ProspectDetailPanel() {
             {prospect.raison_principale && (
               <p className="text-xs text-[var(--text-muted)]">{prospect.raison_principale}</p>
             )}
+
+            <button
+              type="button"
+              onClick={() => reEnrich.mutate()}
+              disabled={reEnrich.isPending || reEnrich.isSuccess}
+              className="mt-1 flex items-center gap-1 text-[11px] text-[var(--text-muted)] hover:text-[var(--text-secondary)] disabled:opacity-50"
+            >
+              <RefreshCw size={11} className={reEnrich.isPending ? "animate-spin" : ""} />
+              {reEnrich.isSuccess ? "Enrichissement lancé ✓" : "Re-analyser ce prospect"}
+            </button>
           </section>
 
           {/* 4bis. Audit technique (PageSpeed Insights) */}

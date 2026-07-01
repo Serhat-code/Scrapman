@@ -3,6 +3,8 @@ import { z } from "zod";
 
 import { MESSAGE_RATE_LIMIT, verifierRateLimit } from "@/lib/rate-limit";
 import { declencherWorkflow } from "@/lib/server/github-actions";
+import { verifierLimiteProspects } from "@/lib/server/enforcement";
+import { resoudreTeamId } from "@/lib/server/team";
 import { createClient } from "@/lib/supabase/server";
 import { parseOrError } from "@/lib/validation";
 
@@ -33,6 +35,16 @@ export async function POST(request: NextRequest) {
   } = await supabase.auth.getUser();
   if (!user) {
     return NextResponse.json({ error: "Non authentifié." }, { status: 401 });
+  }
+
+  const teamId = await resoudreTeamId(supabase, user.id);
+  if (!teamId) {
+    return NextResponse.json({ error: "Équipe introuvable." }, { status: 400 });
+  }
+
+  const checkProspects = await verifierLimiteProspects(supabase, teamId);
+  if (!checkProspects.allowed) {
+    return NextResponse.json({ error: checkProspects.reason }, { status: 403 });
   }
 
   const autorise = await verifierRateLimit(supabase, {

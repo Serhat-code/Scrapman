@@ -58,6 +58,11 @@ interface ScrapmanStore {
   selectedProspectId: string | null;
   setSelectedProspectId: (id: string | null) => void;
 
+  selectedIds: Set<string>;
+  toggleSelectedId: (id: string) => void;
+  selectAll: (ids: string[]) => void;
+  clearSelection: () => void;
+
   scrapingModal: ScrapingModalState;
   openScrapingModal: () => void;
   closeScrapingModal: () => void;
@@ -115,6 +120,17 @@ export const useScrapmanStore = create<ScrapmanStore>()((set) => ({
 
   selectedProspectId: null,
   setSelectedProspectId: (id) => set({ selectedProspectId: id }),
+
+  selectedIds: new Set<string>(),
+  toggleSelectedId: (id) =>
+    set((state) => {
+      const next = new Set(state.selectedIds);
+      if (next.has(id)) next.delete(id);
+      else next.add(id);
+      return { selectedIds: next };
+    }),
+  selectAll: (ids) => set({ selectedIds: new Set(ids) }),
+  clearSelection: () => set({ selectedIds: new Set() }),
 
   scrapingModal: DEFAULT_SCRAPING_MODAL,
   openScrapingModal: () =>

@@ -368,6 +368,8 @@ export interface SendLog {
   message_id: string | null;
   prospect_id: string | null;
   created_at: string;
+  statut: string | null;
+  opened_at: string | null;
 }
 
 export interface AuditLog {

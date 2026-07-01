@@ -85,6 +85,20 @@ export function useDeleteProspects() {
   });
 }
 
+export function useBulkUpdateProspects() {
+  const supabase = createClient();
+  const queryClient = useQueryClient();
+
+  return useMutation({
+    mutationFn: async ({ ids, updates }: { ids: string[]; updates: Partial<Prospect> }) => {
+      if (!ids.length) return;
+      const { error } = await supabase.from("prospects").update(updates).in("id", ids);
+      if (error) throw error;
+    },
+    onSuccess: () => queryClient.invalidateQueries({ queryKey: PROSPECTS_KEY }),
+  });
+}
+
 export function useUpdateProspectStatut() {
   const updateProspect = useUpdateProspect();
 

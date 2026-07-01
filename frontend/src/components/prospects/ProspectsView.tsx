@@ -3,6 +3,7 @@
 import { ProspectDetailPanel } from "@/components/prospects/detail/ProspectDetailPanel";
 import { useProspects } from "@/lib/queries/prospects";
 
+import { BulkActionBar } from "./BulkActionBar";
 import { FilterBar } from "./FilterBar";
 import { ProspectList } from "./ProspectList";
 import { ProspectsHeader } from "./ProspectsHeader";
@@ -17,6 +18,7 @@ export function ProspectsView() {
         <ProspectsHeader total={prospects?.length ?? 0} />
         <FilterBar />
         <ProspectList />
+        <BulkActionBar />
       </div>
       <ProspectDetailPanel />
       <ScrapingModal />

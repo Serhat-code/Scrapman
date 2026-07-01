@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 
 import { declencherWorkflow } from "@/lib/server/github-actions";
+import { verifierLimiteEmailsJour } from "@/lib/server/enforcement";
 import { resoudreTeamId } from "@/lib/server/team";
 import { createAdminClient } from "@/lib/supabase/admin";
 import { createClient } from "@/lib/supabase/server";
@@ -23,6 +24,11 @@ export async function POST() {
   const teamId = await resoudreTeamId(supabase, user.id);
   if (!teamId) {
     return NextResponse.json({ error: "Aucune équipe associée à ce compte." }, { status: 400 });
+  }
+
+  const checkEmails = await verifierLimiteEmailsJour(supabase, teamId);
+  if (!checkEmails.allowed) {
+    return NextResponse.json({ error: checkEmails.reason }, { status: 403 });
   }
 
   const admin = createAdminClient();
