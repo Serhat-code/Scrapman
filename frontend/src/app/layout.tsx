@@ -12,6 +12,9 @@ const inter = Inter({
 export const metadata: Metadata = {
   title: "Scrapman",
   description: "Prospection B2B automatisée",
+  verification: {
+    google: "dEZgkhy-9e2HovxWzVloe-mmVm3Z1TYXThMJa-Cdp5A",
+  },
 };
 
 export default function RootLayout({

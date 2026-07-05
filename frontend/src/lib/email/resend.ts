@@ -2,9 +2,8 @@ import { Resend } from "resend";
 
 // Email transactionnel plateforme (confirmation inscription, reset mdp,
 // invitations d'équipe) — distinct du SMTP que chaque équipe configure pour
-// SA prospection (sender_profiles). Tier gratuit Resend (100/jour).
-const FROM_ADDRESS = process.env.RESEND_FROM_EMAIL || "Scrapman <onboarding@resend.dev>";
-
+// SA prospection (sender_profiles). Tier gratuit Resend (100/jour)
+const FROM_ADDRESS = process.env.RESEND_FROM_EMAIL || "onboarding@resend.dev";
 let client: Resend | null = null;
 
 function getClient(): Resend {

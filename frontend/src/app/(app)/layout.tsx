@@ -6,6 +6,7 @@ import { Sidebar } from "@/components/layout/Sidebar";
 import { ScrapingBanner } from "@/components/prospects/ScrapingBanner";
 import { createClient } from "@/lib/supabase/server";
 
+
 export default async function AppLayout({ children }: { children: React.ReactNode }) {
   const supabase = await createClient();
   const {
