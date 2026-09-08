@@ -29,7 +29,9 @@ const COLONNES = [
 type Colonne = (typeof COLONNES)[number];
 
 function escapeCsv(value: unknown): string {
-  const str = value == null ? "" : String(value);
+  let str = value == null ? "" : String(value);
+  // Spreadsheet applications execute these prefixes as formulas.
+  if (/^[=+\-@]/.test(str)) str = `'${str}`;
   if (str.includes(",") || str.includes('"') || str.includes("\n") || str.includes("\r")) {
     return `"${str.replace(/"/g, '""')}"`;
   }

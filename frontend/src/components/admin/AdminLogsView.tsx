@@ -14,7 +14,7 @@ const SOURCES: (string | "tous")[] = ["tous", "worker"];
 const NIVEAU_COLOR: Record<SystemLogLevel, string> = {
   info: "var(--text-secondary)",
   warning: "var(--halal-accent)",
-  error: "#f87171",
+  error: "var(--danger)",
 };
 
 export function AdminLogsView() {
@@ -31,7 +31,7 @@ export function AdminLogsView() {
         <select
           value={level}
           onChange={(event) => setLevel(event.target.value as SystemLogLevel | "tous")}
-          className="h-8 rounded-md border border-[var(--border)] bg-[var(--bg-app)] px-2 text-xs text-[var(--text-primary)] outline-none focus:border-[var(--emerald)]"
+          className="h-8 rounded-md border border-[var(--border)] bg-[var(--bg-app)] px-2 text-xs text-[var(--text-primary)] outline-none focus:border-[var(--accent)]"
         >
           {NIVEAUX.map((n) => (
             <option key={n} value={n}>
@@ -42,7 +42,7 @@ export function AdminLogsView() {
         <select
           value={source}
           onChange={(event) => setSource(event.target.value)}
-          className="h-8 rounded-md border border-[var(--border)] bg-[var(--bg-app)] px-2 text-xs text-[var(--text-primary)] outline-none focus:border-[var(--emerald)]"
+          className="h-8 rounded-md border border-[var(--border)] bg-[var(--bg-app)] px-2 text-xs text-[var(--text-primary)] outline-none focus:border-[var(--accent)]"
         >
           {SOURCES.map((s) => (
             <option key={s} value={s}>
@@ -57,7 +57,7 @@ export function AdminLogsView() {
             value={recherche}
             onChange={(event) => setRecherche(event.target.value)}
             placeholder="Rechercher dans le message..."
-            className="h-8 w-56 rounded-md border border-[var(--border)] bg-[var(--bg-app)] pl-7 pr-2 text-xs text-[var(--text-primary)] outline-none placeholder:text-[var(--text-muted)] focus:border-[var(--emerald)]"
+            className="h-8 w-56 rounded-md border border-[var(--border)] bg-[var(--bg-app)] pl-7 pr-2 text-xs text-[var(--text-primary)] outline-none placeholder:text-[var(--text-muted)] focus:border-[var(--accent)]"
           />
         </div>
       </div>

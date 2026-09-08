@@ -31,7 +31,7 @@ export function TextField({
         placeholder={placeholder}
         min={min}
         max={max}
-        className="h-10 w-full rounded-md border border-[var(--border)] bg-[var(--bg-app)] px-3 text-sm text-[var(--text-primary)] outline-none placeholder:text-[var(--text-muted)] focus:border-[var(--emerald)]"
+        className="h-10 w-full rounded-md border border-[var(--border)] bg-[var(--bg-app)] px-3 text-sm text-[var(--text-primary)] outline-none placeholder:text-[var(--text-muted)] focus:border-[var(--accent)]"
       />
     </div>
   );
@@ -56,7 +56,7 @@ export function TextAreaField({ label, value, onChange, placeholder, rows = 3 }:
         onChange={(event) => onChange(event.target.value)}
         placeholder={placeholder}
         rows={rows}
-        className="w-full resize-none rounded-md border border-[var(--border)] bg-[var(--bg-app)] px-3 py-2 text-sm text-[var(--text-primary)] outline-none placeholder:text-[var(--text-muted)] focus:border-[var(--emerald)]"
+        className="w-full resize-none rounded-md border border-[var(--border)] bg-[var(--bg-app)] px-3 py-2 text-sm text-[var(--text-primary)] outline-none placeholder:text-[var(--text-muted)] focus:border-[var(--accent)]"
       />
     </div>
   );
@@ -76,7 +76,7 @@ export function CheckboxField({ label, checked, onChange }: CheckboxFieldProps) 
         type="checkbox"
         checked={checked}
         onChange={(event) => onChange(event.target.checked)}
-        className="h-4 w-4 accent-[var(--emerald)]"
+        className="h-4 w-4 accent-[var(--accent)]"
       />
     </label>
   );

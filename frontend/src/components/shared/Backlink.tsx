@@ -4,7 +4,7 @@ export function Backlink() {
       href="https://atlamaz-studio.fr"
       target="_blank"
       rel="noopener noreferrer"
-      className="text-xs text-[var(--text-muted)] hover:text-[var(--emerald-light)] hover:underline"
+      className="text-xs text-[var(--text-muted)] hover:text-[var(--accent-strong)] hover:underline"
     >
       Réalisé par Atlamaz Studio
     </a>

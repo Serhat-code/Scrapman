@@ -61,7 +61,7 @@ export function ProspectList() {
           type="checkbox"
           checked={allSelected}
           onChange={() => (allSelected ? clearSelection() : selectAll(filtered.map((p) => p.id)))}
-          className="cursor-pointer accent-[var(--emerald)]"
+          className="cursor-pointer accent-[var(--accent)]"
         />
         <span className="text-xs text-[var(--text-muted)]">
           {selectedIds.size > 0

@@ -37,7 +37,7 @@ export function AdminDiagnosticsView() {
                 <td className="px-3 py-2 text-[var(--text-secondary)]">{equipe.status ?? "—"}</td>
                 <td className="px-3 py-2">
                   {equipe.smtp_configure ? (
-                    <CheckCircle2 size={14} className="text-[var(--emerald-light)]" />
+                    <CheckCircle2 size={14} className="text-[var(--accent-strong)]" />
                   ) : (
                     <XCircle size={14} className="text-[var(--text-muted)]" />
                   )}

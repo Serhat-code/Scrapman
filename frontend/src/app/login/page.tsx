@@ -14,7 +14,7 @@ export default function LoginPage() {
   return (
     <Suspense
       fallback={
-        <div className="flex h-full w-full items-center justify-center bg-[var(--bg-app)]" />
+        <div className="flex h-full w-full items-center justify-center" />
       }
     >
       <LoginForm />
@@ -67,10 +67,10 @@ function LoginForm() {
   };
 
   return (
-    <div className="flex h-full w-full flex-col items-center justify-center gap-4 bg-[var(--bg-app)] p-4">
-      <div className="flex w-full max-w-sm flex-col gap-6 rounded-md border border-[var(--border)] bg-[var(--bg-surface)] p-6">
+    <div className="flex h-full w-full flex-col items-center justify-center gap-4 p-4">
+      <div className="flex w-full max-w-sm flex-col gap-6 glass-strong rounded-2xl border border-[var(--glass-edge)] shadow-[var(--shadow-lg)] p-6">
         <div className="flex items-center gap-2">
-          <div className="flex h-9 w-9 items-center justify-center rounded-md bg-[var(--emerald-dim)] text-[var(--emerald-light)]">
+          <div className="flex h-9 w-9 items-center justify-center rounded-md bg-[var(--accent-soft)] text-[var(--accent-strong)]">
             <Sparkles size={18} strokeWidth={2} />
           </div>
           <h1 className="text-base font-semibold text-[var(--text-primary)]">Scrapman</h1>
@@ -86,7 +86,7 @@ function LoginForm() {
               required
               value={email}
               onChange={(event) => setEmail(event.target.value)}
-              className="h-10 w-full rounded-md border border-[var(--border)] bg-[var(--bg-app)] px-3 text-sm text-[var(--text-primary)] outline-none placeholder:text-[var(--text-muted)] focus:border-[var(--emerald)]"
+              className="h-10 w-full rounded-md border border-[var(--border)] bg-[var(--bg-app)] px-3 text-sm text-[var(--text-primary)] outline-none placeholder:text-[var(--text-muted)] focus:border-[var(--accent)]"
               placeholder="vous@exemple.fr"
             />
           </div>
@@ -100,17 +100,17 @@ function LoginForm() {
               required
               value={password}
               onChange={(event) => setPassword(event.target.value)}
-              className="h-10 w-full rounded-md border border-[var(--border)] bg-[var(--bg-app)] px-3 text-sm text-[var(--text-primary)] outline-none placeholder:text-[var(--text-muted)] focus:border-[var(--emerald)]"
+              className="h-10 w-full rounded-md border border-[var(--border)] bg-[var(--bg-app)] px-3 text-sm text-[var(--text-primary)] outline-none placeholder:text-[var(--text-muted)] focus:border-[var(--accent)]"
               placeholder="••••••••"
             />
           </div>
 
-          {error && <p className="text-xs text-red-400">{error}</p>}
+          {error && <p className="text-xs text-[var(--danger)]">{error}</p>}
 
           <div className="flex justify-end">
             <Link
               href="/forgot-password"
-              className="text-xs text-[var(--text-muted)] hover:text-[var(--emerald-light)] hover:underline"
+              className="text-xs text-[var(--text-muted)] hover:text-[var(--accent-strong)] hover:underline"
             >
               Mot de passe oublié ?
             </Link>
@@ -124,7 +124,7 @@ function LoginForm() {
 
         <p className="text-xs text-[var(--text-muted)]">
           Pas de compte ?{" "}
-          <Link href="/signup" className="text-[var(--emerald-light)] hover:underline">
+          <Link href="/signup" className="text-[var(--accent-strong)] hover:underline">
             Créer un compte
           </Link>
         </p>

@@ -32,9 +32,9 @@ export function StatutBadge({ statut }: { statut: ProspectStatut }) {
 
 const MESSAGE_STATUT_COLOR: Record<MessageStatut, string> = {
   en_file: "var(--text-muted)",
-  envoye: "var(--emerald-light)",
-  erreur: "#f87171",
-  ouvert: "var(--emerald-light)",
+  envoye: "var(--accent-strong)",
+  erreur: "var(--danger)",
+  ouvert: "var(--accent-strong)",
   repondu: "var(--halal-accent)",
 };
 

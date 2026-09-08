@@ -53,12 +53,12 @@ export function AdminStatusView() {
         ) : (
           <div className="flex flex-col gap-2">
             {data.dernieresErreurs.map((log) => (
-              <div key={log.id} className="rounded-md border border-red-900/60 bg-red-950/20 px-3 py-2 text-xs">
+              <div key={log.id} className="rounded-md border border-[var(--danger-border)] bg-[var(--danger-soft)] px-3 py-2 text-xs">
                 <div className="flex items-center justify-between text-[11px] text-[var(--text-muted)]">
                   <span>{log.source}</span>
                   <span>{format(new Date(log.created_at), "dd/MM/yyyy HH:mm", { locale: fr })}</span>
                 </div>
-                <p className="mt-1 text-red-400">{log.message}</p>
+                <p className="mt-1 text-[var(--danger)]">{log.message}</p>
               </div>
             ))}
           </div>

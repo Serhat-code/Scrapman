@@ -21,7 +21,7 @@ export default function InviteAcceptPage() {
   return (
     <Suspense
       fallback={
-        <div className="flex h-full w-full items-center justify-center bg-[var(--bg-app)]">
+        <div className="flex h-full w-full items-center justify-center">
           <Loader2 size={24} className="animate-spin text-[var(--text-muted)]" />
         </div>
       }
@@ -60,11 +60,11 @@ function InviteAcceptContent() {
 
   if (!token) {
     return (
-      <div className="flex h-full w-full flex-col items-center justify-center gap-4 bg-[var(--bg-app)] p-4">
-        <div className="flex w-full max-w-sm flex-col items-center gap-2 rounded-md border border-[var(--border)] bg-[var(--bg-surface)] p-6 text-center">
-          <XCircle size={24} className="text-red-400" />
+      <div className="flex h-full w-full flex-col items-center justify-center gap-4 p-4">
+        <div className="flex w-full max-w-sm flex-col items-center gap-2 glass-strong rounded-2xl border border-[var(--glass-edge)] shadow-[var(--shadow-lg)] p-6 text-center">
+          <XCircle size={24} className="text-[var(--danger)]" />
           <p className="text-sm text-[var(--text-primary)]">Invitation introuvable.</p>
-          <Link href="/login" className="text-xs text-[var(--emerald-light)] hover:underline">
+          <Link href="/login" className="text-xs text-[var(--accent-strong)] hover:underline">
             Retour à la connexion
           </Link>
         </div>
@@ -123,10 +123,10 @@ function InviteAcceptContent() {
   };
 
   return (
-    <div className="flex h-full w-full flex-col items-center justify-center gap-4 bg-[var(--bg-app)] p-4">
-      <div className="flex w-full max-w-sm flex-col gap-6 rounded-md border border-[var(--border)] bg-[var(--bg-surface)] p-6">
+    <div className="flex h-full w-full flex-col items-center justify-center gap-4 p-4">
+      <div className="flex w-full max-w-sm flex-col gap-6 glass-strong rounded-2xl border border-[var(--glass-edge)] shadow-[var(--shadow-lg)] p-6">
         <div className="flex items-center gap-2">
-          <div className="flex h-9 w-9 items-center justify-center rounded-md bg-[var(--emerald-dim)] text-[var(--emerald-light)]">
+          <div className="flex h-9 w-9 items-center justify-center rounded-md bg-[var(--accent-soft)] text-[var(--accent-strong)]">
             <Sparkles size={18} strokeWidth={2} />
           </div>
           <h1 className="text-base font-semibold text-[var(--text-primary)]">Scrapman</h1>
@@ -138,7 +138,7 @@ function InviteAcceptContent() {
           </div>
         ) : !apercu || apercu.expiree || apercu.deja_acceptee ? (
           <div className="flex flex-col items-center gap-2 py-4 text-center">
-            <XCircle size={24} className="text-red-400" />
+            <XCircle size={24} className="text-[var(--danger)]" />
             <p className="text-sm text-[var(--text-primary)]">
               {!apercu
                 ? "Invitation introuvable."
@@ -146,7 +146,7 @@ function InviteAcceptContent() {
                   ? "Cette invitation a déjà été acceptée."
                   : "Cette invitation a expiré."}
             </p>
-            <Link href="/login" className="text-xs text-[var(--emerald-light)] hover:underline">
+            <Link href="/login" className="text-xs text-[var(--accent-strong)] hover:underline">
               Retour à la connexion
             </Link>
           </div>
@@ -157,14 +157,14 @@ function InviteAcceptContent() {
         ) : emailConnecte ? (
           emailConnecte.toLowerCase() === apercu.email.toLowerCase() ? (
             <div className="flex flex-col items-center gap-3 py-2 text-center">
-              <UserCheck size={28} className="text-[var(--emerald-light)]" />
+              <UserCheck size={28} className="text-[var(--accent-strong)]" />
               <p className="text-sm text-[var(--text-primary)]">
                 Rejoindre l&apos;équipe <strong>{apercu.team_nom}</strong> ?
               </p>
               <p className="text-xs text-[var(--text-muted)]">
                 Vous quitterez votre équipe actuelle pour rejoindre celle-ci.
               </p>
-              {error && <p className="text-xs text-red-400">{error}</p>}
+              {error && <p className="text-xs text-[var(--danger)]">{error}</p>}
               <Button variant="primary" disabled={loading} onClick={accepterConnecte} className="justify-center">
                 {loading ? <Loader2 size={14} className="animate-spin" /> : <UserCheck size={14} />}
                 Rejoindre l&apos;équipe
@@ -172,7 +172,7 @@ function InviteAcceptContent() {
             </div>
           ) : (
             <div className="flex flex-col items-center gap-3 py-2 text-center">
-              <XCircle size={24} className="text-red-400" />
+              <XCircle size={24} className="text-[var(--danger)]" />
               <p className="text-sm text-[var(--text-primary)]">
                 Cette invitation est destinée à <strong>{apercu.email}</strong>, mais vous êtes
                 connecté(e) avec <strong>{emailConnecte}</strong>.
@@ -195,7 +195,7 @@ function InviteAcceptContent() {
               minLength={8}
               value={password}
               onChange={(event) => setPassword(event.target.value)}
-              className="h-10 w-full rounded-md border border-[var(--border)] bg-[var(--bg-app)] px-3 text-sm text-[var(--text-primary)] outline-none placeholder:text-[var(--text-muted)] focus:border-[var(--emerald)]"
+              className="h-10 w-full rounded-md border border-[var(--border)] bg-[var(--bg-app)] px-3 text-sm text-[var(--text-primary)] outline-none placeholder:text-[var(--text-muted)] focus:border-[var(--accent)]"
               placeholder="8 caractères minimum"
             />
             <label className="flex items-start gap-2 text-xs text-[var(--text-secondary)]">
@@ -203,22 +203,22 @@ function InviteAcceptContent() {
                 type="checkbox"
                 checked={cguAcceptees}
                 onChange={(event) => setCguAcceptees(event.target.checked)}
-                className="mt-0.5 h-3.5 w-3.5 accent-[var(--emerald)]"
+                className="mt-0.5 h-3.5 w-3.5 accent-[var(--accent)]"
               />
               <span>
                 J&apos;accepte les{" "}
-                <Link href="/cgu" target="_blank" className="text-[var(--emerald-light)] hover:underline">
+                <Link href="/cgu" target="_blank" className="text-[var(--accent-strong)] hover:underline">
                   CGU
                 </Link>
                 , les{" "}
-                <Link href="/cgv" target="_blank" className="text-[var(--emerald-light)] hover:underline">
+                <Link href="/cgv" target="_blank" className="text-[var(--accent-strong)] hover:underline">
                   CGV
                 </Link>{" "}
                 et la{" "}
                 <Link
                   href="/politique-confidentialite"
                   target="_blank"
-                  className="text-[var(--emerald-light)] hover:underline"
+                  className="text-[var(--accent-strong)] hover:underline"
                 >
                   politique de confidentialité
                 </Link>
@@ -226,11 +226,11 @@ function InviteAcceptContent() {
               </span>
             </label>
 
-            {error && <p className="text-xs text-red-400">{error}</p>}
+            {error && <p className="text-xs text-[var(--danger)]">{error}</p>}
             {compteExistant && (
               <Link
                 href={`/login?next=${encodeURIComponent(`/invite/accept?token=${token}`)}`}
-                className="text-xs text-[var(--emerald-light)] hover:underline"
+                className="text-xs text-[var(--accent-strong)] hover:underline"
               >
                 Se connecter avec ce compte
               </Link>

@@ -2,7 +2,8 @@ import nodemailer from "nodemailer";
 import { NextResponse } from "next/server";
 
 import { decryptSmtpPassword } from "@/lib/crypto/smtp";
-import { resoudreTeamId } from "@/lib/server/team";
+import { estAdministrateurEquipe, resoudreTeamId } from "@/lib/server/team";
+import { createAdminClient } from "@/lib/supabase/admin";
 import { createClient } from "@/lib/supabase/server";
 
 const CHAMPS_REQUIS = ["email_from", "smtp_host", "smtp_port", "smtp_user"] as const;
@@ -33,13 +34,26 @@ export async function POST() {
     return NextResponse.json({ error: error.message }, { status: 500 });
   }
 
-  if (!profile || !profile.smtp_password_enc || CHAMPS_REQUIS.some((champ) => !profile[champ])) {
+  if (!(await estAdministrateurEquipe(supabase, user.id, teamId))) {
+    return NextResponse.json({ error: "Administrator rights required" }, { status: 403 });
+  }
+
+  const { data: credentials, error: credentialsError } = await createAdminClient()
+    .from("smtp_credentials")
+    .select("smtp_password_enc")
+    .eq("team_id", teamId)
+    .maybeSingle();
+  if (credentialsError) {
+    return NextResponse.json({ error: "Unable to read SMTP credentials." }, { status: 500 });
+  }
+
+  if (!profile || !credentials?.smtp_password_enc || CHAMPS_REQUIS.some((champ) => !profile[champ])) {
     return NextResponse.json({ error: "Configuration SMTP incomplète." }, { status: 400 });
   }
 
   let password: string;
   try {
-    password = decryptSmtpPassword(profile.smtp_password_enc);
+    password = decryptSmtpPassword(credentials.smtp_password_enc);
   } catch (err) {
     console.error("[smtp-test] décryptage échoué:", err, "enc:", profile.smtp_password_enc);
     return NextResponse.json({ error: "Impossible de déchiffrer le mot de passe SMTP." }, { status: 500 });

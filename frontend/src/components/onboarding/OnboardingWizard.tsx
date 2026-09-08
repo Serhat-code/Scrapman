@@ -50,7 +50,7 @@ export function OnboardingWizard({ conformite }: { conformite: string }) {
 
   if (isLoading || !currentTeam || dejaTermine) {
     return (
-      <div className="flex h-full w-full items-center justify-center bg-[var(--bg-app)]">
+      <div className="flex h-full w-full items-center justify-center">
         <Loader2 size={24} className="animate-spin text-[var(--text-muted)]" />
       </div>
     );
@@ -75,10 +75,10 @@ export function OnboardingWizard({ conformite }: { conformite: string }) {
   };
 
   return (
-    <div className="flex h-full w-full flex-col overflow-y-auto bg-[var(--bg-app)]">
+    <div className="flex h-full w-full flex-col overflow-y-auto">
       <div className="mx-auto flex w-full max-w-2xl flex-1 flex-col gap-6 p-6">
         <div className="flex items-center gap-2">
-          <div className="flex h-9 w-9 items-center justify-center rounded-md bg-[var(--emerald-dim)] text-[var(--emerald-light)]">
+          <div className="flex h-9 w-9 items-center justify-center rounded-md bg-[var(--accent-soft)] text-[var(--accent-strong)]">
             <Sparkles size={18} strokeWidth={2} />
           </div>
           <h1 className="text-base font-semibold text-[var(--text-primary)]">
@@ -93,14 +93,14 @@ export function OnboardingWizard({ conformite }: { conformite: string }) {
               className="flex flex-1 items-center gap-2 text-xs"
               style={{
                 color:
-                  etape.numero <= effectiveStep ? "var(--emerald-light)" : "var(--text-muted)",
+                  etape.numero <= effectiveStep ? "var(--accent-strong)" : "var(--text-muted)",
               }}
             >
               <div
                 className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border text-[11px]"
                 style={{
                   borderColor:
-                    etape.numero <= effectiveStep ? "var(--emerald-light)" : "var(--border)",
+                    etape.numero <= effectiveStep ? "var(--accent-strong)" : "var(--border)",
                 }}
               >
                 {etape.numero < effectiveStep ? <CheckCircle2 size={13} /> : etape.numero}
@@ -110,7 +110,7 @@ export function OnboardingWizard({ conformite }: { conformite: string }) {
           ))}
         </div>
 
-        <div className="flex-1 rounded-md border border-[var(--border)] bg-[var(--bg-surface)]">
+        <div className="flex-1 rounded-xl border border-[var(--border)] bg-[var(--bg-surface)] shadow-[var(--shadow-sm)]">
           {effectiveStep === 1 && (
             <div className="flex max-w-xl flex-col gap-4 p-4">
               <p className="text-xs text-[var(--text-muted)]">
@@ -124,7 +124,7 @@ export function OnboardingWizard({ conformite }: { conformite: string }) {
                   type="text"
                   value={effectiveNom}
                   onChange={(event) => setNom(event.target.value)}
-                  className="h-10 w-full rounded-md border border-[var(--border)] bg-[var(--bg-app)] px-3 text-sm text-[var(--text-primary)] outline-none placeholder:text-[var(--text-muted)] focus:border-[var(--emerald)]"
+                  className="h-10 w-full rounded-md border border-[var(--border)] bg-[var(--bg-app)] px-3 text-sm text-[var(--text-primary)] outline-none placeholder:text-[var(--text-muted)] focus:border-[var(--accent)]"
                   placeholder="Votre prénom et nom"
                 />
               </div>
@@ -136,7 +136,7 @@ export function OnboardingWizard({ conformite }: { conformite: string }) {
                   type="text"
                   value={effectiveSociete}
                   onChange={(event) => setSociete(event.target.value)}
-                  className="h-10 w-full rounded-md border border-[var(--border)] bg-[var(--bg-app)] px-3 text-sm text-[var(--text-primary)] outline-none placeholder:text-[var(--text-muted)] focus:border-[var(--emerald)]"
+                  className="h-10 w-full rounded-md border border-[var(--border)] bg-[var(--bg-app)] px-3 text-sm text-[var(--text-primary)] outline-none placeholder:text-[var(--text-muted)] focus:border-[var(--accent)]"
                   placeholder="Nom de votre entreprise"
                 />
               </div>
@@ -201,7 +201,7 @@ function EtapeFinale() {
 
   return (
     <div className="flex flex-col items-center gap-3 p-8 text-center">
-      <Rocket size={32} className="text-[var(--emerald-light)]" />
+      <Rocket size={32} className="text-[var(--accent-strong)]" />
       <p className="text-sm font-medium text-[var(--text-primary)]">Votre espace est prêt</p>
       <p className="max-w-sm text-xs text-[var(--text-muted)]">
         Vous pouvez dès maintenant importer des prospects, créer une campagne et configurer votre

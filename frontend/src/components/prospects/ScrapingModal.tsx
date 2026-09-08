@@ -99,7 +99,7 @@ export function ScrapingModal() {
             <select
               value={naf}
               onChange={(event) => updateScrapingModal({ naf: event.target.value })}
-              className="h-10 w-full rounded-md border border-[var(--border)] bg-[var(--bg-app)] px-2 text-sm text-[var(--text-primary)] outline-none focus:border-[var(--emerald)]"
+              className="h-10 w-full rounded-md border border-[var(--border)] bg-[var(--bg-app)] px-2 text-sm text-[var(--text-primary)] outline-none focus:border-[var(--accent)]"
             >
               <option value="">Sélectionner une activité…</option>
               {NAF_OPTIONS.map((option) => (
@@ -120,7 +120,7 @@ export function ScrapingModal() {
                 }
                 className={`rounded-md border px-2 py-0.5 text-[11px] font-medium transition-colors ${
                   franceEntiere
-                    ? "border-[var(--emerald)] bg-[var(--emerald-dim)] text-[var(--emerald-light)]"
+                    ? "border-[var(--accent)] bg-[var(--accent-soft)] text-[var(--accent-strong)]"
                     : "border-[var(--border)] text-[var(--text-secondary)] hover:bg-[var(--bg-hover)]"
                 }`}
               >
@@ -178,7 +178,7 @@ export function ScrapingModal() {
               onChange={(event) =>
                 updateScrapingModal({ excludeGrandesEnseignes: event.target.checked })
               }
-              className="h-4 w-4 accent-[var(--emerald)]"
+              className="h-4 w-4 accent-[var(--accent)]"
             />
           </label>
 
@@ -194,7 +194,7 @@ export function ScrapingModal() {
               step={1}
               value={limit}
               onChange={(event) => updateScrapingModal({ limit: Number(event.target.value) })}
-              className="w-full accent-[var(--emerald)]"
+              className="w-full accent-[var(--accent)]"
             />
             <div className="mt-1 flex justify-between text-[11px] text-[var(--text-muted)]">
               <span>1</span>
@@ -210,7 +210,7 @@ export function ScrapingModal() {
             enregistrés.
           </p>
 
-          {erreur && <p className="text-xs text-red-400">{erreur}</p>}
+          {erreur && <p className="text-xs text-[var(--danger)]">{erreur}</p>}
 
           <ul className="space-y-1 text-xs text-[var(--text-muted)]">
             <li>

@@ -41,7 +41,7 @@ export function PlanPicker() {
           type="button"
           onClick={() => setCycle("mensuel")}
           className={`rounded-md px-3 py-1.5 text-xs font-medium transition-colors ${
-            cycle === "mensuel" ? "bg-[var(--emerald)] text-white" : "text-[var(--text-secondary)]"
+            cycle === "mensuel" ? "bg-[var(--accent)] text-[var(--text-inverse)]" : "text-[var(--text-secondary)]"
           }`}
         >
           Mensuel
@@ -50,14 +50,14 @@ export function PlanPicker() {
           type="button"
           onClick={() => setCycle("annuel")}
           className={`rounded-md px-3 py-1.5 text-xs font-medium transition-colors ${
-            cycle === "annuel" ? "bg-[var(--emerald)] text-white" : "text-[var(--text-secondary)]"
+            cycle === "annuel" ? "bg-[var(--accent)] text-[var(--text-inverse)]" : "text-[var(--text-secondary)]"
           }`}
         >
           Annuel (2 mois offerts)
         </button>
       </div>
 
-      {error && <p className="text-center text-xs text-red-400">{error}</p>}
+      {error && <p className="text-center text-xs text-[var(--danger)]">{error}</p>}
 
       <div className="grid gap-3 sm:grid-cols-3">
         {plans.map((plan) => {
@@ -65,7 +65,7 @@ export function PlanPicker() {
           return (
             <div
               key={plan.id}
-              className="flex flex-col gap-3 rounded-md border border-[var(--border)] bg-[var(--bg-surface)] p-4"
+              className="flex flex-col gap-3 rounded-xl border border-[var(--border)] bg-[var(--bg-surface)] shadow-[var(--shadow-sm)] p-4"
             >
               <div>
                 <h3 className="text-sm font-semibold text-[var(--text-primary)]">{plan.nom}</h3>
@@ -78,19 +78,19 @@ export function PlanPicker() {
               </div>
               <ul className="flex flex-1 flex-col gap-1.5 text-xs text-[var(--text-secondary)]">
                 <li className="flex items-center gap-1.5">
-                  <Check size={12} className="text-[var(--emerald-light)]" />
+                  <Check size={12} className="text-[var(--accent-strong)]" />
                   {plan.max_prospects.toLocaleString("fr-FR")} prospects
                 </li>
                 <li className="flex items-center gap-1.5">
-                  <Check size={12} className="text-[var(--emerald-light)]" />
+                  <Check size={12} className="text-[var(--accent-strong)]" />
                   {plan.max_campagnes_actives ?? "Illimité"} campagnes actives
                 </li>
                 <li className="flex items-center gap-1.5">
-                  <Check size={12} className="text-[var(--emerald-light)]" />
+                  <Check size={12} className="text-[var(--accent-strong)]" />
                   {plan.max_utilisateurs} utilisateur{plan.max_utilisateurs > 1 ? "s" : ""}
                 </li>
                 <li className="flex items-center gap-1.5">
-                  <Check size={12} className="text-[var(--emerald-light)]" />
+                  <Check size={12} className="text-[var(--accent-strong)]" />
                   {plan.max_emails_jour} emails/jour
                 </li>
               </ul>

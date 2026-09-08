@@ -16,13 +16,13 @@ export function HelpTooltip({ texte }: { texte: string }) {
           event.stopPropagation();
           setOuvert((value) => !value);
         }}
-        className="inline-flex h-3.5 w-3.5 items-center justify-center rounded-full text-[var(--text-muted)] hover:text-[var(--emerald-light)]"
+        className="inline-flex h-3.5 w-3.5 items-center justify-center rounded-full text-[var(--text-muted)] hover:text-[var(--accent-strong)]"
         aria-label="Aide"
       >
         <HelpCircle size={13} />
       </button>
       {ouvert && (
-        <span className="absolute bottom-full left-1/2 z-50 mb-1.5 w-56 -translate-x-1/2 rounded-md border border-[var(--border)] bg-[var(--bg-surface)] p-2.5 text-[11px] font-normal normal-case leading-relaxed text-[var(--text-secondary)] shadow-lg">
+        <span className="absolute bottom-full left-1/2 z-50 mb-1.5 w-56 -translate-x-1/2 rounded-xl border border-[var(--border)] bg-[var(--bg-surface)] shadow-[var(--shadow-sm)] p-2.5 text-[11px] font-normal normal-case leading-relaxed text-[var(--text-secondary)] shadow-lg">
           {texte}
         </span>
       )}

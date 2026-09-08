@@ -100,14 +100,14 @@ export function AddProspectsModal({ campaign }: AddProspectsModalProps) {
             value={search}
             onChange={(event) => setSearch(event.target.value)}
             placeholder="Rechercher par nom ou ville…"
-            className="h-9 flex-1 rounded-md border border-[var(--border)] bg-[var(--bg-app)] px-3 text-sm text-[var(--text-primary)] outline-none placeholder:text-[var(--text-muted)] focus:border-[var(--emerald)]"
+            className="h-9 flex-1 rounded-md border border-[var(--border)] bg-[var(--bg-app)] px-3 text-sm text-[var(--text-primary)] outline-none placeholder:text-[var(--text-muted)] focus:border-[var(--accent)]"
           />
           <label className="flex shrink-0 cursor-pointer items-center gap-1.5 text-xs text-[var(--text-secondary)]">
             <input
               type="checkbox"
               checked={onlyMatching}
               onChange={(event) => setOnlyMatching(event.target.checked)}
-              className="h-3.5 w-3.5 accent-[var(--emerald)]"
+              className="h-3.5 w-3.5 accent-[var(--accent)]"
             />
             Filtres campagne
           </label>
@@ -122,7 +122,7 @@ export function AddProspectsModal({ campaign }: AddProspectsModalProps) {
             <button
               type="button"
               onClick={toggleAll}
-              className="self-start text-xs text-[var(--emerald-light)] hover:underline"
+              className="self-start text-xs text-[var(--accent-strong)] hover:underline"
             >
               {selected.size === candidates.length ? "Tout désélectionner" : "Tout sélectionner"} (
               {candidates.length})
@@ -137,7 +137,7 @@ export function AddProspectsModal({ campaign }: AddProspectsModalProps) {
                     type="checkbox"
                     checked={selected.has(prospect.id)}
                     onChange={() => toggle(prospect.id)}
-                    className="mt-1 h-3.5 w-3.5 accent-[var(--emerald)]"
+                    className="mt-1 h-3.5 w-3.5 accent-[var(--accent)]"
                   />
                   <div className="flex flex-1 flex-col gap-1">
                     <div className="flex items-center justify-between gap-2">

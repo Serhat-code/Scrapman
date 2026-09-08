@@ -18,3 +18,19 @@ export async function resoudreTeamId(
   if (error) throw error;
   return data?.team_id ?? null;
 }
+
+/** True only for roles allowed to change shared sending infrastructure. */
+export async function estAdministrateurEquipe(
+  supabase: SupabaseClient<Database>,
+  userId: string,
+  teamId: string
+): Promise<boolean> {
+  const { data, error } = await supabase
+    .from("team_members")
+    .select("role")
+    .eq("user_id", userId)
+    .eq("team_id", teamId)
+    .maybeSingle();
+  if (error) throw error;
+  return data?.role === "owner" || data?.role === "admin";
+}

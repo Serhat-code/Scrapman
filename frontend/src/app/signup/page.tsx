@@ -36,10 +36,10 @@ export default function SignupPage() {
   };
 
   return (
-    <div className="flex h-full w-full flex-col items-center justify-center gap-4 bg-[var(--bg-app)] p-4">
-      <div className="flex w-full max-w-sm flex-col gap-6 rounded-md border border-[var(--border)] bg-[var(--bg-surface)] p-6">
+    <div className="flex h-full w-full flex-col items-center justify-center gap-4 p-4">
+      <div className="flex w-full max-w-sm flex-col gap-6 glass-strong rounded-2xl border border-[var(--glass-edge)] shadow-[var(--shadow-lg)] p-6">
         <div className="flex items-center gap-2">
-          <div className="flex h-9 w-9 items-center justify-center rounded-md bg-[var(--emerald-dim)] text-[var(--emerald-light)]">
+          <div className="flex h-9 w-9 items-center justify-center rounded-md bg-[var(--accent-soft)] text-[var(--accent-strong)]">
             <Sparkles size={18} strokeWidth={2} />
           </div>
           <h1 className="text-base font-semibold text-[var(--text-primary)]">Scrapman</h1>
@@ -47,7 +47,7 @@ export default function SignupPage() {
 
         {envoye ? (
           <div className="flex flex-col items-center gap-3 py-4 text-center">
-            <MailCheck size={28} className="text-[var(--emerald-light)]" />
+            <MailCheck size={28} className="text-[var(--accent-strong)]" />
             <p className="text-sm text-[var(--text-primary)]">Vérifiez votre boîte mail</p>
             <p className="text-xs text-[var(--text-muted)]">
               Un email de confirmation a été envoyé à <strong>{email}</strong>. Cliquez sur le
@@ -66,7 +66,7 @@ export default function SignupPage() {
                   required
                   value={email}
                   onChange={(event) => setEmail(event.target.value)}
-                  className="h-10 w-full rounded-md border border-[var(--border)] bg-[var(--bg-app)] px-3 text-sm text-[var(--text-primary)] outline-none placeholder:text-[var(--text-muted)] focus:border-[var(--emerald)]"
+                  className="h-10 w-full rounded-md border border-[var(--border)] bg-[var(--bg-app)] px-3 text-sm text-[var(--text-primary)] outline-none placeholder:text-[var(--text-muted)] focus:border-[var(--accent)]"
                   placeholder="vous@exemple.fr"
                 />
               </div>
@@ -81,7 +81,7 @@ export default function SignupPage() {
                   minLength={8}
                   value={password}
                   onChange={(event) => setPassword(event.target.value)}
-                  className="h-10 w-full rounded-md border border-[var(--border)] bg-[var(--bg-app)] px-3 text-sm text-[var(--text-primary)] outline-none placeholder:text-[var(--text-muted)] focus:border-[var(--emerald)]"
+                  className="h-10 w-full rounded-md border border-[var(--border)] bg-[var(--bg-app)] px-3 text-sm text-[var(--text-primary)] outline-none placeholder:text-[var(--text-muted)] focus:border-[var(--accent)]"
                   placeholder="8 caractères minimum"
                 />
               </div>
@@ -91,22 +91,22 @@ export default function SignupPage() {
                   type="checkbox"
                   checked={cguAcceptees}
                   onChange={(event) => setCguAcceptees(event.target.checked)}
-                  className="mt-0.5 h-3.5 w-3.5 accent-[var(--emerald)]"
+                  className="mt-0.5 h-3.5 w-3.5 accent-[var(--accent)]"
                 />
                 <span>
                   J&apos;accepte les{" "}
-                  <Link href="/cgu" target="_blank" className="text-[var(--emerald-light)] hover:underline">
+                  <Link href="/cgu" target="_blank" className="text-[var(--accent-strong)] hover:underline">
                     CGU
                   </Link>
                   , les{" "}
-                  <Link href="/cgv" target="_blank" className="text-[var(--emerald-light)] hover:underline">
+                  <Link href="/cgv" target="_blank" className="text-[var(--accent-strong)] hover:underline">
                     CGV
                   </Link>{" "}
                   et la{" "}
                   <Link
                     href="/politique-confidentialite"
                     target="_blank"
-                    className="text-[var(--emerald-light)] hover:underline"
+                    className="text-[var(--accent-strong)] hover:underline"
                   >
                     politique de confidentialité
                   </Link>
@@ -114,7 +114,7 @@ export default function SignupPage() {
                 </span>
               </label>
 
-              {error && <p className="text-xs text-red-400">{error}</p>}
+              {error && <p className="text-xs text-[var(--danger)]">{error}</p>}
 
               <Button
                 type="submit"
@@ -129,7 +129,7 @@ export default function SignupPage() {
 
             <p className="text-xs text-[var(--text-muted)]">
               Déjà un compte ?{" "}
-              <Link href="/login" className="text-[var(--emerald-light)] hover:underline">
+              <Link href="/login" className="text-[var(--accent-strong)] hover:underline">
                 Se connecter
               </Link>
             </p>

@@ -12,7 +12,7 @@ import type { CampagneStatut } from "@/types/database";
 
 const STATUT_COLOR: Record<CampagneStatut, string> = {
   brouillon: "var(--text-muted)",
-  actif: "var(--emerald-light)",
+  actif: "var(--accent-strong)",
   termine: "var(--text-secondary)",
 };
 

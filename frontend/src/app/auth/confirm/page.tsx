@@ -15,7 +15,7 @@ import { createClient } from "@/lib/supabase/client";
 // flux différent l'utilise.
 function Chargement() {
   return (
-    <div className="flex h-full w-full items-center justify-center bg-[var(--bg-app)]">
+    <div className="flex h-full w-full items-center justify-center">
       <Loader2 size={24} className="animate-spin text-[var(--text-muted)]" />
     </div>
   );

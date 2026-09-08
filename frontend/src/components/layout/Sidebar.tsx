@@ -48,8 +48,8 @@ export function Sidebar() {
   };
 
   return (
-    <nav className="flex h-full w-14 shrink-0 flex-col items-center border-r border-[var(--border)] bg-[var(--bg-sidebar)] py-3">
-      <div className="mb-4 flex h-9 w-9 items-center justify-center rounded-md bg-[var(--emerald-dim)] text-[var(--emerald-light)]">
+    <nav className="glass flex h-full w-14 shrink-0 flex-col items-center border-r border-[var(--border)] py-3">
+      <div className="mb-4 flex h-9 w-9 items-center justify-center rounded-xl bg-[var(--accent)] text-[var(--text-inverse)] shadow-[var(--shadow-md)]">
         <Sparkles size={18} strokeWidth={2} />
       </div>
 
@@ -62,14 +62,14 @@ export function Sidebar() {
               key={item.href}
               href={item.href}
               title={item.label}
-              className={`group relative flex h-10 w-10 items-center justify-center rounded-md transition-colors ${
+              className={`group relative flex h-10 w-10 items-center justify-center rounded-xl transition-colors ${
                 isActive
-                  ? "bg-[var(--bg-hover)] text-[var(--emerald-light)]"
+                  ? "bg-[var(--accent-soft)] text-[var(--accent-strong)] shadow-[var(--shadow-sm)]"
                   : "text-[var(--text-secondary)] hover:bg-[var(--bg-hover)] hover:text-[var(--text-primary)]"
               }`}
             >
               {isActive && (
-                <span className="absolute left-0 h-5 w-0.5 rounded-r bg-[var(--emerald)]" />
+                <span className="absolute left-0 h-5 w-0.5 rounded-r bg-[var(--accent)]" />
               )}
               <Icon size={18} strokeWidth={2} />
             </Link>
@@ -81,7 +81,7 @@ export function Sidebar() {
         <Link
           href="/admin"
           title="Admin plateforme"
-          className="mb-1 flex h-10 w-10 items-center justify-center rounded-md text-[var(--text-secondary)] transition-colors hover:bg-[var(--bg-hover)] hover:text-[var(--emerald-light)]"
+          className="mb-1 flex h-10 w-10 items-center justify-center rounded-xl text-[var(--text-secondary)] transition-colors hover:bg-[var(--bg-hover)] hover:text-[var(--accent-strong)]"
         >
           <ShieldCheck size={18} strokeWidth={2} />
         </Link>
@@ -91,7 +91,7 @@ export function Sidebar() {
         type="button"
         onClick={handleLogout}
         title="Se déconnecter"
-        className="flex h-10 w-10 items-center justify-center rounded-md text-[var(--text-secondary)] transition-colors hover:bg-[var(--bg-hover)] hover:text-[var(--text-primary)]"
+        className="flex h-10 w-10 items-center justify-center rounded-xl text-[var(--text-secondary)] transition-colors hover:bg-[var(--bg-hover)] hover:text-[var(--text-primary)]"
       >
         <LogOut size={18} strokeWidth={2} />
       </button>

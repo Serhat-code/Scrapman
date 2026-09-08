@@ -333,7 +333,10 @@ export interface SenderProfile {
   smtp_host: string | null;
   smtp_port: number | null;
   smtp_user: string | null;
-  smtp_password_enc: SmtpPasswordEnc | null;
+  /** Password ciphertext is deliberately stored in a server-only table. */
+  smtp_configured: boolean;
+  /** Legacy field, never returned by the database after the credential migration. */
+  smtp_password_enc?: never;
   smtp_secure: boolean;
   smtp_from_name: string | null;
 
@@ -345,6 +348,14 @@ export interface SenderProfile {
   dns_dkim_ok: boolean | null;
   dns_dmarc_ok: boolean | null;
 
+  created_at: string;
+  updated_at: string;
+}
+
+/** Server-only: no RLS SELECT policy is ever granted on this table. */
+export interface SmtpCredential {
+  team_id: string;
+  smtp_password_enc: SmtpPasswordEnc;
   created_at: string;
   updated_at: string;
 }
@@ -451,6 +462,12 @@ export interface Database {
         Row: Full<SenderProfile>;
         Insert: Mutation<SenderProfile>;
         Update: Mutation<SenderProfile>;
+        Relationships: [];
+      };
+      smtp_credentials: {
+        Row: Full<SmtpCredential>;
+        Insert: Mutation<SmtpCredential>;
+        Update: Mutation<SmtpCredential>;
         Relationships: [];
       };
       accounts: {

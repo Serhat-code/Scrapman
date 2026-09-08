@@ -20,10 +20,10 @@ export default async function AdminLayout({ children }: { children: React.ReactN
   }
 
   return (
-    <div className="flex h-screen w-screen flex-col overflow-hidden bg-[var(--bg-app)]">
+    <div className="flex h-screen w-screen flex-col overflow-hidden">
       <nav className="flex items-center gap-4 border-b border-[var(--border)] px-4 py-3">
         <span className="flex items-center gap-1.5 text-sm font-semibold text-[var(--text-primary)]">
-          <ShieldCheck size={16} className="text-[var(--emerald-light)]" />
+          <ShieldCheck size={16} className="text-[var(--accent-strong)]" />
           Admin plateforme
         </span>
         <Link href="/admin" className="text-xs text-[var(--text-secondary)] hover:text-[var(--text-primary)]">

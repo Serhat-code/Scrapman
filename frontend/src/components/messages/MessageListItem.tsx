@@ -89,14 +89,14 @@ export function MessageListItem({ message }: { message: MessageWithProspect }) {
       {open && (
         <div className="border-t border-[var(--border)] bg-[var(--bg-app)] p-3">
           <div className="relative mb-2">
-            <div className="max-h-72 overflow-y-auto rounded-md border border-[var(--border)] bg-[var(--bg-surface)] p-3 text-xs text-[var(--text-secondary)]">
+            <div className="max-h-72 overflow-y-auto rounded-xl border border-[var(--border)] bg-[var(--bg-surface)] shadow-[var(--shadow-sm)] p-3 text-xs text-[var(--text-secondary)]">
               <p className="mb-2 font-medium text-[var(--text-primary)]">{message.objet}</p>
               <p className="whitespace-pre-wrap leading-relaxed">{message.corps}</p>
             </div>
             <button
               type="button"
               onClick={handleCopy}
-              className="absolute right-2 top-2 flex h-7 w-7 items-center justify-center rounded-md border border-[var(--border)] bg-[var(--bg-surface)] text-[var(--text-secondary)] hover:text-[var(--text-primary)]"
+              className="absolute right-2 top-2 flex h-7 w-7 items-center justify-center rounded-xl border border-[var(--border)] bg-[var(--bg-surface)] shadow-[var(--shadow-sm)] text-[var(--text-secondary)] hover:text-[var(--text-primary)]"
               title="Copier"
             >
               {copied ? <Check size={14} /> : <Copy size={14} />}
@@ -104,7 +104,7 @@ export function MessageListItem({ message }: { message: MessageWithProspect }) {
           </div>
 
           {message.last_error && (
-            <p className="mb-2 rounded-md border border-red-900 bg-red-950/40 px-2 py-1.5 text-xs text-red-400">
+            <p className="mb-2 rounded-md border border-[var(--danger-border)] bg-[var(--danger-soft)] px-2 py-1.5 text-xs text-[var(--danger)]">
               Dernière erreur : {message.last_error}
             </p>
           )}

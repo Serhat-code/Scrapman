@@ -28,7 +28,7 @@ export function ProspectListItem({ prospect, selected, onSelect }: ProspectListI
         checked={isChecked}
         onChange={() => toggleSelectedId(prospect.id)}
         onClick={(e) => e.stopPropagation()}
-        className="mt-1 shrink-0 cursor-pointer accent-[var(--emerald)]"
+        className="mt-1 shrink-0 cursor-pointer accent-[var(--accent)]"
       />
       <button
         type="button"

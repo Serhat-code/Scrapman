@@ -27,7 +27,7 @@ import { CheckboxField, TextField } from "./fields";
 
 function DnsStatus({ label, value }: { label: string; value: boolean | null }) {
   const Icon = value === null ? HelpCircle : value ? CheckCircle2 : XCircle;
-  const color = value === null ? "var(--text-muted)" : value ? "var(--emerald-light)" : "#f87171";
+  const color = value === null ? "var(--text-muted)" : value ? "var(--accent-strong)" : "var(--danger)";
 
   return (
     <div className="flex items-center gap-1.5 text-xs" style={{ color }}>
@@ -40,7 +40,7 @@ function DnsStatus({ label, value }: { label: string; value: boolean | null }) {
 const CHAMPS_REQUIS_SMTP = ["email_from", "smtp_host", "smtp_port", "smtp_user"] as const;
 
 function estConfigure(profile: SenderProfile | null | undefined): boolean {
-  if (!profile || !profile.smtp_password_enc) return false;
+  if (!profile || !profile.smtp_configured) return false;
   return CHAMPS_REQUIS_SMTP.every((champ) => Boolean(profile[champ]));
 }
 
@@ -157,11 +157,11 @@ function SmtpForm({ profile }: { profile: SenderProfile | null | undefined }) {
 
       <div
         className="flex items-center justify-between rounded-md border px-3 py-2.5"
-        style={{ borderColor: configure ? "var(--emerald-light)" : "var(--border)" }}
+        style={{ borderColor: configure ? "var(--accent-strong)" : "var(--border)" }}
       >
         <div className="flex items-center gap-2 text-sm">
           {configure ? (
-            <CheckCircle2 size={16} className="text-[var(--emerald-light)]" />
+            <CheckCircle2 size={16} className="text-[var(--accent-strong)]" />
           ) : (
             <XCircle size={16} className="text-[var(--text-muted)]" />
           )}
@@ -179,9 +179,9 @@ function SmtpForm({ profile }: { profile: SenderProfile | null | undefined }) {
         </Button>
       </div>
       {testStatus === "ok" && (
-        <p className="text-xs text-[var(--emerald-light)]">Connexion SMTP réussie.</p>
+        <p className="text-xs text-[var(--accent-strong)]">Connexion SMTP réussie.</p>
       )}
-      {testStatus === "error" && <p className="text-xs text-red-400">{testError}</p>}
+      {testStatus === "error" && <p className="text-xs text-[var(--danger)]">{testError}</p>}
 
       <div className="flex items-start gap-2 rounded-md border border-[var(--border)] px-3 py-2.5 text-xs text-[var(--text-muted)]">
         <AlertTriangle size={14} className="mt-0.5 shrink-0" />
@@ -253,7 +253,7 @@ function SmtpForm({ profile }: { profile: SenderProfile | null | undefined }) {
               href="https://support.google.com/accounts/answer/185833"
               target="_blank"
               rel="noreferrer"
-              className="text-[var(--emerald-light)] hover:underline"
+              className="text-[var(--accent-strong)] hover:underline"
             >
               Voir le guide officiel Google
             </a>
@@ -267,7 +267,7 @@ function SmtpForm({ profile }: { profile: SenderProfile | null | undefined }) {
               value={password}
               onChange={(event) => setPassword(event.target.value)}
               placeholder="••••••••••••"
-              className="h-10 w-full rounded-md border border-[var(--border)] bg-[var(--bg-app)] px-3 pr-9 text-sm text-[var(--text-primary)] outline-none placeholder:text-[var(--text-muted)] focus:border-[var(--emerald)]"
+              className="h-10 w-full rounded-md border border-[var(--border)] bg-[var(--bg-app)] px-3 pr-9 text-sm text-[var(--text-primary)] outline-none placeholder:text-[var(--text-muted)] focus:border-[var(--accent)]"
             />
             <button
               type="button"
@@ -286,7 +286,7 @@ function SmtpForm({ profile }: { profile: SenderProfile | null | undefined }) {
           </Button>
         </div>
         {passwordStatus === "error" && (
-          <p className="mt-1 text-xs text-red-400">
+          <p className="mt-1 text-xs text-[var(--danger)]">
             Échec de l&apos;enregistrement. Vérifiez la configuration côté serveur
             (SMTP_ENCRYPTION_KEY).
           </p>

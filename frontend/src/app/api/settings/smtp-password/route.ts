@@ -1,7 +1,8 @@
 import { NextResponse } from "next/server";
 
 import { encryptSmtpPassword } from "@/lib/crypto/smtp";
-import { resoudreTeamId } from "@/lib/server/team";
+import { estAdministrateurEquipe, resoudreTeamId } from "@/lib/server/team";
+import { createAdminClient } from "@/lib/supabase/admin";
 import { createClient } from "@/lib/supabase/server";
 
 export async function POST(request: Request) {
@@ -26,15 +27,26 @@ export async function POST(request: Request) {
   if (!teamId) {
     return NextResponse.json({ error: "Aucune équipe associée à ce compte" }, { status: 400 });
   }
+  if (!(await estAdministrateurEquipe(supabase, user.id, teamId))) {
+    return NextResponse.json({ error: "Droits administrateur requis" }, { status: 403 });
+  }
 
   const smtp_password_enc = encryptSmtpPassword(password);
-
-  const { error } = await supabase
-    .from("sender_profiles")
-    .upsert({ user_id: user.id, team_id: teamId, smtp_password_enc }, { onConflict: "team_id" });
+  const admin = createAdminClient();
+  const { error } = await admin
+    .from("smtp_credentials")
+    .upsert({ team_id: teamId, smtp_password_enc }, { onConflict: "team_id" });
 
   if (error) {
     return NextResponse.json({ error: error.message }, { status: 500 });
+  }
+
+  const { error: profileError } = await admin
+    .from("sender_profiles")
+    .update({ smtp_configured: true })
+    .eq("team_id", teamId);
+  if (profileError) {
+    return NextResponse.json({ error: profileError.message }, { status: 500 });
   }
 
   return NextResponse.json({ ok: true });

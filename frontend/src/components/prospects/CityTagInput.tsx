@@ -67,7 +67,7 @@ export function CityTagInput({ cities, onChange, maxCities, disabled }: CityTagI
 
   return (
     <div className="relative">
-      <div className="flex min-h-10 flex-wrap items-center gap-1.5 rounded-md border border-[var(--border)] bg-[var(--bg-app)] px-2 py-1.5 focus-within:border-[var(--emerald)]">
+      <div className="flex min-h-10 flex-wrap items-center gap-1.5 rounded-md border border-[var(--border)] bg-[var(--bg-app)] px-2 py-1.5 focus-within:border-[var(--accent)]">
         {cities.map((city) => (
           <span
             key={city}
@@ -103,7 +103,7 @@ export function CityTagInput({ cities, onChange, maxCities, disabled }: CityTagI
       </p>
 
       {suggestionsVisibles && suggestions.length > 0 && (
-        <ul className="absolute z-10 mt-1 w-full overflow-hidden rounded-md border border-[var(--border)] bg-[var(--bg-surface)] shadow-lg">
+        <ul className="absolute z-10 mt-1 w-full overflow-hidden rounded-xl border border-[var(--border)] bg-[var(--bg-surface)] shadow-[var(--shadow-sm)] shadow-lg">
           {suggestions.map((ville) => (
             <li key={ville}>
               <button

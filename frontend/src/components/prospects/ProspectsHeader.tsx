@@ -24,7 +24,7 @@ export function ProspectsHeader({ total }: { total: number }) {
           value={filters.search}
           onChange={(event) => setFilters({ search: event.target.value })}
           placeholder="Rechercher une entreprise, une ville…"
-          className="h-8 w-full rounded-md border border-[var(--border)] bg-[var(--bg-app)] pl-8 pr-3 text-sm text-[var(--text-primary)] outline-none placeholder:text-[var(--text-muted)] focus:border-[var(--emerald)]"
+          className="h-8 w-full rounded-md border border-[var(--border)] bg-[var(--bg-app)] pl-8 pr-3 text-sm text-[var(--text-primary)] outline-none placeholder:text-[var(--text-muted)] focus:border-[var(--accent)]"
         />
       </div>
 

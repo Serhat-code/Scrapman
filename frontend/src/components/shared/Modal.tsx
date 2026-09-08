@@ -26,9 +26,9 @@ export function Modal({ open, onClose, title, children, footer, width = "32rem" 
   if (!open) return null;
 
   return createPortal(
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 p-4">
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-[var(--overlay)] p-4 backdrop-blur-sm">
       <div
-        className="flex max-h-[90vh] w-full flex-col rounded-md border border-[var(--border)] bg-[var(--bg-surface)]"
+        className="glass-strong flex max-h-[90vh] w-full flex-col rounded-2xl border border-[var(--border)] shadow-[var(--shadow-lg)]"
         style={{ maxWidth: width }}
       >
         <div className="flex items-center justify-between border-b border-[var(--border)] px-4 py-3">

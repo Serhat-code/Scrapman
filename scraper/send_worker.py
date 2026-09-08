@@ -98,9 +98,19 @@ def smtp_pret(profile: dict[str, Any] | None) -> bool:
     """Vérifie que le profil expéditeur a tous les champs SMTP requis."""
     if not profile:
         return False
-    if not profile.get("smtp_password_enc"):
-        return False
     return all(profile.get(champ) for champ in _CHAMPS_SMTP_REQUIS)
+
+
+def _recuperer_smtp_password_enc(client: Any, team_id: str) -> dict[str, Any] | str | None:
+    """Credentials live in a server-only table, separate from public profile data."""
+    resp = (
+        client.table("smtp_credentials")
+        .select("smtp_password_enc")
+        .eq("team_id", team_id)
+        .maybe_single()
+        .execute()
+    )
+    return (resp.data or {}).get("smtp_password_enc") if resp else None
 
 
 def calculer_plafond_quotidien(
@@ -376,7 +386,9 @@ def traiter_messages(
 
             if cible_team_id not in mots_de_passe_cache:
                 try:
-                    mots_de_passe_cache[cible_team_id] = decrypt_smtp_password(profile.get("smtp_password_enc"))
+                    mots_de_passe_cache[cible_team_id] = decrypt_smtp_password(
+                        _recuperer_smtp_password_enc(client, cible_team_id)
+                    )
                 except SmtpDecryptionError as exc:
                     console.print(f"[red]Équipe {cible_team_id} : {exc}[/red]")
                     continue
@@ -558,7 +570,9 @@ def traiter_relances(
 
             if cible_team_id not in mots_de_passe_cache:
                 try:
-                    mots_de_passe_cache[cible_team_id] = decrypt_smtp_password(profile.get("smtp_password_enc"))
+                    mots_de_passe_cache[cible_team_id] = decrypt_smtp_password(
+                        _recuperer_smtp_password_enc(client, cible_team_id)
+                    )
                 except SmtpDecryptionError as exc:
                     console.print(f"[red]Équipe {cible_team_id} : {exc}[/red]")
                     continue

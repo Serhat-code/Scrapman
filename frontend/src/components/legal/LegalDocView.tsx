@@ -7,10 +7,10 @@ import { SimpleMarkdown } from "./SimpleMarkdown";
 
 export function LegalDocView({ titre, contenu }: { titre: string; contenu: string }) {
   return (
-    <div className="flex h-full w-full flex-col overflow-y-auto bg-[var(--bg-app)]">
+    <div className="flex h-full w-full flex-col overflow-y-auto">
       <div className="mx-auto flex w-full max-w-3xl flex-col gap-4 p-6">
         <Link href="/" className="flex items-center gap-2 self-start">
-          <div className="flex h-8 w-8 items-center justify-center rounded-md bg-[var(--emerald-dim)] text-[var(--emerald-light)]">
+          <div className="flex h-8 w-8 items-center justify-center rounded-md bg-[var(--accent-soft)] text-[var(--accent-strong)]">
             <Sparkles size={16} strokeWidth={2} />
           </div>
           <span className="text-sm font-semibold text-[var(--text-primary)]">Scrapman</span>
@@ -18,7 +18,7 @@ export function LegalDocView({ titre, contenu }: { titre: string; contenu: strin
 
         <h1 className="text-base font-semibold text-[var(--text-primary)]">{titre}</h1>
 
-        <div className="rounded-md border border-[var(--border)] bg-[var(--bg-surface)] p-4">
+        <div className="rounded-xl border border-[var(--border)] bg-[var(--bg-surface)] shadow-[var(--shadow-sm)] p-4">
           <SimpleMarkdown contenu={contenu} />
         </div>
 

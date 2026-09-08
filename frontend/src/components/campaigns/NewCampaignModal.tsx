@@ -85,7 +85,7 @@ export function NewCampaignModal() {
             value={nom}
             onChange={(event) => setNom(event.target.value)}
             placeholder="Ex : Restaurants Saint-Étienne — janvier"
-            className="h-10 w-full rounded-md border border-[var(--border)] bg-[var(--bg-app)] px-3 text-sm text-[var(--text-primary)] outline-none placeholder:text-[var(--text-muted)] focus:border-[var(--emerald)]"
+            className="h-10 w-full rounded-md border border-[var(--border)] bg-[var(--bg-app)] px-3 text-sm text-[var(--text-primary)] outline-none placeholder:text-[var(--text-muted)] focus:border-[var(--accent)]"
           />
         </div>
 
@@ -101,7 +101,7 @@ export function NewCampaignModal() {
                 onClick={() => toggleBucket(bucket)}
                 className={`flex-1 rounded-md border px-2 py-1.5 text-xs font-medium transition-colors ${
                   buckets.includes(bucket)
-                    ? "border-[var(--emerald)] bg-[var(--emerald-dim)] text-[var(--emerald-light)]"
+                    ? "border-[var(--accent)] bg-[var(--accent-soft)] text-[var(--accent-strong)]"
                     : "border-[var(--border)] text-[var(--text-secondary)] hover:bg-[var(--bg-hover)]"
                 }`}
               >
@@ -118,7 +118,7 @@ export function NewCampaignModal() {
           <select
             value={naf}
             onChange={(event) => setNaf(event.target.value)}
-            className="h-10 w-full rounded-md border border-[var(--border)] bg-[var(--bg-app)] px-2 text-sm text-[var(--text-primary)] outline-none focus:border-[var(--emerald)]"
+            className="h-10 w-full rounded-md border border-[var(--border)] bg-[var(--bg-app)] px-2 text-sm text-[var(--text-primary)] outline-none focus:border-[var(--accent)]"
           >
             <option value="">Toutes activités</option>
             {NAF_OPTIONS.map((option) => (

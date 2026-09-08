@@ -61,7 +61,7 @@ export function EmailFroidSection({ prospect }: { prospect: Prospect }) {
           <button
             type="button"
             onClick={handleCopy}
-            className="absolute right-2 top-2 flex h-7 w-7 items-center justify-center rounded-md border border-[var(--border)] bg-[var(--bg-surface)] text-[var(--text-secondary)] hover:text-[var(--text-primary)]"
+            className="absolute right-2 top-2 flex h-7 w-7 items-center justify-center rounded-xl border border-[var(--border)] bg-[var(--bg-surface)] shadow-[var(--shadow-sm)] text-[var(--text-secondary)] hover:text-[var(--text-primary)]"
             title="Copier"
           >
             {copied ? <Check size={14} /> : <Copy size={14} />}

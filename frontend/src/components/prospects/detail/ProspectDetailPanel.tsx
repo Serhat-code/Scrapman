@@ -46,10 +46,10 @@ const SCORE_LABELS: Record<string, string> = {
 };
 
 const VERDICT_COLORS: Record<AuditVerdict, string> = {
-  critique: "#ef4444",
-  faible: "#f97316",
-  moyen: "#eab308",
-  bon: "var(--emerald)",
+  critique: "var(--verdict-critique)",
+  faible: "var(--verdict-faible)",
+  moyen: "var(--verdict-moyen)",
+  bon: "var(--verdict-bon)",
 };
 
 function useReEnrich(prospectId: string) {
@@ -134,7 +134,7 @@ export function ProspectDetailPanel() {
             {prospect.telephone && (
               <a
                 href={`tel:${prospect.telephone.replace(/\s/g, "")}`}
-                className="flex items-center gap-2 text-sm text-[var(--text-primary)] hover:text-[var(--emerald-light)]"
+                className="flex items-center gap-2 text-sm text-[var(--text-primary)] hover:text-[var(--accent-strong)]"
               >
                 <Phone size={14} className="text-[var(--text-muted)]" />
                 {prospect.telephone}
@@ -143,7 +143,7 @@ export function ProspectDetailPanel() {
             {prospect.email && (
               <a
                 href={`mailto:${prospect.email}`}
-                className="flex items-center gap-2 truncate text-sm text-[var(--text-primary)] hover:text-[var(--emerald-light)]"
+                className="flex items-center gap-2 truncate text-sm text-[var(--text-primary)] hover:text-[var(--accent-strong)]"
               >
                 <Mail size={14} className="shrink-0 text-[var(--text-muted)]" />
                 <span className="truncate">{prospect.email}</span>
@@ -159,7 +159,7 @@ export function ProspectDetailPanel() {
                 href={prospect.site_url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-2 truncate text-sm text-[var(--text-primary)] hover:text-[var(--emerald-light)]"
+                className="flex items-center gap-2 truncate text-sm text-[var(--text-primary)] hover:text-[var(--accent-strong)]"
               >
                 <Globe size={14} className="shrink-0 text-[var(--text-muted)]" />
                 <span className="truncate">{prospect.site_url}</span>
@@ -174,7 +174,7 @@ export function ProspectDetailPanel() {
                     href={prospect.reseaux_sociaux.facebook}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-2 text-xs text-[var(--text-muted)] hover:text-[var(--emerald-light)]"
+                    className="flex items-center gap-2 text-xs text-[var(--text-muted)] hover:text-[var(--accent-strong)]"
                   >
                     <ExternalLink size={12} /> Facebook
                   </a>
@@ -184,7 +184,7 @@ export function ProspectDetailPanel() {
                     href={prospect.reseaux_sociaux.instagram}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-2 text-xs text-[var(--text-muted)] hover:text-[var(--emerald-light)]"
+                    className="flex items-center gap-2 text-xs text-[var(--text-muted)] hover:text-[var(--accent-strong)]"
                   >
                     <ExternalLink size={12} /> Instagram
                   </a>
@@ -194,7 +194,7 @@ export function ProspectDetailPanel() {
                     href={prospect.reseaux_sociaux.linkedin}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-2 text-xs text-[var(--text-muted)] hover:text-[var(--emerald-light)]"
+                    className="flex items-center gap-2 text-xs text-[var(--text-muted)] hover:text-[var(--accent-strong)]"
                   >
                     <ExternalLink size={12} /> LinkedIn
                   </a>
@@ -257,7 +257,7 @@ export function ProspectDetailPanel() {
                       </div>
                       <div className="h-1.5 w-full overflow-hidden rounded-full bg-[var(--bg-app)]">
                         <div
-                          className="h-full rounded-full bg-[var(--emerald)]"
+                          className="h-full rounded-full bg-[var(--accent)]"
                           style={{ width: `${pct}%` }}
                         />
                       </div>
@@ -299,7 +299,7 @@ export function ProspectDetailPanel() {
                   <Gauge size={12} /> Audit technique
                 </h3>
                 <span
-                  className="rounded-md px-1.5 py-0.5 text-[10px] font-semibold uppercase text-white"
+                  className="rounded-md px-1.5 py-0.5 text-[10px] font-semibold uppercase text-[var(--text-inverse)]"
                   style={{ backgroundColor: VERDICT_COLORS[prospect.audit_site.verdict] }}
                 >
                   {prospect.audit_site.verdict}

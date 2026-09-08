@@ -1,0 +1,2363 @@
+0 verbose cli C:\Program Files\nodejs\node.exe C:\Users\serhat\AppData\Roaming\npm\node_modules\npm\bin\npm-cli.js
+1 info using npm@11.11.0
+2 info using node@v24.11.1
+3 silly config load:file:C:\Users\serhat\AppData\Roaming\npm\node_modules\npm\npmrc
+4 silly config load:file:C:\Users\serhat\Documents\Scrapman\frontend\.npmrc
+5 silly config load:file:C:\Users\serhat\.npmrc
+6 silly config load:file:C:\Users\serhat\AppData\Roaming\npm\etc\npmrc
+7 verbose title npm audit fix
+8 verbose argv "audit" "fix" "--omit" "dev" "--cache" ".npm-cache"
+9 verbose logfile logs-max:10 dir:C:\Users\serhat\Documents\Scrapman\frontend\.npm-cache\_logs\2026-07-27T15_55_42_843Z-
+10 verbose logfile C:\Users\serhat\Documents\Scrapman\frontend\.npm-cache\_logs\2026-07-27T15_55_42_843Z-debug-0.log
+11 silly logfile done cleaning log files
+12 silly packumentCache heap:4496293888 maxSize:1124073472 maxEntrySize:562036736
+13 silly audit bulk request {
+13 silly audit   '@emnapi/runtime': [ '1.11.0' ],
+13 silly audit   '@img/colour': [ '1.1.0' ],
+13 silly audit   '@img/sharp-darwin-arm64': [ '0.34.5' ],
+13 silly audit   '@img/sharp-darwin-x64': [ '0.34.5' ],
+13 silly audit   '@img/sharp-libvips-darwin-arm64': [ '1.2.4' ],
+13 silly audit   '@img/sharp-libvips-darwin-x64': [ '1.2.4' ],
+13 silly audit   '@img/sharp-libvips-linux-arm': [ '1.2.4' ],
+13 silly audit   '@img/sharp-libvips-linux-arm64': [ '1.2.4' ],
+13 silly audit   '@img/sharp-libvips-linux-ppc64': [ '1.2.4' ],
+13 silly audit   '@img/sharp-libvips-linux-riscv64': [ '1.2.4' ],
+13 silly audit   '@img/sharp-libvips-linux-s390x': [ '1.2.4' ],
+13 silly audit   '@img/sharp-libvips-linux-x64': [ '1.2.4' ],
+13 silly audit   '@img/sharp-libvips-linuxmusl-arm64': [ '1.2.4' ],
+13 silly audit   '@img/sharp-libvips-linuxmusl-x64': [ '1.2.4' ],
+13 silly audit   '@img/sharp-linux-arm': [ '0.34.5' ],
+13 silly audit   '@img/sharp-linux-arm64': [ '0.34.5' ],
+13 silly audit   '@img/sharp-linux-ppc64': [ '0.34.5' ],
+13 silly audit   '@img/sharp-linux-riscv64': [ '0.34.5' ],
+13 silly audit   '@img/sharp-linux-s390x': [ '0.34.5' ],
+13 silly audit   '@img/sharp-linux-x64': [ '0.34.5' ],
+13 silly audit   '@img/sharp-linuxmusl-arm64': [ '0.34.5' ],
+13 silly audit   '@img/sharp-linuxmusl-x64': [ '0.34.5' ],
+13 silly audit   '@img/sharp-wasm32': [ '0.34.5' ],
+13 silly audit   '@img/sharp-win32-arm64': [ '0.34.5' ],
+13 silly audit   '@img/sharp-win32-ia32': [ '0.34.5' ],
+13 silly audit   '@img/sharp-win32-x64': [ '0.34.5' ],
+13 silly audit   '@next/env': [ '16.2.11' ],
+13 silly audit   '@next/swc-darwin-arm64': [ '16.2.11' ],
+13 silly audit   '@next/swc-darwin-x64': [ '16.2.11' ],
+13 silly audit   '@next/swc-linux-arm64-gnu': [ '16.2.11' ],
+13 silly audit   '@next/swc-linux-arm64-musl': [ '16.2.11' ],
+13 silly audit   '@next/swc-linux-x64-gnu': [ '16.2.11' ],
+13 silly audit   '@next/swc-linux-x64-musl': [ '16.2.11' ],
+13 silly audit   '@next/swc-win32-arm64-msvc': [ '16.2.11' ],
+13 silly audit   '@next/swc-win32-x64-msvc': [ '16.2.11' ],
+13 silly audit   '@reduxjs/toolkit': [ '2.12.0' ],
+13 silly audit   '@stablelib/base64': [ '1.0.1' ],
+13 silly audit   '@standard-schema/spec': [ '1.1.0' ],
+13 silly audit   '@standard-schema/utils': [ '0.3.0' ],
+13 silly audit   '@supabase/auth-js': [ '2.108.1' ],
+13 silly audit   '@supabase/functions-js': [ '2.108.1' ],
+13 silly audit   '@supabase/phoenix': [ '0.4.2' ],
+13 silly audit   '@supabase/postgrest-js': [ '2.108.1' ],
+13 silly audit   '@supabase/realtime-js': [ '2.108.1' ],
+13 silly audit   '@supabase/ssr': [ '0.12.0' ],
+13 silly audit   '@supabase/storage-js': [ '2.108.1' ],
+13 silly audit   '@supabase/supabase-js': [ '2.108.1' ],
+13 silly audit   '@swc/helpers': [ '0.5.15' ],
+13 silly audit   '@tanstack/query-core': [ '5.101.0' ],
+13 silly audit   '@tanstack/react-query': [ '5.101.0' ],
+13 silly audit   '@types/d3-array': [ '3.2.2' ],
+13 silly audit   '@types/d3-color': [ '3.1.3' ],
+13 silly audit   '@types/d3-ease': [ '3.0.2' ],
+13 silly audit   '@types/d3-interpolate': [ '3.0.4' ],
+13 silly audit   '@types/d3-path': [ '3.1.1' ],
+13 silly audit   '@types/d3-scale': [ '4.0.9' ],
+13 silly audit   '@types/d3-shape': [ '3.1.8' ],
+13 silly audit   '@types/d3-time': [ '3.0.4' ],
+13 silly audit   '@types/d3-timer': [ '3.0.2' ],
+13 silly audit   '@types/node': [ '20.19.42' ],
+13 silly audit   '@types/react': [ '19.2.17' ],
+13 silly audit   '@types/use-sync-external-store': [ '0.0.6' ],
+13 silly audit   semver: [ '7.8.4' ],
+13 silly audit   'baseline-browser-mapping': [ '2.10.35' ],
+13 silly audit   'caniuse-lite': [ '1.0.30001797' ],
+13 silly audit   'client-only': [ '0.0.1' ],
+13 silly audit   clsx: [ '2.1.1' ],
+13 silly audit   cookie: [ '1.1.1' ],
+13 silly audit   csstype: [ '3.2.3' ],
+13 silly audit   'd3-array': [ '3.2.4' ],
+13 silly audit   'd3-color': [ '3.1.0' ],
+13 silly audit   'd3-ease': [ '3.0.1' ],
+13 silly audit   'd3-format': [ '3.1.2' ],
+13 silly audit   'd3-interpolate': [ '3.0.1' ],
+13 silly audit   'd3-path': [ '3.1.0' ],
+13 silly audit   'd3-scale': [ '4.0.2' ],
+13 silly audit   'd3-shape': [ '3.2.0' ],
+13 silly audit   'd3-time': [ '3.1.0' ],
+13 silly audit   'd3-time-format': [ '4.1.0' ],
+13 silly audit   'd3-timer': [ '3.0.1' ],
+13 silly audit   'date-fns': [ '4.4.0' ],
+13 silly audit   'decimal.js-light': [ '2.5.1' ],
+13 silly audit   'detect-libc': [ '2.1.2' ],
+13 silly audit   'es-toolkit': [ '1.49.0' ],
+13 silly audit   eventemitter3: [ '5.0.4' ],
+13 silly audit   'fast-sha256': [ '1.3.0' ],
+13 silly audit   'iceberg-js': [ '0.8.1' ],
+13 silly audit   immer: [ '11.1.9' ],
+13 silly audit   internmap: [ '2.0.3' ],
+13 silly audit   'lucide-react': [ '1.17.0' ],
+13 silly audit   nanoid: [ '3.3.12' ],
+13 silly audit   next: [ '16.2.11' ],
+13 silly audit   postcss: [ '8.4.31' ],
+13 silly audit   nodemailer: [ '9.0.1' ],
+13 silly audit   picocolors: [ '1.1.1' ],
+13 silly audit   'postal-mime': [ '2.7.4' ],
+13 silly audit   react: [ '19.2.4' ],
+13 silly audit   'react-dom': [ '19.2.4' ],
+13 silly audit   'react-is': [ '16.13.1' ],
+13 silly audit   'react-redux': [ '9.3.0' ],
+13 silly audit   recharts: [ '3.9.1' ],
+13 silly audit   redux: [ '5.0.1' ],
+13 silly audit   'redux-thunk': [ '3.1.0' ],
+13 silly audit   reselect: [ '5.2.0' ],
+13 silly audit   resend: [ '6.14.0' ],
+13 silly audit   scheduler: [ '0.27.0' ],
+13 silly audit   sharp: [ '0.34.5' ],
+13 silly audit   'source-map-js': [ '1.2.1' ],
+13 silly audit   standardwebhooks: [ '1.0.0' ],
+13 silly audit   stripe: [ '22.3.0' ],
+13 silly audit   'styled-jsx': [ '5.1.6' ],
+13 silly audit   'tiny-invariant': [ '1.3.3' ],
+13 silly audit   tslib: [ '2.8.1' ],
+13 silly audit   'undici-types': [ '6.21.0' ],
+13 silly audit   'use-sync-external-store': [ '1.6.0' ],
+13 silly audit   'victory-vendor': [ '37.3.6' ],
+13 silly audit   zod: [ '4.4.3' ],
+13 silly audit   zustand: [ '5.0.14' ]
+13 silly audit }
+14 http fetch POST 200 https://registry.npmjs.org/-/npm/v1/security/advisories/bulk 625ms
+15 silly audit report {
+15 silly audit report   postcss: [
+15 silly audit report     {
+15 silly audit report       id: 1117015,
+15 silly audit report       url: 'https://github.com/advisories/GHSA-qx2v-qp2m-jg93',
+15 silly audit report       title: 'PostCSS has XSS via Unescaped </style> in its CSS Stringify Output',
+15 silly audit report       severity: 'moderate',
+15 silly audit report       vulnerable_versions: '<8.5.10',
+15 silly audit report       cwe: [Array],
+15 silly audit report       cvss: [Object]
+15 silly audit report     },
+15 silly audit report     {
+15 silly audit report       id: 1124252,
+15 silly audit report       url: 'https://github.com/advisories/GHSA-6g55-p6wh-862q',
+15 silly audit report       title: 'PostCSS: Arbitrary file read and information disclosure via attacker-controlled sourceMappingURL in CSS comments',
+15 silly audit report       severity: 'high',
+15 silly audit report       vulnerable_versions: '<=8.5.11',
+15 silly audit report       cwe: [Array],
+15 silly audit report       cvss: [Object]
+15 silly audit report     },
+15 silly audit report     {
+15 silly audit report       id: 1124288,
+15 silly audit report       url: 'https://github.com/advisories/GHSA-r28c-9q8g-f849',
+15 silly audit report       title: 'PostCSS: Path Traversal in Previous Source Map Auto-Loading (sourceMappingURL) leads to Arbitrary .map File Disclosure',
+15 silly audit report       severity: 'high',
+15 silly audit report       vulnerable_versions: '<=8.5.17',
+15 silly audit report       cwe: [Array],
+15 silly audit report       cvss: [Object]
+15 silly audit report     }
+15 silly audit report   ],
+15 silly audit report   sharp: [
+15 silly audit report     {
+15 silly audit report       id: 1124066,
+15 silly audit report       url: 'https://github.com/advisories/GHSA-f88m-g3jw-g9cj',
+15 silly audit report       title: 'sharp inherited vulnerabilities in libvips: CVE-2026-33327, CVE-2026-33328, CVE-2026-35590, CVE-2026-35591',
+15 silly audit report       severity: 'high',
+15 silly audit report       vulnerable_versions: '<0.35.0',
+15 silly audit report       cwe: [Array],
+15 silly audit report       cvss: [Object]
+15 silly audit report     }
+15 silly audit report   ]
+15 silly audit report }
+16 silly packumentCache corgi:https://registry.npmjs.org/postcss cache-miss
+17 silly packumentCache corgi:https://registry.npmjs.org/sharp cache-miss
+18 http cache https://registry.npmjs.org/postcss 28ms (cache hit)
+19 silly packumentCache corgi:https://registry.npmjs.org/postcss set size:352693 disposed:false
+20 http cache https://registry.npmjs.org/sharp 39ms (cache hit)
+21 silly packumentCache corgi:https://registry.npmjs.org/sharp set size:291503 disposed:false
+22 silly packumentCache corgi:https://registry.npmjs.org/next cache-miss
+23 http cache https://registry.npmjs.org/next 77ms (cache hit)
+24 silly packumentCache corgi:https://registry.npmjs.org/next set size:25398200 disposed:false
+25 silly idealTree buildDeps
+26 silly fetch manifest next@^16.2.11
+27 silly packumentCache full:https://registry.npmjs.org/next cache-miss
+28 http cache https://registry.npmjs.org/next 196ms (cache hit)
+29 silly packumentCache full:https://registry.npmjs.org/next set size:30996595 disposed:false
+30 silly fetch manifest @opentelemetry/api@^1.1.0
+31 silly packumentCache full:https://registry.npmjs.org/@opentelemetry%2fapi cache-miss
+32 http cache https://registry.npmjs.org/@opentelemetry%2fapi 12ms (cache hit)
+33 silly packumentCache full:https://registry.npmjs.org/@opentelemetry%2fapi set size:272967 disposed:false
+34 silly fetch manifest @playwright/test@^1.51.1
+35 silly packumentCache full:https://registry.npmjs.org/@playwright%2ftest cache-miss
+36 http cache https://registry.npmjs.org/@playwright%2ftest 33ms (cache hit)
+37 silly packumentCache full:https://registry.npmjs.org/@playwright%2ftest set size:9354102 disposed:false
+38 silly fetch manifest babel-plugin-react-compiler@*
+39 silly packumentCache full:https://registry.npmjs.org/babel-plugin-react-compiler cache-miss
+40 http cache https://registry.npmjs.org/babel-plugin-react-compiler 10ms (cache hit)
+41 silly packumentCache full:https://registry.npmjs.org/babel-plugin-react-compiler set size:1356999 disposed:false
+42 silly fetch manifest react@19.2.4
+43 silly packumentCache full:https://registry.npmjs.org/react cache-miss
+44 http cache https://registry.npmjs.org/react 23ms (cache hit)
+45 silly packumentCache full:https://registry.npmjs.org/react set size:6830011 disposed:false
+46 silly fetch manifest react-dom@19.2.4
+47 silly packumentCache full:https://registry.npmjs.org/react-dom cache-miss
+48 http cache https://registry.npmjs.org/react-dom 28ms (cache hit)
+49 silly packumentCache full:https://registry.npmjs.org/react-dom set size:9160340 disposed:false
+50 silly fetch manifest sass@^1.3.0
+51 silly packumentCache full:https://registry.npmjs.org/sass cache-miss
+52 http cache https://registry.npmjs.org/sass 10ms (cache hit)
+53 silly packumentCache full:https://registry.npmjs.org/sass set size:743214 disposed:false
+54 silly placeDep ROOT next@16.2.12 REPLACE for: frontend@0.1.0 want: ^16.2.11
+55 silly fetch manifest postcss@8.4.31
+56 silly packumentCache full:https://registry.npmjs.org/postcss cache-miss
+57 silly fetch manifest @next/env@16.2.12
+58 silly packumentCache full:https://registry.npmjs.org/@next%2fenv cache-miss
+59 silly fetch manifest sharp@^0.34.5
+60 silly packumentCache full:https://registry.npmjs.org/sharp cache-miss
+61 silly fetch manifest @next/swc-darwin-x64@16.2.12
+62 silly packumentCache full:https://registry.npmjs.org/@next%2fswc-darwin-x64 cache-miss
+63 silly fetch manifest @next/swc-darwin-arm64@16.2.12
+64 silly packumentCache full:https://registry.npmjs.org/@next%2fswc-darwin-arm64 cache-miss
+65 silly fetch manifest @next/swc-linux-x64-gnu@16.2.12
+66 silly packumentCache full:https://registry.npmjs.org/@next%2fswc-linux-x64-gnu cache-miss
+67 silly fetch manifest @next/swc-linux-x64-musl@16.2.12
+68 silly packumentCache full:https://registry.npmjs.org/@next%2fswc-linux-x64-musl cache-miss
+69 http cache https://registry.npmjs.org/@next%2fenv 39ms (cache hit)
+70 silly packumentCache full:https://registry.npmjs.org/@next%2fenv set size:7476463 disposed:false
+71 silly fetch manifest @next/swc-win32-x64-msvc@16.2.12
+72 silly packumentCache full:https://registry.npmjs.org/@next%2fswc-win32-x64-msvc cache-miss
+73 http cache https://registry.npmjs.org/@next%2fswc-darwin-arm64 83ms (cache hit)
+74 silly packumentCache full:https://registry.npmjs.org/@next%2fswc-darwin-arm64 set size:5447287 disposed:false
+75 silly fetch manifest @next/swc-linux-arm64-gnu@16.2.12
+76 silly packumentCache full:https://registry.npmjs.org/@next%2fswc-linux-arm64-gnu cache-miss
+77 http cache https://registry.npmjs.org/@next%2fswc-darwin-x64 123ms (cache hit)
+78 silly packumentCache full:https://registry.npmjs.org/@next%2fswc-darwin-x64 set size:5388505 disposed:false
+79 silly fetch manifest @next/swc-linux-arm64-musl@16.2.12
+80 silly packumentCache full:https://registry.npmjs.org/@next%2fswc-linux-arm64-musl cache-miss
+81 http cache https://registry.npmjs.org/@next%2fswc-linux-x64-gnu 160ms (cache hit)
+82 silly packumentCache full:https://registry.npmjs.org/@next%2fswc-linux-x64-gnu set size:5499001 disposed:false
+83 silly fetch manifest @next/swc-win32-arm64-msvc@16.2.12
+84 silly packumentCache full:https://registry.npmjs.org/@next%2fswc-win32-arm64-msvc cache-miss
+85 http cache https://registry.npmjs.org/@next%2fswc-linux-x64-musl 198ms (cache hit)
+86 silly packumentCache full:https://registry.npmjs.org/@next%2fswc-linux-x64-musl set size:5254730 disposed:false
+87 http cache https://registry.npmjs.org/@next%2fswc-win32-arm64-msvc 76ms (cache hit)
+88 silly packumentCache full:https://registry.npmjs.org/@next%2fswc-win32-arm64-msvc set size:5284611 disposed:false
+89 http cache https://registry.npmjs.org/@next%2fswc-linux-arm64-gnu 210ms (cache hit)
+90 silly packumentCache full:https://registry.npmjs.org/@next%2fswc-linux-arm64-gnu set size:5303083 disposed:false
+91 http cache https://registry.npmjs.org/@next%2fswc-win32-x64-msvc 286ms (cache hit)
+92 silly packumentCache full:https://registry.npmjs.org/@next%2fswc-win32-x64-msvc set size:5470141 disposed:false
+93 http cache https://registry.npmjs.org/@next%2fswc-linux-arm64-musl 251ms (cache hit)
+94 silly packumentCache full:https://registry.npmjs.org/@next%2fswc-linux-arm64-musl set size:5321950 disposed:false
+95 http fetch GET 200 https://registry.npmjs.org/postcss 455ms (cache miss)
+96 silly packumentCache full:https://registry.npmjs.org/postcss set size:undefined disposed:false
+97 http fetch GET 200 https://registry.npmjs.org/sharp 673ms (cache miss)
+98 silly packumentCache full:https://registry.npmjs.org/sharp set size:undefined disposed:false
+99 silly placeDep ROOT @next/env@16.2.12 OK for: next@16.2.12 want: 16.2.12
+100 silly placeDep ROOT @next/swc-darwin-arm64@16.2.12 OK for: next@16.2.12 want: 16.2.12
+101 silly placeDep ROOT @next/swc-darwin-x64@16.2.12 OK for: next@16.2.12 want: 16.2.12
+102 silly placeDep ROOT @next/swc-linux-arm64-gnu@16.2.12 OK for: next@16.2.12 want: 16.2.12
+103 silly placeDep ROOT @next/swc-linux-arm64-musl@16.2.12 OK for: next@16.2.12 want: 16.2.12
+104 silly placeDep ROOT @next/swc-linux-x64-gnu@16.2.12 OK for: next@16.2.12 want: 16.2.12
+105 silly placeDep ROOT @next/swc-linux-x64-musl@16.2.12 OK for: next@16.2.12 want: 16.2.12
+106 silly placeDep ROOT @next/swc-win32-arm64-msvc@16.2.12 OK for: next@16.2.12 want: 16.2.12
+107 silly placeDep ROOT @next/swc-win32-x64-msvc@16.2.12 OK for: next@16.2.12 want: 16.2.12
+108 silly placeDep node_modules/next postcss@8.4.31 KEEP for: next@16.2.12 want: 8.4.31
+109 silly placeDep ROOT sharp@0.34.5 KEEP for: next@16.2.12 want: ^0.34.5
+110 silly fetch manifest postcss@^8.5.15
+111 silly packumentCache full:https://registry.npmjs.org/postcss cache-miss
+112 http cache https://registry.npmjs.org/postcss 9ms (cache hit)
+113 silly packumentCache full:https://registry.npmjs.org/postcss set size:749954 disposed:false
+114 silly placeDep ROOT postcss@8.5.23 REPLACE for: vite@8.0.16 want: ^8.5.15
+115 silly fetch manifest nanoid@^3.3.16
+116 silly packumentCache full:https://registry.npmjs.org/nanoid cache-miss
+117 http fetch GET 200 https://registry.npmjs.org/nanoid 153ms (cache miss)
+118 silly packumentCache full:https://registry.npmjs.org/nanoid set size:undefined disposed:false
+119 silly placeDep ROOT nanoid@3.3.16 REPLACE for: postcss@8.5.23 want: ^3.3.16
+120 silly reify mark retired [
+120 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\@alloc\\quick-lru'
+120 silly reify ]
+121 silly reify mark retired [
+121 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\@babel\\code-frame'
+121 silly reify ]
+122 silly reify mark retired [
+122 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\@babel\\compat-data'
+122 silly reify ]
+123 silly reify mark retired [
+123 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\@babel\\core'
+123 silly reify ]
+124 silly reify mark retired [
+124 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\@babel\\generator'
+124 silly reify ]
+125 silly reify mark retired [
+125 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\@babel\\helper-compilation-targets'
+125 silly reify ]
+126 silly reify mark retired [
+126 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\@babel\\helper-globals'
+126 silly reify ]
+127 silly reify mark retired [
+127 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\@babel\\helper-module-imports'
+127 silly reify ]
+128 silly reify mark retired [
+128 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\@babel\\helper-module-transforms'
+128 silly reify ]
+129 silly reify mark retired [
+129 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\@babel\\helper-string-parser'
+129 silly reify ]
+130 silly reify mark retired [
+130 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\@babel\\helper-validator-identifier'
+130 silly reify ]
+131 silly reify mark retired [
+131 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\@babel\\helper-validator-option'
+131 silly reify ]
+132 silly reify mark retired [
+132 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\@babel\\helpers'
+132 silly reify ]
+133 silly reify mark retired [
+133 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\@babel\\parser',
+133 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.bin\\parser',
+133 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.bin\\parser.cmd',
+133 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.bin\\parser.ps1'
+133 silly reify ]
+134 silly reify mark retired [
+134 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\@babel\\template'
+134 silly reify ]
+135 silly reify mark retired [
+135 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\@babel\\traverse'
+135 silly reify ]
+136 silly reify mark retired [
+136 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\@babel\\types'
+136 silly reify ]
+137 silly reify mark retired [
+137 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\@emnapi\\core'
+137 silly reify ]
+138 silly reify mark retired [
+138 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\@emnapi\\wasi-threads'
+138 silly reify ]
+139 silly reify mark retired [
+139 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\@eslint-community\\eslint-utils'
+139 silly reify ]
+140 silly reify mark retired [
+140 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\@eslint-community\\regexpp'
+140 silly reify ]
+141 silly reify mark retired [
+141 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\@eslint\\config-array'
+141 silly reify ]
+142 silly reify mark retired [
+142 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\@eslint\\config-helpers'
+142 silly reify ]
+143 silly reify mark retired [
+143 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\@eslint\\core'
+143 silly reify ]
+144 silly reify mark retired [
+144 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\@eslint\\eslintrc'
+144 silly reify ]
+145 silly reify mark retired [
+145 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\@eslint\\js'
+145 silly reify ]
+146 silly reify mark retired [
+146 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\@eslint\\object-schema'
+146 silly reify ]
+147 silly reify mark retired [
+147 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\@eslint\\plugin-kit'
+147 silly reify ]
+148 silly reify mark retired [
+148 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\@humanfs\\core'
+148 silly reify ]
+149 silly reify mark retired [
+149 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\@humanfs\\node'
+149 silly reify ]
+150 silly reify mark retired [
+150 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\@humanfs\\types'
+150 silly reify ]
+151 silly reify mark retired [
+151 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\@humanwhocodes\\module-importer'
+151 silly reify ]
+152 silly reify mark retired [
+152 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\@humanwhocodes\\retry'
+152 silly reify ]
+153 silly reify mark retired [
+153 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\@jridgewell\\gen-mapping'
+153 silly reify ]
+154 silly reify mark retired [
+154 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\@jridgewell\\remapping'
+154 silly reify ]
+155 silly reify mark retired [
+155 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\@jridgewell\\resolve-uri'
+155 silly reify ]
+156 silly reify mark retired [
+156 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\@jridgewell\\sourcemap-codec'
+156 silly reify ]
+157 silly reify mark retired [
+157 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\@jridgewell\\trace-mapping'
+157 silly reify ]
+158 silly reify mark retired [
+158 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\@napi-rs\\wasm-runtime'
+158 silly reify ]
+159 silly reify mark retired [
+159 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\@next\\env'
+159 silly reify ]
+160 silly reify mark retired [
+160 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\@next\\eslint-plugin-next'
+160 silly reify ]
+161 silly reify mark retired [
+161 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\@next\\swc-win32-x64-msvc'
+161 silly reify ]
+162 silly reify mark retired [
+162 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\@nodelib\\fs.scandir'
+162 silly reify ]
+163 silly reify mark retired [
+163 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\@nodelib\\fs.stat'
+163 silly reify ]
+164 silly reify mark retired [
+164 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\@nodelib\\fs.walk'
+164 silly reify ]
+165 silly reify mark retired [
+165 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\@nolyfill\\is-core-module'
+165 silly reify ]
+166 silly reify mark retired [
+166 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\@oxc-project\\types'
+166 silly reify ]
+167 silly reify mark retired [
+167 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\@rolldown\\binding-win32-x64-msvc'
+167 silly reify ]
+168 silly reify mark retired [
+168 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\@rolldown\\pluginutils'
+168 silly reify ]
+169 silly reify mark retired [
+169 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\@rtsao\\scc'
+169 silly reify ]
+170 silly reify mark retired [
+170 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\@tailwindcss\\node'
+170 silly reify ]
+171 silly reify mark retired [
+171 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\@tailwindcss\\oxide'
+171 silly reify ]
+172 silly reify mark retired [
+172 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\@tailwindcss\\oxide-win32-x64-msvc'
+172 silly reify ]
+173 silly reify mark retired [
+173 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\@tailwindcss\\postcss'
+173 silly reify ]
+174 silly reify mark retired [
+174 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\@tybys\\wasm-util'
+174 silly reify ]
+175 silly reify mark retired [
+175 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\@types\\chai'
+175 silly reify ]
+176 silly reify mark retired [
+176 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\@types\\deep-eql'
+176 silly reify ]
+177 silly reify mark retired [
+177 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\@types\\estree'
+177 silly reify ]
+178 silly reify mark retired [
+178 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\@types\\json-schema'
+178 silly reify ]
+179 silly reify mark retired [
+179 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\@types\\json5'
+179 silly reify ]
+180 silly reify mark retired [
+180 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\@types\\nodemailer'
+180 silly reify ]
+181 silly reify mark retired [
+181 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\@types\\react-dom'
+181 silly reify ]
+182 silly reify mark retired [
+182 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\@typescript-eslint\\eslint-plugin'
+182 silly reify ]
+183 silly reify mark retired [
+183 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\@typescript-eslint\\parser'
+183 silly reify ]
+184 silly reify mark retired [
+184 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\@typescript-eslint\\project-service'
+184 silly reify ]
+185 silly reify mark retired [
+185 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\@typescript-eslint\\scope-manager'
+185 silly reify ]
+186 silly reify mark retired [
+186 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\@typescript-eslint\\tsconfig-utils'
+186 silly reify ]
+187 silly reify mark retired [
+187 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\@typescript-eslint\\type-utils'
+187 silly reify ]
+188 silly reify mark retired [
+188 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\@typescript-eslint\\types'
+188 silly reify ]
+189 silly reify mark retired [
+189 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\@typescript-eslint\\typescript-estree'
+189 silly reify ]
+190 silly reify mark retired [
+190 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\@typescript-eslint\\utils'
+190 silly reify ]
+191 silly reify mark retired [
+191 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\@typescript-eslint\\visitor-keys'
+191 silly reify ]
+192 silly reify mark retired [
+192 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\@unrs\\resolver-binding-win32-x64-msvc'
+192 silly reify ]
+193 silly reify mark retired [
+193 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\@vitest\\expect'
+193 silly reify ]
+194 silly reify mark retired [
+194 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\@vitest\\mocker'
+194 silly reify ]
+195 silly reify mark retired [
+195 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\@vitest\\pretty-format'
+195 silly reify ]
+196 silly reify mark retired [
+196 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\@vitest\\runner'
+196 silly reify ]
+197 silly reify mark retired [
+197 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\@vitest\\snapshot'
+197 silly reify ]
+198 silly reify mark retired [
+198 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\@vitest\\spy'
+198 silly reify ]
+199 silly reify mark retired [
+199 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\@vitest\\utils'
+199 silly reify ]
+200 silly reify mark retired [
+200 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\acorn',
+200 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.bin\\acorn',
+200 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.bin\\acorn.cmd',
+200 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.bin\\acorn.ps1'
+200 silly reify ]
+201 silly reify mark retired [
+201 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\acorn-jsx'
+201 silly reify ]
+202 silly reify mark retired [
+202 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\ajv'
+202 silly reify ]
+203 silly reify mark retired [
+203 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\ansi-styles'
+203 silly reify ]
+204 silly reify mark retired [
+204 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\argparse'
+204 silly reify ]
+205 silly reify mark retired [
+205 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\aria-query'
+205 silly reify ]
+206 silly reify mark retired [
+206 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\array-buffer-byte-length'
+206 silly reify ]
+207 silly reify mark retired [
+207 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\array-includes'
+207 silly reify ]
+208 silly reify mark retired [
+208 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\array.prototype.findlast'
+208 silly reify ]
+209 silly reify mark retired [
+209 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\array.prototype.findlastindex'
+209 silly reify ]
+210 silly reify mark retired [
+210 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\array.prototype.flat'
+210 silly reify ]
+211 silly reify mark retired [
+211 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\array.prototype.flatmap'
+211 silly reify ]
+212 silly reify mark retired [
+212 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\array.prototype.tosorted'
+212 silly reify ]
+213 silly reify mark retired [
+213 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\arraybuffer.prototype.slice'
+213 silly reify ]
+214 silly reify mark retired [
+214 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\assertion-error'
+214 silly reify ]
+215 silly reify mark retired [
+215 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\ast-types-flow'
+215 silly reify ]
+216 silly reify mark retired [
+216 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\async-function'
+216 silly reify ]
+217 silly reify mark retired [
+217 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\available-typed-arrays'
+217 silly reify ]
+218 silly reify mark retired [
+218 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\axe-core'
+218 silly reify ]
+219 silly reify mark retired [
+219 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\axobject-query'
+219 silly reify ]
+220 silly reify mark retired [
+220 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\balanced-match'
+220 silly reify ]
+221 silly reify mark retired [
+221 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\brace-expansion'
+221 silly reify ]
+222 silly reify mark retired [
+222 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\braces'
+222 silly reify ]
+223 silly reify mark retired [
+223 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\browserslist',
+223 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.bin\\browserslist',
+223 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.bin\\browserslist.cmd',
+223 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.bin\\browserslist.ps1'
+223 silly reify ]
+224 silly reify mark retired [
+224 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\call-bind'
+224 silly reify ]
+225 silly reify mark retired [
+225 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\call-bind-apply-helpers'
+225 silly reify ]
+226 silly reify mark retired [
+226 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\call-bound'
+226 silly reify ]
+227 silly reify mark retired [
+227 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\callsites'
+227 silly reify ]
+228 silly reify mark retired [
+228 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\chai'
+228 silly reify ]
+229 silly reify mark retired [
+229 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\chalk'
+229 silly reify ]
+230 silly reify mark retired [
+230 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\color-convert'
+230 silly reify ]
+231 silly reify mark retired [
+231 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\color-name'
+231 silly reify ]
+232 silly reify mark retired [
+232 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\concat-map'
+232 silly reify ]
+233 silly reify mark retired [
+233 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\convert-source-map'
+233 silly reify ]
+234 silly reify mark retired [
+234 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\cross-spawn'
+234 silly reify ]
+235 silly reify mark retired [
+235 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\damerau-levenshtein'
+235 silly reify ]
+236 silly reify mark retired [
+236 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\data-view-buffer'
+236 silly reify ]
+237 silly reify mark retired [
+237 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\data-view-byte-length'
+237 silly reify ]
+238 silly reify mark retired [
+238 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\data-view-byte-offset'
+238 silly reify ]
+239 silly reify mark retired [
+239 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\debug'
+239 silly reify ]
+240 silly reify mark retired [
+240 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\deep-is'
+240 silly reify ]
+241 silly reify mark retired [
+241 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\define-data-property'
+241 silly reify ]
+242 silly reify mark retired [
+242 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\define-properties'
+242 silly reify ]
+243 silly reify mark retired [
+243 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\doctrine'
+243 silly reify ]
+244 silly reify mark retired [
+244 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\dunder-proto'
+244 silly reify ]
+245 silly reify mark retired [
+245 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\electron-to-chromium'
+245 silly reify ]
+246 silly reify mark retired [
+246 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\emoji-regex'
+246 silly reify ]
+247 silly reify mark retired [
+247 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\enhanced-resolve'
+247 silly reify ]
+248 silly reify mark retired [
+248 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\es-abstract'
+248 silly reify ]
+249 silly reify mark retired [
+249 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\es-define-property'
+249 silly reify ]
+250 silly reify mark retired [
+250 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\es-errors'
+250 silly reify ]
+251 silly reify mark retired [
+251 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\es-iterator-helpers'
+251 silly reify ]
+252 silly reify mark retired [
+252 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\es-module-lexer'
+252 silly reify ]
+253 silly reify mark retired [
+253 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\es-object-atoms'
+253 silly reify ]
+254 silly reify mark retired [
+254 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\es-set-tostringtag'
+254 silly reify ]
+255 silly reify mark retired [
+255 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\es-shim-unscopables'
+255 silly reify ]
+256 silly reify mark retired [
+256 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\es-to-primitive'
+256 silly reify ]
+257 silly reify mark retired [
+257 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\escalade'
+257 silly reify ]
+258 silly reify mark retired [
+258 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\escape-string-regexp'
+258 silly reify ]
+259 silly reify mark retired [
+259 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\eslint',
+259 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.bin\\eslint',
+259 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.bin\\eslint.cmd',
+259 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.bin\\eslint.ps1'
+259 silly reify ]
+260 silly reify mark retired [
+260 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\eslint-config-next'
+260 silly reify ]
+261 silly reify mark retired [
+261 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\eslint-import-resolver-node'
+261 silly reify ]
+262 silly reify mark retired [
+262 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\eslint-import-resolver-typescript'
+262 silly reify ]
+263 silly reify mark retired [
+263 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\eslint-module-utils'
+263 silly reify ]
+264 silly reify mark retired [
+264 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\eslint-plugin-import'
+264 silly reify ]
+265 silly reify mark retired [
+265 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\eslint-plugin-jsx-a11y'
+265 silly reify ]
+266 silly reify mark retired [
+266 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\eslint-plugin-react'
+266 silly reify ]
+267 silly reify mark retired [
+267 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\eslint-plugin-react-hooks'
+267 silly reify ]
+268 silly reify mark retired [
+268 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\eslint-scope'
+268 silly reify ]
+269 silly reify mark retired [
+269 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\eslint-visitor-keys'
+269 silly reify ]
+270 silly reify mark retired [
+270 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\espree'
+270 silly reify ]
+271 silly reify mark retired [
+271 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\esquery'
+271 silly reify ]
+272 silly reify mark retired [
+272 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\esrecurse'
+272 silly reify ]
+273 silly reify mark retired [
+273 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\estraverse'
+273 silly reify ]
+274 silly reify mark retired [
+274 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\estree-walker'
+274 silly reify ]
+275 silly reify mark retired [
+275 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\esutils'
+275 silly reify ]
+276 silly reify mark retired [
+276 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\expect-type'
+276 silly reify ]
+277 silly reify mark retired [
+277 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\fast-deep-equal'
+277 silly reify ]
+278 silly reify mark retired [
+278 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\fast-glob'
+278 silly reify ]
+279 silly reify mark retired [
+279 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\fast-json-stable-stringify'
+279 silly reify ]
+280 silly reify mark retired [
+280 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\fast-levenshtein'
+280 silly reify ]
+281 silly reify mark retired [
+281 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\fastq'
+281 silly reify ]
+282 silly reify mark retired [
+282 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\file-entry-cache'
+282 silly reify ]
+283 silly reify mark retired [
+283 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\fill-range'
+283 silly reify ]
+284 silly reify mark retired [
+284 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\find-up'
+284 silly reify ]
+285 silly reify mark retired [
+285 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\flat-cache'
+285 silly reify ]
+286 silly reify mark retired [
+286 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\flatted'
+286 silly reify ]
+287 silly reify mark retired [
+287 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\for-each'
+287 silly reify ]
+288 silly reify mark retired [
+288 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\function-bind'
+288 silly reify ]
+289 silly reify mark retired [
+289 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\function.prototype.name'
+289 silly reify ]
+290 silly reify mark retired [
+290 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\functions-have-names'
+290 silly reify ]
+291 silly reify mark retired [
+291 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\generator-function'
+291 silly reify ]
+292 silly reify mark retired [
+292 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\gensync'
+292 silly reify ]
+293 silly reify mark retired [
+293 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\get-intrinsic'
+293 silly reify ]
+294 silly reify mark retired [
+294 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\get-proto'
+294 silly reify ]
+295 silly reify mark retired [
+295 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\get-symbol-description'
+295 silly reify ]
+296 silly reify mark retired [
+296 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\get-tsconfig'
+296 silly reify ]
+297 silly reify mark retired [
+297 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\glob-parent'
+297 silly reify ]
+298 silly reify mark retired [
+298 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\globals'
+298 silly reify ]
+299 silly reify mark retired [
+299 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\globalthis'
+299 silly reify ]
+300 silly reify mark retired [
+300 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\gopd'
+300 silly reify ]
+301 silly reify mark retired [
+301 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\graceful-fs'
+301 silly reify ]
+302 silly reify mark retired [
+302 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\has-bigints'
+302 silly reify ]
+303 silly reify mark retired [
+303 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\has-flag'
+303 silly reify ]
+304 silly reify mark retired [
+304 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\has-property-descriptors'
+304 silly reify ]
+305 silly reify mark retired [
+305 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\has-proto'
+305 silly reify ]
+306 silly reify mark retired [
+306 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\has-symbols'
+306 silly reify ]
+307 silly reify mark retired [
+307 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\has-tostringtag'
+307 silly reify ]
+308 silly reify mark retired [
+308 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\hasown'
+308 silly reify ]
+309 silly reify mark retired [
+309 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\hermes-estree'
+309 silly reify ]
+310 silly reify mark retired [
+310 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\hermes-parser'
+310 silly reify ]
+311 silly reify mark retired [
+311 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\ignore'
+311 silly reify ]
+312 silly reify mark retired [
+312 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\import-fresh'
+312 silly reify ]
+313 silly reify mark retired [
+313 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\imurmurhash'
+313 silly reify ]
+314 silly reify mark retired [
+314 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\internal-slot'
+314 silly reify ]
+315 silly reify mark retired [
+315 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\is-array-buffer'
+315 silly reify ]
+316 silly reify mark retired [
+316 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\is-async-function'
+316 silly reify ]
+317 silly reify mark retired [
+317 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\is-bigint'
+317 silly reify ]
+318 silly reify mark retired [
+318 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\is-boolean-object'
+318 silly reify ]
+319 silly reify mark retired [
+319 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\is-bun-module'
+319 silly reify ]
+320 silly reify mark retired [
+320 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\is-callable'
+320 silly reify ]
+321 silly reify mark retired [
+321 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\is-core-module'
+321 silly reify ]
+322 silly reify mark retired [
+322 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\is-data-view'
+322 silly reify ]
+323 silly reify mark retired [
+323 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\is-date-object'
+323 silly reify ]
+324 silly reify mark retired [
+324 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\is-extglob'
+324 silly reify ]
+325 silly reify mark retired [
+325 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\is-finalizationregistry'
+325 silly reify ]
+326 silly reify mark retired [
+326 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\is-generator-function'
+326 silly reify ]
+327 silly reify mark retired [
+327 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\is-glob'
+327 silly reify ]
+328 silly reify mark retired [
+328 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\is-map'
+328 silly reify ]
+329 silly reify mark retired [
+329 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\is-negative-zero'
+329 silly reify ]
+330 silly reify mark retired [
+330 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\is-number'
+330 silly reify ]
+331 silly reify mark retired [
+331 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\is-number-object'
+331 silly reify ]
+332 silly reify mark retired [
+332 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\is-regex'
+332 silly reify ]
+333 silly reify mark retired [
+333 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\is-set'
+333 silly reify ]
+334 silly reify mark retired [
+334 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\is-shared-array-buffer'
+334 silly reify ]
+335 silly reify mark retired [
+335 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\is-string'
+335 silly reify ]
+336 silly reify mark retired [
+336 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\is-symbol'
+336 silly reify ]
+337 silly reify mark retired [
+337 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\is-typed-array'
+337 silly reify ]
+338 silly reify mark retired [
+338 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\is-weakmap'
+338 silly reify ]
+339 silly reify mark retired [
+339 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\is-weakref'
+339 silly reify ]
+340 silly reify mark retired [
+340 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\is-weakset'
+340 silly reify ]
+341 silly reify mark retired [
+341 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\isarray'
+341 silly reify ]
+342 silly reify mark retired [
+342 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\isexe'
+342 silly reify ]
+343 silly reify mark retired [
+343 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\iterator.prototype'
+343 silly reify ]
+344 silly reify mark retired [
+344 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\jiti',
+344 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.bin\\jiti',
+344 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.bin\\jiti.cmd',
+344 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.bin\\jiti.ps1'
+344 silly reify ]
+345 silly reify mark retired [
+345 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\js-tokens'
+345 silly reify ]
+346 silly reify mark retired [
+346 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\js-yaml',
+346 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.bin\\js-yaml',
+346 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.bin\\js-yaml.cmd',
+346 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.bin\\js-yaml.ps1'
+346 silly reify ]
+347 silly reify mark retired [
+347 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\jsesc',
+347 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.bin\\jsesc',
+347 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.bin\\jsesc.cmd',
+347 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.bin\\jsesc.ps1'
+347 silly reify ]
+348 silly reify mark retired [
+348 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\json-buffer'
+348 silly reify ]
+349 silly reify mark retired [
+349 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\json-schema-traverse'
+349 silly reify ]
+350 silly reify mark retired [
+350 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\json-stable-stringify-without-jsonify'
+350 silly reify ]
+351 silly reify mark retired [
+351 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\json5',
+351 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.bin\\json5',
+351 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.bin\\json5.cmd',
+351 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.bin\\json5.ps1'
+351 silly reify ]
+352 silly reify mark retired [
+352 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\jsx-ast-utils'
+352 silly reify ]
+353 silly reify mark retired [
+353 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\keyv'
+353 silly reify ]
+354 silly reify mark retired [
+354 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\language-subtag-registry'
+354 silly reify ]
+355 silly reify mark retired [
+355 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\language-tags'
+355 silly reify ]
+356 silly reify mark retired [
+356 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\levn'
+356 silly reify ]
+357 silly reify mark retired [
+357 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\lightningcss'
+357 silly reify ]
+358 silly reify mark retired [
+358 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\lightningcss-win32-x64-msvc'
+358 silly reify ]
+359 silly reify mark retired [
+359 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\locate-path'
+359 silly reify ]
+360 silly reify mark retired [
+360 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\lodash.merge'
+360 silly reify ]
+361 silly reify mark retired [
+361 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\loose-envify',
+361 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.bin\\loose-envify',
+361 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.bin\\loose-envify.cmd',
+361 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.bin\\loose-envify.ps1'
+361 silly reify ]
+362 silly reify mark retired [
+362 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\lru-cache'
+362 silly reify ]
+363 silly reify mark retired [
+363 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\magic-string'
+363 silly reify ]
+364 silly reify mark retired [
+364 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\math-intrinsics'
+364 silly reify ]
+365 silly reify mark retired [
+365 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\merge2'
+365 silly reify ]
+366 silly reify mark retired [
+366 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\micromatch'
+366 silly reify ]
+367 silly reify mark retired [
+367 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\minimatch'
+367 silly reify ]
+368 silly reify mark retired [
+368 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\minimist'
+368 silly reify ]
+369 silly reify mark retired [
+369 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\ms'
+369 silly reify ]
+370 silly reify mark retired [
+370 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\nanoid',
+370 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.bin\\nanoid',
+370 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.bin\\nanoid.cmd',
+370 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.bin\\nanoid.ps1'
+370 silly reify ]
+371 silly reify mark retired [
+371 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\napi-postinstall',
+371 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.bin\\napi-postinstall',
+371 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.bin\\napi-postinstall.cmd',
+371 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.bin\\napi-postinstall.ps1'
+371 silly reify ]
+372 silly reify mark retired [
+372 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\natural-compare'
+372 silly reify ]
+373 silly reify mark retired [
+373 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\next',
+373 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.bin\\next',
+373 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.bin\\next.cmd',
+373 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.bin\\next.ps1'
+373 silly reify ]
+374 silly reify mark retired [
+374 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\node-exports-info'
+374 silly reify ]
+375 silly reify mark retired [
+375 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\node-releases'
+375 silly reify ]
+376 silly reify mark retired [
+376 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\object-assign'
+376 silly reify ]
+377 silly reify mark retired [
+377 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\object-inspect'
+377 silly reify ]
+378 silly reify mark retired [
+378 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\object-keys'
+378 silly reify ]
+379 silly reify mark retired [
+379 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\object.assign'
+379 silly reify ]
+380 silly reify mark retired [
+380 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\object.entries'
+380 silly reify ]
+381 silly reify mark retired [
+381 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\object.fromentries'
+381 silly reify ]
+382 silly reify mark retired [
+382 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\object.groupby'
+382 silly reify ]
+383 silly reify mark retired [
+383 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\object.values'
+383 silly reify ]
+384 silly reify mark retired [
+384 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\obug'
+384 silly reify ]
+385 silly reify mark retired [
+385 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\optionator'
+385 silly reify ]
+386 silly reify mark retired [
+386 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\own-keys'
+386 silly reify ]
+387 silly reify mark retired [
+387 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\p-limit'
+387 silly reify ]
+388 silly reify mark retired [
+388 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\p-locate'
+388 silly reify ]
+389 silly reify mark retired [
+389 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\parent-module'
+389 silly reify ]
+390 silly reify mark retired [
+390 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\path-exists'
+390 silly reify ]
+391 silly reify mark retired [
+391 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\path-key'
+391 silly reify ]
+392 silly reify mark retired [
+392 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\path-parse'
+392 silly reify ]
+393 silly reify mark retired [
+393 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\pathe'
+393 silly reify ]
+394 silly reify mark retired [
+394 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\picomatch'
+394 silly reify ]
+395 silly reify mark retired [
+395 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\possible-typed-array-names'
+395 silly reify ]
+396 silly reify mark retired [
+396 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\postcss'
+396 silly reify ]
+397 silly reify mark retired [
+397 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\prelude-ls'
+397 silly reify ]
+398 silly reify mark retired [
+398 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\prop-types'
+398 silly reify ]
+399 silly reify mark retired [
+399 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\punycode'
+399 silly reify ]
+400 silly reify mark retired [
+400 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\queue-microtask'
+400 silly reify ]
+401 silly reify mark retired [
+401 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\reflect.getprototypeof'
+401 silly reify ]
+402 silly reify mark retired [
+402 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\regexp.prototype.flags'
+402 silly reify ]
+403 silly reify mark retired [
+403 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\resolve',
+403 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.bin\\resolve',
+403 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.bin\\resolve.cmd',
+403 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.bin\\resolve.ps1'
+403 silly reify ]
+404 silly reify mark retired [
+404 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\resolve-from'
+404 silly reify ]
+405 silly reify mark retired [
+405 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\resolve-pkg-maps'
+405 silly reify ]
+406 silly reify mark retired [
+406 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\reusify'
+406 silly reify ]
+407 silly reify mark retired [
+407 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\rolldown',
+407 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.bin\\rolldown',
+407 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.bin\\rolldown.cmd',
+407 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.bin\\rolldown.ps1'
+407 silly reify ]
+408 silly reify mark retired [
+408 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\run-parallel'
+408 silly reify ]
+409 silly reify mark retired [
+409 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\safe-array-concat'
+409 silly reify ]
+410 silly reify mark retired [
+410 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\safe-push-apply'
+410 silly reify ]
+411 silly reify mark retired [
+411 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\safe-regex-test'
+411 silly reify ]
+412 silly reify mark retired [
+412 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\semver',
+412 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.bin\\semver',
+412 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.bin\\semver.cmd',
+412 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.bin\\semver.ps1'
+412 silly reify ]
+413 silly reify mark retired [
+413 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\set-function-length'
+413 silly reify ]
+414 silly reify mark retired [
+414 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\set-function-name'
+414 silly reify ]
+415 silly reify mark retired [
+415 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\set-proto'
+415 silly reify ]
+416 silly reify mark retired [
+416 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\shebang-command'
+416 silly reify ]
+417 silly reify mark retired [
+417 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\shebang-regex'
+417 silly reify ]
+418 silly reify mark retired [
+418 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\side-channel'
+418 silly reify ]
+419 silly reify mark retired [
+419 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\side-channel-list'
+419 silly reify ]
+420 silly reify mark retired [
+420 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\side-channel-map'
+420 silly reify ]
+421 silly reify mark retired [
+421 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\side-channel-weakmap'
+421 silly reify ]
+422 silly reify mark retired [
+422 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\siginfo'
+422 silly reify ]
+423 silly reify mark retired [
+423 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\stable-hash'
+423 silly reify ]
+424 silly reify mark retired [
+424 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\stackback'
+424 silly reify ]
+425 silly reify mark retired [
+425 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\std-env'
+425 silly reify ]
+426 silly reify mark retired [
+426 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\stop-iteration-iterator'
+426 silly reify ]
+427 silly reify mark retired [
+427 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\string.prototype.includes'
+427 silly reify ]
+428 silly reify mark retired [
+428 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\string.prototype.matchall'
+428 silly reify ]
+429 silly reify mark retired [
+429 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\string.prototype.repeat'
+429 silly reify ]
+430 silly reify mark retired [
+430 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\string.prototype.trim'
+430 silly reify ]
+431 silly reify mark retired [
+431 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\string.prototype.trimend'
+431 silly reify ]
+432 silly reify mark retired [
+432 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\string.prototype.trimstart'
+432 silly reify ]
+433 silly reify mark retired [
+433 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\strip-bom'
+433 silly reify ]
+434 silly reify mark retired [
+434 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\strip-json-comments'
+434 silly reify ]
+435 silly reify mark retired [
+435 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\supports-color'
+435 silly reify ]
+436 silly reify mark retired [
+436 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\supports-preserve-symlinks-flag'
+436 silly reify ]
+437 silly reify mark retired [
+437 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\tailwindcss'
+437 silly reify ]
+438 silly reify mark retired [
+438 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\tapable'
+438 silly reify ]
+439 silly reify mark retired [
+439 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\tinybench'
+439 silly reify ]
+440 silly reify mark retired [
+440 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\tinyexec'
+440 silly reify ]
+441 silly reify mark retired [
+441 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\tinyglobby'
+441 silly reify ]
+442 silly reify mark retired [
+442 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\tinyrainbow'
+442 silly reify ]
+443 silly reify mark retired [
+443 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\to-regex-range'
+443 silly reify ]
+444 silly reify mark retired [
+444 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\ts-api-utils'
+444 silly reify ]
+445 silly reify mark retired [
+445 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\tsconfig-paths'
+445 silly reify ]
+446 silly reify mark retired [
+446 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\type-check'
+446 silly reify ]
+447 silly reify mark retired [
+447 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\typed-array-buffer'
+447 silly reify ]
+448 silly reify mark retired [
+448 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\typed-array-byte-length'
+448 silly reify ]
+449 silly reify mark retired [
+449 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\typed-array-byte-offset'
+449 silly reify ]
+450 silly reify mark retired [
+450 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\typed-array-length'
+450 silly reify ]
+451 silly reify mark retired [
+451 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\typescript',
+451 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.bin\\tsc',
+451 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.bin\\tsc.cmd',
+451 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.bin\\tsc.ps1',
+451 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.bin\\tsserver',
+451 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.bin\\tsserver.cmd',
+451 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.bin\\tsserver.ps1'
+451 silly reify ]
+452 silly reify mark retired [
+452 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\typescript-eslint'
+452 silly reify ]
+453 silly reify mark retired [
+453 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\unbox-primitive'
+453 silly reify ]
+454 silly reify mark retired [
+454 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\unrs-resolver'
+454 silly reify ]
+455 silly reify mark retired [
+455 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\update-browserslist-db',
+455 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.bin\\update-browserslist-db',
+455 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.bin\\update-browserslist-db.cmd',
+455 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.bin\\update-browserslist-db.ps1'
+455 silly reify ]
+456 silly reify mark retired [
+456 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\uri-js'
+456 silly reify ]
+457 silly reify mark retired [
+457 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\vite',
+457 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.bin\\vite',
+457 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.bin\\vite.cmd',
+457 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.bin\\vite.ps1'
+457 silly reify ]
+458 silly reify mark retired [
+458 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\vitest',
+458 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.bin\\vitest',
+458 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.bin\\vitest.cmd',
+458 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.bin\\vitest.ps1'
+458 silly reify ]
+459 silly reify mark retired [
+459 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\which',
+459 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.bin\\node-which',
+459 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.bin\\node-which.cmd',
+459 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.bin\\node-which.ps1'
+459 silly reify ]
+460 silly reify mark retired [
+460 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\which-boxed-primitive'
+460 silly reify ]
+461 silly reify mark retired [
+461 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\which-builtin-type'
+461 silly reify ]
+462 silly reify mark retired [
+462 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\which-collection'
+462 silly reify ]
+463 silly reify mark retired [
+463 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\which-typed-array'
+463 silly reify ]
+464 silly reify mark retired [
+464 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\why-is-node-running',
+464 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.bin\\why-is-node-running',
+464 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.bin\\why-is-node-running.cmd',
+464 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.bin\\why-is-node-running.ps1'
+464 silly reify ]
+465 silly reify mark retired [
+465 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\word-wrap'
+465 silly reify ]
+466 silly reify mark retired [
+466 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\yallist'
+466 silly reify ]
+467 silly reify mark retired [
+467 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\yocto-queue'
+467 silly reify ]
+468 silly reify mark retired [
+468 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\zod-validation-error'
+468 silly reify ]
+469 silly reify moves {
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\@alloc\\quick-lru': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\@alloc\\.quick-lru-SBDO1BjF',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\@babel\\code-frame': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\@babel\\.code-frame-Rp6DABRn',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\@babel\\compat-data': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\@babel\\.compat-data-lXVRVzW9',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\@babel\\core': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\@babel\\.core-zsX0xscC',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\@babel\\generator': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\@babel\\.generator-kl4N0VKw',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\@babel\\helper-compilation-targets': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\@babel\\.helper-compilation-targets-vVI5kBih',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\@babel\\helper-globals': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\@babel\\.helper-globals-Qb6apWWC',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\@babel\\helper-module-imports': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\@babel\\.helper-module-imports-KhIklNcp',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\@babel\\helper-module-transforms': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\@babel\\.helper-module-transforms-5NcjAam6',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\@babel\\helper-string-parser': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\@babel\\.helper-string-parser-i0RQeQ83',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\@babel\\helper-validator-identifier': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\@babel\\.helper-validator-identifier-QaE2SkCm',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\@babel\\helper-validator-option': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\@babel\\.helper-validator-option-aSm4FJBd',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\@babel\\helpers': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\@babel\\.helpers-hMS8rSEJ',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\@babel\\parser': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\@babel\\.parser-ArHJsqpS',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.bin\\parser': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.bin\\.parser-vBioMJSZ',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.bin\\parser.cmd': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.bin\\.parser.cmd-tgAPZiZe',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.bin\\parser.ps1': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.bin\\.parser.ps1-8vEANYSf',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\@babel\\template': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\@babel\\.template-BuLn1MJR',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\@babel\\traverse': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\@babel\\.traverse-aMnqV1WU',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\@babel\\types': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\@babel\\.types-4AOJFxdn',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\@emnapi\\core': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\@emnapi\\.core-Oavb1nJl',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\@emnapi\\wasi-threads': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\@emnapi\\.wasi-threads-Ye3waerM',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\@eslint-community\\eslint-utils': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\@eslint-community\\.eslint-utils-FCXh1sln',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\@eslint-community\\regexpp': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\@eslint-community\\.regexpp-cqxAh4wQ',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\@eslint\\config-array': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\@eslint\\.config-array-ZjuUY7lw',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\@eslint\\config-helpers': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\@eslint\\.config-helpers-uTyMKNgp',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\@eslint\\core': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\@eslint\\.core-3aX07lgq',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\@eslint\\eslintrc': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\@eslint\\.eslintrc-hVidEWau',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\@eslint\\js': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\@eslint\\.js-tdqw1OnZ',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\@eslint\\object-schema': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\@eslint\\.object-schema-71BLgY2b',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\@eslint\\plugin-kit': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\@eslint\\.plugin-kit-uEOBV2My',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\@humanfs\\core': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\@humanfs\\.core-lEDHCKvX',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\@humanfs\\node': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\@humanfs\\.node-B9Dtb01Q',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\@humanfs\\types': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\@humanfs\\.types-GL7U97E4',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\@humanwhocodes\\module-importer': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\@humanwhocodes\\.module-importer-8ZSTMtD8',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\@humanwhocodes\\retry': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\@humanwhocodes\\.retry-vreCur4t',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\@jridgewell\\gen-mapping': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\@jridgewell\\.gen-mapping-18qocm3c',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\@jridgewell\\remapping': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\@jridgewell\\.remapping-IgTVWBFg',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\@jridgewell\\resolve-uri': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\@jridgewell\\.resolve-uri-9ti6W0Ls',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\@jridgewell\\sourcemap-codec': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\@jridgewell\\.sourcemap-codec-gJ9VtEk2',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\@jridgewell\\trace-mapping': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\@jridgewell\\.trace-mapping-ZTHSDbB8',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\@napi-rs\\wasm-runtime': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\@napi-rs\\.wasm-runtime-09ekh9rl',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\@next\\env': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\@next\\.env-c2CHe8He',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\@next\\eslint-plugin-next': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\@next\\.eslint-plugin-next-h0nxglYL',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\@next\\swc-win32-x64-msvc': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\@next\\.swc-win32-x64-msvc-A3PYNq5H',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\@nodelib\\fs.scandir': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\@nodelib\\.fs.scandir-hdPNoeX8',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\@nodelib\\fs.stat': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\@nodelib\\.fs.stat-0XfOYhZ1',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\@nodelib\\fs.walk': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\@nodelib\\.fs.walk-LG7boTkH',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\@nolyfill\\is-core-module': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\@nolyfill\\.is-core-module-wJKRcw9s',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\@oxc-project\\types': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\@oxc-project\\.types-Q5jq1hJF',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\@rolldown\\binding-win32-x64-msvc': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\@rolldown\\.binding-win32-x64-msvc-nhlitybI',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\@rolldown\\pluginutils': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\@rolldown\\.pluginutils-gEWTMhcM',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\@rtsao\\scc': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\@rtsao\\.scc-LG4BLLts',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\@tailwindcss\\node': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\@tailwindcss\\.node-I6kkg6kc',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\@tailwindcss\\oxide': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\@tailwindcss\\.oxide-hCkOjgFU',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\@tailwindcss\\oxide-win32-x64-msvc': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\@tailwindcss\\.oxide-win32-x64-msvc-Kt4gUz8y',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\@tailwindcss\\postcss': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\@tailwindcss\\.postcss-RwVGzXPu',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\@tybys\\wasm-util': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\@tybys\\.wasm-util-JHbHMGkD',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\@types\\chai': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\@types\\.chai-hLQDHjMV',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\@types\\deep-eql': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\@types\\.deep-eql-xcSENM4C',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\@types\\estree': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\@types\\.estree-9cmUzC4O',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\@types\\json-schema': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\@types\\.json-schema-xKuiH5R8',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\@types\\json5': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\@types\\.json5-yp51Qlhy',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\@types\\nodemailer': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\@types\\.nodemailer-O1FtvBR1',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\@types\\react-dom': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\@types\\.react-dom-jiCIMQsF',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\@typescript-eslint\\eslint-plugin': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\@typescript-eslint\\.eslint-plugin-kHpgXJUG',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\@typescript-eslint\\parser': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\@typescript-eslint\\.parser-lbwt5p5C',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\@typescript-eslint\\project-service': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\@typescript-eslint\\.project-service-K6qTlpSW',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\@typescript-eslint\\scope-manager': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\@typescript-eslint\\.scope-manager-jrubSnQ6',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\@typescript-eslint\\tsconfig-utils': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\@typescript-eslint\\.tsconfig-utils-qrdoS303',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\@typescript-eslint\\type-utils': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\@typescript-eslint\\.type-utils-YRR6QTXd',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\@typescript-eslint\\types': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\@typescript-eslint\\.types-GL75GZCR',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\@typescript-eslint\\typescript-estree': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\@typescript-eslint\\.typescript-estree-5nRgACqR',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\@typescript-eslint\\utils': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\@typescript-eslint\\.utils-lWHVUv8G',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\@typescript-eslint\\visitor-keys': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\@typescript-eslint\\.visitor-keys-GYdjoy2x',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\@unrs\\resolver-binding-win32-x64-msvc': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\@unrs\\.resolver-binding-win32-x64-msvc-VBUCJhZR',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\@vitest\\expect': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\@vitest\\.expect-kBh5bCUe',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\@vitest\\mocker': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\@vitest\\.mocker-tQZzaL3S',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\@vitest\\pretty-format': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\@vitest\\.pretty-format-PRzFyLs0',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\@vitest\\runner': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\@vitest\\.runner-r9PmCS22',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\@vitest\\snapshot': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\@vitest\\.snapshot-qWiIchUg',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\@vitest\\spy': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\@vitest\\.spy-3fDWpjFC',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\@vitest\\utils': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\@vitest\\.utils-J3isw7PO',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\acorn': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.acorn-1c3ePcRw',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.bin\\acorn': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.bin\\.acorn-aRBRm9qz',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.bin\\acorn.cmd': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.bin\\.acorn.cmd-TzGVGvD8',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.bin\\acorn.ps1': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.bin\\.acorn.ps1-9KnJRXwo',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\acorn-jsx': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.acorn-jsx-2UyeWvD6',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\ajv': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.ajv-oo7gR55R',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\ansi-styles': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.ansi-styles-SVcWjOFO',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\argparse': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.argparse-HtcJHuT6',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\aria-query': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.aria-query-K962bOU4',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\array-buffer-byte-length': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.array-buffer-byte-length-zFGtjoRx',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\array-includes': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.array-includes-V7IW3Ker',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\array.prototype.findlast': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.array.prototype.findlast-SHoTA8HO',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\array.prototype.findlastindex': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.array.prototype.findlastindex-IP2wBY1I',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\array.prototype.flat': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.array.prototype.flat-5QKEwgCM',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\array.prototype.flatmap': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.array.prototype.flatmap-0TXTU6aw',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\array.prototype.tosorted': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.array.prototype.tosorted-8MDPvGnj',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\arraybuffer.prototype.slice': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.arraybuffer.prototype.slice-qQ6xnMMx',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\assertion-error': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.assertion-error-m5GI0vLp',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\ast-types-flow': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.ast-types-flow-I8VuPx9L',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\async-function': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.async-function-XvnbMBe9',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\available-typed-arrays': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.available-typed-arrays-xRLWhgW9',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\axe-core': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.axe-core-T1FbXVhT',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\axobject-query': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.axobject-query-d6PuwgrS',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\balanced-match': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.balanced-match-4qHJHaqk',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\brace-expansion': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.brace-expansion-mEOUZFH4',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\braces': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.braces-voLZsRGo',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\browserslist': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.browserslist-3yTdnZJP',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.bin\\browserslist': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.bin\\.browserslist-8Tb06hqm',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.bin\\browserslist.cmd': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.bin\\.browserslist.cmd-5X0NA0wn',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.bin\\browserslist.ps1': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.bin\\.browserslist.ps1-u71JQhQq',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\call-bind': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.call-bind-ro41PxYF',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\call-bind-apply-helpers': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.call-bind-apply-helpers-4NjBWGRi',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\call-bound': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.call-bound-chjhEOYb',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\callsites': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.callsites-ZxpwSoiF',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\chai': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.chai-LH1BW5L7',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\chalk': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.chalk-T5xGZisi',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\color-convert': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.color-convert-uXZVm9Bh',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\color-name': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.color-name-yQPEAXRU',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\concat-map': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.concat-map-tPIjhFFU',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\convert-source-map': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.convert-source-map-V5eQma7n',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\cross-spawn': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.cross-spawn-4rexoduv',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\damerau-levenshtein': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.damerau-levenshtein-bzVLrj63',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\data-view-buffer': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.data-view-buffer-XNXZoo8r',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\data-view-byte-length': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.data-view-byte-length-AEnYjQEB',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\data-view-byte-offset': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.data-view-byte-offset-cVJh880h',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\debug': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.debug-xLO5MErw',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\deep-is': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.deep-is-vqSCoPAv',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\define-data-property': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.define-data-property-tAfGPxBh',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\define-properties': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.define-properties-s1K6EBZu',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\doctrine': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.doctrine-9dv4HRqw',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\dunder-proto': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.dunder-proto-0FrpHWIm',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\electron-to-chromium': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.electron-to-chromium-rBxCgjfu',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\emoji-regex': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.emoji-regex-m2ihNCJl',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\enhanced-resolve': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.enhanced-resolve-dVJdIf2j',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\es-abstract': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.es-abstract-Hg4XC3hl',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\es-define-property': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.es-define-property-EVmLEMO1',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\es-errors': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.es-errors-zm1klSdp',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\es-iterator-helpers': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.es-iterator-helpers-b3pR7ivi',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\es-module-lexer': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.es-module-lexer-Nb3hz7YB',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\es-object-atoms': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.es-object-atoms-zsUgF3Up',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\es-set-tostringtag': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.es-set-tostringtag-Q9IZdQyY',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\es-shim-unscopables': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.es-shim-unscopables-ilSV6xm5',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\es-to-primitive': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.es-to-primitive-ivGhtevR',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\escalade': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.escalade-Dg1u7gme',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\escape-string-regexp': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.escape-string-regexp-Jc9ueNPv',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\eslint': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.eslint-F5rHxd7T',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.bin\\eslint': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.bin\\.eslint-QAV84dHV',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.bin\\eslint.cmd': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.bin\\.eslint.cmd-DPpJGYXY',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.bin\\eslint.ps1': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.bin\\.eslint.ps1-17VbcQYD',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\eslint-config-next': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.eslint-config-next-ESevIrPv',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\eslint-import-resolver-node': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.eslint-import-resolver-node-5zpQZTAy',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\eslint-import-resolver-typescript': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.eslint-import-resolver-typescript-nCyAsGBM',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\eslint-module-utils': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.eslint-module-utils-cCK3n0Lk',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\eslint-plugin-import': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.eslint-plugin-import-V2n0aPWc',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\eslint-plugin-jsx-a11y': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.eslint-plugin-jsx-a11y-ad1nOiwk',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\eslint-plugin-react': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.eslint-plugin-react-JFPJPAW4',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\eslint-plugin-react-hooks': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.eslint-plugin-react-hooks-RA2RvsMa',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\eslint-scope': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.eslint-scope-Aiam5qdF',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\eslint-visitor-keys': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.eslint-visitor-keys-q8aK9UIG',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\espree': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.espree-b6nag5cM',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\esquery': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.esquery-oUZ3n5zm',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\esrecurse': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.esrecurse-vvy03hVz',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\estraverse': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.estraverse-uWfNwSNe',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\estree-walker': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.estree-walker-Veil7s0D',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\esutils': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.esutils-bhBayxTL',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\expect-type': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.expect-type-9PjKsTsU',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\fast-deep-equal': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.fast-deep-equal-S1lk6a3B',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\fast-glob': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.fast-glob-KunB3wkj',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\fast-json-stable-stringify': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.fast-json-stable-stringify-ofWfKXCg',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\fast-levenshtein': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.fast-levenshtein-U1ZYUX9c',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\fastq': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.fastq-btAVZRSc',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\file-entry-cache': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.file-entry-cache-hHBEmxEK',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\fill-range': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.fill-range-RwIVjc9v',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\find-up': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.find-up-MeaEGBCx',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\flat-cache': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.flat-cache-N2PIjwvA',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\flatted': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.flatted-1roE18NX',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\for-each': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.for-each-yNcmKuTE',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\function-bind': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.function-bind-qzpviDhh',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\function.prototype.name': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.function.prototype.name-CfDrfrxm',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\functions-have-names': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.functions-have-names-tA3QZSFY',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\generator-function': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.generator-function-zvXLJtRw',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\gensync': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.gensync-zpwKgbYs',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\get-intrinsic': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.get-intrinsic-KKETTq2D',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\get-proto': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.get-proto-RbpdFseJ',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\get-symbol-description': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.get-symbol-description-XkNdOaHq',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\get-tsconfig': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.get-tsconfig-a7h3BgL0',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\glob-parent': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.glob-parent-rMQJoFKq',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\globals': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.globals-oCWfDsYS',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\globalthis': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.globalthis-5f7wawcb',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\gopd': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.gopd-wfhoSfQf',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\graceful-fs': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.graceful-fs-FxejYnoE',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\has-bigints': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.has-bigints-Cy1o9WXh',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\has-flag': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.has-flag-762TcVhO',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\has-property-descriptors': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.has-property-descriptors-yG4lKue9',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\has-proto': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.has-proto-O7uPFvIW',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\has-symbols': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.has-symbols-6t8gaTYv',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\has-tostringtag': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.has-tostringtag-Y4OCQAO7',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\hasown': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.hasown-kjJMceeF',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\hermes-estree': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.hermes-estree-rQhMg3Fd',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\hermes-parser': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.hermes-parser-mmO1gOxN',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\ignore': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.ignore-7F097xsq',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\import-fresh': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.import-fresh-eg5lKG98',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\imurmurhash': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.imurmurhash-0FqGxFF9',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\internal-slot': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.internal-slot-4xz55Ka4',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\is-array-buffer': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.is-array-buffer-gcXE7jDF',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\is-async-function': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.is-async-function-36jY1wjS',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\is-bigint': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.is-bigint-HxhfYohN',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\is-boolean-object': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.is-boolean-object-p60tgHQL',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\is-bun-module': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.is-bun-module-zyRlNz1d',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\is-callable': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.is-callable-EaoUgYwI',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\is-core-module': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.is-core-module-xsjL7cJx',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\is-data-view': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.is-data-view-xhrODgjU',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\is-date-object': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.is-date-object-pB2dyEpt',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\is-extglob': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.is-extglob-0UISqsYC',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\is-finalizationregistry': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.is-finalizationregistry-iLdbzysb',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\is-generator-function': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.is-generator-function-gXDHAzuv',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\is-glob': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.is-glob-oAoqc2K4',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\is-map': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.is-map-jqHApeZ2',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\is-negative-zero': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.is-negative-zero-rC1qANVq',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\is-number': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.is-number-QK7pWVe3',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\is-number-object': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.is-number-object-1t4ns63X',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\is-regex': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.is-regex-M4MNMnEv',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\is-set': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.is-set-RBuXidBO',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\is-shared-array-buffer': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.is-shared-array-buffer-zPrHgetV',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\is-string': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.is-string-FwPEJh0S',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\is-symbol': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.is-symbol-UhU42cIP',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\is-typed-array': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.is-typed-array-U4pFhAGS',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\is-weakmap': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.is-weakmap-a3pdn3jZ',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\is-weakref': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.is-weakref-l64nKuwR',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\is-weakset': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.is-weakset-chu05SzD',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\isarray': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.isarray-AZXWrAAc',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\isexe': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.isexe-mtXrmxpF',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\iterator.prototype': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.iterator.prototype-igxToIfG',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\jiti': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.jiti-wR31ooId',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.bin\\jiti': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.bin\\.jiti-8ye2YDGT',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.bin\\jiti.cmd': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.bin\\.jiti.cmd-NpT2AJOY',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.bin\\jiti.ps1': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.bin\\.jiti.ps1-9OtARJHu',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\js-tokens': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.js-tokens-tC9HBLeD',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\js-yaml': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.js-yaml-dS863Afd',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.bin\\js-yaml': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.bin\\.js-yaml-2L8nImcP',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.bin\\js-yaml.cmd': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.bin\\.js-yaml.cmd-aHrSSl4k',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.bin\\js-yaml.ps1': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.bin\\.js-yaml.ps1-GOVxl6lr',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\jsesc': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.jsesc-2J8MrDUN',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.bin\\jsesc': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.bin\\.jsesc-LzYmyZ6w',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.bin\\jsesc.cmd': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.bin\\.jsesc.cmd-0OJ9k5TB',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.bin\\jsesc.ps1': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.bin\\.jsesc.ps1-ZcKtR0JI',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\json-buffer': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.json-buffer-9zlcJmXA',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\json-schema-traverse': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.json-schema-traverse-CuVvMrYf',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\json-stable-stringify-without-jsonify': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.json-stable-stringify-without-jsonify-SKPU6Ix2',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\json5': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.json5-dVNRcbJk',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.bin\\json5': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.bin\\.json5-RAlGEYNv',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.bin\\json5.cmd': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.bin\\.json5.cmd-RkLj9KfO',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.bin\\json5.ps1': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.bin\\.json5.ps1-5SOJMSy2',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\jsx-ast-utils': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.jsx-ast-utils-uopYrumq',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\keyv': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.keyv-92NWRNdn',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\language-subtag-registry': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.language-subtag-registry-0qKlz5Fi',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\language-tags': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.language-tags-Vnr9v4kw',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\levn': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.levn-MBGuOe8Y',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\lightningcss': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.lightningcss-7Lw4v7Q6',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\lightningcss-win32-x64-msvc': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.lightningcss-win32-x64-msvc-ixekLXot',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\locate-path': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.locate-path-bl4t7YOv',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\lodash.merge': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.lodash.merge-Sj7RXyGY',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\loose-envify': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.loose-envify-3yDJTv1E',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.bin\\loose-envify': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.bin\\.loose-envify-TQDCrHra',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.bin\\loose-envify.cmd': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.bin\\.loose-envify.cmd-wHgZh3jq',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.bin\\loose-envify.ps1': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.bin\\.loose-envify.ps1-noCZecV5',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\lru-cache': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.lru-cache-3gqKot62',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\magic-string': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.magic-string-eflQLA2P',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\math-intrinsics': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.math-intrinsics-7arRwwtb',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\merge2': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.merge2-imQXtgPy',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\micromatch': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.micromatch-qSh8cSwW',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\minimatch': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.minimatch-CixpkHfT',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\minimist': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.minimist-sumIYpX2',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\ms': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.ms-ENNTFFEk',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\nanoid': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.nanoid-JMGeWcKQ',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.bin\\nanoid': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.bin\\.nanoid-BJh0Cb1a',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.bin\\nanoid.cmd': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.bin\\.nanoid.cmd-Z34A3j3K',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.bin\\nanoid.ps1': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.bin\\.nanoid.ps1-s1Z3BxYo',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\napi-postinstall': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.napi-postinstall-ZdsJ959G',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.bin\\napi-postinstall': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.bin\\.napi-postinstall-Bd16G6uZ',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.bin\\napi-postinstall.cmd': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.bin\\.napi-postinstall.cmd-rWkb1LO0',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.bin\\napi-postinstall.ps1': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.bin\\.napi-postinstall.ps1-VQ2hrj4r',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\natural-compare': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.natural-compare-2EahOo0R',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\next': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.next-LQ4sJxNu',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.bin\\next': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.bin\\.next-VGjOkZ2M',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.bin\\next.cmd': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.bin\\.next.cmd-ec9O1zOq',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.bin\\next.ps1': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.bin\\.next.ps1-aqveLDrZ',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\node-exports-info': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.node-exports-info-mJFMsDD7',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\node-releases': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.node-releases-vsIFkGaN',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\object-assign': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.object-assign-pB60IR5H',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\object-inspect': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.object-inspect-wuCREQ97',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\object-keys': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.object-keys-m44RIkwB',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\object.assign': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.object.assign-xV6qx5sQ',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\object.entries': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.object.entries-AkVcYhYN',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\object.fromentries': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.object.fromentries-udBUalxF',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\object.groupby': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.object.groupby-Zh6ay4Ah',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\object.values': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.object.values-8vcXmjPU',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\obug': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.obug-IpCE2tqX',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\optionator': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.optionator-qvXPaTjO',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\own-keys': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.own-keys-4v8wpLbU',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\p-limit': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.p-limit-XVcCRMXs',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\p-locate': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.p-locate-b5o5KPgJ',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\parent-module': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.parent-module-OsrWslZ7',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\path-exists': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.path-exists-bEwp62Xj',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\path-key': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.path-key-xsZZSWdF',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\path-parse': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.path-parse-LTle3uqb',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\pathe': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.pathe-AwgK6TqG',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\picomatch': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.picomatch-XkJjO6GP',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\possible-typed-array-names': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.possible-typed-array-names-G2YtruFK',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\postcss': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.postcss-gbIPwFL3',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\prelude-ls': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.prelude-ls-ZFdJ0jj3',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\prop-types': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.prop-types-BwTzpoLX',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\punycode': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.punycode-fB7oS7eH',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\queue-microtask': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.queue-microtask-yNwaxzeN',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\reflect.getprototypeof': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.reflect.getprototypeof-oP9gvvDH',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\regexp.prototype.flags': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.regexp.prototype.flags-IYwQOBsi',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\resolve': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.resolve-dm02qeX2',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.bin\\resolve': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.bin\\.resolve-CTdIVJcr',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.bin\\resolve.cmd': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.bin\\.resolve.cmd-6frSJZXJ',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.bin\\resolve.ps1': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.bin\\.resolve.ps1-OTjprQTw',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\resolve-from': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.resolve-from-0QhwpZLr',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\resolve-pkg-maps': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.resolve-pkg-maps-uXQ3RSym',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\reusify': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.reusify-AgpmcAwJ',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\rolldown': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.rolldown-YHNIIjE3',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.bin\\rolldown': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.bin\\.rolldown-Nq02WbVj',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.bin\\rolldown.cmd': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.bin\\.rolldown.cmd-I9QTRbyA',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.bin\\rolldown.ps1': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.bin\\.rolldown.ps1-DK6uJJSt',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\run-parallel': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.run-parallel-cxbWTHGL',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\safe-array-concat': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.safe-array-concat-jeV1t32E',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\safe-push-apply': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.safe-push-apply-XshNcoxI',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\safe-regex-test': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.safe-regex-test-1MzXzwna',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\semver': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.semver-4SzENXu8',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.bin\\semver': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.bin\\.semver-m1bDplsv',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.bin\\semver.cmd': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.bin\\.semver.cmd-R472slYv',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.bin\\semver.ps1': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.bin\\.semver.ps1-ZWRJF8Gq',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\set-function-length': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.set-function-length-7OxIhpUA',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\set-function-name': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.set-function-name-7zEOvA8H',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\set-proto': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.set-proto-5rKSyTvU',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\shebang-command': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.shebang-command-hkETEwTI',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\shebang-regex': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.shebang-regex-YcwkgcDd',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\side-channel': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.side-channel-xteOMdyX',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\side-channel-list': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.side-channel-list-k15io2xo',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\side-channel-map': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.side-channel-map-RPTN5rVR',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\side-channel-weakmap': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.side-channel-weakmap-nJDrM0tq',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\siginfo': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.siginfo-3J7BypWO',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\stable-hash': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.stable-hash-l4w5pVFc',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\stackback': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.stackback-8Q1Tidbf',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\std-env': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.std-env-WL3ALGKA',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\stop-iteration-iterator': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.stop-iteration-iterator-ly94MoeI',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\string.prototype.includes': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.string.prototype.includes-5ckWxN6I',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\string.prototype.matchall': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.string.prototype.matchall-o9OXkK6w',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\string.prototype.repeat': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.string.prototype.repeat-zynmuIBT',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\string.prototype.trim': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.string.prototype.trim-QzoFw3jV',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\string.prototype.trimend': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.string.prototype.trimend-9VnGblnz',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\string.prototype.trimstart': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.string.prototype.trimstart-3HEgYNIx',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\strip-bom': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.strip-bom-aI1j5yPG',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\strip-json-comments': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.strip-json-comments-3OrI3WLv',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\supports-color': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.supports-color-hmlQRkGB',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\supports-preserve-symlinks-flag': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.supports-preserve-symlinks-flag-Co8Lr2Ik',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\tailwindcss': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.tailwindcss-xeWPXKJg',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\tapable': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.tapable-bBieosjo',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\tinybench': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.tinybench-1sVIW7O2',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\tinyexec': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.tinyexec-UXpQDF5T',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\tinyglobby': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.tinyglobby-kHRL7uFV',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\tinyrainbow': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.tinyrainbow-bFzcT8en',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\to-regex-range': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.to-regex-range-I4lDrALJ',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\ts-api-utils': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.ts-api-utils-jmM3LPsn',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\tsconfig-paths': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.tsconfig-paths-Hx6eCTbP',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\type-check': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.type-check-2ouVLv0Y',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\typed-array-buffer': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.typed-array-buffer-6B5M6iRJ',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\typed-array-byte-length': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.typed-array-byte-length-pFFXziaF',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\typed-array-byte-offset': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.typed-array-byte-offset-74EhVRev',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\typed-array-length': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.typed-array-length-PdNXAVO1',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\typescript': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.typescript-Mx5QEhRv',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.bin\\tsc': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.bin\\.tsc-IbfO9hFB',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.bin\\tsc.cmd': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.bin\\.tsc.cmd-xqWOQcKL',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.bin\\tsc.ps1': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.bin\\.tsc.ps1-YCbWoIbm',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.bin\\tsserver': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.bin\\.tsserver-5wwFn7WL',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.bin\\tsserver.cmd': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.bin\\.tsserver.cmd-670ZKUoX',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.bin\\tsserver.ps1': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.bin\\.tsserver.ps1-XMhKNJlu',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\typescript-eslint': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.typescript-eslint-DdxjVkOY',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\unbox-primitive': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.unbox-primitive-aWhAuCFV',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\unrs-resolver': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.unrs-resolver-jb4T6OSa',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\update-browserslist-db': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.update-browserslist-db-dLYGgH1o',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.bin\\update-browserslist-db': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.bin\\.update-browserslist-db-dtTAvRzR',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.bin\\update-browserslist-db.cmd': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.bin\\.update-browserslist-db.cmd-IQFIRarD',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.bin\\update-browserslist-db.ps1': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.bin\\.update-browserslist-db.ps1-rhU7t7Tc',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\uri-js': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.uri-js-tjXSotsD',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\vite': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.vite-1xkXuLEw',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.bin\\vite': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.bin\\.vite-huTuQZ50',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.bin\\vite.cmd': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.bin\\.vite.cmd-XCoHbtex',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.bin\\vite.ps1': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.bin\\.vite.ps1-IkNAvLUj',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\vitest': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.vitest-1mghLVMP',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.bin\\vitest': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.bin\\.vitest-Z3iGtFV8',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.bin\\vitest.cmd': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.bin\\.vitest.cmd-jRDBpeP0',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.bin\\vitest.ps1': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.bin\\.vitest.ps1-ugyRB79m',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\which': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.which-VIuq6ASz',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.bin\\node-which': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.bin\\.node-which-3TDsWEjh',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.bin\\node-which.cmd': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.bin\\.node-which.cmd-Co0AmYt1',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.bin\\node-which.ps1': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.bin\\.node-which.ps1-cN4sTqsX',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\which-boxed-primitive': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.which-boxed-primitive-kh8EABjE',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\which-builtin-type': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.which-builtin-type-GPy7nWn9',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\which-collection': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.which-collection-i2uhzRo9',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\which-typed-array': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.which-typed-array-aJJRpfuR',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\why-is-node-running': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.why-is-node-running-DQrCo817',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.bin\\why-is-node-running': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.bin\\.why-is-node-running-86nqgAyJ',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.bin\\why-is-node-running.cmd': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.bin\\.why-is-node-running.cmd-bJ1wrbBE',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.bin\\why-is-node-running.ps1': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.bin\\.why-is-node-running.ps1-0rF6tUPV',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\word-wrap': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.word-wrap-2xyczBt7',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\yallist': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.yallist-HsdtloLM',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\yocto-queue': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.yocto-queue-FOrweRi4',
+469 silly reify   'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\zod-validation-error': 'C:\\Users\\serhat\\Documents\\Scrapman\\frontend\\node_modules\\.zod-validation-error-aHLHyTDi'
+469 silly reify }
+470 silly audit bulk request {
+470 silly audit   '@emnapi/runtime': [ '1.11.0' ],
+470 silly audit   '@img/colour': [ '1.1.0' ],
+470 silly audit   '@img/sharp-darwin-arm64': [ '0.34.5' ],
+470 silly audit   '@img/sharp-darwin-x64': [ '0.34.5' ],
+470 silly audit   '@img/sharp-libvips-darwin-arm64': [ '1.2.4' ],
+470 silly audit   '@img/sharp-libvips-darwin-x64': [ '1.2.4' ],
+470 silly audit   '@img/sharp-libvips-linux-arm': [ '1.2.4' ],
+470 silly audit   '@img/sharp-libvips-linux-arm64': [ '1.2.4' ],
+470 silly audit   '@img/sharp-libvips-linux-ppc64': [ '1.2.4' ],
+470 silly audit   '@img/sharp-libvips-linux-riscv64': [ '1.2.4' ],
+470 silly audit   '@img/sharp-libvips-linux-s390x': [ '1.2.4' ],
+470 silly audit   '@img/sharp-libvips-linux-x64': [ '1.2.4' ],
+470 silly audit   '@img/sharp-libvips-linuxmusl-arm64': [ '1.2.4' ],
+470 silly audit   '@img/sharp-libvips-linuxmusl-x64': [ '1.2.4' ],
+470 silly audit   '@img/sharp-linux-arm': [ '0.34.5' ],
+470 silly audit   '@img/sharp-linux-arm64': [ '0.34.5' ],
+470 silly audit   '@img/sharp-linux-ppc64': [ '0.34.5' ],
+470 silly audit   '@img/sharp-linux-riscv64': [ '0.34.5' ],
+470 silly audit   '@img/sharp-linux-s390x': [ '0.34.5' ],
+470 silly audit   '@img/sharp-linux-x64': [ '0.34.5' ],
+470 silly audit   '@img/sharp-linuxmusl-arm64': [ '0.34.5' ],
+470 silly audit   '@img/sharp-linuxmusl-x64': [ '0.34.5' ],
+470 silly audit   '@img/sharp-wasm32': [ '0.34.5' ],
+470 silly audit   '@img/sharp-win32-arm64': [ '0.34.5' ],
+470 silly audit   '@img/sharp-win32-ia32': [ '0.34.5' ],
+470 silly audit   '@img/sharp-win32-x64': [ '0.34.5' ],
+470 silly audit   '@reduxjs/toolkit': [ '2.12.0' ],
+470 silly audit   '@stablelib/base64': [ '1.0.1' ],
+470 silly audit   '@standard-schema/spec': [ '1.1.0' ],
+470 silly audit   '@standard-schema/utils': [ '0.3.0' ],
+470 silly audit   '@supabase/auth-js': [ '2.108.1' ],
+470 silly audit   '@supabase/functions-js': [ '2.108.1' ],
+470 silly audit   '@supabase/phoenix': [ '0.4.2' ],
+470 silly audit   '@supabase/postgrest-js': [ '2.108.1' ],
+470 silly audit   '@supabase/realtime-js': [ '2.108.1' ],
+470 silly audit   '@supabase/ssr': [ '0.12.0' ],
+470 silly audit   '@supabase/storage-js': [ '2.108.1' ],
+470 silly audit   '@supabase/supabase-js': [ '2.108.1' ],
+470 silly audit   '@swc/helpers': [ '0.5.15' ],
+470 silly audit   '@tanstack/query-core': [ '5.101.0' ],
+470 silly audit   '@tanstack/react-query': [ '5.101.0' ],
+470 silly audit   '@types/d3-array': [ '3.2.2' ],
+470 silly audit   '@types/d3-color': [ '3.1.3' ],
+470 silly audit   '@types/d3-ease': [ '3.0.2' ],
+470 silly audit   '@types/d3-interpolate': [ '3.0.4' ],
+470 silly audit   '@types/d3-path': [ '3.1.1' ],
+470 silly audit   '@types/d3-scale': [ '4.0.9' ],
+470 silly audit   '@types/d3-shape': [ '3.1.8' ],
+470 silly audit   '@types/d3-time': [ '3.0.4' ],
+470 silly audit   '@types/d3-timer': [ '3.0.2' ],
+470 silly audit   '@types/node': [ '20.19.42' ],
+470 silly audit   '@types/react': [ '19.2.17' ],
+470 silly audit   '@types/use-sync-external-store': [ '0.0.6' ],
+470 silly audit   semver: [ '7.8.4' ],
+470 silly audit   'baseline-browser-mapping': [ '2.10.35' ],
+470 silly audit   'caniuse-lite': [ '1.0.30001797' ],
+470 silly audit   'client-only': [ '0.0.1' ],
+470 silly audit   clsx: [ '2.1.1' ],
+470 silly audit   cookie: [ '1.1.1' ],
+470 silly audit   csstype: [ '3.2.3' ],
+470 silly audit   'd3-array': [ '3.2.4' ],
+470 silly audit   'd3-color': [ '3.1.0' ],
+470 silly audit   'd3-ease': [ '3.0.1' ],
+470 silly audit   'd3-format': [ '3.1.2' ],
+470 silly audit   'd3-interpolate': [ '3.0.1' ],
+470 silly audit   'd3-path': [ '3.1.0' ],
+470 silly audit   'd3-scale': [ '4.0.2' ],
+470 silly audit   'd3-shape': [ '3.2.0' ],
+470 silly audit   'd3-time': [ '3.1.0' ],
+470 silly audit   'd3-time-format': [ '4.1.0' ],
+470 silly audit   'd3-timer': [ '3.0.1' ],
+470 silly audit   'date-fns': [ '4.4.0' ],
+470 silly audit   'decimal.js-light': [ '2.5.1' ],
+470 silly audit   'detect-libc': [ '2.1.2' ],
+470 silly audit   'es-toolkit': [ '1.49.0' ],
+470 silly audit   eventemitter3: [ '5.0.4' ],
+470 silly audit   'fast-sha256': [ '1.3.0' ],
+470 silly audit   'iceberg-js': [ '0.8.1' ],
+470 silly audit   immer: [ '11.1.9' ],
+470 silly audit   internmap: [ '2.0.3' ],
+470 silly audit   'lucide-react': [ '1.17.0' ],
+470 silly audit   postcss: [ '8.4.31' ],
+470 silly audit   nodemailer: [ '9.0.1' ],
+470 silly audit   picocolors: [ '1.1.1' ],
+470 silly audit   'postal-mime': [ '2.7.4' ],
+470 silly audit   react: [ '19.2.4' ],
+470 silly audit   'react-dom': [ '19.2.4' ],
+470 silly audit   'react-is': [ '16.13.1' ],
+470 silly audit   'react-redux': [ '9.3.0' ],
+470 silly audit   recharts: [ '3.9.1' ],
+470 silly audit   redux: [ '5.0.1' ],
+470 silly audit   'redux-thunk': [ '3.1.0' ],
+470 silly audit   reselect: [ '5.2.0' ],
+470 silly audit   resend: [ '6.14.0' ],
+470 silly audit   scheduler: [ '0.27.0' ],
+470 silly audit   sharp: [ '0.34.5' ],
+470 silly audit   'source-map-js': [ '1.2.1' ],
+470 silly audit   standardwebhooks: [ '1.0.0' ],
+470 silly audit   stripe: [ '22.3.0' ],
+470 silly audit   'styled-jsx': [ '5.1.6' ],
+470 silly audit   'tiny-invariant': [ '1.3.3' ],
+470 silly audit   tslib: [ '2.8.1' ],
+470 silly audit   'undici-types': [ '6.21.0' ],
+470 silly audit   'use-sync-external-store': [ '1.6.0' ],
+470 silly audit   'victory-vendor': [ '37.3.6' ],
+470 silly audit   zod: [ '4.4.3' ],
+470 silly audit   zustand: [ '5.0.14' ],
+470 silly audit   next: [ '16.2.12' ],
+470 silly audit   '@next/env': [ '16.2.12' ],
+470 silly audit   '@next/swc-darwin-arm64': [ '16.2.12' ],
+470 silly audit   '@next/swc-darwin-x64': [ '16.2.12' ],
+470 silly audit   '@next/swc-linux-arm64-gnu': [ '16.2.12' ],
+470 silly audit   '@next/swc-linux-arm64-musl': [ '16.2.12' ],
+470 silly audit   '@next/swc-linux-x64-gnu': [ '16.2.12' ],
+470 silly audit   '@next/swc-linux-x64-musl': [ '16.2.12' ],
+470 silly audit   '@next/swc-win32-arm64-msvc': [ '16.2.12' ],
+470 silly audit   '@next/swc-win32-x64-msvc': [ '16.2.12' ],
+470 silly audit   nanoid: [ '3.3.16' ]
+470 silly audit }
+471 http cache next@https://registry.npmjs.org/next/-/next-16.2.12.tgz 0ms (cache hit)
+472 http cache nanoid@https://registry.npmjs.org/nanoid/-/nanoid-3.3.16.tgz 0ms (cache hit)
+473 http cache @next/swc-win32-x64-msvc@https://registry.npmjs.org/@next/swc-win32-x64-msvc/-/swc-win32-x64-msvc-16.2.12.tgz 0ms (cache hit)
+474 silly tarball no local data for next@https://registry.npmjs.org/next/-/next-16.2.12.tgz. Extracting by manifest.
+475 silly tarball no local data for nanoid@https://registry.npmjs.org/nanoid/-/nanoid-3.3.16.tgz. Extracting by manifest.
+476 http cache @next/env@https://registry.npmjs.org/@next/env/-/env-16.2.12.tgz 0ms (cache hit)
+477 silly tarball no local data for @next/swc-win32-x64-msvc@https://registry.npmjs.org/@next/swc-win32-x64-msvc/-/swc-win32-x64-msvc-16.2.12.tgz. Extracting by manifest.
+478 silly tarball no local data for @next/env@https://registry.npmjs.org/@next/env/-/env-16.2.12.tgz. Extracting by manifest.
+479 http fetch POST 200 https://registry.npmjs.org/-/npm/v1/security/advisories/bulk 259ms
+480 silly audit report {
+480 silly audit report   postcss: [
+480 silly audit report     {
+480 silly audit report       id: 1117015,
+480 silly audit report       url: 'https://github.com/advisories/GHSA-qx2v-qp2m-jg93',
+480 silly audit report       title: 'PostCSS has XSS via Unescaped </style> in its CSS Stringify Output',
+480 silly audit report       severity: 'moderate',
+480 silly audit report       vulnerable_versions: '<8.5.10',
+480 silly audit report       cwe: [Array],
+480 silly audit report       cvss: [Object]
+480 silly audit report     },
+480 silly audit report     {
+480 silly audit report       id: 1124252,
+480 silly audit report       url: 'https://github.com/advisories/GHSA-6g55-p6wh-862q',
+480 silly audit report       title: 'PostCSS: Arbitrary file read and information disclosure via attacker-controlled sourceMappingURL in CSS comments',
+480 silly audit report       severity: 'high',
+480 silly audit report       vulnerable_versions: '<=8.5.11',
+480 silly audit report       cwe: [Array],
+480 silly audit report       cvss: [Object]
+480 silly audit report     },
+480 silly audit report     {
+480 silly audit report       id: 1124288,
+480 silly audit report       url: 'https://github.com/advisories/GHSA-r28c-9q8g-f849',
+480 silly audit report       title: 'PostCSS: Path Traversal in Previous Source Map Auto-Loading (sourceMappingURL) leads to Arbitrary .map File Disclosure',
+480 silly audit report       severity: 'high',
+480 silly audit report       vulnerable_versions: '<=8.5.17',
+480 silly audit report       cwe: [Array],
+480 silly audit report       cvss: [Object]
+480 silly audit report     }
+480 silly audit report   ],
+480 silly audit report   sharp: [
+480 silly audit report     {
+480 silly audit report       id: 1124066,
+480 silly audit report       url: 'https://github.com/advisories/GHSA-f88m-g3jw-g9cj',
+480 silly audit report       title: 'sharp inherited vulnerabilities in libvips: CVE-2026-33327, CVE-2026-33328, CVE-2026-35590, CVE-2026-35591',
+480 silly audit report       severity: 'high',
+480 silly audit report       vulnerable_versions: '<0.35.0',
+480 silly audit report       cwe: [Array],
+480 silly audit report       cvss: [Object]
+480 silly audit report     }
+480 silly audit report   ]
+480 silly audit report }
+481 silly packumentCache corgi:https://registry.npmjs.org/postcss cache-hit
+482 silly packumentCache corgi:https://registry.npmjs.org/sharp cache-hit
+483 silly packumentCache corgi:https://registry.npmjs.org/next cache-miss
+484 http cache https://registry.npmjs.org/next 71ms (cache hit)
+485 silly packumentCache corgi:https://registry.npmjs.org/next set size:25398200 disposed:false
+486 http fetch GET 200 https://registry.npmjs.org/@next/env/-/env-16.2.12.tgz 861ms (cache miss)
+487 http fetch GET 200 https://registry.npmjs.org/nanoid/-/nanoid-3.3.16.tgz 919ms (cache miss)
+488 http fetch GET 200 https://registry.npmjs.org/@next/swc-win32-x64-msvc/-/swc-win32-x64-msvc-16.2.12.tgz 32489ms (cache miss)
+489 http fetch GET 200 https://registry.npmjs.org/next/-/next-16.2.12.tgz 37436ms (cache miss)
+490 silly REMOVE node_modules/zod-validation-error
+491 silly REMOVE node_modules/yocto-queue
+492 silly REMOVE node_modules/yallist
+493 silly REMOVE node_modules/word-wrap
+494 silly REMOVE node_modules/why-is-node-running
+495 silly REMOVE node_modules/which-typed-array
+496 silly REMOVE node_modules/which-collection
+497 silly REMOVE node_modules/which-builtin-type
+498 silly REMOVE node_modules/which-boxed-primitive
+499 silly REMOVE node_modules/which
+500 silly REMOVE node_modules/vitest
+501 silly REMOVE node_modules/vitest/node_modules/picomatch
+502 silly REMOVE node_modules/vite
+503 silly REMOVE node_modules/vite/node_modules/picomatch
+504 silly REMOVE node_modules/uri-js
+505 silly REMOVE node_modules/update-browserslist-db
+506 silly REMOVE node_modules/unrs-resolver
+507 silly REMOVE node_modules/unbox-primitive
+508 silly REMOVE node_modules/typescript-eslint
+509 silly REMOVE node_modules/typescript
+510 silly REMOVE node_modules/typed-array-length
+511 silly REMOVE node_modules/typed-array-byte-offset
+512 silly REMOVE node_modules/typed-array-byte-length
+513 silly REMOVE node_modules/typed-array-buffer
+514 silly REMOVE node_modules/type-check
+515 silly REMOVE node_modules/tsconfig-paths
+516 silly REMOVE node_modules/tsconfig-paths/node_modules/json5
+517 silly REMOVE node_modules/ts-api-utils
+518 silly REMOVE node_modules/to-regex-range
+519 silly REMOVE node_modules/tinyrainbow
+520 silly REMOVE node_modules/tinyglobby
+521 silly REMOVE node_modules/tinyglobby/node_modules/picomatch
+522 silly REMOVE node_modules/tinyglobby/node_modules/fdir
+523 silly REMOVE node_modules/tinyexec
+524 silly REMOVE node_modules/tinybench
+525 silly REMOVE node_modules/tapable
+526 silly REMOVE node_modules/tailwindcss
+527 silly REMOVE node_modules/supports-preserve-symlinks-flag
+528 silly REMOVE node_modules/supports-color
+529 silly REMOVE node_modules/strip-json-comments
+530 silly REMOVE node_modules/strip-bom
+531 silly REMOVE node_modules/string.prototype.trimstart
+532 silly REMOVE node_modules/string.prototype.trimend
+533 silly REMOVE node_modules/string.prototype.trim
+534 silly REMOVE node_modules/string.prototype.repeat
+535 silly REMOVE node_modules/string.prototype.matchall
+536 silly REMOVE node_modules/string.prototype.includes
+537 silly REMOVE node_modules/stop-iteration-iterator
+538 silly REMOVE node_modules/std-env
+539 silly REMOVE node_modules/stackback
+540 silly REMOVE node_modules/stable-hash
+541 silly REMOVE node_modules/siginfo
+542 silly REMOVE node_modules/side-channel-weakmap
+543 silly REMOVE node_modules/side-channel-map
+544 silly REMOVE node_modules/side-channel-list
+545 silly REMOVE node_modules/side-channel
+546 silly REMOVE node_modules/shebang-regex
+547 silly REMOVE node_modules/shebang-command
+548 silly REMOVE node_modules/set-proto
+549 silly REMOVE node_modules/set-function-name
+550 silly REMOVE node_modules/set-function-length
+551 silly REMOVE node_modules/semver
+552 silly REMOVE node_modules/safe-regex-test
+553 silly REMOVE node_modules/safe-push-apply
+554 silly REMOVE node_modules/safe-array-concat
+555 silly REMOVE node_modules/run-parallel
+556 silly REMOVE node_modules/rolldown
+557 silly REMOVE node_modules/reusify
+558 silly REMOVE node_modules/resolve-pkg-maps
+559 silly REMOVE node_modules/resolve-from
+560 silly REMOVE node_modules/resolve
+561 silly REMOVE node_modules/regexp.prototype.flags
+562 silly REMOVE node_modules/reflect.getprototypeof
+563 silly REMOVE node_modules/queue-microtask
+564 silly REMOVE node_modules/punycode
+565 silly REMOVE node_modules/prop-types
+566 silly REMOVE node_modules/prelude-ls
+567 silly REMOVE node_modules/postcss
+568 silly REMOVE node_modules/possible-typed-array-names
+569 silly REMOVE node_modules/picomatch
+570 silly REMOVE node_modules/pathe
+571 silly REMOVE node_modules/path-parse
+572 silly REMOVE node_modules/path-key
+573 silly REMOVE node_modules/path-exists
+574 silly REMOVE node_modules/parent-module
+575 silly REMOVE node_modules/p-locate
+576 silly REMOVE node_modules/p-limit
+577 silly REMOVE node_modules/own-keys
+578 silly REMOVE node_modules/optionator
+579 silly REMOVE node_modules/obug
+580 silly REMOVE node_modules/object.values
+581 silly REMOVE node_modules/object.groupby
+582 silly REMOVE node_modules/object.fromentries
+583 silly REMOVE node_modules/object.entries
+584 silly REMOVE node_modules/object.assign
+585 silly REMOVE node_modules/object-keys
+586 silly REMOVE node_modules/object-inspect
+587 silly REMOVE node_modules/object-assign
+588 silly REMOVE node_modules/node-releases
+589 silly REMOVE node_modules/node-exports-info
+590 silly CHANGE node_modules/next
+591 silly REMOVE node_modules/natural-compare
+592 silly REMOVE node_modules/napi-postinstall
+593 silly CHANGE node_modules/nanoid
+594 silly REMOVE node_modules/ms
+595 silly REMOVE node_modules/minimist
+596 silly REMOVE node_modules/minimatch
+597 silly REMOVE node_modules/micromatch
+598 silly REMOVE node_modules/merge2
+599 silly REMOVE node_modules/math-intrinsics
+600 silly REMOVE node_modules/magic-string
+601 silly REMOVE node_modules/lru-cache
+602 silly REMOVE node_modules/loose-envify
+603 silly REMOVE node_modules/lodash.merge
+604 silly REMOVE node_modules/locate-path
+605 silly REMOVE node_modules/lightningcss-win32-x64-msvc
+606 silly REMOVE node_modules/lightningcss
+607 silly REMOVE node_modules/levn
+608 silly REMOVE node_modules/language-tags
+609 silly REMOVE node_modules/language-subtag-registry
+610 silly REMOVE node_modules/keyv
+611 silly REMOVE node_modules/jsx-ast-utils
+612 silly REMOVE node_modules/json5
+613 silly REMOVE node_modules/json-stable-stringify-without-jsonify
+614 silly REMOVE node_modules/json-schema-traverse
+615 silly REMOVE node_modules/json-buffer
+616 silly REMOVE node_modules/jsesc
+617 silly REMOVE node_modules/js-yaml
+618 silly REMOVE node_modules/js-tokens
+619 silly REMOVE node_modules/jiti
+620 silly REMOVE node_modules/iterator.prototype
+621 silly REMOVE node_modules/isexe
+622 silly REMOVE node_modules/isarray
+623 silly REMOVE node_modules/is-weakset
+624 silly REMOVE node_modules/is-weakref
+625 silly REMOVE node_modules/is-weakmap
+626 silly REMOVE node_modules/is-typed-array
+627 silly REMOVE node_modules/is-symbol
+628 silly REMOVE node_modules/is-string
+629 silly REMOVE node_modules/is-shared-array-buffer
+630 silly REMOVE node_modules/is-set
+631 silly REMOVE node_modules/is-regex
+632 silly REMOVE node_modules/is-number-object
+633 silly REMOVE node_modules/is-number
+634 silly REMOVE node_modules/is-negative-zero
+635 silly REMOVE node_modules/is-map
+636 silly REMOVE node_modules/is-glob
+637 silly REMOVE node_modules/is-generator-function
+638 silly REMOVE node_modules/is-finalizationregistry
+639 silly REMOVE node_modules/is-extglob
+640 silly REMOVE node_modules/is-date-object
+641 silly REMOVE node_modules/is-data-view
+642 silly REMOVE node_modules/is-core-module
+643 silly REMOVE node_modules/is-callable
+644 silly REMOVE node_modules/is-bun-module
+645 silly REMOVE node_modules/is-bun-module/node_modules/semver
+646 silly REMOVE node_modules/is-boolean-object
+647 silly REMOVE node_modules/is-bigint
+648 silly REMOVE node_modules/is-async-function
+649 silly REMOVE node_modules/is-array-buffer
+650 silly REMOVE node_modules/internal-slot
+651 silly REMOVE node_modules/imurmurhash
+652 silly REMOVE node_modules/import-fresh
+653 silly REMOVE node_modules/ignore
+654 silly REMOVE node_modules/hermes-parser
+655 silly REMOVE node_modules/hermes-estree
+656 silly REMOVE node_modules/hasown
+657 silly REMOVE node_modules/has-tostringtag
+658 silly REMOVE node_modules/has-symbols
+659 silly REMOVE node_modules/has-proto
+660 silly REMOVE node_modules/has-property-descriptors
+661 silly REMOVE node_modules/has-flag
+662 silly REMOVE node_modules/has-bigints
+663 silly REMOVE node_modules/graceful-fs
+664 silly REMOVE node_modules/gopd
+665 silly REMOVE node_modules/globalthis
+666 silly REMOVE node_modules/globals
+667 silly REMOVE node_modules/glob-parent
+668 silly REMOVE node_modules/get-tsconfig
+669 silly REMOVE node_modules/get-symbol-description
+670 silly REMOVE node_modules/get-proto
+671 silly REMOVE node_modules/get-intrinsic
+672 silly REMOVE node_modules/gensync
+673 silly REMOVE node_modules/generator-function
+674 silly REMOVE node_modules/functions-have-names
+675 silly REMOVE node_modules/function.prototype.name
+676 silly REMOVE node_modules/function-bind
+677 silly REMOVE node_modules/for-each
+678 silly REMOVE node_modules/flatted
+679 silly REMOVE node_modules/flat-cache
+680 silly REMOVE node_modules/find-up
+681 silly REMOVE node_modules/fill-range
+682 silly REMOVE node_modules/file-entry-cache
+683 silly REMOVE node_modules/fastq
+684 silly REMOVE node_modules/fast-levenshtein
+685 silly REMOVE node_modules/fast-json-stable-stringify
+686 silly REMOVE node_modules/fast-glob
+687 silly REMOVE node_modules/fast-glob/node_modules/glob-parent
+688 silly REMOVE node_modules/fast-deep-equal
+689 silly REMOVE node_modules/expect-type
+690 silly REMOVE node_modules/esutils
+691 silly REMOVE node_modules/estree-walker
+692 silly REMOVE node_modules/estraverse
+693 silly REMOVE node_modules/esrecurse
+694 silly REMOVE node_modules/esquery
+695 silly REMOVE node_modules/espree
+696 silly REMOVE node_modules/eslint-visitor-keys
+697 silly REMOVE node_modules/eslint-scope
+698 silly REMOVE node_modules/eslint-plugin-react-hooks
+699 silly REMOVE node_modules/eslint-plugin-react
+700 silly REMOVE node_modules/eslint-plugin-jsx-a11y
+701 silly REMOVE node_modules/eslint-plugin-import
+702 silly REMOVE node_modules/eslint-plugin-import/node_modules/debug
+703 silly REMOVE node_modules/eslint-module-utils
+704 silly REMOVE node_modules/eslint-module-utils/node_modules/debug
+705 silly REMOVE node_modules/eslint-import-resolver-typescript
+706 silly REMOVE node_modules/eslint-import-resolver-node
+707 silly REMOVE node_modules/eslint-import-resolver-node/node_modules/debug
+708 silly REMOVE node_modules/eslint-config-next
+709 silly REMOVE node_modules/eslint-config-next/node_modules/globals
+710 silly REMOVE node_modules/eslint
+711 silly REMOVE node_modules/escape-string-regexp
+712 silly REMOVE node_modules/escalade
+713 silly REMOVE node_modules/es-to-primitive
+714 silly REMOVE node_modules/es-shim-unscopables
+715 silly REMOVE node_modules/es-set-tostringtag
+716 silly REMOVE node_modules/es-object-atoms
+717 silly REMOVE node_modules/es-module-lexer
+718 silly REMOVE node_modules/es-iterator-helpers
+719 silly REMOVE node_modules/es-errors
+720 silly REMOVE node_modules/es-define-property
+721 silly REMOVE node_modules/es-abstract
+722 silly REMOVE node_modules/enhanced-resolve
+723 silly REMOVE node_modules/emoji-regex
+724 silly REMOVE node_modules/electron-to-chromium
+725 silly REMOVE node_modules/dunder-proto
+726 silly REMOVE node_modules/doctrine
+727 silly REMOVE node_modules/define-properties
+728 silly REMOVE node_modules/define-data-property
+729 silly REMOVE node_modules/deep-is
+730 silly REMOVE node_modules/debug
+731 silly REMOVE node_modules/data-view-byte-offset
+732 silly REMOVE node_modules/data-view-byte-length
+733 silly REMOVE node_modules/data-view-buffer
+734 silly REMOVE node_modules/damerau-levenshtein
+735 silly REMOVE node_modules/cross-spawn
+736 silly REMOVE node_modules/convert-source-map
+737 silly REMOVE node_modules/concat-map
+738 silly REMOVE node_modules/color-name
+739 silly REMOVE node_modules/color-convert
+740 silly REMOVE node_modules/chalk
+741 silly REMOVE node_modules/chai
+742 silly REMOVE node_modules/callsites
+743 silly REMOVE node_modules/call-bound
+744 silly REMOVE node_modules/call-bind-apply-helpers
+745 silly REMOVE node_modules/call-bind
+746 silly REMOVE node_modules/browserslist
+747 silly REMOVE node_modules/braces
+748 silly REMOVE node_modules/brace-expansion
+749 silly REMOVE node_modules/balanced-match
+750 silly REMOVE node_modules/axobject-query
+751 silly REMOVE node_modules/axe-core
+752 silly REMOVE node_modules/available-typed-arrays
+753 silly REMOVE node_modules/async-function
+754 silly REMOVE node_modules/ast-types-flow
+755 silly REMOVE node_modules/assertion-error
+756 silly REMOVE node_modules/arraybuffer.prototype.slice
+757 silly REMOVE node_modules/array.prototype.tosorted
+758 silly REMOVE node_modules/array.prototype.flatmap
+759 silly REMOVE node_modules/array.prototype.flat
+760 silly REMOVE node_modules/array.prototype.findlastindex
+761 silly REMOVE node_modules/array.prototype.findlast
+762 silly REMOVE node_modules/array-includes
+763 silly REMOVE node_modules/array-buffer-byte-length
+764 silly REMOVE node_modules/aria-query
+765 silly REMOVE node_modules/argparse
+766 silly REMOVE node_modules/ansi-styles
+767 silly REMOVE node_modules/ajv
+768 silly REMOVE node_modules/acorn-jsx
+769 silly REMOVE node_modules/acorn
+770 silly REMOVE node_modules/@vitest/utils
+771 silly REMOVE node_modules/@vitest/spy
+772 silly REMOVE node_modules/@vitest/snapshot
+773 silly REMOVE node_modules/@vitest/runner
+774 silly REMOVE node_modules/@vitest/pretty-format
+775 silly REMOVE node_modules/@vitest/mocker
+776 silly REMOVE node_modules/@vitest/expect
+777 silly REMOVE node_modules/@unrs/resolver-binding-win32-x64-msvc
+778 silly REMOVE node_modules/@typescript-eslint/visitor-keys
+779 silly REMOVE node_modules/@typescript-eslint/visitor-keys/node_modules/eslint-visitor-keys
+780 silly REMOVE node_modules/@typescript-eslint/utils
+781 silly REMOVE node_modules/@typescript-eslint/typescript-estree
+782 silly REMOVE node_modules/@typescript-eslint/typescript-estree/node_modules/semver
+783 silly REMOVE node_modules/@typescript-eslint/typescript-estree/node_modules/minimatch
+784 silly REMOVE node_modules/@typescript-eslint/typescript-estree/node_modules/brace-expansion
+785 silly REMOVE node_modules/@typescript-eslint/typescript-estree/node_modules/balanced-match
+786 silly REMOVE node_modules/@typescript-eslint/types
+787 silly REMOVE node_modules/@typescript-eslint/type-utils
+788 silly REMOVE node_modules/@typescript-eslint/tsconfig-utils
+789 silly REMOVE node_modules/@typescript-eslint/scope-manager
+790 silly REMOVE node_modules/@typescript-eslint/project-service
+791 silly REMOVE node_modules/@typescript-eslint/parser
+792 silly REMOVE node_modules/@typescript-eslint/eslint-plugin
+793 silly REMOVE node_modules/@typescript-eslint/eslint-plugin/node_modules/ignore
+794 silly REMOVE node_modules/@types/react-dom
+795 silly REMOVE node_modules/@types/nodemailer
+796 silly REMOVE node_modules/@types/json5
+797 silly REMOVE node_modules/@types/json-schema
+798 silly REMOVE node_modules/@types/estree
+799 silly REMOVE node_modules/@types/deep-eql
+800 silly REMOVE node_modules/@types/chai
+801 silly REMOVE node_modules/@tybys/wasm-util
+802 silly REMOVE node_modules/@tailwindcss/postcss
+803 silly REMOVE node_modules/@tailwindcss/oxide-win32-x64-msvc
+804 silly REMOVE node_modules/@tailwindcss/oxide
+805 silly REMOVE node_modules/@tailwindcss/node
+806 silly REMOVE node_modules/@rtsao/scc
+807 silly REMOVE node_modules/@rolldown/pluginutils
+808 silly REMOVE node_modules/@rolldown/binding-win32-x64-msvc
+809 silly REMOVE node_modules/@oxc-project/types
+810 silly REMOVE node_modules/@nolyfill/is-core-module
+811 silly REMOVE node_modules/@nodelib/fs.walk
+812 silly REMOVE node_modules/@nodelib/fs.stat
+813 silly REMOVE node_modules/@nodelib/fs.scandir
+814 silly CHANGE node_modules/@next/swc-win32-x64-msvc
+815 silly REMOVE node_modules/@next/eslint-plugin-next
+816 silly CHANGE node_modules/@next/env
+817 silly REMOVE node_modules/@napi-rs/wasm-runtime
+818 silly REMOVE node_modules/@jridgewell/trace-mapping
+819 silly REMOVE node_modules/@jridgewell/sourcemap-codec
+820 silly REMOVE node_modules/@jridgewell/resolve-uri
+821 silly REMOVE node_modules/@jridgewell/remapping
+822 silly REMOVE node_modules/@jridgewell/gen-mapping
+823 silly REMOVE node_modules/@humanwhocodes/retry
+824 silly REMOVE node_modules/@humanwhocodes/module-importer
+825 silly REMOVE node_modules/@humanfs/types
+826 silly REMOVE node_modules/@humanfs/node
+827 silly REMOVE node_modules/@humanfs/core
+828 silly REMOVE node_modules/@eslint/plugin-kit
+829 silly REMOVE node_modules/@eslint/object-schema
+830 silly REMOVE node_modules/@eslint/js
+831 silly REMOVE node_modules/@eslint/eslintrc
+832 silly REMOVE node_modules/@eslint/core
+833 silly REMOVE node_modules/@eslint/config-helpers
+834 silly REMOVE node_modules/@eslint/config-array
+835 silly REMOVE node_modules/@eslint-community/regexpp
+836 silly REMOVE node_modules/@eslint-community/eslint-utils
+837 silly REMOVE node_modules/@eslint-community/eslint-utils/node_modules/eslint-visitor-keys
+838 silly REMOVE node_modules/@emnapi/wasi-threads
+839 silly REMOVE node_modules/@emnapi/core
+840 silly REMOVE node_modules/@babel/types
+841 silly REMOVE node_modules/@babel/traverse
+842 silly REMOVE node_modules/@babel/template
+843 silly REMOVE node_modules/@babel/parser
+844 silly REMOVE node_modules/@babel/helpers
+845 silly REMOVE node_modules/@babel/helper-validator-option
+846 silly REMOVE node_modules/@babel/helper-validator-identifier
+847 silly REMOVE node_modules/@babel/helper-string-parser
+848 silly REMOVE node_modules/@babel/helper-module-transforms
+849 silly REMOVE node_modules/@babel/helper-module-imports
+850 silly REMOVE node_modules/@babel/helper-globals
+851 silly REMOVE node_modules/@babel/helper-compilation-targets
+852 silly REMOVE node_modules/@babel/generator
+853 silly REMOVE node_modules/@babel/core
+854 silly REMOVE node_modules/@babel/compat-data
+855 silly REMOVE node_modules/@babel/code-frame
+856 silly REMOVE node_modules/@alloc/quick-lru
+857 verbose cwd C:\Users\serhat\Documents\Scrapman\frontend
+858 verbose os Windows_NT 10.0.26200
+859 verbose node v24.11.1
+860 verbose npm  v11.11.0
+861 verbose exit 1
+862 verbose code 1

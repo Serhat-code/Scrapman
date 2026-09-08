@@ -83,7 +83,7 @@ function RelanceScheduler({ prospect }: { prospect: Prospect }) {
           <button
             type="button"
             onClick={() => cancelRelance.mutate({ id: sequence.id, prospectId: prospect.id })}
-            className="text-[var(--text-muted)] hover:text-red-400"
+            className="text-[var(--text-muted)] hover:text-[var(--danger)]"
             title="Annuler"
           >
             <X size={13} />
@@ -96,7 +96,7 @@ function RelanceScheduler({ prospect }: { prospect: Prospect }) {
           type="date"
           value={date}
           onChange={(event) => setDate(event.target.value)}
-          className="h-8 flex-1 rounded-md border border-[var(--border)] bg-[var(--bg-app)] px-2 text-xs text-[var(--text-primary)] outline-none focus:border-[var(--emerald)]"
+          className="h-8 flex-1 rounded-md border border-[var(--border)] bg-[var(--bg-app)] px-2 text-xs text-[var(--text-primary)] outline-none focus:border-[var(--accent)]"
         />
         <Button
           size="sm"
@@ -145,7 +145,7 @@ function CallHistory({ prospect }: { prospect: Prospect }) {
         <select
           value={statut}
           onChange={(event) => setStatut(event.target.value as CallLogStatut)}
-          className="h-8 rounded-md border border-[var(--border)] bg-[var(--bg-app)] px-2 text-xs text-[var(--text-primary)] outline-none focus:border-[var(--emerald)]"
+          className="h-8 rounded-md border border-[var(--border)] bg-[var(--bg-app)] px-2 text-xs text-[var(--text-primary)] outline-none focus:border-[var(--accent)]"
         >
           {Object.entries(CALL_STATUT_LABELS).map(([value, label]) => (
             <option key={value} value={value}>
@@ -158,7 +158,7 @@ function CallHistory({ prospect }: { prospect: Prospect }) {
           onChange={(event) => setNotes(event.target.value)}
           placeholder="Notes (optionnel)"
           rows={2}
-          className="resize-none rounded-md border border-[var(--border)] bg-[var(--bg-app)] px-2 py-1.5 text-xs text-[var(--text-primary)] outline-none placeholder:text-[var(--text-muted)] focus:border-[var(--emerald)]"
+          className="resize-none rounded-md border border-[var(--border)] bg-[var(--bg-app)] px-2 py-1.5 text-xs text-[var(--text-primary)] outline-none placeholder:text-[var(--text-muted)] focus:border-[var(--accent)]"
         />
         <Button
           size="sm"

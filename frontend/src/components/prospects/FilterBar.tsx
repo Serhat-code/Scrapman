@@ -70,7 +70,7 @@ export function FilterBar() {
               onClick={() => toggleStatut(statut)}
               className={`rounded-md border px-2 py-1 text-xs font-medium transition-colors ${
                 active
-                  ? "border-[var(--emerald)] bg-[var(--emerald-dim)] text-[var(--emerald-light)]"
+                  ? "border-[var(--accent)] bg-[var(--accent-soft)] text-[var(--accent-strong)]"
                   : "border-[var(--border)] text-[var(--text-secondary)] hover:bg-[var(--bg-hover)]"
               }`}
             >

@@ -70,7 +70,7 @@ export function BulkActionBar() {
           e.target.value = "";
         }}
         defaultValue=""
-        className="h-7 rounded-md border border-[var(--border)] bg-[var(--bg-app)] px-2 text-xs text-[var(--text-primary)] outline-none focus:border-[var(--emerald)] cursor-pointer"
+        className="h-7 rounded-md border border-[var(--border)] bg-[var(--bg-app)] px-2 text-xs text-[var(--text-primary)] outline-none focus:border-[var(--accent)] cursor-pointer"
       >
         <option value="" disabled>
           Changer statut…

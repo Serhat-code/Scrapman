@@ -33,10 +33,10 @@ export default function ResetPasswordPage() {
   };
 
   return (
-    <div className="flex h-full w-full flex-col items-center justify-center gap-4 bg-[var(--bg-app)] p-4">
-      <div className="flex w-full max-w-sm flex-col gap-6 rounded-md border border-[var(--border)] bg-[var(--bg-surface)] p-6">
+    <div className="flex h-full w-full flex-col items-center justify-center gap-4 p-4">
+      <div className="flex w-full max-w-sm flex-col gap-6 glass-strong rounded-2xl border border-[var(--glass-edge)] shadow-[var(--shadow-lg)] p-6">
         <div className="flex items-center gap-2">
-          <div className="flex h-9 w-9 items-center justify-center rounded-md bg-[var(--emerald-dim)] text-[var(--emerald-light)]">
+          <div className="flex h-9 w-9 items-center justify-center rounded-md bg-[var(--accent-soft)] text-[var(--accent-strong)]">
             <Sparkles size={18} strokeWidth={2} />
           </div>
           <h1 className="text-base font-semibold text-[var(--text-primary)]">Scrapman</h1>
@@ -54,12 +54,12 @@ export default function ResetPasswordPage() {
               minLength={8}
               value={password}
               onChange={(event) => setPassword(event.target.value)}
-              className="h-10 w-full rounded-md border border-[var(--border)] bg-[var(--bg-app)] px-3 text-sm text-[var(--text-primary)] outline-none placeholder:text-[var(--text-muted)] focus:border-[var(--emerald)]"
+              className="h-10 w-full rounded-md border border-[var(--border)] bg-[var(--bg-app)] px-3 text-sm text-[var(--text-primary)] outline-none placeholder:text-[var(--text-muted)] focus:border-[var(--accent)]"
               placeholder="8 caractères minimum"
             />
           </div>
 
-          {error && <p className="text-xs text-red-400">{error}</p>}
+          {error && <p className="text-xs text-[var(--danger)]">{error}</p>}
 
           <Button type="submit" variant="primary" disabled={loading} className="mt-1 justify-center">
             {loading ? <Loader2 size={14} className="animate-spin" /> : <KeyRound size={14} />}

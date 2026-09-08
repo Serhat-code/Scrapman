@@ -165,7 +165,7 @@ function SettingsForm({ campaign, settings }: { campaign: Campaign; settings: Ca
             type="checkbox"
             checked={followupEnabled}
             onChange={(event) => setFollowupEnabled(event.target.checked)}
-            className="h-4 w-4 accent-[var(--emerald)]"
+            className="h-4 w-4 accent-[var(--accent)]"
           />
         </label>
 
@@ -180,7 +180,7 @@ function SettingsForm({ campaign, settings }: { campaign: Campaign; settings: Ca
                 min={1}
                 value={followupDelayDays}
                 onChange={(event) => setFollowupDelayDays(event.target.value)}
-                className="h-9 w-full rounded-md border border-[var(--border)] bg-[var(--bg-app)] px-2 text-sm text-[var(--text-primary)] outline-none focus:border-[var(--emerald)]"
+                className="h-9 w-full rounded-md border border-[var(--border)] bg-[var(--bg-app)] px-2 text-sm text-[var(--text-primary)] outline-none focus:border-[var(--accent)]"
               />
             </div>
             <div>
@@ -193,7 +193,7 @@ function SettingsForm({ campaign, settings }: { campaign: Campaign; settings: Ca
                 max={5}
                 value={maxFollowups}
                 onChange={(event) => setMaxFollowups(event.target.value)}
-                className="h-9 w-full rounded-md border border-[var(--border)] bg-[var(--bg-app)] px-2 text-sm text-[var(--text-primary)] outline-none focus:border-[var(--emerald)]"
+                className="h-9 w-full rounded-md border border-[var(--border)] bg-[var(--bg-app)] px-2 text-sm text-[var(--text-primary)] outline-none focus:border-[var(--accent)]"
               />
             </div>
           </div>
@@ -213,7 +213,7 @@ function SettingsForm({ campaign, settings }: { campaign: Campaign; settings: Ca
             max={plafondPlan}
             value={dailyLimit}
             onChange={(event) => setDailyLimit(event.target.value)}
-            className="h-9 w-full rounded-md border border-[var(--border)] bg-[var(--bg-app)] px-2 text-sm text-[var(--text-primary)] outline-none focus:border-[var(--emerald)]"
+            className="h-9 w-full rounded-md border border-[var(--border)] bg-[var(--bg-app)] px-2 text-sm text-[var(--text-primary)] outline-none focus:border-[var(--accent)]"
           />
           <p className="mt-1 text-xs text-[var(--text-muted)]">
             Plafonnée à {plafondPlan}/jour au total selon votre plan (anti-spam non contournable).
@@ -229,7 +229,7 @@ function SettingsForm({ campaign, settings }: { campaign: Campaign; settings: Ca
               type="time"
               value={sendWindowStart}
               onChange={(event) => setSendWindowStart(event.target.value)}
-              className="h-9 w-full rounded-md border border-[var(--border)] bg-[var(--bg-app)] px-2 text-sm text-[var(--text-primary)] outline-none focus:border-[var(--emerald)]"
+              className="h-9 w-full rounded-md border border-[var(--border)] bg-[var(--bg-app)] px-2 text-sm text-[var(--text-primary)] outline-none focus:border-[var(--accent)]"
             />
           </div>
           <div>
@@ -240,7 +240,7 @@ function SettingsForm({ campaign, settings }: { campaign: Campaign; settings: Ca
               type="time"
               value={sendWindowEnd}
               onChange={(event) => setSendWindowEnd(event.target.value)}
-              className="h-9 w-full rounded-md border border-[var(--border)] bg-[var(--bg-app)] px-2 text-sm text-[var(--text-primary)] outline-none focus:border-[var(--emerald)]"
+              className="h-9 w-full rounded-md border border-[var(--border)] bg-[var(--bg-app)] px-2 text-sm text-[var(--text-primary)] outline-none focus:border-[var(--accent)]"
             />
           </div>
         </div>
@@ -257,7 +257,7 @@ function SettingsForm({ campaign, settings }: { campaign: Campaign; settings: Ca
                 onClick={() => toggleWeekday(day)}
                 className={`flex-1 rounded-md border px-2 py-1.5 text-xs font-medium transition-colors ${
                   weekdays.includes(day)
-                    ? "border-[var(--emerald)] bg-[var(--emerald-dim)] text-[var(--emerald-light)]"
+                    ? "border-[var(--accent)] bg-[var(--accent-soft)] text-[var(--accent-strong)]"
                     : "border-[var(--border)] text-[var(--text-secondary)] hover:bg-[var(--bg-hover)]"
                 }`}
               >
@@ -277,7 +277,7 @@ function SettingsForm({ campaign, settings }: { campaign: Campaign; settings: Ca
               min={30}
               value={minDelay}
               onChange={(event) => setMinDelay(event.target.value)}
-              className="h-9 w-full rounded-md border border-[var(--border)] bg-[var(--bg-app)] px-2 text-sm text-[var(--text-primary)] outline-none focus:border-[var(--emerald)]"
+              className="h-9 w-full rounded-md border border-[var(--border)] bg-[var(--bg-app)] px-2 text-sm text-[var(--text-primary)] outline-none focus:border-[var(--accent)]"
             />
           </div>
           <div>
@@ -289,7 +289,7 @@ function SettingsForm({ campaign, settings }: { campaign: Campaign; settings: Ca
               min={30}
               value={maxDelay}
               onChange={(event) => setMaxDelay(event.target.value)}
-              className="h-9 w-full rounded-md border border-[var(--border)] bg-[var(--bg-app)] px-2 text-sm text-[var(--text-primary)] outline-none focus:border-[var(--emerald)]"
+              className="h-9 w-full rounded-md border border-[var(--border)] bg-[var(--bg-app)] px-2 text-sm text-[var(--text-primary)] outline-none focus:border-[var(--accent)]"
             />
           </div>
         </div>

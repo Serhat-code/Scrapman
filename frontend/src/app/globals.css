@@ -1,38 +1,105 @@
 @import "tailwindcss";
 
+/* =========================================================================
+   Système de couleurs Scrapman — thème clair « ciel / verre »
+   =========================================================================
+   Chaque encre a été vérifiée au ratio WCAG contre le PLUS SOMBRE des fonds
+   sur lesquels elle peut atterrir (--bg-hover, #dde9fa) et non seulement
+   contre le blanc : toutes passent AA (>= 4.5:1). Le blanc sur chaque
+   aplat plein (boutons) passe AA également.
+
+   Avant de changer une valeur ci-dessous, revérifier le ratio — l'ancien
+   thème sombre échouait précisément ici (--text-muted était à 2.65:1).
+   ========================================================================= */
+
 :root {
-  --bg-app: #0a0f0a;
-  --bg-sidebar: #0a0f0a;
-  --bg-surface: #111a11;
-  --bg-hover: #162016;
-  --border: #1e2e1e;
+  /* --- Fonds ------------------------------------------------------------ */
+  --bg-app: #e8f0fb;        /* ciel pâle : socle de l'application          */
+  --bg-app-far: #dbe7f8;    /* butée basse du dégradé (jamais plus sombre) */
+  --bg-app-near: #f7fbff;   /* butée haute du dégradé                      */
+  --bg-surface: #ffffff;    /* panneaux de contenu                         */
+  --bg-elevated: #f4f8fe;   /* zone en léger relief dans un panneau        */
+  --bg-hover: #dde9fa;      /* survol — le fond le plus sombre du thème    */
 
-  --emerald: #059669;
-  --emerald-light: #10b981;
-  --emerald-dim: #064e3b;
+  /* Verre : blanc très opaque. Composé sur --bg-app-far le résultat reste
+     au-dessus de #fafcfe, donc tous les ratios calculés sur blanc tiennent. */
+  --glass: rgba(255, 255, 255, 0.88);
+  --glass-strong: rgba(255, 255, 255, 0.94);
+  --glass-edge: rgba(255, 255, 255, 0.9);
+  --bg-sidebar: var(--glass);
 
-  --text-primary: #f0fdf4;
-  --text-secondary: #86efac;
-  --text-muted: #4ade8066;
-  --text-dim: #374151;
+  /* --- Traits ----------------------------------------------------------- */
+  --border: #ccdcf0;        /* décoratif : séparateurs, contours de cartes */
+  --border-input: #7d93ad;  /* contrôles : 3.16:1 sur blanc (WCAG 1.4.11)  */
+  --border-strong: #7d93ad;
 
-  --bucket-a: #059669;
-  --bucket-b: #60a5fa;
-  --bucket-c: #6b7280;
+  /* --- Encres ----------------------------------------------------------- */
+  --text-primary: #08192b;   /* 14.45:1 min */
+  --text-secondary: #2f4f72; /*  6.89:1 min */
+  --text-muted: #4a6787;     /*  4.78:1 min */
+  --text-dim: #6d8399;       /*  3.19:1 min — décoratif uniquement */
+  --text-inverse: #ffffff;
 
-  --halal-accent: #d97706;
+  /* --- Accent (ex-emerald) ---------------------------------------------- */
+  --accent: #0963c2;         /* aplat plein, blanc dessus à 5.87:1 */
+  --accent-strong: #04529f;  /* encre d'accent + survol des aplats  */
+  --accent-soft: #dbe9fd;    /* teinte pâle, porte --accent-strong  */
+  --accent-glow: rgba(9, 99, 194, 0.16);
+
+  /* --- Sémantique -------------------------------------------------------- */
+  --bucket-a: #0b7164;
+  --bucket-b: #1758c8;
+  --bucket-c: #506781;
+
+  --halal-accent: #9a5305;
+
+  --danger: #c0281f;
+  --danger-soft: #fdeae8;
+  --danger-border: #f0b4ae;
+
+  --success: #0e7349;
+  --warning: #9a5305;
+
+  --overlay: rgba(10, 26, 44, 0.42);
+
+  /* --- Séries de graphiques --------------------------------------------- */
+  /* Ordre catégoriel FIXE : chart-1 puis -2 puis -3, jamais recyclé. Validé
+     pour la vision des couleurs (pire paire adjacente ΔE 12.3 en protanopie,
+     seuil 8) et >= 3:1 contre la surface blanche. Distinct des jetons
+     --bucket-* qui, eux, servent d'encre de badge et doivent tenir 4.5:1. */
+  --chart-1: #1266cc;
+  --chart-2: #b5620a;
+  --chart-3: #0e8a7a;
+  --chart-grid: #dbe7f5;
+
+  /* --- Sévérité d'audit (ordinal) ---------------------------------------
+     Portent du texte blanc : chacune tient >= 4.5:1 avec #fff. L'ancienne
+     échelle (#eab308 & co) tombait à 1.92:1. Le libellé écrit dans le badge
+     porte le sens — la couleur ne fait que le renforcer. */
+  --verdict-critique: #b3261e;
+  --verdict-faible: #8f4708;
+  --verdict-moyen: #6f5406;
+  --verdict-bon: #0e7349;
+
+  /* --- Profondeur -------------------------------------------------------- */
+  --shadow-sm: 0 1px 2px rgba(13, 40, 74, 0.06), 0 1px 3px rgba(13, 40, 74, 0.05);
+  --shadow-md: 0 4px 12px rgba(13, 40, 74, 0.08), 0 2px 4px rgba(13, 40, 74, 0.04);
+  --shadow-lg: 0 18px 40px rgba(13, 40, 74, 0.14), 0 4px 12px rgba(13, 40, 74, 0.07);
+  --ring: 0 0 0 3px var(--accent-glow);
 }
 
 @theme inline {
   --color-bg-app: var(--bg-app);
   --color-bg-sidebar: var(--bg-sidebar);
   --color-bg-surface: var(--bg-surface);
+  --color-bg-elevated: var(--bg-elevated);
   --color-bg-hover: var(--bg-hover);
   --color-border: var(--border);
+  --color-border-input: var(--border-input);
 
-  --color-emerald: var(--emerald);
-  --color-emerald-light: var(--emerald-light);
-  --color-emerald-dim: var(--emerald-dim);
+  --color-accent: var(--accent);
+  --color-accent-strong: var(--accent-strong);
+  --color-accent-soft: var(--accent-soft);
 
   --color-text-primary: var(--text-primary);
   --color-text-secondary: var(--text-secondary);
@@ -44,6 +111,8 @@
   --color-bucket-c: var(--bucket-c);
 
   --color-halal-accent: var(--halal-accent);
+  --color-danger: var(--danger);
+  --color-success: var(--success);
 
   --font-sans: var(--font-inter);
 }
@@ -57,14 +126,76 @@ body {
   height: 100%;
 }
 
+/* Le socle : dégradé de ciel + halos diffus, façon cockpit vitré.
+   `background-attachment: fixed` garde le ciel immobile quand une liste
+   défile — sinon le dégradé « glisse » sous le contenu.
+
+   Attention : tout conteneur plein écran qui repose un `bg-[var(--bg-app)]`
+   opaque efface ce ciel. Les écrans d'authentification, l'onboarding et le
+   châssis /admin sont volontairement transparents pour cette raison. */
 body {
-  background: var(--bg-app);
+  background-color: var(--bg-app);
+  background-image:
+    radial-gradient(1250px 700px at 82% -12%, rgba(86, 170, 252, 0.55), transparent 60%),
+    radial-gradient(900px 620px at 2% 4%, rgba(126, 190, 250, 0.42), transparent 58%),
+    radial-gradient(700px 520px at 60% 108%, rgba(150, 205, 255, 0.35), transparent 62%),
+    linear-gradient(172deg, #f9fcff 0%, #e6f0fc 45%, var(--bg-app-far) 100%);
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  color: var(--text-primary);
+}
+
+/* -------------------------------------------------------------------------
+   Contrôles de formulaire
+   -------------------------------------------------------------------------
+   Ces règles sont volontairement HORS `@layer` : dans la cascade en couches,
+   le CSS non-couché l'emporte sur `@layer utilities`, donc elles battent les
+   classes Tailwind `border-[var(--border)]` posées sur les 51 champs de
+   l'app sans avoir à toucher chaque fichier. Objectif : un contour visible
+   (3.16:1) et un focus réellement perceptible partout.
+   ------------------------------------------------------------------------- */
+input:not([type="checkbox"]):not([type="radio"]),
+select,
+textarea {
+  border-color: var(--border-input);
+  background-color: var(--bg-surface);
+  color: var(--text-primary);
+}
+
+input:not([type="checkbox"]):not([type="radio"]):focus,
+select:focus,
+textarea:focus {
+  border-color: var(--accent);
+  box-shadow: var(--ring);
+  outline: none;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: var(--text-muted);
+  opacity: 1;
+}
+
+input[type="checkbox"],
+input[type="radio"] {
+  accent-color: var(--accent);
+}
+
+/* Focus clavier visible sur tout le reste (liens, boutons, onglets). */
+:where(a, button, [role="button"], [tabindex]):focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+::selection {
+  background: var(--accent-soft);
   color: var(--text-primary);
 }
 
 ::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
+  width: 10px;
+  height: 10px;
 }
 
 ::-webkit-scrollbar-track {
@@ -72,17 +203,21 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--border);
-  border-radius: 6px;
+  background: #b7cbe3;
+  border: 2px solid transparent;
+  background-clip: content-box;
+  border-radius: 8px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--bg-hover);
+  background: var(--border-input);
+  border: 2px solid transparent;
+  background-clip: content-box;
 }
 
 /* Inputs numériques : on retire les flèches natives (rendu disgracieux,
-   incohérent avec le thème sombre) — les flèches haut/bas du clavier
-   continuent de fonctionner. */
+   incohérent avec le thème) — les flèches haut/bas du clavier continuent
+   de fonctionner. */
 input[type="number"] {
   -moz-appearance: textfield;
 }
@@ -91,4 +226,43 @@ input[type="number"]::-webkit-outer-spin-button,
 input[type="number"]::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
+}
+
+/* -------------------------------------------------------------------------
+   Verre dépoli
+   -------------------------------------------------------------------------
+   `.glass` s'applique au châssis (barre latérale, modales, bandeaux), pas
+   aux tableaux denses : au-delà d'une certaine densité de texte, le flou
+   d'arrière-plan coûte plus en lisibilité qu'il ne rapporte en style.
+   ------------------------------------------------------------------------- */
+.glass {
+  background: var(--glass);
+  backdrop-filter: blur(18px) saturate(1.5);
+  -webkit-backdrop-filter: blur(18px) saturate(1.5);
+  border-color: var(--glass-edge);
+}
+
+.glass-strong {
+  background: var(--glass-strong);
+  backdrop-filter: blur(24px) saturate(1.6);
+  -webkit-backdrop-filter: blur(24px) saturate(1.6);
+}
+
+/* Repli si le navigateur ne sait pas flouter : on passe en blanc opaque
+   plutôt que de laisser un panneau translucide illisible. */
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .glass,
+  .glass-strong {
+    background: #ffffff;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }

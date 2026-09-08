@@ -15,9 +15,9 @@ import {
 } from "recharts";
 
 const BUCKET_COLORS: Record<string, string> = {
-  A: "#059669",
-  B: "#60a5fa",
-  C: "#6b7280",
+  A: "var(--chart-1)",
+  B: "var(--chart-2)",
+  C: "var(--chart-3)",
 };
 
 const STATUT_LABELS: Record<string, string> = {
@@ -106,7 +106,7 @@ export function AnalyticsView() {
         {kpis.map(({ label, value }) => (
           <div
             key={label}
-            className="rounded-md border border-[var(--border)] bg-[var(--bg-surface)] p-4"
+            className="rounded-xl border border-[var(--border)] bg-[var(--bg-surface)] shadow-[var(--shadow-sm)] p-4"
           >
             <p className="text-[10px] font-semibold uppercase tracking-wide text-[var(--text-muted)]">
               {label}
@@ -118,7 +118,7 @@ export function AnalyticsView() {
 
       <div className="mb-4 grid grid-cols-1 gap-4 sm:grid-cols-2">
         {/* Buckets */}
-        <div className="rounded-md border border-[var(--border)] bg-[var(--bg-surface)] p-4">
+        <div className="rounded-xl border border-[var(--border)] bg-[var(--bg-surface)] shadow-[var(--shadow-sm)] p-4">
           <h2 className="mb-3 text-[10px] font-semibold uppercase tracking-wide text-[var(--text-muted)]">
             Répartition buckets
           </h2>
@@ -134,7 +134,7 @@ export function AnalyticsView() {
               <Tooltip contentStyle={TOOLTIP_STYLE} cursor={{ fill: "var(--bg-hover)" }} />
               <Bar dataKey="count" radius={[0, 4, 4, 0]}>
                 {(data?.par_bucket ?? []).map((entry) => (
-                  <Cell key={entry.bucket} fill={BUCKET_COLORS[entry.bucket] ?? "#6b7280"} />
+                  <Cell key={entry.bucket} fill={BUCKET_COLORS[entry.bucket] ?? "var(--chart-3)"} />
                 ))}
               </Bar>
             </BarChart>
@@ -142,7 +142,7 @@ export function AnalyticsView() {
         </div>
 
         {/* Statuts */}
-        <div className="rounded-md border border-[var(--border)] bg-[var(--bg-surface)] p-4">
+        <div className="rounded-xl border border-[var(--border)] bg-[var(--bg-surface)] shadow-[var(--shadow-sm)] p-4">
           <h2 className="mb-3 text-[10px] font-semibold uppercase tracking-wide text-[var(--text-muted)]">
             Statuts prospects
           </h2>
@@ -157,7 +157,7 @@ export function AnalyticsView() {
                   </div>
                   <div className="h-1.5 w-full overflow-hidden rounded-full bg-[var(--bg-app)]">
                     <div
-                      className="h-full rounded-full bg-[var(--emerald)]"
+                      className="h-full rounded-full bg-[var(--accent)]"
                       style={{ width: `${Math.round((count / total) * 100)}%` }}
                     />
                   </div>
@@ -169,16 +169,16 @@ export function AnalyticsView() {
       </div>
 
       {/* Timeline 7 jours */}
-      <div className="mb-4 rounded-md border border-[var(--border)] bg-[var(--bg-surface)] p-4">
+      <div className="mb-4 rounded-xl border border-[var(--border)] bg-[var(--bg-surface)] shadow-[var(--shadow-sm)] p-4">
         <h2 className="mb-3 text-[10px] font-semibold uppercase tracking-wide text-[var(--text-muted)]">
           Emails — 7 derniers jours
         </h2>
         <div className="mb-2 flex gap-4 text-xs text-[var(--text-muted)]">
           <span className="flex items-center gap-1.5">
-            <span className="inline-block h-2 w-3 rounded-sm bg-[#60a5fa]" /> Envoyés
+            <span className="inline-block h-2 w-3 rounded-sm bg-[var(--chart-1)]" /> Envoyés
           </span>
           <span className="flex items-center gap-1.5">
-            <span className="inline-block h-2 w-3 rounded-sm bg-[var(--emerald)]" /> Ouverts
+            <span className="inline-block h-2 w-3 rounded-sm bg-[var(--accent)]" /> Ouverts
           </span>
         </div>
         <ResponsiveContainer width="100%" height={150}>
@@ -199,14 +199,14 @@ export function AnalyticsView() {
             <Line
               type="monotone"
               dataKey="envoyes"
-              stroke="#60a5fa"
+              stroke="var(--chart-1)"
               strokeWidth={2}
               dot={false}
             />
             <Line
               type="monotone"
               dataKey="ouverts"
-              stroke="#059669"
+              stroke="var(--chart-2)"
               strokeWidth={2}
               dot={false}
             />
@@ -215,7 +215,7 @@ export function AnalyticsView() {
       </div>
 
       {/* Top villes */}
-      <div className="rounded-md border border-[var(--border)] bg-[var(--bg-surface)] p-4">
+      <div className="rounded-xl border border-[var(--border)] bg-[var(--bg-surface)] shadow-[var(--shadow-sm)] p-4">
         <h2 className="mb-3 text-[10px] font-semibold uppercase tracking-wide text-[var(--text-muted)]">
           Top villes
         </h2>
@@ -232,7 +232,7 @@ export function AnalyticsView() {
               <tr key={ville} className="border-b border-[var(--border)] text-[var(--text-secondary)]">
                 <td className="py-2">{ville}</td>
                 <td className="py-2 text-right">{count}</td>
-                <td className="py-2 text-right text-[var(--emerald-light)]">{bucket_a}</td>
+                <td className="py-2 text-right text-[var(--accent-strong)]">{bucket_a}</td>
               </tr>
             ))}
           </tbody>

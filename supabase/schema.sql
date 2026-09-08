@@ -2006,3 +2006,66 @@ alter table public.prospects add constraint prospects_enrichment_status_check
 -- Reload PostgREST schema cache
 -- -----------------------------------------------------------------------------
 notify pgrst, 'reload schema';
+
+-- =============================================================================
+-- Partie 17 -- SMTP credentials are server-only
+-- =============================================================================
+-- sender_profiles is intentionally readable by team members for display and
+-- configuration. A ciphertext still must not be sent to browsers: moving it
+-- to a table with no SELECT policy keeps it exclusively accessible through
+-- service_role (worker and server Route Handlers).
+create table if not exists public.smtp_credentials (
+  team_id uuid primary key references public.teams(id) on delete cascade,
+  smtp_password_enc jsonb not null,
+  created_at timestamptz not null default now(),
+  updated_at timestamptz not null default now()
+);
+
+insert into public.smtp_credentials (team_id, smtp_password_enc)
+select team_id, smtp_password_enc
+from public.sender_profiles
+where team_id is not null and smtp_password_enc is not null
+on conflict (team_id) do update set smtp_password_enc = excluded.smtp_password_enc, updated_at = now();
+
+alter table public.sender_profiles add column if not exists smtp_configured boolean not null default false;
+update public.sender_profiles set smtp_configured = true
+where smtp_configured = false and exists (
+  select 1 from public.smtp_credentials sc where sc.team_id = sender_profiles.team_id
+);
+alter table public.sender_profiles drop column if exists smtp_password_enc;
+
+alter table public.smtp_credentials enable row level security;
+-- No authenticated/anon policy: only service_role may read or write credentials.
+
+-- Shared sender settings are business-critical: team members may read them but
+-- only owners/admins may change them.
+drop policy if exists "sender_profiles_insert_own" on public.sender_profiles;
+create policy "sender_profiles_insert_own" on public.sender_profiles
+  for insert with check (public.has_team_role(team_id, array['owner', 'admin']));
+drop policy if exists "sender_profiles_update_own" on public.sender_profiles;
+create policy "sender_profiles_update_own" on public.sender_profiles
+  for update using (public.has_team_role(team_id, array['owner', 'admin']))
+  with check (public.has_team_role(team_id, array['owner', 'admin']));
+
+-- Do not disclose subscription status/limits for an arbitrary UUID.
+create or replace function public.team_plan_limits(p_team_id uuid)
+returns table(max_prospects integer, max_campagnes_actives integer, max_utilisateurs integer,
+  max_emails_jour integer, exempte boolean, abonnement_actif boolean)
+language sql security definer stable set search_path = public
+as $$
+  select p.max_prospects, p.max_campagnes_actives, p.max_utilisateurs,
+    p.max_emails_jour, coalesce(t.exempte_paywall, false),
+    (s.status in ('active', 'trialing'))
+  from public.teams t
+  left join public.subscriptions s on s.team_id = t.id and s.status in ('active', 'trialing')
+  left join public.plans p on p.id = s.plan_id
+  where t.id = p_team_id and public.is_team_member(p_team_id);
+$$;
+
+-- A prospect belongs to a team, not to the member who happened to launch the
+-- scrape. This also makes the Python upsert idempotent for every team member.
+create unique index if not exists idx_prospects_team_siren_unique
+  on public.prospects (team_id, siren)
+  where team_id is not null and siren is not null;
+
+notify pgrst, 'reload schema';

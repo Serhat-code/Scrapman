@@ -70,7 +70,7 @@ export function CampaignProspectsTab({ campaign }: { campaign: Campaign }) {
                   removeProspect.mutate({ campaignId: campaign.id, prospectId: prospect.id })
                 }
                 title="Retirer de la campagne"
-                className="shrink-0 text-[var(--text-muted)] hover:text-red-400"
+                className="shrink-0 text-[var(--text-muted)] hover:text-[var(--danger)]"
               >
                 <UserMinus size={16} />
               </button>

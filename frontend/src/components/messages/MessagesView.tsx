@@ -96,7 +96,7 @@ export function MessagesView() {
       </div>
 
       {erreurEnvoi && (
-        <p className="border-b border-[var(--border)] px-4 py-2 text-xs text-red-400">{erreurEnvoi}</p>
+        <p className="border-b border-[var(--border)] px-4 py-2 text-xs text-[var(--danger)]">{erreurEnvoi}</p>
       )}
 
       <div className="flex flex-wrap items-center gap-1.5 border-b border-[var(--border)] px-4 py-2">
@@ -105,7 +105,7 @@ export function MessagesView() {
           onClick={() => setStatutFiltre("tous")}
           className={`rounded-md border px-2 py-1 text-xs font-medium transition-colors ${
             statutFiltre === "tous"
-              ? "border-[var(--emerald)] bg-[var(--emerald-dim)] text-[var(--emerald-light)]"
+              ? "border-[var(--accent)] bg-[var(--accent-soft)] text-[var(--accent-strong)]"
               : "border-[var(--border)] text-[var(--text-secondary)] hover:bg-[var(--bg-hover)]"
           }`}
         >
@@ -118,7 +118,7 @@ export function MessagesView() {
             onClick={() => setStatutFiltre(statut)}
             className={`rounded-md border px-2 py-1 text-xs font-medium transition-colors ${
               statutFiltre === statut
-                ? "border-[var(--emerald)] bg-[var(--emerald-dim)] text-[var(--emerald-light)]"
+                ? "border-[var(--accent)] bg-[var(--accent-soft)] text-[var(--accent-strong)]"
                 : "border-[var(--border)] text-[var(--text-secondary)] hover:bg-[var(--bg-hover)]"
             }`}
           >

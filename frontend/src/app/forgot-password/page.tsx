@@ -27,10 +27,10 @@ export default function ForgotPasswordPage() {
   };
 
   return (
-    <div className="flex h-full w-full flex-col items-center justify-center gap-4 bg-[var(--bg-app)] p-4">
-      <div className="flex w-full max-w-sm flex-col gap-6 rounded-md border border-[var(--border)] bg-[var(--bg-surface)] p-6">
+    <div className="flex h-full w-full flex-col items-center justify-center gap-4 p-4">
+      <div className="flex w-full max-w-sm flex-col gap-6 glass-strong rounded-2xl border border-[var(--glass-edge)] shadow-[var(--shadow-lg)] p-6">
         <div className="flex items-center gap-2">
-          <div className="flex h-9 w-9 items-center justify-center rounded-md bg-[var(--emerald-dim)] text-[var(--emerald-light)]">
+          <div className="flex h-9 w-9 items-center justify-center rounded-md bg-[var(--accent-soft)] text-[var(--accent-strong)]">
             <Sparkles size={18} strokeWidth={2} />
           </div>
           <h1 className="text-base font-semibold text-[var(--text-primary)]">Scrapman</h1>
@@ -38,7 +38,7 @@ export default function ForgotPasswordPage() {
 
         {envoye ? (
           <div className="flex flex-col items-center gap-3 py-4 text-center">
-            <MailCheck size={28} className="text-[var(--emerald-light)]" />
+            <MailCheck size={28} className="text-[var(--accent-strong)]" />
             <p className="text-sm text-[var(--text-primary)]">Vérifiez votre boîte mail</p>
             <p className="text-xs text-[var(--text-muted)]">
               Si un compte existe pour <strong>{email}</strong>, un email de réinitialisation
@@ -59,7 +59,7 @@ export default function ForgotPasswordPage() {
                 required
                 value={email}
                 onChange={(event) => setEmail(event.target.value)}
-                className="h-10 w-full rounded-md border border-[var(--border)] bg-[var(--bg-app)] px-3 text-sm text-[var(--text-primary)] outline-none placeholder:text-[var(--text-muted)] focus:border-[var(--emerald)]"
+                className="h-10 w-full rounded-md border border-[var(--border)] bg-[var(--bg-app)] px-3 text-sm text-[var(--text-primary)] outline-none placeholder:text-[var(--text-muted)] focus:border-[var(--accent)]"
                 placeholder="vous@exemple.fr"
               />
             </div>
@@ -72,7 +72,7 @@ export default function ForgotPasswordPage() {
         )}
 
         <p className="text-xs text-[var(--text-muted)]">
-          <Link href="/login" className="text-[var(--emerald-light)] hover:underline">
+          <Link href="/login" className="text-[var(--accent-strong)] hover:underline">
             Retour à la connexion
           </Link>
         </p>

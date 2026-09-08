@@ -106,12 +106,12 @@ function FormulaireInvitation() {
           value={email}
           onChange={(event) => setEmail(event.target.value)}
           placeholder="collegue@exemple.fr"
-          className="h-9 flex-1 rounded-md border border-[var(--border)] bg-[var(--bg-app)] px-3 text-sm text-[var(--text-primary)] outline-none placeholder:text-[var(--text-muted)] focus:border-[var(--emerald)]"
+          className="h-9 flex-1 rounded-md border border-[var(--border)] bg-[var(--bg-app)] px-3 text-sm text-[var(--text-primary)] outline-none placeholder:text-[var(--text-muted)] focus:border-[var(--accent)]"
         />
         <select
           value={role}
           onChange={(event) => setRole(event.target.value as InvitationRole)}
-          className="h-9 rounded-md border border-[var(--border)] bg-[var(--bg-app)] px-2 text-sm text-[var(--text-primary)] outline-none focus:border-[var(--emerald)]"
+          className="h-9 rounded-md border border-[var(--border)] bg-[var(--bg-app)] px-2 text-sm text-[var(--text-primary)] outline-none focus:border-[var(--accent)]"
         >
           <option value="membre">Membre</option>
           <option value="admin">Administrateur</option>
@@ -122,7 +122,7 @@ function FormulaireInvitation() {
         </Button>
       </div>
       {message && (
-        <p className={`text-xs ${message.type === "ok" ? "text-[var(--emerald-light)]" : "text-red-400"}`}>
+        <p className={`text-xs ${message.type === "ok" ? "text-[var(--accent-strong)]" : "text-[var(--danger)]"}`}>
           {message.texte}
         </p>
       )}
@@ -166,7 +166,7 @@ function MembreRow({
               changerRole.mutate({ userId: membre.user_id, role: event.target.value as TeamRole })
             }
             disabled={changerRole.isPending}
-            className="h-8 rounded-md border border-[var(--border)] bg-[var(--bg-app)] px-2 text-xs text-[var(--text-primary)] outline-none focus:border-[var(--emerald)]"
+            className="h-8 rounded-md border border-[var(--border)] bg-[var(--bg-app)] px-2 text-xs text-[var(--text-primary)] outline-none focus:border-[var(--accent)]"
           >
             <option value="owner">Propriétaire</option>
             <option value="admin">Administrateur</option>

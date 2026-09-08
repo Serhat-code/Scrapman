@@ -12,7 +12,7 @@ export function ScrapingBanner() {
 
   return (
     <div className="fixed bottom-4 left-1/2 z-40 flex -translate-x-1/2 items-center gap-2 rounded-full border border-[var(--border)] bg-[var(--bg-surface)] px-4 py-2 text-xs font-medium text-[var(--text-primary)] shadow-lg">
-      <Loader2 size={14} className="animate-spin text-[var(--emerald-light)]" />
+      <Loader2 size={14} className="animate-spin text-[var(--accent-strong)]" />
       Collecte en cours — les prospects apparaîtront automatiquement dans la liste
       <button
         type="button"

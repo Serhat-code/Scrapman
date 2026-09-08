@@ -18,7 +18,7 @@ export function ConformiteView({ contenu }: { contenu: string }) {
   return (
     <div className="flex flex-1 flex-col overflow-hidden">
       <div className="flex items-center gap-2 border-b border-[var(--border)] px-4 py-3">
-        <ShieldCheck size={18} className="text-[var(--emerald-light)]" />
+        <ShieldCheck size={18} className="text-[var(--accent-strong)]" />
         <h1 className="text-base font-semibold text-[var(--text-primary)]">Conformité</h1>
       </div>
 
@@ -29,7 +29,7 @@ export function ConformiteView({ contenu }: { contenu: string }) {
               <Loader2 size={18} className="animate-spin" />
             </div>
           ) : dejaConfirme ? (
-            <div className="flex items-center gap-2 rounded-md border border-[var(--emerald-light)] px-3 py-2.5 text-sm text-[var(--emerald-light)]">
+            <div className="flex items-center gap-2 rounded-md border border-[var(--accent-strong)] px-3 py-2.5 text-sm text-[var(--accent-strong)]">
               <CheckCircle2 size={16} />
               Lecture confirmée le{" "}
               {format(new Date(account!.conformite_lue_at!), "dd MMMM yyyy à HH:mm", { locale: fr })}.
@@ -41,7 +41,7 @@ export function ConformiteView({ contenu }: { contenu: string }) {
             </div>
           )}
 
-          <pre className="whitespace-pre-wrap rounded-md border border-[var(--border)] bg-[var(--bg-surface)] p-4 text-xs leading-relaxed text-[var(--text-secondary)]">
+          <pre className="whitespace-pre-wrap rounded-xl border border-[var(--border)] bg-[var(--bg-surface)] shadow-[var(--shadow-sm)] p-4 text-xs leading-relaxed text-[var(--text-secondary)]">
             {contenu}
           </pre>
 
@@ -51,7 +51,7 @@ export function ConformiteView({ contenu }: { contenu: string }) {
                 type="checkbox"
                 checked={coche}
                 onChange={(event) => setCoche(event.target.checked)}
-                className="mt-0.5 h-4 w-4 accent-[var(--emerald)]"
+                className="mt-0.5 h-4 w-4 accent-[var(--accent)]"
               />
               J&apos;ai lu et je comprends ce document. Je reste responsable du contenu et de la
               conformité de mes campagnes de prospection.

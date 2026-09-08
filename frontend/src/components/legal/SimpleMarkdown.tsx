@@ -23,7 +23,7 @@ function renderInline(texte: string, cle: string): ReactNode[] {
           href={match[3]}
           target="_blank"
           rel="noreferrer"
-          className="text-[var(--emerald-light)] hover:underline"
+          className="text-[var(--accent-strong)] hover:underline"
         >
           {match[2]}
         </a>

@@ -92,7 +92,7 @@ function RetentionForm({ account }: { account: Account }) {
             type="checkbox"
             checked={retentionActive}
             onChange={(event) => setRetentionActive(event.target.checked)}
-            className="h-4 w-4 accent-[var(--emerald)]"
+            className="h-4 w-4 accent-[var(--accent)]"
           />
         </label>
 
@@ -106,7 +106,7 @@ function RetentionForm({ account }: { account: Account }) {
             max={36}
             value={retentionMois}
             onChange={(event) => setRetentionMois(event.target.value)}
-            className="h-9 w-32 rounded-md border border-[var(--border)] bg-[var(--bg-app)] px-2 text-sm text-[var(--text-primary)] outline-none focus:border-[var(--emerald)]"
+            className="h-9 w-32 rounded-md border border-[var(--border)] bg-[var(--bg-app)] px-2 text-sm text-[var(--text-primary)] outline-none focus:border-[var(--accent)]"
           />
           <p className="mt-1 text-xs text-[var(--text-muted)]">Maximum 36 mois.</p>
         </div>
@@ -155,7 +155,7 @@ function RetentionForm({ account }: { account: Account }) {
                     type="checkbox"
                     checked={selectionnes.has(prospect.id)}
                     onChange={() => toggleSelection(prospect.id)}
-                    className="h-4 w-4 shrink-0 accent-[var(--emerald)]"
+                    className="h-4 w-4 shrink-0 accent-[var(--accent)]"
                   />
                   <span className="truncate text-sm text-[var(--text-primary)]">
                     {prospect.denomination || "Entreprise sans nom"}
@@ -170,7 +170,7 @@ function RetentionForm({ account }: { account: Account }) {
                 <button
                   type="button"
                   onClick={() => handleDeleteOne(prospect.id)}
-                  className="shrink-0 text-[var(--text-muted)] hover:text-red-400"
+                  className="shrink-0 text-[var(--text-muted)] hover:text-[var(--danger)]"
                   title="Supprimer"
                 >
                   <Trash2 size={14} />

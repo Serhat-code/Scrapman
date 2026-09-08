@@ -46,14 +46,14 @@ export function FeedbackWidget() {
         type="button"
         onClick={openModal}
         title="Signaler un problème / suggérer une idée"
-        className="fixed bottom-4 right-4 z-40 flex h-11 w-11 items-center justify-center rounded-full bg-[var(--emerald)] text-white shadow-lg hover:bg-[var(--emerald-light)]"
+        className="fixed bottom-4 right-4 z-40 flex h-11 w-11 items-center justify-center rounded-full bg-[var(--accent)] text-[var(--text-inverse)] shadow-lg hover:bg-[var(--accent-strong)]"
       >
         <MessageCircle size={18} />
       </button>
 
       <Modal open={open} onClose={handleClose} title="Signaler un problème / suggérer une idée">
         {envoye ? (
-          <p className="py-4 text-center text-sm text-[var(--emerald-light)]">
+          <p className="py-4 text-center text-sm text-[var(--accent-strong)]">
             Merci ! Votre message a bien été envoyé.
           </p>
         ) : (
@@ -66,7 +66,7 @@ export function FeedbackWidget() {
                   onClick={() => setType(t.value)}
                   className={`rounded-md border px-3 py-1.5 text-xs font-medium transition-colors ${
                     type === t.value
-                      ? "border-[var(--emerald)] bg-[var(--emerald-dim)] text-[var(--emerald-light)]"
+                      ? "border-[var(--accent)] bg-[var(--accent-soft)] text-[var(--accent-strong)]"
                       : "border-[var(--border)] text-[var(--text-secondary)] hover:bg-[var(--bg-hover)]"
                   }`}
                 >
@@ -79,7 +79,7 @@ export function FeedbackWidget() {
               onChange={(event) => setMessage(event.target.value)}
               placeholder="Décrivez le problème ou votre idée..."
               rows={5}
-              className="w-full resize-none rounded-md border border-[var(--border)] bg-[var(--bg-app)] px-3 py-2 text-sm text-[var(--text-primary)] outline-none placeholder:text-[var(--text-muted)] focus:border-[var(--emerald)]"
+              className="w-full resize-none rounded-md border border-[var(--border)] bg-[var(--bg-app)] px-3 py-2 text-sm text-[var(--text-primary)] outline-none placeholder:text-[var(--text-muted)] focus:border-[var(--accent)]"
             />
             <Button
               variant="primary"

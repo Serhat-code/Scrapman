@@ -30,7 +30,7 @@ function CopyButton({ text }: { text: string }) {
     <button
       type="button"
       onClick={handleCopy}
-      className="absolute right-2 top-2 flex h-7 w-7 items-center justify-center rounded-md border border-[var(--border)] bg-[var(--bg-surface)] text-[var(--text-secondary)] hover:text-[var(--text-primary)]"
+      className="absolute right-2 top-2 flex h-7 w-7 items-center justify-center rounded-xl border border-[var(--border)] bg-[var(--bg-surface)] shadow-[var(--shadow-sm)] text-[var(--text-secondary)] hover:text-[var(--text-primary)]"
       title="Copier"
     >
       {copied ? <Check size={14} /> : <Copy size={14} />}
@@ -118,7 +118,7 @@ export function CampaignMessagesTab({ campaign }: { campaign: Campaign }) {
       </div>
 
       {erreurEnvoi && (
-        <p className="border-b border-[var(--border)] px-4 py-2 text-xs text-red-400">{erreurEnvoi}</p>
+        <p className="border-b border-[var(--border)] px-4 py-2 text-xs text-[var(--danger)]">{erreurEnvoi}</p>
       )}
 
       {prospects && prospects.length > 0 && (
@@ -166,7 +166,7 @@ export function CampaignMessagesTab({ campaign }: { campaign: Campaign }) {
                 </div>
 
                 {message.last_error && (
-                  <p className="mb-2 text-xs text-red-400">Dernière erreur : {message.last_error}</p>
+                  <p className="mb-2 text-xs text-[var(--danger)]">Dernière erreur : {message.last_error}</p>
                 )}
 
                 {MESSAGE_NEXT_STATUTS[message.statut].length > 0 && (

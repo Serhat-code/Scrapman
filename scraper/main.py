@@ -171,7 +171,12 @@ async def enrich(limit: int, user_id: str | None) -> None:
     """Enrichit les prospects `pending` : site web, SIRENE, email du dirigeant, scoring."""
     user_id = _resoudre_user_id(user_id)
 
-    prospects = recuperer_prospects_pending(user_id, limit=limit)
+    client = get_supabase_client()
+    team_id = resoudre_team_id(client, user_id)
+    if not team_id:
+        raise click.UsageError(f"Aucune équipe trouvée pour l'utilisateur {user_id}.")
+
+    prospects = recuperer_prospects_pending(team_id, limit=limit)
     if not prospects:
         console.print("[yellow]Aucun prospect en attente d'enrichissement.[/yellow]")
         return

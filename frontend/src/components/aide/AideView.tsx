@@ -33,7 +33,7 @@ const FAQ: { question: string; reponse: React.ReactNode }[] = [
           href="https://support.google.com/accounts/answer/185833"
           target="_blank"
           rel="noreferrer"
-          className="text-[var(--emerald-light)] hover:underline"
+          className="text-[var(--accent-strong)] hover:underline"
         >
           Voir le guide officiel Google
         </a>
@@ -84,7 +84,7 @@ export function AideView({ contenu }: { contenu: string }) {
     <div className="flex flex-1 flex-col overflow-hidden">
       <div className="flex items-center justify-between border-b border-[var(--border)] px-4 py-3">
         <h1 className="flex items-center gap-2 text-base font-semibold text-[var(--text-primary)]">
-          <HelpCircle size={18} className="text-[var(--emerald-light)]" />
+          <HelpCircle size={18} className="text-[var(--accent-strong)]" />
           Aide
         </h1>
         <Button variant="secondary" size="sm" onClick={openFeedbackModal}>
@@ -110,7 +110,7 @@ export function AideView({ contenu }: { contenu: string }) {
             <h2 className="mb-2 text-[11px] font-semibold uppercase tracking-wide text-[var(--text-muted)]">
               Notice d&apos;utilisation complète
             </h2>
-            <pre className="whitespace-pre-wrap rounded-md border border-[var(--border)] bg-[var(--bg-surface)] p-4 text-xs leading-relaxed text-[var(--text-secondary)]">
+            <pre className="whitespace-pre-wrap rounded-xl border border-[var(--border)] bg-[var(--bg-surface)] shadow-[var(--shadow-sm)] p-4 text-xs leading-relaxed text-[var(--text-secondary)]">
               {contenu}
             </pre>
           </div>

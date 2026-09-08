@@ -14,7 +14,7 @@ function ProgressBar({ value, max }: { value: number; max: number | null }) {
   const ratio = max ? Math.min(value / max, 1) : 0;
   return (
     <div className="h-2 w-full overflow-hidden rounded-full bg-[var(--bg-app)]">
-      <div className="h-full rounded-full bg-[var(--emerald)] transition-all" style={{ width: `${ratio * 100}%` }} />
+      <div className="h-full rounded-full bg-[var(--accent)] transition-all" style={{ width: `${ratio * 100}%` }} />
     </div>
   );
 }
@@ -51,25 +51,25 @@ export function FacturationView() {
   return (
     <div className="flex flex-1 flex-col overflow-y-auto">
       <div className="flex items-center gap-2 border-b border-[var(--border)] px-4 py-3">
-        <CreditCard size={18} className="text-[var(--emerald-light)]" />
+        <CreditCard size={18} className="text-[var(--accent-strong)]" />
         <h1 className="text-base font-semibold text-[var(--text-primary)]">Facturation</h1>
       </div>
 
       <div className="mx-auto flex w-full max-w-3xl flex-col gap-6 p-4">
         {currentTeam?.team.exempte_paywall && (
-          <div className="flex items-center gap-2 rounded-md border border-[var(--emerald-light)] px-3 py-2.5 text-sm text-[var(--emerald-light)]">
+          <div className="flex items-center gap-2 rounded-md border border-[var(--accent-strong)] px-3 py-2.5 text-sm text-[var(--accent-strong)]">
             <ShieldCheck size={16} />
             Compte historique — accès illimité, sans abonnement requis.
           </div>
         )}
 
         {abonnementActif && (
-          <div className="flex flex-col gap-4 rounded-md border border-[var(--border)] bg-[var(--bg-surface)] p-4">
+          <div className="flex flex-col gap-4 rounded-xl border border-[var(--border)] bg-[var(--bg-surface)] shadow-[var(--shadow-sm)] p-4">
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-sm font-medium text-[var(--text-primary)]">
                   Plan {planActuel?.nom ?? subscription?.plan_id} —{" "}
-                  <span className="text-[var(--emerald-light)]">
+                  <span className="text-[var(--accent-strong)]">
                     {subscription?.status === "trialing" ? "essai" : "actif"}
                   </span>
                 </p>
@@ -85,7 +85,7 @@ export function FacturationView() {
                 Gérer mon abonnement
               </Button>
             </div>
-            {error && <p className="text-xs text-red-400">{error}</p>}
+            {error && <p className="text-xs text-[var(--danger)]">{error}</p>}
           </div>
         )}
 

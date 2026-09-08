@@ -33,11 +33,11 @@ def upsert_prospects(prospects: list[dict[str, Any]], batch_size: int = BATCH_SI
     sans_siren: list[dict[str, Any]] = []
 
     for prospect in prospects:
-        user_id = prospect.get("user_id")
+        team_id = prospect.get("team_id")
         siren = prospect.get("siren")
 
-        if user_id and siren:
-          deduped[(user_id, siren)] = prospect
+        if team_id and siren:
+          deduped[(team_id, siren)] = prospect
         else:
           sans_siren.append(prospect)
 
@@ -49,14 +49,14 @@ def upsert_prospects(prospects: list[dict[str, Any]], batch_size: int = BATCH_SI
 
     for i in range(0, len(prospects_uniques), batch_size):
         lot = [_nettoyer(p) for p in prospects_uniques[i : i + batch_size]]
-        resp = client.table("prospects").upsert(lot, on_conflict="user_id,siren").execute()
+        resp = client.table("prospects").upsert(lot, on_conflict="team_id,siren").execute()
         nb = len(resp.data or [])
         total += nb
         console.print(f"[cyan]Upsert lot {i // batch_size + 1} : {nb} prospects[/cyan]")
 
     return total
 
-def recuperer_prospects_pending(user_id: str, limit: int = 50) -> list[dict[str, Any]]:
+def recuperer_prospects_pending(team_id: str, limit: int = 50) -> list[dict[str, Any]]:
     """Récupère les prospects en attente d'enrichissement (les plus anciens d'abord).
 
     Sans tri explicite, l'ordre renvoyé par PostgREST n'est pas garanti : un
@@ -69,7 +69,7 @@ def recuperer_prospects_pending(user_id: str, limit: int = 50) -> list[dict[str,
     resp = (
         client.table("prospects")
         .select("*")
-        .eq("user_id", user_id)
+        .eq("team_id", team_id)
         .eq("enrichment_status", "pending")
         .order("created_at")
         .limit(limit)

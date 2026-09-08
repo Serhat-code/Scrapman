@@ -46,7 +46,6 @@ def _profil_complet(**overrides):
         "smtp_host": "smtp.x.fr",
         "smtp_port": 587,
         "smtp_user": "contact@x.fr",
-        "smtp_password_enc": {"iv": "a", "ciphertext": "b", "tag": "c"},
         "daily_limit": 200,
     }
     base.update(overrides)
@@ -61,8 +60,8 @@ def test_smtp_pret_faux_si_profil_absent():
     assert worker.smtp_pret(None) is False
 
 
-def test_smtp_pret_faux_si_mot_de_passe_absent():
-    assert worker.smtp_pret(_profil_complet(smtp_password_enc=None)) is False
+def test_smtp_pret_ne_depend_pas_du_secret_serveur():
+    assert worker.smtp_pret(_profil_complet()) is True
 
 
 def test_smtp_pret_faux_si_champ_manquant():
