@@ -71,15 +71,29 @@ jobs:
             python send_worker.py --limit "$SEND_LIMIT"
           fi
 
-      - name: Libérer le verrou de l'équipe (déclenchement manuel)
+      # Filet de securite : le worker libere deja le verrou lui-meme en fin de
+      # run (_liberer_verrou_equipe). Cette etape ne sert que si le job a ete
+      # tue avant d'y arriver - d'ou le `always()`.
+      #
+      # Le code HTTP est verifie explicitement : `curl -s` sans `-f` renvoie 0
+      # meme sur un 401 ou un 404, ce qui faisait passer cette etape pour
+      # `success` alors que le verrou restait pose et bloquait l'utilisateur
+      # pendant 10 minutes.
+      - name: Liberer le verrou de l'equipe (filet de securite)
         if: always() && github.event.inputs.team_id != ''
         env:
           TEAM_ID: ${{ github.event.inputs.team_id }}
           SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
           SUPABASE_SERVICE_KEY: ${{ secrets.SUPABASE_SERVICE_KEY }}
         run: |
-          curl -s -X PATCH "$SUPABASE_URL/rest/v1/teams?id=eq.$TEAM_ID" \
+          code=$(curl -s -o /dev/null -w '%{http_code}' \
+            -X PATCH "${SUPABASE_URL%/}/rest/v1/teams?id=eq.$TEAM_ID" \
             -H "apikey: $SUPABASE_SERVICE_KEY" \
             -H "Authorization: Bearer $SUPABASE_SERVICE_KEY" \
             -H "Content-Type: application/json" \
-            -d '{"worker_lock_at": null}'
+            -d '{"worker_lock_at": null}')
+          echo "PATCH teams -> HTTP $code"
+          case "$code" in
+            2*) ;;
+            *) echo "::error::Liberation du verrou echouee (HTTP $code)"; exit 1 ;;
+          esac

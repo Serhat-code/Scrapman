@@ -282,6 +282,26 @@ def _liberer_verrou(client: Any, table: str, id_: str, worker_id: str) -> None:
     ).execute()
 
 
+def _liberer_verrou_equipe(client: Any, team_id: str | None) -> None:
+    """Libère `teams.worker_lock_at` posé par le bouton « Envoyer maintenant ».
+
+    C'était jusqu'ici le rôle d'une étape `curl` du workflow. Deux défauts :
+    `curl` sans `-f` renvoie 0 même sur une erreur HTTP, donc l'étape était
+    marquée `success` alors que le verrou restait posé ; et si le job était tué
+    (budget, annulation), l'étape pouvait ne jamais s'exécuter. Résultat, un
+    « Un envoi est déjà en cours » pendant 10 minutes après chaque envoi.
+
+    Le worker sait le faire lui-même, avec un client qui remonte ses erreurs.
+    """
+    if not team_id:
+        # Passage planifié (cron) : aucun verrou n'a été posé, rien à libérer.
+        return
+    try:
+        client.table("teams").update({"worker_lock_at": None}).eq("id", team_id).execute()
+    except Exception as exc:  # noqa: BLE001 - best-effort, ne doit pas faire échouer le run
+        console.print(f"[yellow]Verrou d'équipe non libéré : {exc}[/yellow]")
+
+
 def _journaliser_systeme(
     client: Any, level: str, source: str, message: str, metadata: dict[str, Any] | None = None
 ) -> None:
@@ -919,6 +939,9 @@ def main(dry_run: bool, limit: int, user_id: str | None, max_runtime: int) -> No
             worker_id=worker_id,
             budget=budget,
         )
+
+    if not dry_run:
+        _liberer_verrou_equipe(client, team_id)
 
     console.print(f"[bold]{nb_messages} email(s) initial(aux) et {nb_relances} relance(s) traité(s).[/bold]")
     if budget.epuise():

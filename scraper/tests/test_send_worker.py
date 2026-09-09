@@ -623,3 +623,36 @@ def test_le_texte_brut_reste_le_corps_original(monkeypatch):
     msg = _envoyer_capture(monkeypatch)
     texte = [p for p in msg.walk() if p.get_content_type() == "text/plain"][0]
     assert texte.get_payload(decode=True).decode("utf-8") == "Bonjour,\n\nUne offre."
+
+
+# --------------------------------------------------------------------------
+# Libération du verrou d'équipe
+# --------------------------------------------------------------------------
+# Le verrou etait libere par une etape `curl` du workflow, qui renvoyait 0
+# meme sur une erreur HTTP : l'etape passait pour `success` alors que le
+# verrou restait pose, bloquant l'utilisateur 10 minutes.
+def test_verrou_equipe_libere_en_fin_de_run():
+    client = _FakeClient({"teams": _FakeResponse(data=[])})
+
+    worker._liberer_verrou_equipe(client, "team-1")
+
+    maj = [w for w in client.writes if w[0] == "update" and w[1] == "teams"]
+    assert len(maj) == 1
+    assert maj[0][2] == {"worker_lock_at": None}
+
+
+def test_aucune_liberation_sans_equipe():
+    """Passage planifie (cron) : aucun verrou n'a ete pose, rien a liberer."""
+    client = _FakeClient({"teams": _FakeResponse(data=[])})
+
+    worker._liberer_verrou_equipe(client, None)
+
+    assert [w for w in client.writes if w[1] == "teams"] == []
+
+
+def test_echec_de_liberation_ne_fait_pas_echouer_le_run():
+    class _ClientCasse:
+        def table(self, _nom):
+            raise RuntimeError("base injoignable")
+
+    worker._liberer_verrou_equipe(_ClientCasse(), "team-1")  # ne doit pas lever
