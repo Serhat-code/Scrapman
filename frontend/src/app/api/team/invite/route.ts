@@ -4,6 +4,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { z } from "zod";
 
 import { envoyerEmail } from "@/lib/email/resend";
+import { journaliserSysteme, messageErreur } from "@/lib/server/logs";
 import { emailInvitationEquipe } from "@/lib/email/templates";
 import { verifierRateLimit, MESSAGE_RATE_LIMIT } from "@/lib/rate-limit";
 import { resoudreTeamId } from "@/lib/server/team";
@@ -71,7 +72,8 @@ export async function POST(request: NextRequest) {
 
   try {
     await envoyerEmail({ to: email, subject, html });
-  } catch {
+  } catch (erreur) {
+    await journaliserSysteme("error", "email", `Invitation d'équipe non envoyée : ${messageErreur(erreur)}`);
     return NextResponse.json(
       { error: "Invitation créée mais l'envoi de l'email a échoué." },
       { status: 502 }

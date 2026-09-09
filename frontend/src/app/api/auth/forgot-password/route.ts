@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { z } from "zod";
 
 import { envoyerEmail } from "@/lib/email/resend";
+import { journaliserSysteme, messageErreur } from "@/lib/server/logs";
 import { emailReinitialisationMotDePasse } from "@/lib/email/templates";
 import { verifierRateLimit, MESSAGE_RATE_LIMIT } from "@/lib/rate-limit";
 import { createAdminClient } from "@/lib/supabase/admin";
@@ -41,9 +42,11 @@ export async function POST(request: NextRequest) {
     try {
       const { subject, html } = emailReinitialisationMotDePasse(data.properties.action_link);
       await envoyerEmail({ to: email, subject, html });
-    } catch {
-      // Échec d'envoi silencieux côté client : on ne révèle jamais ici si
-      // l'email existait ou si l'envoi a échoué.
+    } catch (erreur) {
+      // Silencieux côté client : on ne révèle jamais ici si l'email existait
+      // ou si l'envoi a échoué. Mais journalisé côté serveur, sinon une panne
+      // d'envoi resterait strictement invisible (cf. /admin/logs).
+      await journaliserSysteme("error", "email", `Envoi du reset échoué : ${messageErreur(erreur)}`);
     }
   }
 

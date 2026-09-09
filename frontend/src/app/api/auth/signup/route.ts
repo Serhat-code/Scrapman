@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { z } from "zod";
 
 import { envoyerEmail } from "@/lib/email/resend";
+import { journaliserSysteme, messageErreur } from "@/lib/server/logs";
 import { emailConfirmationInscription } from "@/lib/email/templates";
 import { verifierRateLimit, MESSAGE_RATE_LIMIT } from "@/lib/rate-limit";
 import { createAdminClient } from "@/lib/supabase/admin";
@@ -57,7 +58,8 @@ export async function POST(request: NextRequest) {
   try {
     const { subject, html } = emailConfirmationInscription(data.properties.action_link);
     await envoyerEmail({ to: email, subject, html });
-  } catch {
+  } catch (erreur) {
+    await journaliserSysteme("error", "email", `Confirmation d'inscription non envoyée : ${messageErreur(erreur)}`);
     return NextResponse.json(
       { error: "Compte créé mais l'envoi de l'email de confirmation a échoué. Contactez le support." },
       { status: 502 }
