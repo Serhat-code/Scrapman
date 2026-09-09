@@ -64,6 +64,23 @@ DAILY_EMAIL_CAP = 200
 DELAY_MIN_SECONDS = 30
 DELAY_MAX_SECONDS = 60
 
+# Budget temps d'un passage du worker. Avec 30-60 s de pause entre deux envois,
+# un `--limit` élevé ne peut jamais tenir dans le `timeout-minutes` du workflow
+# GitHub : le job était tué en cours de route et le run marqué en échec alors
+# que le worker faisait exactement ce qu'on lui demandait. Le worker s'arrête
+# donc de lui-même avant, proprement, et le passage suivant reprend la file.
+# Doit rester nettement inférieur au `timeout-minutes` de send-worker.yml.
+WORKER_MAX_RUNTIME_SECONDS = int(os.getenv("WORKER_MAX_RUNTIME_SECONDS", "1500"))
+
+# URL publique de l'application — sert à construire l'URL du pixel de suivi
+# d'ouverture inséré dans les emails. Sans elle, le pixel pointerait vers un
+# domaine mort et aucune ouverture ne remonterait.
+APP_URL: str = (
+    os.getenv("APP_URL")
+    or os.getenv("NEXT_PUBLIC_APP_URL")
+    or "https://scrapman-nine.vercel.app"
+)
+
 MAX_VILLES = 30
 MAX_SCRAPE_LIMIT = 500
 

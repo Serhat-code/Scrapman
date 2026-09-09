@@ -35,6 +35,7 @@ import smtplib
 import socket
 import ssl
 import time
+import uuid
 from datetime import datetime, time as dtime, timedelta
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
@@ -45,13 +46,15 @@ from zoneinfo import ZoneInfo
 import click
 from rich.console import Console
 
-from config import DAILY_EMAIL_CAP
+from config import DAILY_EMAIL_CAP, WORKER_MAX_RUNTIME_SECONDS
 from crypto.smtp import SmtpDecryptionError, decrypt_smtp_password
 from db.plans import recuperer_limite_emails_plan
 from db.supabase_client import get_supabase_client
 from db.team import resoudre_team_id
 from models.relance import generer_relance
 from utils.delay import delai_anti_spam_secondes, verifier_quota_journalier
+from utils.reply_check import imap_configure, marquer_reponses, relever_reponses
+from utils.tracking import corps_en_html, url_pixel
 
 console = Console()
 
@@ -64,6 +67,26 @@ DEFAULT_SEND_WINDOW_END = dtime(18, 30)
 DEFAULT_WEEKDAYS = [1, 2, 3, 4, 5]
 DEFAULT_MIN_DELAY = 30
 DEFAULT_MAX_DELAY = 60
+
+
+class BudgetTemps:
+    """Arrête le worker proprement avant que le runner ne le tue.
+
+    Avec 30-60 s de pause obligatoire entre deux envois, un `--limit` de 100 ne
+    peut pas tenir dans les 12 minutes du workflow : le job était tué en cours
+    de route, les verrous restaient posés jusqu'à expiration et le run
+    apparaissait en échec. On s'arrête donc de nous-mêmes, la file étant
+    reprise au passage suivant.
+    """
+
+    def __init__(self, secondes: float) -> None:
+        self._fin = time.monotonic() + max(secondes, 0)
+
+    def restant(self) -> float:
+        return self._fin - time.monotonic()
+
+    def epuise(self) -> bool:
+        return self.restant() <= 0
 
 _CHAMPS_SMTP_REQUIS = ("email_from", "smtp_host", "smtp_port", "smtp_user")
 
@@ -275,16 +298,32 @@ def _journaliser_systeme(
 # --------------------------------------------------------------------------
 # Envoi SMTP
 # --------------------------------------------------------------------------
-def envoyer_smtp(profile: dict[str, Any], password: str, destinataire: str, objet: str, corps: str) -> str:
-    """Envoie un email via le SMTP de l'utilisateur. Retourne le Message-Id généré."""
+def envoyer_smtp(
+    profile: dict[str, Any],
+    password: str,
+    destinataire: str,
+    objet: str,
+    corps: str,
+    tracking_url: str | None = None,
+) -> str:
+    """Envoie un email via le SMTP de l'utilisateur. Retourne le Message-Id généré.
+
+    Le message est `multipart/alternative` (texte + HTML) et non plus texte
+    seul : sans partie HTML, aucun pixel de suivi ne peut être porté, ce qui
+    rendait le comptage des ouvertures structurellement impossible.
+    """
     message_id = make_msgid()
 
-    msg = MIMEMultipart()
+    msg = MIMEMultipart("alternative")
     msg["From"] = f'{profile.get("smtp_from_name") or profile.get("prenom") or ""} <{profile["email_from"]}>'
     msg["To"] = destinataire
     msg["Subject"] = objet
     msg["Message-Id"] = message_id
+    # L'ordre est significatif : dans un multipart/alternative, le client
+    # affiche la DERNIÈRE partie qu'il sait rendre. Texte d'abord (repli pour
+    # les clients en texte brut), HTML ensuite.
     msg.attach(MIMEText(corps, "plain", "utf-8"))
+    msg.attach(MIMEText(corps_en_html(corps, tracking_url), "html", "utf-8"))
 
     host = profile["smtp_host"]
     port = int(profile["smtp_port"])
@@ -304,6 +343,32 @@ def envoyer_smtp(profile: dict[str, Any], password: str, destinataire: str, obje
     return message_id
 
 
+def _pause_anti_spam(
+    campaign_settings: dict[str, Any] | None,
+    budget: BudgetTemps | None,
+    *,
+    reste: bool,
+) -> None:
+    """Pause anti-spam entre deux envois — jamais après le dernier.
+
+    L'ancienne version dormait aussi après le dernier message traité : jusqu'à
+    60 secondes de runner GitHub brûlées pour rien à chaque passage. La pause
+    est par ailleurs bornée par le budget restant, pour ne pas dépasser le
+    `timeout-minutes` du workflow pendant un `sleep`.
+    """
+    if not reste:
+        return
+
+    pause = delai_anti_spam_secondes(
+        (campaign_settings or {}).get("min_delay_seconds", DEFAULT_MIN_DELAY),
+        (campaign_settings or {}).get("max_delay_seconds", DEFAULT_MAX_DELAY),
+    )
+    if budget is not None:
+        pause = min(pause, max(budget.restant(), 0))
+    if pause > 0:
+        time.sleep(pause)
+
+
 # --------------------------------------------------------------------------
 # Traitement des premiers emails
 # --------------------------------------------------------------------------
@@ -317,6 +382,7 @@ def traiter_messages(
     mots_de_passe_cache: dict[str, str],
     limites_plan_cache: dict[str, int | None] | None = None,
     worker_id: str = "manual",
+    budget: BudgetTemps | None = None,
 ) -> int:
     if limites_plan_cache is None:
         limites_plan_cache = {}
@@ -329,13 +395,24 @@ def traiter_messages(
         else _claim_et_recuperer_messages(client, limit, team_id, worker_id)
     )
     nb_traites = 0
+    # Une équipe dont le secret SMTP est illisible le restera pour tout le
+    # passage : sans ce cache, chacun de ses messages relançait la lecture et
+    # écrivait sa propre ligne d'erreur dans system_logs.
+    equipes_en_echec: set[str] = set()
 
-    for message in messages:
-        if nb_traites >= limit:
+    for index, message in enumerate(messages):
+        # `continue` et non `break` : on parcourt le reste uniquement pour
+        # relâcher les verrous tout de suite, au lieu de laisser ces lignes
+        # bloquées jusqu'à l'expiration des 5 minutes.
+        if nb_traites >= limit or (budget is not None and budget.epuise()):
             if not dry_run:
                 _liberer_verrou(client, "messages", message["id"], worker_id)
-            break
+            continue
 
+        envoye = False
+        # Réinitialisé à chaque tour : sans ça, un message sans campagne
+        # héritait silencieusement des réglages de la campagne précédente.
+        campaign_settings: dict[str, Any] | None = None
         try:
             campagne = message.get("campaign")
             prospect = message.get("prospect")
@@ -384,6 +461,9 @@ def traiter_messages(
                 nb_traites += 1
                 continue
 
+            if cible_team_id in equipes_en_echec:
+                continue
+
             if cible_team_id not in mots_de_passe_cache:
                 try:
                     mots_de_passe_cache[cible_team_id] = decrypt_smtp_password(
@@ -391,22 +471,34 @@ def traiter_messages(
                     )
                 except SmtpDecryptionError as exc:
                     console.print(f"[red]Équipe {cible_team_id} : {exc}[/red]")
+                    equipes_en_echec.add(cible_team_id)
                     continue
             password = mots_de_passe_cache[cible_team_id]
 
             _envoyer_et_mettre_a_jour_message(client, message, prospect, campagne, campaign_settings, profile, password)
             nb_traites += 1
+            envoye = True
+        except Exception as exc:  # noqa: BLE001 - un message ne doit jamais tuer le run
+            # Table absente, secret illisible, base injoignable : l'incident est
+            # isolé sur CE message et le worker poursuit. C'est ce qui manquait
+            # quand `smtp_credentials` n'existait pas encore : une APIError non
+            # rattrapée faisait échouer l'intégralité du passage.
+            console.print(f"[red]Message {message['id']} ignoré : {exc}[/red]")
+            if message.get("team_id"):
+                equipes_en_echec.add(message["team_id"])
+            _journaliser_systeme(
+                client,
+                "error",
+                "worker",
+                f"Message {message['id']} ignoré : {exc}",
+                {"message_id": message["id"], "team_id": message.get("team_id")},
+            )
         finally:
             if not dry_run:
                 _liberer_verrou(client, "messages", message["id"], worker_id)
 
-        if nb_traites < limit:
-            time.sleep(
-                delai_anti_spam_secondes(
-                    (campaign_settings or {}).get("min_delay_seconds", DEFAULT_MIN_DELAY),
-                    (campaign_settings or {}).get("max_delay_seconds", DEFAULT_MAX_DELAY),
-                )
-            )
+        if envoye:
+            _pause_anti_spam(campaign_settings, budget, reste=index < len(messages) - 1 and nb_traites < limit)
 
     return nb_traites
 
@@ -424,8 +516,21 @@ def _envoyer_et_mettre_a_jour_message(
     team_id = message["team_id"]
     attempt_count = (message.get("attempt_count") or 0) + 1
 
+    # L'id de la ligne send_logs est généré ICI, avant l'envoi : le pixel doit
+    # pointer sur une ligne précise, et on ne peut pas connaître l'id après coup
+    # sans exposer le suivi aux confusions entre un envoi et sa relance (qui
+    # partagent le même message_id).
+    send_log_id = str(uuid.uuid4())
+
     try:
-        provider_message_id = envoyer_smtp(profile, password, prospect["email"], message.get("objet") or "", message.get("corps") or "")
+        provider_message_id = envoyer_smtp(
+            profile,
+            password,
+            prospect["email"],
+            message.get("objet") or "",
+            message.get("corps") or "",
+            tracking_url=url_pixel(send_log_id, team_id),
+        )
     except Exception as exc:  # noqa: BLE001 - on isole l'erreur par message
         statut = "erreur" if attempt_count >= MAX_ATTEMPTS else "en_file"
         client.table("messages").update(
@@ -476,7 +581,13 @@ def _envoyer_et_mettre_a_jour_message(
 
     client.table("messages").update(updates).eq("id", message["id"]).execute()
     client.table("send_logs").insert(
-        {"user_id": user_id, "team_id": team_id, "message_id": message["id"], "prospect_id": prospect["id"]}
+        {
+            "id": send_log_id,
+            "user_id": user_id,
+            "team_id": team_id,
+            "message_id": message["id"],
+            "prospect_id": prospect["id"],
+        }
     ).execute()
     console.print(f"[green]Email envoyé à {prospect['email']} ({message['id']}).[/green]")
 
@@ -494,6 +605,7 @@ def traiter_relances(
     mots_de_passe_cache: dict[str, str],
     limites_plan_cache: dict[str, int | None] | None = None,
     worker_id: str = "manual",
+    budget: BudgetTemps | None = None,
 ) -> int:
     if limites_plan_cache is None:
         limites_plan_cache = {}
@@ -503,13 +615,16 @@ def traiter_relances(
         else _claim_et_recuperer_relances(client, limit, team_id, worker_id)
     )
     nb_traites = 0
+    equipes_en_echec: set[str] = set()
 
-    for relance in relances:
-        if nb_traites >= limit:
+    for index, relance in enumerate(relances):
+        if nb_traites >= limit or (budget is not None and budget.epuise()):
             if not dry_run:
                 _liberer_verrou(client, "sequences", relance["id"], worker_id)
-            break
+            continue
 
+        envoye = False
+        campaign_settings: dict[str, Any] | None = None
         try:
             campagne = relance.get("campaign")
             prospect = relance.get("prospect")
@@ -568,6 +683,9 @@ def traiter_relances(
                 nb_traites += 1
                 continue
 
+            if cible_team_id in equipes_en_echec:
+                continue
+
             if cible_team_id not in mots_de_passe_cache:
                 try:
                     mots_de_passe_cache[cible_team_id] = decrypt_smtp_password(
@@ -575,22 +693,30 @@ def traiter_relances(
                     )
                 except SmtpDecryptionError as exc:
                     console.print(f"[red]Équipe {cible_team_id} : {exc}[/red]")
+                    equipes_en_echec.add(cible_team_id)
                     continue
             password = mots_de_passe_cache[cible_team_id]
 
             _envoyer_et_mettre_a_jour_relance(client, relance, prospect, campagne, campaign_settings, profile, password)
             nb_traites += 1
+            envoye = True
+        except Exception as exc:  # noqa: BLE001 - une relance ne doit jamais tuer le run
+            console.print(f"[red]Relance {relance['id']} ignorée : {exc}[/red]")
+            if relance.get("team_id"):
+                equipes_en_echec.add(relance["team_id"])
+            _journaliser_systeme(
+                client,
+                "error",
+                "worker",
+                f"Relance {relance['id']} ignorée : {exc}",
+                {"sequence_id": relance["id"], "team_id": relance.get("team_id")},
+            )
         finally:
             if not dry_run:
                 _liberer_verrou(client, "sequences", relance["id"], worker_id)
 
-        if nb_traites < limit:
-            time.sleep(
-                delai_anti_spam_secondes(
-                    campaign_settings.get("min_delay_seconds", DEFAULT_MIN_DELAY),
-                    campaign_settings.get("max_delay_seconds", DEFAULT_MAX_DELAY),
-                )
-            )
+        if envoye:
+            _pause_anti_spam(campaign_settings, budget, reste=index < len(relances) - 1 and nb_traites < limit)
 
     return nb_traites
 
@@ -606,9 +732,17 @@ def _envoyer_et_mettre_a_jour_relance(
 ) -> None:
     user_id = relance["user_id"]
     team_id = relance["team_id"]
+    send_log_id = str(uuid.uuid4())
 
     try:
-        envoyer_smtp(profile, password, prospect["email"], relance.get("objet") or "", relance.get("corps") or "")
+        envoyer_smtp(
+            profile,
+            password,
+            prospect["email"],
+            relance.get("objet") or "",
+            relance.get("corps") or "",
+            tracking_url=url_pixel(send_log_id, team_id),
+        )
     except Exception as exc:  # noqa: BLE001 - on isole l'erreur par relance
         client.table("sequences").update({"statut": "echoue", "last_error": str(exc)}).eq("id", relance["id"]).execute()
         console.print(f"[red]Échec relance {relance['id']} : {exc}[/red]")
@@ -627,6 +761,7 @@ def _envoyer_et_mettre_a_jour_relance(
     ).eq("id", relance["id"]).execute()
     client.table("send_logs").insert(
         {
+            "id": send_log_id,
             "user_id": user_id,
             "team_id": team_id,
             "message_id": relance.get("original_message_id"),
@@ -659,6 +794,57 @@ def _envoyer_et_mettre_a_jour_relance(
 
 
 # --------------------------------------------------------------------------
+# Détection des réponses (avant tout envoi)
+# --------------------------------------------------------------------------
+def detecter_reponses(
+    client: Any,
+    team_ids: list[str],
+    profils_cache: dict[str, dict[str, Any] | None],
+    mots_de_passe_cache: dict[str, str],
+) -> int:
+    """Relève les réponses en IMAP et annule les relances devenues inutiles.
+
+    Appelée AVANT le cycle d'envoi, sinon une relance pourrait partir dans le
+    même passage que la détection de la réponse à laquelle elle répond.
+
+    Silencieuse et sans effet si aucune équipe n'a configuré d'IMAP.
+    """
+    total = 0
+    for team_id in team_ids:
+        try:
+            if team_id not in profils_cache:
+                profils_cache[team_id] = _recuperer_sender_profile(client, team_id)
+            profile = profils_cache[team_id]
+            if not imap_configure(profile):
+                continue
+
+            if team_id not in mots_de_passe_cache:
+                mots_de_passe_cache[team_id] = decrypt_smtp_password(
+                    _recuperer_smtp_password_enc(client, team_id)
+                )
+
+            provider_ids = relever_reponses(profile, mots_de_passe_cache[team_id])
+            nb = marquer_reponses(client, team_id, provider_ids)
+            if nb:
+                console.print(f"[cyan]{nb} réponse(s) détectée(s) — relances annulées.[/cyan]")
+                _journaliser_systeme(
+                    client, "info", "worker", f"{nb} réponse(s) détectée(s).", {"team_id": team_id}
+                )
+            total += nb
+        except Exception as exc:  # noqa: BLE001 - la détection ne doit jamais bloquer l'envoi
+            console.print(f"[yellow]Détection des réponses ignorée pour {team_id} : {exc}[/yellow]")
+    return total
+
+
+def _equipes_en_file(client: Any, team_id: str | None) -> list[str]:
+    """Équipes ayant au moins un envoi à traiter — cible de la relève IMAP."""
+    if team_id:
+        return [team_id]
+    resp = client.table("messages").select("team_id").eq("statut", "en_file").execute()
+    return sorted({row["team_id"] for row in (resp.data or []) if row.get("team_id")})
+
+
+# --------------------------------------------------------------------------
 # CLI
 # --------------------------------------------------------------------------
 @click.command()
@@ -669,7 +855,13 @@ def _envoyer_et_mettre_a_jour_relance(
     default=None,
     help="Limite le traitement à l'équipe de cet utilisateur (sinon toutes les équipes en file).",
 )
-def main(dry_run: bool, limit: int, user_id: str | None) -> None:
+@click.option(
+    "--max-runtime",
+    default=WORKER_MAX_RUNTIME_SECONDS,
+    type=int,
+    help="Budget temps du passage, en secondes. Le worker s'arrête proprement avant, la file est reprise au passage suivant.",
+)
+def main(dry_run: bool, limit: int, user_id: str | None, max_runtime: int) -> None:
     """Traite la file d'envoi (premiers emails puis relances), avec quota et anti-spam."""
     mode = "[bold cyan]DRY-RUN[/bold cyan]" if dry_run else "[bold green]ENVOI RÉEL[/bold green]"
     # Identifiant unique de ce processus — utilisé par claim_messages/
@@ -677,7 +869,10 @@ def main(dry_run: bool, limit: int, user_id: str | None) -> None:
     # workers en même temps, même si plusieurs instances tournent en
     # parallèle (cron + déclenchement manuel, plusieurs machines, etc.).
     worker_id = f"{socket.gethostname()}-{os.getpid()}"
-    console.print(f"{mode} — limite {limit} envoi(s) — worker {worker_id}")
+    budget = BudgetTemps(max_runtime)
+    console.print(
+        f"{mode} — limite {limit} envoi(s) — budget {max_runtime}s — worker {worker_id}"
+    )
 
     client = get_supabase_client()
     profils_cache: dict[str, dict[str, Any] | None] = {}
@@ -691,6 +886,13 @@ def main(dry_run: bool, limit: int, user_id: str | None) -> None:
             console.print(f"[red]Aucune équipe trouvée pour l'utilisateur {user_id}.[/red]")
             return
 
+    # Avant d'envoyer quoi que ce soit : une relance ne doit jamais partir
+    # après une réponse du prospect.
+    if not dry_run:
+        detecter_reponses(
+            client, _equipes_en_file(client, team_id), profils_cache, mots_de_passe_cache
+        )
+
     nb_messages = traiter_messages(
         client,
         limit=limit,
@@ -700,11 +902,12 @@ def main(dry_run: bool, limit: int, user_id: str | None) -> None:
         mots_de_passe_cache=mots_de_passe_cache,
         limites_plan_cache=limites_plan_cache,
         worker_id=worker_id,
+        budget=budget,
     )
 
     limite_restante = max(limit - nb_messages, 0)
     nb_relances = 0
-    if limite_restante > 0:
+    if limite_restante > 0 and not budget.epuise():
         nb_relances = traiter_relances(
             client,
             limit=limite_restante,
@@ -714,9 +917,14 @@ def main(dry_run: bool, limit: int, user_id: str | None) -> None:
             mots_de_passe_cache=mots_de_passe_cache,
             limites_plan_cache=limites_plan_cache,
             worker_id=worker_id,
+            budget=budget,
         )
 
     console.print(f"[bold]{nb_messages} email(s) initial(aux) et {nb_relances} relance(s) traité(s).[/bold]")
+    if budget.epuise():
+        console.print(
+            "[yellow]Budget temps atteint : le reste de la file sera repris au prochain passage.[/yellow]"
+        )
 
     if not dry_run:
         _journaliser_systeme(

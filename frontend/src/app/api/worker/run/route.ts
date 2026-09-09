@@ -59,8 +59,12 @@ export async function POST() {
   });
 
   try {
+    // 30 et non 100 : avec 30-60 s de pause anti-spam obligatoire entre deux
+    // envois, demander 100 dépassait le budget temps du runner. Le worker
+    // s'arrête désormais proprement de lui-même, et le passage planifié
+    // (toutes les 15 min) reprend le reste de la file.
     await declencherWorkflow("send-worker.yml", {
-      limit: "100",
+      limit: "30",
       user_id: user.id,
       team_id: teamId,
     });

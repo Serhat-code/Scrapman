@@ -340,6 +340,11 @@ export interface SenderProfile {
   smtp_secure: boolean;
   smtp_from_name: string | null;
 
+  /** Détection automatique des réponses. Vide = relève désactivée. */
+  imap_host: string | null;
+  imap_port: number;
+  imap_secure: boolean;
+
   daily_limit: number;
   is_gmail: boolean;
 

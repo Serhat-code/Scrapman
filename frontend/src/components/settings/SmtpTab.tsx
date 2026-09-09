@@ -69,6 +69,10 @@ function SmtpForm({ profile }: { profile: SenderProfile | null | undefined }) {
   const [port, setPort] = useState(profile?.smtp_port ? String(profile.smtp_port) : "587");
   const [user, setUser] = useState(profile?.smtp_user ?? "");
   const [secure, setSecure] = useState(profile?.smtp_secure ?? true);
+  const [imapHost, setImapHost] = useState(profile?.imap_host ?? "");
+  const [imapPort, setImapPort] = useState(
+    profile?.imap_port ? String(profile.imap_port) : "993"
+  );
   const [isGmail, setIsGmail] = useState(profile?.is_gmail ?? false);
   const [dailyLimit, setDailyLimit] = useState(String(profile?.daily_limit ?? plafondPlan));
   const [saved, setSaved] = useState(false);
@@ -89,6 +93,10 @@ function SmtpForm({ profile }: { profile: SenderProfile | null | undefined }) {
       setPort("587");
       setSecure(true);
     }
+    if (checked && !imapHost) {
+      setImapHost("imap.gmail.com");
+      setImapPort("993");
+    }
   };
 
   const handleSave = async () => {
@@ -101,6 +109,8 @@ function SmtpForm({ profile }: { profile: SenderProfile | null | undefined }) {
       smtp_port: port ? Number(port) : null,
       smtp_user: user || null,
       smtp_secure: secure,
+      imap_host: imapHost || null,
+      imap_port: imapPort ? Number(imapPort) : 993,
       is_gmail: isGmail,
       daily_limit: limit,
     });
@@ -221,6 +231,36 @@ function SmtpForm({ profile }: { profile: SenderProfile | null | undefined }) {
       />
 
       <CheckboxField label="Connexion sécurisée (TLS)" checked={secure} onChange={setSecure} />
+
+      <div className="border-t border-[var(--border)] pt-4">
+        <h3 className="mb-1 text-[11px] font-semibold uppercase tracking-wide text-[var(--text-muted)]">
+          Détection des réponses
+        </h3>
+        <p className="mb-3 text-xs text-[var(--text-muted)]">
+          Renseignez votre serveur IMAP pour que Scrapman arrête automatiquement les relances
+          dès qu&apos;un prospect vous répond. Mêmes identifiants que ci-dessus — seuls les
+          en-têtes des messages reçus sont lus, jamais leur contenu.{" "}
+          <strong className="text-[var(--text-secondary)]">
+            Laissé vide, les relances continuent tant que vous n&apos;avez pas marqué le message
+            comme répondu à la main.
+          </strong>
+        </p>
+        <div className="grid grid-cols-2 gap-3">
+          <TextField
+            label="Hôte IMAP"
+            value={imapHost}
+            onChange={setImapHost}
+            placeholder="imap.gmail.com"
+          />
+          <TextField
+            label="Port IMAP"
+            type="number"
+            value={imapPort}
+            onChange={setImapPort}
+            placeholder="993"
+          />
+        </div>
+      </div>
 
       <TextField
         label="Plafond d'envoi quotidien"

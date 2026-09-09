@@ -466,3 +466,160 @@ def test_traiter_relances_reel_appelle_claim_followups_avec_le_worker_id():
     assert client.rpc_calls == [
         ("claim_followups", {"p_worker_id": "worker-xyz", "p_limit": 5, "p_team_id": "team-1"})
     ]
+
+
+# --------------------------------------------------------------------------
+# Budget temps et pause anti-spam
+# --------------------------------------------------------------------------
+# Le worker demandait 100 envois espacés de 30-60 s dans un job limité à
+# 12 minutes : il était tué vers le 15e email et le run passait au rouge.
+def test_budget_non_epuise_a_la_creation():
+    assert worker.BudgetTemps(60).epuise() is False
+
+
+def test_budget_epuise_quand_la_duree_est_nulle():
+    assert worker.BudgetTemps(0).epuise() is True
+
+
+def test_budget_negatif_est_considere_epuise():
+    assert worker.BudgetTemps(-10).epuise() is True
+
+
+def test_budget_restant_decroit_vers_zero():
+    budget = worker.BudgetTemps(30)
+    assert 0 < budget.restant() <= 30
+
+
+def test_pas_de_pause_apres_le_dernier_envoi(monkeypatch):
+    """Jusqu'à 60 s de runner étaient brûlées pour rien à chaque passage."""
+    dormi = []
+    monkeypatch.setattr(worker.time, "sleep", lambda s: dormi.append(s))
+
+    worker._pause_anti_spam(None, None, reste=False)
+
+    assert dormi == []
+
+
+def test_pause_appliquee_quand_il_reste_du_travail(monkeypatch):
+    dormi = []
+    monkeypatch.setattr(worker.time, "sleep", lambda s: dormi.append(s))
+
+    worker._pause_anti_spam(None, None, reste=True)
+
+    assert len(dormi) == 1
+    assert dormi[0] >= 30  # plancher anti-spam non contournable
+
+
+def test_pause_bornee_par_le_budget_restant(monkeypatch):
+    """Ne pas dépasser le timeout du workflow pendant un sleep."""
+    dormi = []
+    monkeypatch.setattr(worker.time, "sleep", lambda s: dormi.append(s))
+
+    worker._pause_anti_spam(None, worker.BudgetTemps(2), reste=True)
+
+    assert len(dormi) == 1
+    assert dormi[0] <= 2
+
+
+def test_aucune_pause_si_le_budget_est_deja_epuise(monkeypatch):
+    dormi = []
+    monkeypatch.setattr(worker.time, "sleep", lambda s: dormi.append(s))
+
+    worker._pause_anti_spam(None, worker.BudgetTemps(0), reste=True)
+
+    assert dormi == []
+
+
+def test_budget_epuise_stoppe_le_traitement_des_messages():
+    """Le worker sort de lui-même au lieu de se faire tuer par le runner."""
+    client = _FakeClient(
+        {"messages": _FakeResponse(data=[])},
+        rpc_responses={"claim_messages": _FakeResponse(data=[])},
+    )
+
+    nb = worker.traiter_messages(
+        client,
+        limit=50,
+        team_id="team-1",
+        dry_run=False,
+        profils_cache={},
+        mots_de_passe_cache={},
+        worker_id="worker-1",
+        budget=worker.BudgetTemps(0),
+    )
+
+    assert nb == 0
+
+
+# --------------------------------------------------------------------------
+# Composition de l'email réellement remis à SMTP
+# --------------------------------------------------------------------------
+class _FakeSMTP:
+    """Capture le message au lieu de l'envoyer."""
+
+    envoye = None
+
+    def __init__(self, host, port, timeout=None):
+        pass
+
+    def __enter__(self):
+        return self
+
+    def __exit__(self, *_a):
+        return False
+
+    def starttls(self, context=None):
+        pass
+
+    def login(self, user, password):
+        pass
+
+    def send_message(self, msg):
+        _FakeSMTP.envoye = msg
+
+
+def _envoyer_capture(monkeypatch, tracking_url=None):
+    _FakeSMTP.envoye = None
+    monkeypatch.setattr(worker.smtplib, "SMTP", _FakeSMTP)
+    profile = {
+        "email_from": "contact@x.fr",
+        "smtp_host": "smtp.x.fr",
+        "smtp_port": 587,
+        "smtp_user": "contact@x.fr",
+        "smtp_from_name": "Studio",
+    }
+    worker.envoyer_smtp(profile, "mdp", "cible@y.fr", "Objet", "Bonjour,\n\nUne offre.", tracking_url)
+    return _FakeSMTP.envoye
+
+
+def test_email_est_multipart_alternative(monkeypatch):
+    """Sans partie HTML, aucun pixel ne peut être porté : c'était la cause racine."""
+    msg = _envoyer_capture(monkeypatch)
+    assert msg.get_content_type() == "multipart/alternative"
+
+
+def test_email_contient_une_partie_texte_et_une_partie_html(monkeypatch):
+    msg = _envoyer_capture(monkeypatch)
+    types = [p.get_content_type() for p in msg.walk() if not p.is_multipart()]
+    assert types == ["text/plain", "text/html"]
+
+
+def test_le_pixel_est_present_dans_la_partie_html(monkeypatch):
+    msg = _envoyer_capture(monkeypatch, "https://app.test/api/track/open?sid=s1&tid=t1")
+    html = [p for p in msg.walk() if p.get_content_type() == "text/html"][0]
+    corps = html.get_payload(decode=True).decode("utf-8")
+    assert "sid=s1" in corps
+    assert "<img" in corps
+
+
+def test_sans_url_de_suivi_aucun_pixel(monkeypatch):
+    msg = _envoyer_capture(monkeypatch)
+    html = [p for p in msg.walk() if p.get_content_type() == "text/html"][0]
+    assert "<img" not in html.get_payload(decode=True).decode("utf-8")
+
+
+def test_le_texte_brut_reste_le_corps_original(monkeypatch):
+    """Le repli texte ne doit pas être pollué par le HTML."""
+    msg = _envoyer_capture(monkeypatch)
+    texte = [p for p in msg.walk() if p.get_content_type() == "text/plain"][0]
+    assert texte.get_payload(decode=True).decode("utf-8") == "Bonjour,\n\nUne offre."

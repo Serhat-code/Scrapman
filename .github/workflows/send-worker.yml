@@ -28,7 +28,11 @@ on:
 jobs:
   send:
     runs-on: ubuntu-latest
-    timeout-minutes: 12
+    # Doit rester nettement au-dessus de WORKER_MAX_RUNTIME_SECONDS (25 min) :
+    # le worker s'arrête de lui-même avant, ce timeout n'est plus qu'un
+    # garde-fou. Avant, 12 minutes contre une demande de 100 envois espacés de
+    # 30-60 s : le job était systématiquement tué vers le 15e email.
+    timeout-minutes: 30
     defaults:
       run:
         working-directory: scraper
@@ -40,6 +44,13 @@ jobs:
       CALENDLY_URL: "calendly.com/atlamazstudio/30min"
       SEND_LIMIT: ${{ github.event.inputs.limit || '15' }}
       WORKER_USER_ID: ${{ github.event.inputs.user_id }}
+      # Budget que le worker s'impose. En sortir proprement vaut mieux que se
+      # faire tuer par le runner : les verrous sont relâchés et la file reprise
+      # au passage suivant.
+      WORKER_MAX_RUNTIME_SECONDS: "1500"
+      # Sans elle, le pixel de suivi d'ouverture pointerait vers le domaine
+      # codé en dur dans config.py.
+      APP_URL: ${{ secrets.APP_URL }}
     steps:
       - uses: actions/checkout@v4
 
